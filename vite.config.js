@@ -9,6 +9,7 @@ export default defineConfig({
             input: [
                 'resources/sass/app.scss',
                 'resources/js/app.js',
+                'resources/tabler/src/js/tabler.esm.js',
             ],
             refresh: true,
         }),

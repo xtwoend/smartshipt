@@ -23,11 +23,11 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
-<body class=" border-top-wide border-primary d-flex flex-column">
+<body class="border-top-wide border-primary d-flex flex-column">
     <div class="page page-center">
         <div class="container container-tight py-4">
             <div class="text-center mb-4">
-                <a href="." class="navbar-brand navbar-brand-autodark">
+                <a href="#" class="navbar-brand navbar-brand-autodark">
                     <img src="/logo.png" height="80" alt="">
                 </a>
             </div>

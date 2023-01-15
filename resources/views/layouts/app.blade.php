@@ -3,11 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    {{-- <meta http-equiv="X-UA-Compatible" content="ie=edge"/> --}}
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
@@ -25,7 +24,9 @@
 </head>
 <body>
     <div class="page" id="app">
-        @include('layouts.partials.header')
+        <div class="sticky-top">
+            @include('layouts.partials.header')
+        </div>
         <div class="navbar-expand-md">
             <div class="collapse navbar-collapse" id="navbar-menu">
                 <div class="navbar navbar-light">
@@ -45,7 +46,7 @@
                 </div>
             </div>
         </div>
-        <div class="page-wrapper">
+        <div class="page-wrapper-full">
             @yield('content')
         </div>
     </div>
