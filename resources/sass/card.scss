@@ -1,0 +1,14 @@
+.dark {
+    &.card {
+        background: rgba(0,0,0,0.62) !important;
+        .card-title {
+            color: #FDD751;
+        }
+        .card-body {
+            color: #fff;
+            .text-muted {
+                color: #a9a9a9;
+            }
+        }
+    }
+}

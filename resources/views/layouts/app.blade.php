@@ -27,7 +27,7 @@
         <div class="sticky-top">
             @include('layouts.partials.header')
         </div>
-        <div class="navbar-expand-md">
+        {{-- <div class="navbar-expand-md">
             <div class="collapse navbar-collapse" id="navbar-menu">
                 <div class="navbar navbar-light">
                     <div class="container-xl">
@@ -45,7 +45,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="page-wrapper-full">
             @yield('content')
         </div>

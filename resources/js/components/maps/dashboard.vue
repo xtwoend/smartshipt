@@ -1,15 +1,15 @@
 <template>
     <div class="position-relative">
-        <x-search></x-search>
+        <!-- <x-search></x-search> -->
         <x-notification></x-notification>
         <div class="pointer-info" ref="pointerInfo"></div>
         <MapboxMap
             @mb-created="(mapboxInstance) => map = mapboxInstance"
             @mb-load="loaded"
             @mb-mousemove="pointerLocation"
-            style="height: calc(100vh - 112px); width: 100%;"
+            style="height: calc(100vh - 56px); width: 100%;"
             access-token="pk.eyJ1Ijoia3JvbmljayIsImEiOiJjaWxyZGZwcHQwOHRidWxrbnd0OTB0cDBzIn0.u2R3NY5PnevWH3cHRk6TWQ"
-            map-style="mapbox://styles/mapbox/satellite-streets-v12"
+            map-style="mapbox://styles/mapbox/navigation-day-v1"
             :center="[105.987732, -5.898973]"
             :zoom="5"
             >
@@ -41,46 +41,51 @@ export default {
     },
     methods: {
         async loaded() {
-            let routes = {
-                type: 'Feature',
-                properties: {},
-                geometry: {
-                    type: 'LineString',
-                    coordinates: []
-                }
-            }
+            // let routes = {
+            //     type: 'Feature',
+            //     properties: {},
+            //     geometry: {
+            //         type: 'LineString',
+            //         coordinates: []
+            //     }
+            // }
 
-            coordinates.forEach((row, i) => {
-                if(this.current){
-                    let r = this.calcCrow(this.current[1], this.current[0], row.lat, row.lng);
-                    if(r > 200) {
-                        return;
-                    }
-                }
-                routes.geometry.coordinates.push([row.lng, row.lat])
-                this.current = [row.lng, row.lat]
+            // coordinates.forEach((row, i) => {
+            //     if(this.current){
+            //         let r = this.calcCrow(this.current[1], this.current[0], row.lat, row.lng);
+            //         if(r > 200) {
+            //             return;
+            //         }
+            //     }
+            //     routes.geometry.coordinates.push([row.lng, row.lat])
+            //     this.current = [row.lng, row.lat]
+            // })
+
+            // this.map.addSource('route', {
+            //     type: 'geojson',
+            //     data: routes
+            // })
+
+            // this.map.addLayer({
+            //     'id': 'route',
+            //     'type': 'line',
+            //     'source': 'route',
+            //     'layout': {
+            //         'line-join': 'round',
+            //         'line-cap': 'round'
+            //     },
+            //     'paint': {
+            //         'line-color': '#40f793',
+            //         'line-width': 2
+            //     }
+            // });
+            // let lastPosition = coordinates[coordinates.length - 1]
+            // console.log(lastPosition)
+
+            let {data} = await axios.get('/api/vessel/navi')
+            data.forEach((row) => {
+                this.positionShip(row)
             })
-
-            this.map.addSource('route', {
-                type: 'geojson',
-                data: routes
-            })
-
-            this.map.addLayer({
-                'id': 'route',
-                'type': 'line',
-                'source': 'route',
-                'layout': {
-                    'line-join': 'round',
-                    'line-cap': 'round'
-                },
-                'paint': {
-                    'line-color': '#40f793',
-                    'line-width': 2
-                }
-            });
-            let lastPosition = coordinates[coordinates.length - 1]
-            this.positionShip(lastPosition)
         },
 
         pointerLocation (e) {
@@ -89,12 +94,17 @@ export default {
         },
 
         positionShip(row) {
+            // skip if nav null
+            if(! row.navigation) return;
+
+            let that = this
+            
             this.map.loadImage(shipIcon, (err, img) => {
                 if(err) throw err
-                this.map.addImage('ship', img);
+                this.map.addImage(`ship-${row.id}`, img);
             })
 
-            this.map.addSource('ship-points', {
+            this.map.addSource(`ship-points-${row.id}`, {
                 "type": "geojson",
                 "data": {
                     "type": "FeatureCollection",
@@ -102,12 +112,14 @@ export default {
                         {
                             "type": "Feature",
                             "geometry": {
-                                    "type": "Point",
-                                    "coordinates": [row.lng, row.lat],
+                                "type": "Point",
+                                "coordinates": [row.navigation.lng, row.navigation.lat],
                             },
                             "properties": {
-                                    "scale": 1,
-                                    "heading": row.heading
+                                "scale": 1,
+                                "heading": row.navigation.heading,
+                                "name": row.name,
+                                "image": row.image
                             }
                         }
                     ]
@@ -115,24 +127,40 @@ export default {
             });
 
             this.map.addLayer({
-                "id": "ship-positions",
+                "id": `ship-positions-${row.id}`,
                 "type": "symbol",
-                "source": "ship-points",
+                "source": `ship-points-${row.id}`,
                 "layout": {
-                        "icon-image": "ship",
-                        "icon-allow-overlap": true,
-                        "icon-ignore-placement": true,
-                        "icon-size": 0.05,
-                        "icon-rotate": {
-                                property: "heading",
-                                stops: [
-                                        [-360, -360],
-                                        [0, 0],
-                                        [360,360]
-                                ]
-                        },
-                        "icon-rotation-alignment": "map"
+                    "icon-image": `ship-${row.id}`,
+                    "icon-allow-overlap": true,
+                    "icon-ignore-placement": true,
+                    "icon-size": 0.3,
+                    "icon-rotate": {
+                        property: "heading",
+                        stops: [
+                            [-360, -360],
+                            [0, 0],
+                            [360,360]
+                        ]
+                    },
+                    "icon-rotation-alignment": "map"
                 }
+            });
+
+            this.map.on('click', `ship-positions-${row.id}`, (e) => {
+                const coordinates = e.features[0].geometry.coordinates.slice();
+                const name = e.features[0].properties.name;
+                console.log(coordinates, name)
+                alert(name)
+            })
+            // Change the cursor to a pointer when the mouse is over the places layer.
+            this.map.on('mouseenter', `ship-positions-${row.id}`, () => {
+                that.map.getCanvas().style.cursor = 'pointer';
+            });
+            
+            // Change it back to a pointer when it leaves.
+            this.map.on('mouseleave', `ship-positions-${row.id}`, () => {
+                that.map.getCanvas().style.cursor = '';
             });
         },
         calcCrow(lat1, lon1, lat2, lon2) {
