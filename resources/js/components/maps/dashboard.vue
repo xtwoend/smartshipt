@@ -21,10 +21,12 @@
 <script>
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { MapboxMap, MapboxNavigationControl } from '@studiometa/vue-mapbox-gl';
+import mapboxgl from 'mapbox-gl';
 import shipIcon from './ship.png'
-import coordinates from './widuri.json';
+// import coordinates from './widuri.json';
 import search from './search.vue';
 import notification from './notification.vue';
+import * as timeago from 'timeago.js';
 
 export default {
     components: {
@@ -119,7 +121,10 @@ export default {
                                 "scale": 1,
                                 "heading": row.navigation.heading,
                                 "name": row.name,
-                                "image": row.image
+                                "image": row.image,
+                                "sog": row.navigation.sog,
+                                "cog": row.navigation.cog,
+                                "last_update": timeago.format(row.navigation.updated_at + '+7')
                             }
                         }
                     ]
@@ -147,20 +152,39 @@ export default {
                 }
             });
 
+            // Create a popup, but don't add it to the map yet.
+            const popup = new mapboxgl.Popup({
+                closeButton: false,
+                closeOnClick: false
+            });
+
             this.map.on('click', `ship-positions-${row.id}`, (e) => {
-                const coordinates = e.features[0].geometry.coordinates.slice();
-                const name = e.features[0].properties.name;
-                console.log(coordinates, name)
-                alert(name)
+                // open side information
             })
-            // Change the cursor to a pointer when the mouse is over the places layer.
-            this.map.on('mouseenter', `ship-positions-${row.id}`, () => {
+            
+            this.map.on('mouseenter', `ship-positions-${row.id}`, (e) => {
+                // Change the cursor style as a UI indicator.
                 that.map.getCanvas().style.cursor = 'pointer';
+                
+                // Copy coordinates array.
+                const coordinates = e.features[0].geometry.coordinates.slice();
+                
+                const text = `<b>${e.features[0].properties.name} [ID]</b> at ${e.features[0].properties.sog} <b>kn</b>/ ${e.features[0].properties.cog}&deg;<br>last update: <b>${e.features[0].properties.last_update}</b>`;
+                // Ensure that if the map is zoomed out such that multiple
+                // copies of the feature are visible, the popup appears
+                // over the copy being pointed to.
+                while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                    coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+                }
+            
+                // Populate the popup and set its coordinates
+                // based on the feature found.
+                popup.setLngLat(coordinates).setHTML(text).addTo(that.map);
             });
             
-            // Change it back to a pointer when it leaves.
             this.map.on('mouseleave', `ship-positions-${row.id}`, () => {
                 that.map.getCanvas().style.cursor = '';
+                popup.remove();
             });
         },
         calcCrow(lat1, lon1, lat2, lon2) {
