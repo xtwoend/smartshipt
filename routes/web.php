@@ -17,3 +17,5 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes(['register' => false, 'reset' => false]);
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/route', [\App\Http\Controllers\NaviController::class, 'route'])->name('route');
+Route::get('/vessel/{id}', [\App\Http\Controllers\NaviController::class, 'route'])->name('vessel');

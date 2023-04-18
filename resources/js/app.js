@@ -18,6 +18,9 @@ const app = createApp({});
 import MapDashboard from './components/maps/dashboard.vue';
 app.component('map-dashboard', MapDashboard);
 
+import MapHistory from './components/maps/history.vue';
+app.component('map-history', MapHistory);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

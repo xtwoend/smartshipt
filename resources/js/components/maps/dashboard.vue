@@ -39,51 +39,16 @@ export default {
         return {
             map: null,
             current: [],
+            timer: null
         }
+    },
+    mounted(){
+        this.timer = setInterval(() => {
+            // this.loaded()
+        }, 1000)
     },
     methods: {
         async loaded() {
-            // let routes = {
-            //     type: 'Feature',
-            //     properties: {},
-            //     geometry: {
-            //         type: 'LineString',
-            //         coordinates: []
-            //     }
-            // }
-
-            // coordinates.forEach((row, i) => {
-            //     if(this.current){
-            //         let r = this.calcCrow(this.current[1], this.current[0], row.lat, row.lng);
-            //         if(r > 200) {
-            //             return;
-            //         }
-            //     }
-            //     routes.geometry.coordinates.push([row.lng, row.lat])
-            //     this.current = [row.lng, row.lat]
-            // })
-
-            // this.map.addSource('route', {
-            //     type: 'geojson',
-            //     data: routes
-            // })
-
-            // this.map.addLayer({
-            //     'id': 'route',
-            //     'type': 'line',
-            //     'source': 'route',
-            //     'layout': {
-            //         'line-join': 'round',
-            //         'line-cap': 'round'
-            //     },
-            //     'paint': {
-            //         'line-color': '#40f793',
-            //         'line-width': 2
-            //     }
-            // });
-            // let lastPosition = coordinates[coordinates.length - 1]
-            // console.log(lastPosition)
-
             let {data} = await axios.get('/api/vessel/navi')
             data.forEach((row) => {
                 this.positionShip(row)
@@ -98,9 +63,7 @@ export default {
         positionShip(row) {
             // skip if nav null
             if(! row.navigation) return;
-
             let that = this
-            
             this.map.loadImage(shipIcon, (err, img) => {
                 if(err) throw err
                 this.map.addImage(`ship-${row.id}`, img);
@@ -119,6 +82,7 @@ export default {
                             },
                             "properties": {
                                 "scale": 1,
+                                "id": row.id,
                                 "heading": row.navigation.heading,
                                 "name": row.name,
                                 "image": row.image,
@@ -160,25 +124,17 @@ export default {
 
             this.map.on('click', `ship-positions-${row.id}`, (e) => {
                 // open side information
+                let vesselId = e.features[0].properties.id;
+                location.href = `/vessel/${vesselId}`;
             })
             
             this.map.on('mouseenter', `ship-positions-${row.id}`, (e) => {
-                // Change the cursor style as a UI indicator.
                 that.map.getCanvas().style.cursor = 'pointer';
-                
-                // Copy coordinates array.
                 const coordinates = e.features[0].geometry.coordinates.slice();
-                
-                const text = `<b>${e.features[0].properties.name} [ID]</b> at ${e.features[0].properties.sog} <b>kn</b>/ ${e.features[0].properties.cog}&deg;<br>last update: <b>${e.features[0].properties.last_update}</b>`;
-                // Ensure that if the map is zoomed out such that multiple
-                // copies of the feature are visible, the popup appears
-                // over the copy being pointed to.
+                const text = `<b>${e.features[0].properties.name} [ID]</b> at ${e.features[0].properties.sog} <b>kn</b> / ${e.features[0].properties.cog}&deg;<br>last update: <b>${e.features[0].properties.last_update}</b>`;
                 while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
                     coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
                 }
-            
-                // Populate the popup and set its coordinates
-                // based on the feature found.
                 popup.setLngLat(coordinates).setHTML(text).addTo(that.map);
             });
             
