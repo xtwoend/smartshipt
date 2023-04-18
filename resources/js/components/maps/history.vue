@@ -127,8 +127,15 @@ export default {
                 closeOnClick: false
             });
 
+            this.map.on('click', 'points', (e) => {
+                // open side information
+                let data = e.features[0].properties;
+                // that.positionShip({lat: data.lat, lng: data.lng, heading: data.heading})
+            })
+            
             // Create a popup, but don't add it to the map yet.      
             this.map.on('mouseenter', 'points', (e) => {
+                that.map.getCanvas().style.cursor = 'pointer';
                 const coordinates = e.features[0].geometry.coordinates.slice();
                 const text = `<b>Lat : ${e.features[0].properties.lat} | Lng: ${e.features[0].properties.lng}</b> at ${e.features[0].properties.sog} <b>kn</b> / ${e.features[0].properties.cog}&deg;<br>time: <b>${e.features[0].properties.time}</b>`;
                 while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
@@ -140,6 +147,51 @@ export default {
             this.map.on('mouseleave', 'points', () => {
                 that.map.getCanvas().style.cursor = '';
                 popup.remove();
+            });
+        },
+
+        positionShip(row) {
+            let that = this
+            this.map.loadImage(shipIcon, (err, img) => {
+                if(err) throw err
+                that.map.addImage('ship-icon', img);
+            })
+
+            this.map.addSource('ship-point', {
+                "type": "geojson",
+                "data": {
+                    "type": "FeatureCollection",
+                    "features": [
+                        {
+                            "type": "Feature",
+                            "geometry": {
+                                "type": "Point",
+                                "coordinates": [row.lng, row.lat],
+                            }
+                        }
+                    ]
+                }
+            });
+
+            this.map.addLayer({
+                "id": 'ship-point',
+                "type": "symbol",
+                "source": 'ship-point',
+                "layout": {
+                    "icon-image": 'ship-icon',
+                    "icon-allow-overlap": true,
+                    "icon-ignore-placement": true,
+                    "icon-size": 0.3,
+                    "icon-rotate": {
+                        property: "heading",
+                        stops: [
+                            [-360, -360],
+                            [0, 0],
+                            [360,360]
+                        ]
+                    },
+                    "icon-rotation-alignment": "map"
+                }
             });
         },
         calcCrow(lat1, lon1, lat2, lon2) {
