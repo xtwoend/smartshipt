@@ -6,6 +6,7 @@
 
 import './bootstrap';
 import { createApp } from 'vue';
+import moment from 'moment';
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -38,5 +39,15 @@ app.component('map-history', MapHistory);
  * an "id" attribute of "app". This element is included with the "auth"
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
+
+app.config.globalProperties.$filters = {
+    dateformat(value, format='DD/MM/YYYY hh:mm') {
+        let date = moment(value, 'YYYY-MM-DD hh:mm:ss');
+        return date.format(format)
+    },
+    str_limit(value, limit=7) {
+        return value.toString().substring(0, limit)
+    }
+}
 
 app.mount('#app');

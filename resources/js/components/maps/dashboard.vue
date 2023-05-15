@@ -11,7 +11,7 @@
             access-token="pk.eyJ1Ijoia3JvbmljayIsImEiOiJjaWxyZGZwcHQwOHRidWxrbnd0OTB0cDBzIn0.u2R3NY5PnevWH3cHRk6TWQ"
             map-style="mapbox://styles/mapbox/navigation-day-v1"
             :center="[105.987732, -5.898973]"
-            :zoom="5"
+            :zoom="6"
             >
             <MapboxNavigationControl position="bottom-right" />
         </MapboxMap>
