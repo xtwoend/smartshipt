@@ -20,16 +20,19 @@
         }
     </style>
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/js/index.js'])
 </head>
 <body>
-    <div class="page" id="app">
-        <div class="sticky-top">
-            @include('layouts.partials.header')
-        </div>
-        <div class="page-wrapper-full">
-            @yield('content')
-        </div>
+    
+<div class="layout has-sidebar fixed-sidebar fixed-header" id="app">
+    @include('layouts.partials.sidebar')
+    <div id="overlay" class="overlay"></div>
+    <div class="layout">
+        @include('layouts.partials.headerdash')
+        @include('layouts.partials.content')
+        <div class="overlay"></div>
+        @include('layouts.partials.footer')
     </div>
+</div>
 </body>
 </html>
