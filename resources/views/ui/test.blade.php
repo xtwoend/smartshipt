@@ -1,6 +1,7 @@
 @extends('layouts.dash')
 
 @section('content')
+<main class="content">
 <div class="bg-white">
     <slider-submenu></slider-submenu>
     <map-default></map-default>
@@ -312,4 +313,5 @@
         </div>
     </div>
 </div>
+</main>
 @endsection
