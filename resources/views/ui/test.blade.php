@@ -1,9 +1,11 @@
 @extends('layouts.dash')
 
 @section('content')
-<div>
-    {{-- test --}}
-
+<main class="content">
+    <a id="btn-toggle" href="#" class="sidebar-toggler break-point-lg">
+        <i class="ri-menu-line ri-xl"></i>
+    </a>
+    
     test page
-</div>
+</main>
 @endsection

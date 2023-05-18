@@ -7,11 +7,11 @@
             @mb-created="(mapboxInstance) => map = mapboxInstance"
             @mb-load="loaded"
             @mb-mousemove="pointerLocation"
-            style="height: calc(100vh - 56px); width: 100%;"
+            style="height: calc(100vh - 128px); width: 100%;"
             access-token="pk.eyJ1Ijoia3JvbmljayIsImEiOiJjaWxyZGZwcHQwOHRidWxrbnd0OTB0cDBzIn0.u2R3NY5PnevWH3cHRk6TWQ"
             map-style="mapbox://styles/mapbox/navigation-day-v1"
-            :center="[105.987732, -5.898973]"
-            :zoom="6"
+            :center="[118.987732, 0.0]"
+            :zoom="4"
             >
             <MapboxNavigationControl position="bottom-right" />
         </MapboxMap>

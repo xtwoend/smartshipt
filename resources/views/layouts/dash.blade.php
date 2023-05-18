@@ -29,7 +29,8 @@
     <div id="overlay" class="overlay"></div>
     <div class="layout">
         @include('layouts.partials.headerdash')
-        @include('layouts.partials.content')
+        {{-- @include('layouts.partials.content') --}}
+        @yield('content')
         <div class="overlay"></div>
         @include('layouts.partials.footer')
     </div>

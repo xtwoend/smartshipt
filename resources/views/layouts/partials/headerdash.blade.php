@@ -1,34 +1,34 @@
 <header class="header">
     <div class="breadcrumbs">
         <h5>My Fleet</h5>
-        <img src="img/icons/chevron-right.png" alt="" />
+        <img src="{{asset('img/icons/chevron-right.png')}}" alt="" />
         <h5>Widuri</h5>
     </div>
     <nav class="menu-header">
         <ul>
             <li>
                 <a href="">
-                    <img src="img/icons/search-dark.png" alt="" />
+                    <img src="{{asset('img/icons/search-dark.png')}}" alt="" />
                 </a>
             </li>
             <li>
                 <a href="">
-                    <img src="img/icons/settings-dark.png" alt="" />
+                    <img src="{{asset('img/icons/settings-dark.png')}}" alt="" />
                 </a>
             </li>
             <li>
                 <a href="">
-                    <img src="img/icons/help-dark.png" alt="" />
+                    <img src="{{asset('img/icons/help-dark.png')}}" alt="" />
                 </a>
             </li>
             <li>
                 <a href="">
-                    <img src="img/icons/message-dark.png" alt="" />
+                    <img src="{{asset('img/icons/message-dark.png')}}" alt="" />
                 </a>
             </li>
             <li>
                 <a href="">
-                    <img src="img/icons/account-dark.png" alt="" />
+                    <img src="{{asset('img/icons/account-dark.png')}}" alt="" />
                 </a>
             </li>
         </ul>

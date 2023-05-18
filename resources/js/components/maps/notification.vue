@@ -72,8 +72,8 @@ export default {
 <style lang="scss" scoped>
 .ships-notification {
     width: 300px;
-    top: 15%;
-    left: 10px;
+    top: 10px;
+    right: 10px;
     bottom: 15%;
     transition: 0.3s;
     z-index: 1;
