@@ -30,6 +30,9 @@
     <div class="layout">
         @include('layouts.partials.headerdash')
         {{-- @include('layouts.partials.content') --}}
+        <a id="btn-toggle" href="#" class="sidebar-toggler break-point-lg">
+            <i class="ri-menu-line ri-xl"></i>
+        </a>
         @yield('content')
         <div class="overlay"></div>
         @include('layouts.partials.footer')
