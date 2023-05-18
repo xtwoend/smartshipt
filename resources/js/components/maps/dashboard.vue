@@ -1,6 +1,6 @@
 <template>
     <div class="position-relative">
-        <!-- <x-search></x-search> -->
+        <x-search></x-search>
         <x-notification></x-notification>
         <div class="pointer-info" ref="pointerInfo"></div>
         <MapboxMap

@@ -26,7 +26,7 @@
                     <span class="menu-title">My Fleet</span>
                   </a>
                   <div class="sub-menu-list">
-                    <ul>
+                    <ul class="scroller" style="heigth: 200px;">
                       <li class="menu-item">
                         <a href="#">
                         <span class="menu-icon">
