@@ -9,6 +9,9 @@
     padding: 12px 50px;
     display: flex;
     flex-direction: column;
+    &.full {
+      padding: 0 !important;
+    }
   }
 
   .footer {

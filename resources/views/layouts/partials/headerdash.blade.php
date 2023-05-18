@@ -1,7 +1,7 @@
 <header class="header">
     <div class="breadcrumbs">
         <h5>My Fleet</h5>
-        <img src="img/icons/chevron-right.png" alt="" />
+        <img src="{{asset('img/icons/chevron-right.png')}}" alt="" />
         <h5>Widuri</h5>
     </div>
     <nav class="menu-header">

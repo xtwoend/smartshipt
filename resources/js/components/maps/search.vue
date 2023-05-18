@@ -40,7 +40,7 @@
                             <div class="badge bg-success"></div><span class="text-xs ml-1">Online</span>
                         </div>
                     </div>
-                    <div class="row mt-2">
+                    <!-- <div class="row mt-2">
                         <div class="col-auto">
                             <div class="text-muted text-sm">ID MRK</div>
                             <div class="text-xs">ATD 27/12</div>
@@ -50,8 +50,8 @@
                             <div class="text-muted text-sm">ID JKT</div>
                             <div class="text-xs">ETA 27/12</div>
                         </div>
-                    </div>
-                    <div class="row">
+                    </div> -->
+                    <!-- <div class="row">
                         <div class="col-12">
                             <div class="progress mt-2">
                                 <div class="progress-bar arrow-right bg-green" style="width: 38%" role="progressbar" aria-valuenow="38" aria-valuemin="0" aria-valuemax="100" aria-label="38% Complete">
@@ -59,7 +59,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

@@ -85,5 +85,12 @@
         text-overflow: ellipsis;
       }
     }
+
+    ul.scroller {
+      list-style: none;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      height: 300px;
+    }
   }
 }
