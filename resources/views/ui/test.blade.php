@@ -202,6 +202,114 @@
                 </table>
             </div>
         </div>
+        <div class="row">
+            <!-- Bunker level Information -->
+            <div class="col-12">
+                <div class="table-title">
+                    <h6>Bunker level Information</h6>
+                </div>
+                <charts-fuel></charts-fuel>
+                <table class="table table-sm">
+                    <tbody>
+                        <tr>
+                            <th scope="col">Service Name</th>
+                            <th scope="col" colspan="8" class="text-end">Level Capacity  (%)</th>
+                            <th scope="col" class="text-end">Value (KL)</th>
+                        </tr>
+                        <tr>
+                            <td scope="col">HFO Bunker</td>
+                            <td scope="col" colspan="8" style="vertical-align: middle;">
+                                <div class="progress" style="height: 4px;">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </td>
+                            <td scope="col" class="text-end">1.97</td>
+                        </tr>
+                        <tr>
+                            <td scope="col">HFO Service</td>
+                            <td scope="col" colspan="8" style="vertical-align: middle;">
+                                <div class="progress" style="height: 4px;">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </td>
+                            <td scope="col" class="text-end">6.52</td>
+                        </tr>
+                        <tr>
+                            <td scope="col">HFO Setting</td>
+                            <td scope="col" colspan="8" style="vertical-align: middle;">
+                                <div class="progress" style="height: 4px;">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </td>
+                            <td scope="col" class="text-end">6.70</td>
+                        </tr>
+                        <tr>
+                            <td scope="col">FWD HFO</td>
+                            <td scope="col" colspan="8" style="vertical-align: middle;">
+                                <div class="progress" style="height: 4px;">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </td>
+                            <td scope="col" class="text-end">3.56</td>
+                        </tr>
+                        <tr>
+                            <td scope="col">LS HFO Bunker</td>
+                            <td scope="col" colspan="8" style="vertical-align: middle;">
+                                <div class="progress" style="height: 4px;">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </td>
+                            <td scope="col" class="text-end">0.86</td>
+                        </tr>
+                        <tr>
+                            <td scope="col">LS HFO Service</td>
+                            <td scope="col" colspan="8" style="vertical-align: middle;">
+                                <div class="progress" style="height: 4px;">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </td>
+                            <td scope="col" class="text-end">0.20</td>
+                        </tr>
+                        <tr>
+                            <td scope="col">LS HFO Setling</td>
+                            <td scope="col" colspan="8" style="vertical-align: middle;">
+                                <div class="progress" style="height: 4px;">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </td>
+                            <td scope="col" class="text-end">1.85</td>
+                        </tr>
+                        <tr>
+                            <td scope="col">MDO Service</td>
+                            <td scope="col" colspan="8" style="vertical-align: middle;">
+                                <div class="progress" style="height: 4px;">
+                                    <div class="progress-bar" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </td>
+                            <td scope="col" class="text-end">0.81</td>
+                        </tr>
+                        <tr>
+                            <td scope="col">MDO Storage</td>
+                            <td scope="col" colspan="8" style="vertical-align: middle;">
+                                <div class="progress" style="height: 4px;">
+                                    <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </td>
+                            <td scope="col" class="text-end">0.39</td>
+                        </tr>
+                        <tr>
+                            <td scope="col">IGG Fuel</td>
+                            <td scope="col" colspan="8" style="vertical-align: middle;">
+                                <div class="progress" style="height: 4px;">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </td>
+                            <td scope="col" class="text-end">2.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 @endsection

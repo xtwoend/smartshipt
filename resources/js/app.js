@@ -34,6 +34,9 @@ app.component('slider-submenu', SliderSubMenu);
 import ChartSpeedometer from './components/charts/speedometer.vue';
 app.component('charts-speedometer', ChartSpeedometer);
 
+import ChartFuel from './components/charts/fuel.vue';
+app.component('charts-fuel', ChartFuel);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

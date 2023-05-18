@@ -60,8 +60,8 @@
           },
   
           pane: {
-            startAngle: -150,
-            endAngle: 150,
+            startAngle: -120,
+            endAngle: 120,
             background: [
               {
                 backgroundColor: {
@@ -82,7 +82,7 @@
               {
                 // default background
                 borderWidth: 0,
-                backgroundColor: "#FFF",
+                backgroundColor: "#E9EDED",
               },
               {
                 backgroundColor: "#FFF",
@@ -110,10 +110,12 @@
             tickLength: 10,
             tickColor: "#666",
             labels: {
-              step: 4,
+              step: 2,
+              distance: -50,
             },
             title: {
-              text: "Speed"
+              text: "Speed",
+              y: 150
             },
             plotBands: [
               {
@@ -170,7 +172,7 @@
           series: [
             {
               name: "Speed",
-              data: [80],
+              data: [20],
               tooltip: {
                 valueSuffix: " "
               }
@@ -191,8 +193,8 @@
           },
   
           pane: {
-            startAngle: -150,
-            endAngle: 150,
+            startAngle: -120,
+            endAngle: 120,
             background: [
               {
                 backgroundColor: {
@@ -213,7 +215,7 @@
               {
                 // default background
                 borderWidth: 0,
-                backgroundColor: "#FFF",
+                backgroundColor: "#E9EDED",
               },
               {
                 backgroundColor: "#FFF",
@@ -241,10 +243,12 @@
             tickLength: 10,
             tickColor: "#666",
             labels: {
-              step: 4,
+              step: 2,
+              distance: -50,
             },
             title: {
-              text: "Wind Speed"
+              text: "Wind Speed",
+              y: 150
             },
             plotBands: [
               {
@@ -301,7 +305,7 @@
           series: [
             {
               name: "Speed",
-              data: [80],
+              data: [20],
               tooltip: {
                 valueSuffix: " "
               }
@@ -322,8 +326,8 @@
           },
   
           pane: {
-            startAngle: -150,
-            endAngle: 150,
+            startAngle: -120,
+            endAngle: 120,
             background: [
               {
                 backgroundColor: {
@@ -344,7 +348,7 @@
               {
                 // default background
                 borderWidth: 0,
-                backgroundColor: "#FFF",
+                backgroundColor: "#E9EDED",
               },
               {
                 backgroundColor: "#FFF",
@@ -372,10 +376,12 @@
             tickLength: 10,
             tickColor: "#666",
             labels: {
-              step: 4,
+              step: 2,
+              distance: -50,
             },
             title: {
-              text: "RPM"
+              text: "RPM",
+              y: 150
             },
             plotBands: [
               {
@@ -432,7 +438,7 @@
           series: [
             {
               name: "Speed",
-              data: [80],
+              data: [20],
               tooltip: {
                 valueSuffix: " "
               }
@@ -445,7 +451,7 @@
             plotBackgroundColor: null,
             plotBackgroundImage: null,
             plotBorderWidth: 0,
-            plotShadow: false
+            plotShadow: false,
           },
   
           title: {
@@ -453,8 +459,8 @@
           },
   
           pane: {
-            startAngle: -150,
-            endAngle: 150,
+            startAngle: -120,
+            endAngle: 120,
             background: [
               {
                 backgroundColor: {
@@ -475,7 +481,7 @@
               {
                 // default background
                 borderWidth: 0,
-                backgroundColor: "#FFF",
+                backgroundColor: "#E9EDED",
               },
               {
                 backgroundColor: "#FFF",
@@ -503,10 +509,12 @@
             tickLength: 10,
             tickColor: "#666",
             labels: {
-              step: 4,
+              step: 2,
+              distance: -50,
             },
             title: {
-              text: "Turbo Charger"
+              text: "Turbo Charger",
+              y: 150
             },
             plotBands: [
               {
@@ -563,7 +571,7 @@
           series: [
             {
               name: "Speed",
-              data: [80],
+              data: [20],
               tooltip: {
                 valueSuffix: " "
               }
