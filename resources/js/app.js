@@ -22,6 +22,18 @@ app.component('map-dashboard', MapDashboard);
 import MapHistory from './components/maps/history.vue';
 app.component('map-history', MapHistory);
 
+import MapDefault from './components/maps/maps.vue';
+app.component('map-default', MapDefault);
+
+import MapVoyage from './components/maps/voyage.vue';
+app.component('map-voyage', MapVoyage);
+
+import SliderSubMenu from './components/slider/submenu.vue';
+app.component('slider-submenu', SliderSubMenu);
+
+import ChartSpeedometer from './components/charts/speedometer.vue';
+app.component('charts-speedometer', ChartSpeedometer);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

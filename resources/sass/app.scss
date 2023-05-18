@@ -27,6 +27,11 @@ h5{
     font-weight: 700;
 }
 
+h6{
+    font-size: 16px;
+    font-weight: 600;
+}
+
 .text-sm {
     font-size: 12px;
 }
@@ -48,6 +53,7 @@ h5{
 .layout {
 .sidebar {
     width: $sidebar-width;
+    flex-shrink: 0;
     .sidebar-layout{
         color: #fff;
     }
@@ -180,6 +186,7 @@ h5{
 .layout.fixed-header.fixed-sidebar{
 .header{
     width: calc(100% - $sidebar-width);
+    z-index: 4;
 }
 }
 
@@ -213,6 +220,17 @@ background-color: #6c757d;
 &.secondary {
     background-color: #079b0b;
 }
+}
+
+.table-title{
+    background: #0A2647;
+    color: #fff;
+    padding: 1em;
+    border-radius: 8px;
+
+    h6{
+        margin: 0;
+    }
 }
 
 .sidebar-toggler {

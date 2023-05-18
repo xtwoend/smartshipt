@@ -21,10 +21,13 @@
         "@studiometa/vue-mapbox-gl": "^2.0.4",
         "autosize": "^5.0.2",
         "css-pro-layout": "^1.1.0",
+        "highcharts-vue": "^1.4.0",
         "imask": "^6.4.3",
         "jquery": "^3.6.3",
         "mapbox-gl": "^2.12.0",
         "moment": "^2.29.4",
-        "timeago.js": "^4.0.2"
+        "swiper": "^9.3.2",
+        "timeago.js": "^4.0.2",
+        "vue-highcharts": "^0.1.0"
     }
 }
