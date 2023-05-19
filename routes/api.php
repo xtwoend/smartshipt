@@ -22,5 +22,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::get('fleet/navi', function(Request $request){
-    return response()->json(Fleet::with('navigation')->get());
+    $fleets = Fleet::with('navigation');
+    if($request->has('q')){
+        $fleets = $fleets->where('name', $request->q);
+    }
+    $fleets = $fleets->get();
+    return response()->json($fleets);
 });

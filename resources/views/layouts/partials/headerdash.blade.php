@@ -1,8 +1,10 @@
 <header class="header">
     <div class="breadcrumbs">
+        @if(isset($fleet))
         <h5>My Fleet</h5>
         <img src="{{asset('img/icons/chevron-right.png')}}" alt="" />
-        <h5>{{ isset($fleet) ? $fleet->name : "" }}</h5>
+        <h5>{{ $fleet->name }}</h5>
+        @endif
     </div>
     <nav class="menu-header">
         <ul>

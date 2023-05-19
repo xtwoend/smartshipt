@@ -23,7 +23,7 @@
                     <span class="menu-icon">
                         <img src="{{asset('img/icons/ship.png')}}" alt="" />
                     </span>
-                    <span class="menu-title">My Fleet</span>
+                    <span class="menu-title">My Fleets</span>
                   </a>
                   <div class="sub-menu-list">
                     <ul class="scroller" style="heigth: 200px;">
@@ -45,7 +45,7 @@
                     <span class="menu-icon">
                     <img src="{{asset('img/icons/help.png')}}" alt="" />
                     </span>
-                    <span class="menu-title">fleet  Master Data</span>
+                    <span class="menu-title">Fleet  Master Data</span>
                   </a>
                 </li>
                 <li class="menu-item">
