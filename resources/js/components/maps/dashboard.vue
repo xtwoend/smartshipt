@@ -49,7 +49,7 @@ export default {
     },
     methods: {
         async loaded() {
-            let {data} = await axios.get('/api/vessel/navi')
+            let {data} = await axios.get('/api/fleet/navi')
             data.forEach((row) => {
                 this.positionShip(row)
             })
@@ -124,8 +124,8 @@ export default {
 
             this.map.on('click', `ship-positions-${row.id}`, (e) => {
                 // open side information
-                let vesselId = e.features[0].properties.id;
-                location.href = `/vessel/${vesselId}`;
+                let fleetId = e.features[0].properties.id;
+                location.href = `/fleet/${fleetId}`;
             })
             
             this.map.on('mouseenter', `ship-positions-${row.id}`, (e) => {

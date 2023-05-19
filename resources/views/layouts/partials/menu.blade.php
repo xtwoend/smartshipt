@@ -9,9 +9,9 @@
             </span>
         </a>
     </li>
-    @if(isset($vessel))
+    @if(isset($fleet))
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('vessel', $vessel->id) }}" >
+        <a class="nav-link" href="{{ route('fleet', $fleet->id) }}" >
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-layout-dashboard" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <path d="M4 4h6v8h-6z"></path>
@@ -41,7 +41,7 @@
             </span>
         </a>
         <div class="dropdown-menu">
-            <a class="dropdown-item" href="{{ route('navigation.trends', $vessel->id    ) }}">
+            <a class="dropdown-item" href="{{ route('navigation.trends', $fleet->id    ) }}">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-timeline" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <path d="M4 16l6 -7l5 5l5 -6"></path>
@@ -53,7 +53,7 @@
                 Trends
             </a>
 
-            <a class="dropdown-item" href="{{ route('navigation.track', $vessel->id    ) }}">
+            <a class="dropdown-item" href="{{ route('navigation.track', $fleet->id    ) }}">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-map-pins" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <path d="M10.828 9.828a4 4 0 1 0 -5.656 0l2.828 2.829l2.828 -2.829z"></path>
@@ -92,7 +92,7 @@
             </span>
         </a>
         <div class="dropdown-menu">
-            <a class="dropdown-item" href="{{ route('fuel.trends', $vessel->id    ) }}">
+            <a class="dropdown-item" href="{{ route('fuel.trends', $fleet->id    ) }}">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-timeline" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <path d="M4 16l6 -7l5 5l5 -6"></path>
@@ -122,7 +122,7 @@
             </span>
         </a>
         <div class="dropdown-menu">
-            <a class="dropdown-item" href="{{ route('navigation.trends', $vessel->id    ) }}">
+            <a class="dropdown-item" href="{{ route('navigation.trends', $fleet->id    ) }}">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-timeline" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <path d="M4 16l6 -7l5 5l5 -6"></path>
@@ -153,7 +153,7 @@
             </span>
         </a>
         <div class="dropdown-menu">
-            <a class="dropdown-item" href="{{ route('cargo.trends', $vessel->id    ) }}">
+            <a class="dropdown-item" href="{{ route('cargo.trends', $fleet->id    ) }}">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-timeline" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <path d="M4 16l6 -7l5 5l5 -6"></path>

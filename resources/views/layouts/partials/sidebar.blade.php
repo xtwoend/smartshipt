@@ -75,7 +75,7 @@
                     <span class="menu-icon">
                     <img src="{{asset('img/icons/help.png')}}" alt="" />
                     </span>
-                    <span class="menu-title">Vessel  Master Data</span>
+                    <span class="menu-title">fleet  Master Data</span>
                   </a>
                 </li>
                 <li class="menu-item">

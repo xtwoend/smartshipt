@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Vessel extends Model
+class Fleet extends Model
 {
     use HasFactory;
 
-    protected $table = 'vessels';
+    protected $table = 'fleets';
 
     public function navigation()
     {
-        return $this->hasOne(Navigation::class, 'vessel_id');
+        return $this->hasOne(Navigation::class, 'fleet_id');
     }
 }

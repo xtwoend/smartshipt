@@ -146,7 +146,7 @@
         </div> 
         <button @click="toggleText()" class="btn btn-light btn-open">
             <img src="img/icons/location-circle.png" alt="" />
-            Show vessel Track
+            Show fleet Track
         </button>
     </div>
 </template>
