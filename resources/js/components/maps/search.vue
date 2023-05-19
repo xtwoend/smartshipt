@@ -25,19 +25,22 @@
         </div>
         <div class="card-body card-body-scrollable card-body-scrollable-shadow search-body" ref="searchBody">
             <div class="divide-y">
-                <div v-for="i in 700" :key="i">
+                <div v-for="fleet in fleets" :key="fleet.id" @click="clicked(fleet)">
                     <div class="row">
                         <div class="col-auto">
-                            <span class="avatar" style="background-image: url(./static/avatars/002m.jpg)"></span>
+                            <span class="avatar" style="background-image: url('')"></span>
                         </div>
                         <div class="col p-0">
                             <div class="text-truncate">
-                                GAS WIDURI
+                                {{ fleet.name  }}
                             </div>
-                            <div class="text-muted text-sm">IMO 100002</div>
+                            <div class="text-muted text-sm">{{ fleet.imo_number }}</div>
                         </div>
-                        <div class="col-auto">
+                        <div class="col-auto"  v-if="fleet.connected">
                             <div class="badge bg-success"></div><span class="text-xs ml-1">Online</span>
+                        </div>
+                        <div class="col-auto"  v-if="!fleet.connected">
+                            <div class="badge bg-danger"></div><span class="text-xs ml-1">Offline</span>
                         </div>
                     </div>
                     <!-- <div class="row mt-2">
@@ -70,6 +73,9 @@
 <script>
 
 export default {
+    props: {
+        fleets: Array
+    },
     data () {
         return {
             isExpand: false,
@@ -96,6 +102,10 @@ export default {
             if(this.keyword.length == 0 && this.isExpand) {
                 this.searchExpand()
             }
+        },
+        clicked(row) 
+        {
+            this.$emit('clicked', row)
         }
     }
 }

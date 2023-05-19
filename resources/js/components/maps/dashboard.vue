@@ -1,6 +1,6 @@
 <template>
     <div class="position-relative">
-        <x-search></x-search>
+        <x-search :fleets="fleets" @clicked="findFleet"></x-search>
         <x-notification></x-notification>
         <div class="pointer-info" ref="pointerInfo"></div>
         <MapboxMap
@@ -39,20 +39,32 @@ export default {
         return {
             map: null,
             current: [],
-            timer: null
+            timer: null,
+            fleets: []
         }
     },
     mounted(){
         this.timer = setInterval(() => {
             // this.loaded()
         }, 1000)
+
+        this.map.loadImage(shipIcon, (err, img) => {
+            if(err) throw err
+            this.map.addImage(`ship`, img);
+        })
+
     },
     methods: {
         async loaded() {
-            let {data} = await axios.get('/api/fleet/navi')
+            let {data} = await axios.get('/api/fleets')
+            this.fleets = data;
             data.forEach((row) => {
                 this.positionShip(row)
             })
+        },
+
+        findFleet(e) {
+            console.log(e)
         },
 
         pointerLocation (e) {
@@ -64,11 +76,7 @@ export default {
             // skip if nav null
             if(! row.navigation) return;
             let that = this
-            this.map.loadImage(shipIcon, (err, img) => {
-                if(err) throw err
-                this.map.addImage(`ship-${row.id}`, img);
-            })
-
+            
             this.map.addSource(`ship-points-${row.id}`, {
                 "type": "geojson",
                 "data": {
@@ -100,7 +108,7 @@ export default {
                 "type": "symbol",
                 "source": `ship-points-${row.id}`,
                 "layout": {
-                    "icon-image": `ship-${row.id}`,
+                    "icon-image": `ship`,
                     "icon-allow-overlap": true,
                     "icon-ignore-placement": true,
                     "icon-size": 0.3,
