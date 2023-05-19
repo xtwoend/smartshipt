@@ -21,6 +21,7 @@
         "@studiometa/vue-mapbox-gl": "^2.0.4",
         "autosize": "^5.0.2",
         "css-pro-layout": "^1.1.0",
+        "highcharts": "^11.0.1",
         "highcharts-vue": "^1.4.0",
         "imask": "^6.4.3",
         "jquery": "^3.6.3",
