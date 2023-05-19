@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Vessel;
+use App\Models\Fleet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::get('vessel/navi', function(Request $request){
-    return response()->json(Vessel::with('navigation')->get());
+Route::get('fleet/navi', function(Request $request){
+    return response()->json(Fleet::with('navigation')->get());
 });
