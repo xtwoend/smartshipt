@@ -27,46 +27,16 @@
                   </a>
                   <div class="sub-menu-list">
                     <ul class="scroller" style="heigth: 200px;">
+                      @foreach (\App\Models\Fleet::get() as $item)
                       <li class="menu-item">
-                        <a href="#">
+                        <a href="{{ route('fleet', $item->id) }}">
                         <span class="menu-icon">
                             <img src="{{asset('img/icons/mini-ship.png')}}" alt="" />
                         </span>
-                          <span class="menu-title">Widuri</span>
+                          <span class="menu-title">{{ $item->name }}</span>
                         </a>
-                      </li>
-                      <li class="menu-item">
-                        <a href="#">
-                        <span class="menu-icon">
-                            <img src="{{asset('img/icons/mini-ship.png')}}" alt="" />
-                        </span>
-                          <span class="menu-title">Gunung Geulis</span>
-                        </a>
-                      </li>
-                      <li class="menu-item">
-                        <a href="#">
-                        <span class="menu-icon">
-                            <img src="{{asset('img/icons/mini-ship.png')}}" alt="" />
-                        </span>
-                          <span class="menu-title">Gamsurono</span>
-                        </a>
-                      </li>
-                      <li class="menu-item">
-                        <a href="#">
-                        <span class="menu-icon">
-                            <img src="{{asset('img/icons/mini-ship.png')}}" alt="" />
-                        </span>
-                          <span class="menu-title">Galunggung</span>
-                        </a>
-                      </li>
-                      <li class="menu-item">
-                        <a href="#">
-                        <span class="menu-icon">
-                            <img src="{{asset('img/icons/mini-ship.png')}}" alt="" />
-                        </span>
-                          <span class="menu-title">Gamalama</span>
-                        </a>
-                      </li>
+                      </li>                     
+                      @endforeach
                     </ul>
                   </div>
                 </li>

@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\NaviController;
+use App\Http\Controllers\FleetController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +19,6 @@ use Illuminate\Support\Facades\Route;
 
 
 Auth::routes(['register' => false, 'reset' => false]);
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/route', [\App\Http\Controllers\NaviController::class, 'route'])->name('route');
-Route::get('/fleet/{id}', [\App\Http\Controllers\NaviController::class, 'route'])->name('fleet');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/route', [NaviController::class, 'route'])->name('route');
+Route::get('/fleet/{id}', [FleetController::class, 'index'])->name('fleet');
