@@ -2,7 +2,7 @@
     <div class="breadcrumbs">
         <h5>My Fleet</h5>
         <img src="{{asset('img/icons/chevron-right.png')}}" alt="" />
-        <h5>Widuri</h5>
+        <h5>{{ isset($fleet) ? $fleet->name : "" }}</h5>
     </div>
     <nav class="menu-header">
         <ul>

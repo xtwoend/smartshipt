@@ -1,4 +1,4 @@
-@extends('layouts.dash')
+@extends('layouts.dash', ['fleet' => $fleet])
 
 @section('content')
 <main class="content">
