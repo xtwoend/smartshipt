@@ -53,7 +53,7 @@
             <div class="information">
 
                 <div class="histories">
-                    <table class="table card-table table-vcenter text-nowrap datatable table-fixed">
+                    <table class="table card-table table-vcenter text-nowrap datatable table-fixed text-small">
                         <thead>
                             <tr>
                                 <th>Time</th>
@@ -296,7 +296,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .table-fixed thead {
   width: 100%;
 }
@@ -314,5 +314,8 @@ export default {
 }
 .nav-link-icon {
     color: #fff;
+}
+.table-fixed.text-small tbody td {
+    font-size: 10px !important;
 }
 </style>

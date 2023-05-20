@@ -21,7 +21,7 @@
         </div>
         <div class="card-body card-body-scrollable card-body-scrollable-shadow notif-body" ref="notifBody">
             <div class="divide-y">
-                <div v-for="i in 12">
+                <div v-for="notif in notifications" :key="notif.id">
                     <div class="row">
                         <div class="col-auto">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-building-broadcast-tower" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -49,8 +49,13 @@
 export default {
     data () {
         return {
-            isExpand: true
+            isExpand: true,
+            notifications: [],
+            params: {}
         }
+    },
+    mounted() {
+        this.fetchData()
     },
     methods: {
         notifExpand () {
@@ -64,6 +69,9 @@ export default {
                 el.style.display = 'none';
                 this.$refs.cSearch.style.bottom = 'unset'; 
             }
+        },
+        async fetchData() {
+            this.notifications = await axios.get('/api/notifications', {params: this.params}).then(res => res.data)
         }
     }
 }
@@ -74,15 +82,15 @@ export default {
     width: 300px;
     top: 10px;
     right: 10px;
-    bottom: 15%;
+    bottom: 16%;
     transition: 0.3s;
     z-index: 1;
-    // .card {
-    //     background: rgba(255, 255, 255, 0.8) !important;
-    //     .notif-body {
-    //         display: block;
-    //         padding: 10px;
-    //     }
-    // }
+    .card {
+        background: rgba(255, 255, 255, 0.7) !important;
+        .notif-body {
+            display: block;
+            padding: 10px;
+        }
+    }
 }
 </style>

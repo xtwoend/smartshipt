@@ -19,6 +19,15 @@ use App\Http\Controllers\FleetController;
 
 
 Auth::routes(['register' => false, 'reset' => false]);
+
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/route', [NaviController::class, 'route'])->name('route');
 Route::get('/fleet/{id}', [FleetController::class, 'index'])->name('fleet');
+
+Route::group([
+    'as' => 'master.',
+    'prefix' => 'master'
+], function() {
+    Route::resource('fleets', \App\Http\Controllers\Master\FleetController::class);
+});

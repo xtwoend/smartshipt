@@ -1,6 +1,6 @@
 <template>
     <div class="position-relative">
-        <x-search :fleets="fleets" @clicked="findFleet"></x-search>
+        <x-search :fleets="fleets" @selected="findFleet"></x-search>
         <x-notification></x-notification>
         <div class="pointer-info" ref="pointerInfo"></div>
         <MapboxMap
@@ -10,8 +10,8 @@
             style="height: calc(100vh - 128px); width: 100%;"
             access-token="pk.eyJ1Ijoia3JvbmljayIsImEiOiJjaWxyZGZwcHQwOHRidWxrbnd0OTB0cDBzIn0.u2R3NY5PnevWH3cHRk6TWQ"
             map-style="mapbox://styles/mapbox/navigation-day-v1"
-            :center="[118.987732, 0.0]"
-            :zoom="4"
+            :center="center"
+            :zoom="zoom"
             >
             <MapboxNavigationControl position="bottom-right" />
         </MapboxMap>
@@ -40,19 +40,26 @@ export default {
             map: null,
             current: [],
             timer: null,
-            fleets: []
+            fleets: [],
+            zoom: 3,
+            center: [118, 0.0],
+            popup: null
         }
     },
     mounted(){
         this.timer = setInterval(() => {
-            // this.loaded()
-        }, 1000)
+            this.loaded()
+        }, (15 * 1000))
 
         this.map.loadImage(shipIcon, (err, img) => {
             if(err) throw err
             this.map.addImage(`ship`, img);
         })
 
+        this.popup = new mapboxgl.Popup({
+            closeButton: true,
+            closeOnClick: false
+        });
     },
     methods: {
         async loaded() {
@@ -62,9 +69,15 @@ export default {
                 this.positionShip(row)
             })
         },
-
-        findFleet(e) {
-            console.log(e)
+        
+        findFleet(row) {
+            if(! row.navigation) return;
+            let fleetId = row.id
+            this.popup.remove();
+            const text = `<a class="no-style" href="/fleet/${fleetId}"><b>${row.name} [ID]</b> at ${row.navigation.sog} <b>kn</b> / ${row.navigation.cog}&deg;<br>last update: <b>${timeago.format(row.navigation.updated_at + '+7')}</b></a>`;
+            this.popup.setLngLat([row.navigation.lng, row.navigation.lat]).setHTML(text).addTo(this.map);
+            this.center = [row.navigation.lng, row.navigation.lat]
+            this.zoom = 5
         },
 
         pointerLocation (e) {
@@ -73,11 +86,18 @@ export default {
         },
 
         positionShip(row) {
+
             // skip if nav null
             if(! row.navigation) return;
             let that = this
+
+            // remove layers
+            let mapLayer = this.map.getLayer(`ship-positions-${row.id}`);
+            if(typeof mapLayer !== 'undefined') {
+                this.map.removeLayer(`ship-positions-${row.id}`).removeSource(`ship-positions-${row.id}`);
+            }
             
-            this.map.addSource(`ship-points-${row.id}`, {
+            this.map.addSource(`ship-positions-${row.id}`, {
                 "type": "geojson",
                 "data": {
                     "type": "FeatureCollection",
@@ -106,7 +126,7 @@ export default {
             this.map.addLayer({
                 "id": `ship-positions-${row.id}`,
                 "type": "symbol",
-                "source": `ship-points-${row.id}`,
+                "source": `ship-positions-${row.id}`,
                 "layout": {
                     "icon-image": `ship`,
                     "icon-allow-overlap": true,
@@ -150,24 +170,7 @@ export default {
                 that.map.getCanvas().style.cursor = '';
                 popup.remove();
             });
-        },
-        calcCrow(lat1, lon1, lat2, lon2) {
-            var R = 6371; // km
-            var dLat = this.toRad(lat2-lat1);
-            var dLon = this.toRad(lon2-lon1);
-            var lat1 = this.toRad(lat1);
-            var lat2 = this.toRad(lat2);
-
-            var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-                Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
-            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-            var d = R * c;
-            return d;
-        },
-        toRad(Value) {
-            return Value * Math.PI / 180;
-        }
-            
+        }   
     }
 }
 </script>
@@ -186,5 +189,9 @@ export default {
         text-align: right;
         text-shadow: 0 0 4px #000;
     }
+}
+
+a.no-style {
+    color: #000;
 }
 </style>

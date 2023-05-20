@@ -24,8 +24,8 @@
             </div>
         </div>
         <div class="card-body card-body-scrollable card-body-scrollable-shadow search-body" ref="searchBody">
-            <div class="divide-y">
-                <div v-for="fleet in fleets" :key="fleet.id" @click="clicked(fleet)">
+            <div class="divide-y pointer">
+                <div v-for="fleet in filters" :key="fleet.id" @click="selected(fleet)">
                     <div class="row">
                         <div class="col-auto">
                             <span class="avatar" style="background-image: url('')"></span>
@@ -79,7 +79,7 @@ export default {
     data () {
         return {
             isExpand: false,
-            keyword: null
+            keyword: ''
         }
     },
     methods: {
@@ -96,16 +96,23 @@ export default {
             }
         },
         search() {
-            if(this.keyword.length > 3 && ! this.isExpand) {
+            if(this.keyword.length >= 2 && ! this.isExpand) {
                 this.searchExpand()
             }
             if(this.keyword.length == 0 && this.isExpand) {
                 this.searchExpand()
             }
         },
-        clicked(row) 
+        selected(row) 
         {
-            this.$emit('clicked', row)
+            this.$emit('selected', row)
+        }
+    },
+    computed: {
+        filters () {
+            return this.fleets.filter(fleet => {
+                return fleet.name.toLowerCase().includes(this.keyword.toLowerCase())
+            })
         }
     }
 }
@@ -114,15 +121,19 @@ export default {
 <style lang="scss">
 .ships-list {
     width: 300px;
-    top: 15px;
-    left: 15px;
+    top: 10px;
+    left: 10px;
     transition: 0.3s;
     z-index: 1;
     .card {
-        background: rgba(255, 255, 255, 0.8) !important;
+        background: rgba(255, 255, 255, 0.7) !important;
         .search-body {
             display: none;
             padding: 10px;
+        }
+
+        .pointer {
+            cursor: pointer;
         }
     }
 }
