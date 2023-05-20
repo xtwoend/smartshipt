@@ -29,6 +29,8 @@
         "moment": "^2.29.4",
         "swiper": "^9.3.2",
         "timeago.js": "^4.0.2",
-        "vue-highcharts": "^0.1.0"
+        "vue-highcharts": "^0.1.0",
+        "vue2-daterange-picker": "^0.6.8",
+        "vue3-daterange-picker": "^1.0.1"
     }
 }

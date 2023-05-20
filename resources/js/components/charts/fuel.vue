@@ -2,28 +2,28 @@
     <div class="row">
         <div class="col position-relative">
             <highcharts :options="fuelOptions" :callback="chartCallback"></highcharts>
-            <div class="text-center fw-bold" style="position: absolute;bottom: 30%;left: 0;right: 0;">Total HFO (KL)</div>
-            <div class="text-center fw-bold" style="position: absolute;bottom: 25%;left: 0;right: 0;">15.08 KL</div>
+            <div class="text-center fw-bold title-fuel" style="position: absolute;bottom: 20%;left: 0;right: 0;">Total HFO (KL)</div>
+            <div class="text-center fw-bold" style="position: absolute;bottom: 15%;left: 0;right: 0;">15.08 KL</div>
         </div>
         <div class="col position-relative">
             <highcharts :options="fuelOptions" :callback="chartCallback"></highcharts>
-            <div class="text-center fw-bold" style="position: absolute;bottom: 30%;left: 0;right: 0;">Total LS HFO (KL)</div>
-            <div class="text-center fw-bold" style="position: absolute;bottom: 25%;left: 0;right: 0;">2.94</div>
+            <div class="text-center fw-bold title-fuel" style="position: absolute;bottom: 20%;left: 0;right: 0;">Total LS HFO (KL)</div>
+            <div class="text-center fw-bold" style="position: absolute;bottom: 15%;left: 0;right: 0;">2.94</div>
         </div>
         <div class="col position-relative">
             <highcharts :options="fuelOptions" :callback="chartCallback"></highcharts>
-            <div class="text-center fw-bold" style="position: absolute;bottom: 30%;left: 0;right: 0;">Total MDO (KL)</div>
-            <div class="text-center fw-bold" style="position: absolute;bottom: 25%;left: 0;right: 0;">1.22</div>
+            <div class="text-center fw-bold title-fuel" style="position: absolute;bottom: 20%;left: 0;right: 0;">Total MDO (KL)</div>
+            <div class="text-center fw-bold" style="position: absolute;bottom: 15%;left: 0;right: 0;">1.22</div>
         </div>
         <div class="col position-relative">
             <highcharts :options="fuelOptions" :callback="chartCallback"></highcharts>
-            <div class="text-center fw-bold" style="position: absolute;bottom: 30%;left: 0;right: 0;">Total HSD (KL)</div>
-            <div class="text-center fw-bold" style="position: absolute;bottom: 25%;left: 0;right: 0;">2.01</div>
+            <div class="text-center fw-bold title-fuel" style="position: absolute;bottom: 20%;left: 0;right: 0;">Total HSD (KL)</div>
+            <div class="text-center fw-bold" style="position: absolute;bottom: 15%;left: 0;right: 0;">2.01</div>
         </div>
         <div class="col position-relative">
             <highcharts :options="fuelOptions" :callback="chartCallback"></highcharts>
-            <div class="text-center fw-bold" style="position: absolute;bottom: 30%;left: 0;right: 0;">Total (KL)</div>
-            <div class="text-center fw-bold" style="position: absolute;bottom: 25%;left: 0;right: 0;">21.25</div>
+            <div class="text-center fw-bold title-fuel" style="position: absolute;bottom: 20%;left: 0;right: 0;">Total (KL)</div>
+            <div class="text-center fw-bold" style="position: absolute;bottom: 15%;left: 0;right: 0;">21.25</div>
         </div>
     </div>
   </template>
@@ -191,7 +191,7 @@
   };
   </script>
   
-  <style>
+  <style lang="scss">
     .highcharts-axis-line{
         display: none;
     }
@@ -200,5 +200,35 @@
     }
     .highcharts-dial{
         fill: #DF0000;
+    }
+    .highcharts-axis-labels{
+      display: none;
+    }
+    .title-fuel{
+      position: relative;
+
+      &:before{
+        content: 'E';
+        display: inline-block;
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        top: -140%;
+        left: 20%;
+        background: transparent;
+        z-index: 3;
+      }
+
+      &:after{
+        content: 'F';
+        display: inline-block;
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        top: -140%;
+        right: 20%;
+        background: transparent;
+        z-index: 3;
+      }
     }
 </style>

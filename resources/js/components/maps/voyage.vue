@@ -3,7 +3,7 @@
         <div class="card voyage-card" v-if="display">
             <div class="card-header justify-content-between">
                 <button @click="toggleText()" class="btn btn-link bg-transparent p-0">
-                    <img src="img/icons/close-fill.png" alt="" />
+                    <img :src="'/img/icons/close-fill.png'" alt="" />
                 </button>
                 <h5 class="fw-normal m-0">Voyage</h5>
             </div>
@@ -145,7 +145,7 @@
             </div>
         </div> 
         <button @click="toggleText()" class="btn btn-light btn-open">
-            <img src="img/icons/location-circle.png" alt="" />
+            <img :src="'/img/icons/location-circle.png'" alt="" />
             Show fleet Track
         </button>
     </div>

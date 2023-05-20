@@ -37,6 +37,12 @@ app.component('charts-speedometer', ChartSpeedometer);
 import ChartFuel from './components/charts/fuel.vue';
 app.component('charts-fuel', ChartFuel);
 
+import ChartGraph from './components/charts/graph.vue';
+app.component('charts-graph', ChartGraph);
+
+import WidgetDateRange from './components/widgets/daterange.vue';
+app.component('widget-daterange', WidgetDateRange);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
