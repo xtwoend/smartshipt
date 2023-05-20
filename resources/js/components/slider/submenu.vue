@@ -10,7 +10,7 @@
       @slideChange="onSlideChange"
     >
         <div class="swiper-button-prev">
-            <img src="img/icons/chevron-prev.png" alt="" />
+            <img src="/img/icons/chevron-prev.png" alt="" />
         </div>
         <swiper-slide>
             <a href="#" class="submenu-item active">INFO</a>
@@ -40,7 +40,7 @@
             <a href="#" class="submenu-item">CHARTER</a>
         </swiper-slide>
         <div class="swiper-button-next">
-            <img src="img/icons/chevron-next.png" alt="" />
+            <img src="/img/icons/chevron-next.png" alt="" />
         </div>
     </swiper>
   </template>
