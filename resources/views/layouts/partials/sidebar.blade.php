@@ -41,7 +41,7 @@
                   </div>
                 </li>
                 <li class="menu-item">
-                  <a href="#">
+                  <a href="{{ route('master.fleets.index') }}">
                     <span class="menu-icon">
                     <img src="{{asset('img/icons/help.png')}}" alt="" />
                     </span>

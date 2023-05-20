@@ -3,7 +3,7 @@
         <div class="card voyage-card" v-if="display">
             <div class="card-header justify-content-between">
                 <button @click="toggleText()" class="btn btn-link bg-transparent p-0">
-                    <img src="img/icons/close-fill.png" alt="" />
+                    <img src="/img/icons/close-fill.png" alt="" />
                 </button>
                 <h5 class="fw-normal m-0">Voyage</h5>
             </div>
@@ -18,66 +18,7 @@
                 </ul>
                 <div class="tab-content" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                        <form class="mb-4">
-                            <div class="form-group mb-3">
-                                <label for="startDateInput">Start Date</label>
-                                <input type="date" class="form-control" id="startDateInput">
-                            </div>
-                            <div class="form-group mb-3">
-                                <label for="endDateInput">End Date</label>
-                                <input type="date" class="form-control" id="endDateInput">
-                            </div>
-                            <button type="submit" class="btn btn-outline-primary w-100">SHOW</button>
-                        </form>
-                        <h6 class="text-primary">GENERATE REPORT</h6>
-                        <table class="table">
-                        <thead>
-                            <tr>
-                            <th scope="col">Time</th>
-                            <th scope="col">Lon</th>
-                            <th scope="col">Lat</th>
-                            <th scope="col">Speed</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                            <td scope="row">16/11/2023 10:34:00</td>
-                            <td>106.464°</td>
-                            <td>-58.37°</td>
-                            <td>14.5</td>
-                            </tr>
-                            <tr>
-                            <td scope="row">16/11/2023 10:04:00</td>
-                            <td>106.464°</td>
-                            <td>-58.37°</td>
-                            <td>14.5</td>
-                            </tr>
-                            <tr>
-                            <td scope="row">16/11/2023 09:44:00</td>
-                            <td>106.464°</td>
-                            <td>-58.37°</td>
-                            <td>14.5</td>
-                            </tr>
-                            <tr>
-                            <td scope="row">16/11/2023 09:14:00</td>
-                            <td>106.464°</td>
-                            <td>-58.37°</td>
-                            <td>14.5</td>
-                            </tr>
-                            <tr>
-                            <td scope="row">16/11/2023 08:54:00</td>
-                            <td>106.464°</td>
-                            <td>-58.37°</td>
-                            <td>14.5</td>
-                            </tr>
-                            <tr>
-                            <td scope="row">16/11/2023 10:34:00</td>
-                            <td>106.464°</td>
-                            <td>-58.37°</td>
-                            <td>14.5</td>
-                            </tr>
-                        </tbody>
-                        </table>
+                        <!--  -->
                     </div>
                     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                         <form class="mb-4">
@@ -92,7 +33,7 @@
                             <button type="submit" class="btn btn-outline-primary w-100">SHOW</button>
                         </form>
                         <h6 class="text-primary">GENERATE REPORT</h6>
-                        <table class="table">
+                        <table class="table text-sm">
                         <thead>
                             <tr>
                             <th scope="col">Time</th>
@@ -145,7 +86,7 @@
             </div>
         </div> 
         <button @click="toggleText()" class="btn btn-light btn-open">
-            <img src="img/icons/location-circle.png" alt="" />
+            <img src="/img/icons/location-circle.png" alt="" />
             Show fleet Track
         </button>
     </div>
@@ -216,6 +157,11 @@
             -webkit-box-shadow: 0px 2px 0px 0px rgba(44,116,179,1);
             -moz-box-shadow: 0px 2px 0px 0px rgba(44,116,179,1);
             box-shadow: 0px 2px 0px 0px rgba(44,116,179,1);
+        }
+    }
+    .tabel.text-sm {
+        td {
+            font-size: 12px !important;
         }
     }
 </style>
