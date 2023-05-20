@@ -127,6 +127,7 @@
             labels: {
               step: 16,
               distance: 10,
+              enabled: false
             },
             title: {
               text: "",
@@ -191,7 +192,7 @@
   };
   </script>
   
-  <style lang="scss">
+  <style lang="scss" scoped>
     .highcharts-axis-line{
         display: none;
     }
