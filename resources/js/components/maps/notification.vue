@@ -1,10 +1,9 @@
 <template>
-<div class="ships-notification position-absolute" ref="cSearch">
+<div class="ships-notification" ref="cSearch">
     <div class="card" style="height: 100%">
         <div class="card-header search">
             <h4 class="card-title">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 5a2 2 0 0 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6"></path><path d="M9 17v1a3 3 0 0 0 6 0v-1"></path></svg>
-                Notifications
+                Active Notifications
             </h4>
             <div class="card-actions btn-actions">
                 <a href="#" class="btn-action" @click="notifExpand">
@@ -21,21 +20,45 @@
         </div>
         <div class="card-body card-body-scrollable card-body-scrollable-shadow notif-body" ref="notifBody">
             <div class="divide-y">
-                <div v-for="notif in notifications" :key="notif.id">
+                <div class="notif-status">
+                    <div class="status-item">
+                        <div class="status-icon">
+                            <img src="img/icons/alarm.png" alt="" width="20" />
+                            <span class="fw-bold h6">2</span>
+                        </div>
+                        <div>Alarm</div>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-icon">
+                            <img src="img/icons/volume.png" alt="" width="20" />
+                            <span class="fw-bold h6">4</span>
+                        </div>
+                        <div>Warning</div>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-icon">
+                            <img src="img/icons/caution.png" alt="" width="20" />
+                            <span class="fw-bold h6">2</span>
+                        </div>
+                        <div>Caution</div>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-icon">
+                            <img src="img/icons/info-blue.png" alt="" width="20" />
+                            <span class="fw-bold h6">2</span>
+                        </div>
+                        <div>Info</div>
+                    </div>
+                </div>
+                <div v-for="notif in notifications" :key="notif.id" class="py-2 border-bottom border-white">
                     <div class="row">
                         <div class="col-auto">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-building-broadcast-tower" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                <circle cx="12" cy="12" r="1"></circle>
-                                <path d="M16.616 13.924a5 5 0 1 0 -9.23 .004"></path>
-                                <path d="M20.307 15.469a9 9 0 1 0 -16.615 0"></path>
-                                <path d="M9 21l3 -9l3 9"></path>
-                                <path d="M10 19h4"></path>
-                            </svg>
+                            <img src="img/icons/caution.png" alt="" width="20" />
                         </div>
                         <div class="col">
-                            Lorem ipsum dolor sit amet conse, adipisicing elit.
-                            <div class="text-muted text-sm">22/07/2022 08:00</div>
+                            <div class="fw-bold">{{ notif.title }}</div>
+                            {{ notif.desc }}
+                            <div class="text-sm">{{ notif.date }}</div>
                         </div>
                     </div>
                 </div>
@@ -50,7 +73,55 @@ export default {
     data () {
         return {
             isExpand: true,
-            notifications: [],
+            notifications: [
+                {
+                    id: 1,
+                    title: 'SPEED THROUGH WATER',
+                    date: '2022-11-19',
+                    desc: 'Vessel observed to be in idle condition'
+                },
+                {
+                    id: 2,
+                    title: 'SPEED THROUGH WATER',
+                    date: '2022-11-19',
+                    desc: 'Vessel observed to be in idle condition'
+                },
+                {
+                    id: 3,
+                    title: 'SPEED THROUGH WATER',
+                    date: '2022-11-19',
+                    desc: 'Vessel observed to be in idle condition'
+                },
+                {
+                    id: 4,
+                    title: 'SPEED THROUGH WATER',
+                    date: '2022-11-19',
+                    desc: 'Vessel observed to be in idle condition'
+                },
+                {
+                    id: 5,
+                    title: 'SPEED THROUGH WATER',
+                    date: '2022-11-19',
+                    desc: 'Vessel observed to be in idle condition'
+                },
+                {
+                    id: 6,
+                    title: 'SPEED THROUGH WATER',
+                    date: '2022-11-19',
+                    desc: 'Vessel observed to be in idle condition'
+                },{
+                    id: 7,
+                    title: 'SPEED THROUGH WATER',
+                    date: '2022-11-19',
+                    desc: 'Vessel observed to be in idle condition'
+                },
+                {
+                    id: 8,
+                    title: 'SPEED THROUGH WATER',
+                    date: '2022-11-19',
+                    desc: 'Vessel observed to be in idle condition'
+                }
+            ],
             params: {}
         }
     },
@@ -80,16 +151,56 @@ export default {
 <style lang="scss" scoped>
 .ships-notification {
     width: 300px;
-    top: 10px;
-    right: 10px;
+    top: 320px;
+    left: 10px;
     bottom: 16%;
     transition: 0.3s;
-    z-index: 1;
+    z-index: 3;
+    position: absolute;
     .card {
-        background: rgba(255, 255, 255, 0.7) !important;
+        background: rgb(0 0 0 / 70%) !important;
+        border: none;
+        border-radius: 16px;
         .notif-body {
             display: block;
             padding: 10px;
+        }
+        .card-header{
+            color: #FDD751;
+            border: none;
+
+            .card-title{
+                text-transform: uppercase;
+            }
+        }
+        .btn-action{
+            .icon{
+                stroke-width: 2;
+                stroke: white;
+            }
+        }
+        .card-body{
+            color: #fff;
+            max-height: calc(100vh - 450px);
+            overflow-y: auto;
+        }
+    }
+    .notif-status{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1em;
+        .status-item{
+            text-align: center;
+            .status-icon{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: .5em;
+                .h6{
+                    margin: 0;
+                }
+            }
         }
     }
 }

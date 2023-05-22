@@ -1,13 +1,17 @@
 <template>
     <div class="position-relative">
-        <x-search :fleets="fleets" @selected="findFleet"></x-search>
+        
+        <x-records></x-records>
+        <x-navigation></x-navigation>
+        <x-camera></x-camera>
         <x-notification></x-notification>
-        <div class="pointer-info" ref="pointerInfo"></div>
+        <x-parameter></x-parameter>
+        
         <MapboxMap
             @mb-created="(mapboxInstance) => map = mapboxInstance"
             @mb-load="loaded"
             @mb-mousemove="pointerLocation"
-            style="height: calc(100vh - 128px); width: 100%;"
+            style="height: calc(100vh - 0px); width: 100%;"
             access-token="pk.eyJ1Ijoia3JvbmljayIsImEiOiJjaWxyZGZwcHQwOHRidWxrbnd0OTB0cDBzIn0.u2R3NY5PnevWH3cHRk6TWQ"
             map-style="mapbox://styles/mapbox/navigation-day-v1"
             :center="center"
@@ -26,12 +30,20 @@ import shipIcon from './ship.png'
 // import coordinates from './widuri.json';
 import search from './search.vue';
 import notification from './notification.vue';
+import records from './records.vue';
+import navigation from './navigation.vue';
+import camera from './camera.vue';
+import parameter from './parameter.vue';
 import * as timeago from 'timeago.js';
 
 export default {
     components: {
         'x-search': search,
         'x-notification': notification,
+        'x-records': records,
+        'x-navigation': navigation,
+        'x-camera': camera,
+        'x-parameter': parameter,
         MapboxMap, 
         MapboxNavigationControl
     },
@@ -176,6 +188,16 @@ export default {
 </script>
 
 <style lang="scss">
+.main-body{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding-top: 8em;
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-bottom: 2em;
+    z-index: 3;
+}
 .pointer-info {
     position: absolute;
     right: 60px;

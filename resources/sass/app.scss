@@ -22,6 +22,11 @@ a{
     padding: 0;
 }
 
+h2{
+    font-size: 32px;
+    font-weight: 700;
+}
+
 h5{
     font-size: 20px;
     font-weight: 700;
@@ -190,6 +195,42 @@ h6{
 }
 }
 
+.header-app{
+    background: rgb(0,0,0,.75);
+    border: none;
+    -webkit-box-shadow: 0px 10px 50px 0px rgba(0,0,0,1);
+    -moz-box-shadow: 0px 10px 50px 0px rgba(0,0,0,1);
+    box-shadow: 0px 10px 50px 0px rgba(0,0,0,1);
+    .nav-link-icon{
+        height: 32px;
+        width: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-link-title{
+        color: #fff;
+    }
+
+    .menu-header{
+        ul{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+
+            li{
+                a{
+                    display: inline-block;
+                    margin: 0 1em;
+                }
+            }
+        }
+    }
+}
+
 .breadcrumbs{
 display: flex;
 align-items: center;
@@ -238,4 +279,3 @@ position: fixed;
 right: 20px;
 top: 20px;
 }
-  
