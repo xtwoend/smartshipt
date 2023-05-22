@@ -22,3 +22,7 @@ Route::get('/fleet/{id}/trend/bunker', function($id){
 Route::get('/myfleet', function(){
     return view('ui.myfleet');
 });
+
+Route::get('/bridge', function(){
+    return view('ui.bridge');
+});

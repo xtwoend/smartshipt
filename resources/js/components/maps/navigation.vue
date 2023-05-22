@@ -83,7 +83,7 @@ export default {
 .ships-navigations{
     width: auto;
     top: 100px;
-    left: 25%;
+    left: 20%;
     display: flex;
     align-items: center;
     gap: 1em;

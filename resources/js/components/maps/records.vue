@@ -2,13 +2,19 @@
     <div class="ships-records">
         <div class="card">
             <div class="card-header">
-                <div class="card-title">
-                    <div>Widuri</div>
-                    <small class="text-white">Fleet II</small>
+                <div class="text-center">
+                    <img src="img/singapore.png" alt="" />
+                    <div class="text-white">PRO</div>
                 </div>
-                <div class="card-status">
-                    <div class="status-box bg-online"></div>
-                    <div class="text-white">Online</div>
+                <div class="w-100 d-flex align-items-start justify-content-between">
+                    <div class="card-title">
+                        <div>Widuri</div>
+                        <small class="text-white">Fleet II</small>
+                    </div>
+                    <div class="card-status">
+                        <div class="status-box bg-online"></div>
+                        <div class="text-white">Online</div>
+                    </div>
                 </div>
             </div>
             <div class="card-body">
@@ -35,7 +41,7 @@ export default {
 
 <style lang="scss" scoped>
 .ships-records{
-    width: 15%;
+    width: 300px;
     position: absolute;
     z-index: 3;
     top: 100px;
@@ -49,7 +55,7 @@ export default {
             border: none;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            gap: 1em;
             .card-title{
                 text-transform: uppercase;
             }

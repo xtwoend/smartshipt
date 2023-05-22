@@ -28,6 +28,9 @@ app.component('map-default', MapDefault);
 import MapVoyage from './components/maps/voyage.vue';
 app.component('map-voyage', MapVoyage);
 
+import MapBridge from './components/maps/bridge.vue';
+app.component('map-bridge', MapBridge);
+
 import SliderSubMenu from './components/slider/submenu.vue';
 app.component('slider-submenu', SliderSubMenu);
 
