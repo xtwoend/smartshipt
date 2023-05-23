@@ -4,7 +4,7 @@
 <main class="content">
 <div class="bg-white">
     <slider-submenu></slider-submenu>
-    <map-default></map-default>
+    <map-default :fleet="{{ json_encode($fleet) }}"></map-default>
     <charts-speedometer></charts-speedometer>
     <div class="container">
         <div class="row">

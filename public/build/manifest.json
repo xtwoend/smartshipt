@@ -1,108 +1,115 @@
 {
-  "_popper-528ebbd5.js": {
-    "file": "assets/popper-528ebbd5.js"
+  "resources/js/components/maps/ship.png": {
+    "file": "assets/ship-c94d8078.png",
+    "src": "resources/js/components/maps/ship.png"
   },
   "public/remixicon/remixicon.eot": {
     "file": "assets/remixicon-e0d505c9.eot",
     "src": "public/remixicon/remixicon.eot"
   },
-  "public/remixicon/remixicon.svg": {
-    "file": "assets/remixicon-b96f8f43.svg",
-    "src": "public/remixicon/remixicon.svg"
-  },
-  "public/remixicon/remixicon.ttf": {
-    "file": "assets/remixicon-a694b9a3.ttf",
-    "src": "public/remixicon/remixicon.ttf"
+  "public/remixicon/remixicon.woff2": {
+    "file": "assets/remixicon-50d59e6d.woff2",
+    "src": "public/remixicon/remixicon.woff2"
   },
   "public/remixicon/remixicon.woff": {
     "file": "assets/remixicon-7d6b9376.woff",
     "src": "public/remixicon/remixicon.woff"
   },
-  "public/remixicon/remixicon.woff2": {
-    "file": "assets/remixicon-50d59e6d.woff2",
-    "src": "public/remixicon/remixicon.woff2"
+  "public/remixicon/remixicon.ttf": {
+    "file": "assets/remixicon-a694b9a3.ttf",
+    "src": "public/remixicon/remixicon.ttf"
+  },
+  "public/remixicon/remixicon.svg": {
+    "file": "assets/remixicon-b96f8f43.svg",
+    "src": "public/remixicon/remixicon.svg"
   },
   "resources/js/app.css": {
-    "file": "assets/app-530100a7.css",
+    "file": "assets/app-e46f22bb.css",
     "src": "resources/js/app.css"
   },
-  "resources/js/app.js": {
-    "assets": [
-      "assets/ship-c94d8078.png"
-    ],
-    "css": [
-      "assets/app-530100a7.css"
-    ],
-    "file": "assets/app-5fef99d9.js",
-    "imports": [
-      "resources/tabler/src/js/tabler.esm.js",
-      "_popper-528ebbd5.js"
-    ],
-    "isEntry": true,
-    "src": "resources/js/app.js"
+  "resources/sass/app.scss": {
+    "file": "assets/app-f6856fa1.css",
+    "src": "resources/sass/app.scss",
+    "isEntry": true
   },
-  "resources/js/components/maps/ship.png": {
-    "file": "assets/ship-c94d8078.png",
-    "src": "resources/js/components/maps/ship.png"
+  "resources/js/libs/slide.js": {
+    "file": "assets/slide-02b0fce0.js",
+    "src": "resources/js/libs/slide.js",
+    "isEntry": true,
+    "imports": [
+      "resources/js/libs/constants.js"
+    ]
+  },
+  "resources/js/libs/poppers.js": {
+    "file": "assets/poppers-2b93aeb1.js",
+    "src": "resources/js/libs/poppers.js",
+    "isEntry": true,
+    "imports": [
+      "resources/js/libs/constants.js",
+      "resources/js/libs/popper.js",
+      "_popper-b924b727.js"
+    ]
+  },
+  "resources/js/libs/constants.js": {
+    "file": "assets/constants-9ec7b010.js",
+    "src": "resources/js/libs/constants.js",
+    "isEntry": true
+  },
+  "resources/tabler/src/js/tabler.esm.js": {
+    "file": "assets/tabler.esm-4fe66c31.js",
+    "src": "resources/tabler/src/js/tabler.esm.js",
+    "isEntry": true,
+    "imports": [
+      "_toast-fd51308c.js",
+      "_popper-b924b727.js"
+    ]
+  },
+  "resources/js/libs/popper.js": {
+    "file": "assets/popper-136662a8.js",
+    "src": "resources/js/libs/popper.js",
+    "isEntry": true,
+    "imports": [
+      "resources/js/libs/constants.js",
+      "_popper-b924b727.js"
+    ]
   },
   "resources/js/index.js": {
-    "css": [
-      "assets/app-88ad76ca.css"
-    ],
-    "file": "assets/index-48df1022.js",
+    "file": "assets/index-235ad8dd.js",
+    "src": "resources/js/index.js",
+    "isEntry": true,
     "imports": [
       "resources/js/libs/slide.js",
       "resources/js/libs/constants.js",
       "resources/js/libs/poppers.js",
       "resources/js/libs/popper.js",
-      "_popper-528ebbd5.js"
+      "_popper-b924b727.js"
     ],
-    "isEntry": true,
-    "src": "resources/js/index.js"
+    "css": [
+      "assets/app-f6856fa1.css"
+    ]
   },
-  "resources/js/libs/constants.js": {
-    "file": "assets/constants-9ec7b010.js",
-    "isEntry": true,
-    "src": "resources/js/libs/constants.js"
+  "_popper-b924b727.js": {
+    "file": "assets/popper-b924b727.js"
   },
-  "resources/js/libs/popper.js": {
-    "file": "assets/popper-6d9524af.js",
+  "_toast-fd51308c.js": {
+    "file": "assets/toast-fd51308c.js",
     "imports": [
-      "resources/js/libs/constants.js",
-      "_popper-528ebbd5.js"
-    ],
-    "isEntry": true,
-    "src": "resources/js/libs/popper.js"
+      "_popper-b924b727.js"
+    ]
   },
-  "resources/js/libs/poppers.js": {
-    "file": "assets/poppers-4bd4233f.js",
+  "resources/js/app.js": {
+    "file": "assets/app-92897a4d.js",
+    "src": "resources/js/app.js",
+    "isEntry": true,
     "imports": [
-      "resources/js/libs/constants.js",
-      "resources/js/libs/popper.js",
-      "_popper-528ebbd5.js"
+      "_toast-fd51308c.js",
+      "_popper-b924b727.js"
     ],
-    "isEntry": true,
-    "src": "resources/js/libs/poppers.js"
-  },
-  "resources/js/libs/slide.js": {
-    "file": "assets/slide-02b0fce0.js",
-    "imports": [
-      "resources/js/libs/constants.js"
+    "css": [
+      "assets/app-e46f22bb.css"
     ],
-    "isEntry": true,
-    "src": "resources/js/libs/slide.js"
-  },
-  "resources/sass/app.scss": {
-    "file": "assets/app-88ad76ca.css",
-    "isEntry": true,
-    "src": "resources/sass/app.scss"
-  },
-  "resources/tabler/src/js/tabler.esm.js": {
-    "file": "assets/tabler.esm-b79de5e6.js",
-    "imports": [
-      "_popper-528ebbd5.js"
-    ],
-    "isEntry": true,
-    "src": "resources/tabler/src/js/tabler.esm.js"
+    "assets": [
+      "assets/ship-c94d8078.png"
+    ]
   }
 }

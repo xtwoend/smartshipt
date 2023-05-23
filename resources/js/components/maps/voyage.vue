@@ -10,28 +10,25 @@
             <div class="card-body">
                 <ul class="nav nav-pills nav-justified mb-3" id="pills-tab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link justify-content-center active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">INFO</button>
+                        <button class="nav-link justify-content-center active" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">TRACK</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link justify-content-center" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">TRACK</button>
+                        <button class="nav-link justify-content-center" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">INFO</button>
                     </li>
                 </ul>
                 <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                        <!--  -->
-                    </div>
-                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                        <form class="mb-4">
+                    <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                        <div class="mb-4">
                             <div class="form-group mb-3">
                                 <label for="startDateInput">Start Date</label>
-                                <input type="date" class="form-control" id="startDateInput">
+                                <input type="date" v-model="params.from" class="form-control" id="startDateInput">
                             </div>
                             <div class="form-group mb-3">
                                 <label for="endDateInput">End Date</label>
-                                <input type="date" class="form-control" id="endDateInput">
+                                <input type="date" v-model="params.to" class="form-control" id="endDateInput">
                             </div>
-                            <button type="submit" class="btn btn-outline-primary w-100">SHOW</button>
-                        </form>
+                            <button @click="selected" class="btn btn-outline-primary w-100">SHOW</button>
+                        </div>
                         <h6 class="text-primary">GENERATE REPORT</h6>
                         <table class="table text-sm">
                         <thead>
@@ -82,6 +79,9 @@
                         </tbody>
                         </table>
                     </div>
+                    <div class="tab-pane fade " id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                        <!--  -->
+                    </div>
                 </div>
             </div>
         </div> 
@@ -97,12 +97,19 @@
     export default{
         data () {
             return {
-                display: true
+                display: false,
+                params: {
+                    from: null,
+                    to: null
+                }
             }
         },
         methods: {
             toggleText() {
-            this.display = !this.display;
+                this.display = !this.display;
+            },
+            selected () {
+                this.$emit('selected', this.params)
             }
         },
     }
