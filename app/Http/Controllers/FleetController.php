@@ -9,7 +9,7 @@ class FleetController extends Controller
 {
     public function index($id, Request $request)
     {
-        $fleet =  Fleet::findOrFail($id);
+        $fleet =  Fleet::with('navigation', 'engine')->findOrFail($id);
         return view('fleet.index', compact('fleet'));
     }
 }
