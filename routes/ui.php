@@ -26,3 +26,11 @@ Route::get('/myfleet', function(){
 Route::get('/bridge', function(){
     return view('ui.bridge');
 });
+
+Route::get('/bridge/overview', function(){
+    return view('ui.bridge.overview');
+});
+
+Route::get('/bridge/performance', function(){
+    return view('ui.bridge.performance');
+});

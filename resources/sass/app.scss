@@ -45,6 +45,15 @@ h6{
     font-size: 10px;
 }
 
+.text-yellow {
+    color: #e4c049 !important;
+}
+
+.bg-yellow{
+    background: #e4c049 !important;
+    color: #000;
+}
+
 .ml-1 {
     margin-left: 5px;
 }
@@ -279,3 +288,75 @@ position: fixed;
 right: 20px;
 top: 20px;
 }
+
+.bridge-area{
+    position: relative;
+    padding-top: 7em;
+    padding-bottom: 2em;
+    background: #0A2647;
+    color: #fff;
+    height: 100vh;
+
+    .card {
+        background: rgb(0 0 0 / 70%) !important;
+        border: none;
+        border-radius: 16px;
+        .card-header{
+            color: #FDD751;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 1em;
+            .card-title{
+                text-transform: uppercase;
+            }
+        }
+        .card-body{
+            color: #fff;
+        }
+    }
+    .card-status{
+        display: flex;
+        align-items: center;
+        gap: .5em;
+        .status-box{
+            display: block;
+            width: 10px;
+            height: 10px;
+            border-radius: 20px;
+            background: #ddd;
+        }
+        .bg-online{
+            background-color: #12CA19;
+            animation: bipbip .5s infinite linear;
+        }
+    }
+}
+
+.table-overview{
+    border-color: #fff;
+    td{
+        border-right: 1px solid #fff;
+        vertical-align: middle;
+
+        &:last-child{
+            border-right: none;
+        }
+
+        &:first-child{
+            border-right: 1px solid #fff;
+        }
+    }
+}
+
+@keyframes bipbip {
+    0% {
+      background-color: #12CA19;
+  }
+    50% {
+      background-color: #149618;
+  }
+    100% {
+      background-color: #12CA19;
+  }
+  }
