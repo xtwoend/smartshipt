@@ -131,7 +131,7 @@ h6{
     .sidebar-collapser {
     transition: left, right, 0.3s;
     position: fixed;
-    left: calc(#{$sidebar-width} - 20px);
+    left: calc(#{$sidebar-width} - 55px);
     top: 20px;
     width: 20px;
     height: 20px;
@@ -295,7 +295,7 @@ top: 20px;
     padding-bottom: 2em;
     background: #0A2647;
     color: #fff;
-    height: 100vh;
+    height: 100%;
 
     .card {
         background: rgb(0 0 0 / 70%) !important;
@@ -348,6 +348,93 @@ top: 20px;
         }
     }
 }
+
+.performanceDate{
+    text-align: center;
+    .vue-daterange-picker{
+        background: transparent;
+        border-bottom: 1px solid #fff;
+        .reportrange-text{
+            background: transparent;
+            border: none!important;
+            padding-left: 20px!important;
+            position: relative;
+            &:before{
+                content: '';
+                display: block;
+                width: 18px;
+                height: 18px;
+                background: transparent url('../../public/img/icons/date-light.png') no-repeat center center;
+                position: absolute;
+                left: 0;
+            }
+        }
+    }
+}
+
+.sidebar {
+    background: transparent;
+    transition: all ease .1s;
+    max-width: 1000px;
+    width: 350px;
+    border-right: 1px solid #fff;
+    position: sticky;
+    .list-group{
+        .list-group-item{
+            background: transparent;
+            color: #fff;
+            border: 0;
+            border-bottom: 1px solid #fff;
+            display: flex;
+            align-items: center;
+            gap: 1em;
+            &:first-child {
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+            }
+            &:last-child {
+                border-bottom-right-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+        }
+    }
+}
+
+.sidebar.collapsed {
+    max-width: 0;
+    overflow: hidden;
+    + .btn-sidebar{
+        img{
+            transform: rotate(180deg);
+        }
+    }
+    + .side-content{
+        width: calc( 100% - 50px );
+    }
+}
+.sidebar.collapsed ~ .side-content{
+    width: calc( 100% - 0px );
+}
+.side-content{
+    width: calc( 100% - 350px );
+    padding-left: 2em;
+    transition: all ease .5s;
+}
+.btn-sidebar{
+    background: #0b2547;
+    border: none;
+    width: 24px;
+    height: 100px;
+    border-right: 1px solid #fff;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    // position: absolute;
+    // top: 50%;
+    // transform: translateY(50px);
+    transform: translate(-1px, 250px);
+    border-radius: 0 20px 20px 0;
+}
+
 
 @keyframes bipbip {
     0% {

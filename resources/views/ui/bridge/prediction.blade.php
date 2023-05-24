@@ -28,7 +28,7 @@
                 <div class="col-1 d-flex align-items-center">
                     <div class="dropdown w-100">
                         <button class="btn btn-outline-light dropdown-toggle border-0 border-bottom border-white rounded-0 w-100 justify-content-between px-1 text-yellow" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        Performance AI
+                        PREDICTION AI
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <li><a class="dropdown-item" href="#">Overview</a></li>
@@ -37,12 +37,8 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-3 performanceDate">
-                    <widget-daterange></widget-daterange>
-                </div>
-                <div class="col-5 d-flex align-items-center justify-content-end gap-3">
+                <div class="col-8 d-flex align-items-center justify-content-end gap-3">
                     <small class="text-muted">Last updated 2022-1221 10:53:51 LT</small>
-                    <button type="button" class="btn btn-info">Analysis Details</button>
                 </div>
             </div>
         </div>
@@ -102,13 +98,40 @@
                 <div class="side-content">
                     <nav aria-label="breadcrumb" class="mb-3">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item">Home</li>
-                            <li class="breadcrumb-item active" aria-current="page">Library</li>
+                            <li class="breadcrumb-item">MAIN ENGINE</li>
+                            <li class="breadcrumb-item active" aria-current="page">CYLINDER 1</li>
                         </ol>
                     </nav>
-                    <charts-spline></charts-spline>
+                    <table class="table table-sm table-dark">
+                        <tbody>
+                            <tr>
+                                <td class="align-middle">CYL 1 EXH GAS TEMP VS LOAD</td>
+                                <td class="align-middle">379°C</td>
+                                <td><div class="bg-danger p-2">61°C</div></td>
+                            </tr>
+                            <tr>
+                                <td class="align-middle">CYL 1 COMPRESSION PRESS VS LOAD</td>
+                                <td class="align-middle">86.8 BAR</td>
+                                <td><div class="bg-yellow p-2">-13 BAR</div></td>
+                            </tr>
+                            <tr>
+                                <td class="align-middle">CYL IMEP VS LOAD</td>
+                                <td class="align-middle">9.99 BAR</td>
+                                <td><div class="bg-success p-2">-0.49 BAR</div></td>
+                            </tr>
+                            <tr>
+                                <td class="align-middle">CYL 1 MAX PRESS VS LOAD</td>
+                                <td class="align-middle">128.9 BAR</td>
+                                <td><div class="bg-success p-2">-9.9 BAR</div></td>
+                            </tr>
+                            <tr>
+                                <td class="align-middle">SCAY AIR PRESS VS T/C SPEED</td>
+                                <td class="align-middle">0.102 MPA</td>
+                                <td><div class="bg-success p-2">0.004 BAR</div></td>
+                            </tr>
+                        </tbody>
+                    </table>
                     <div class="mt-5 mb-3">ME ESC ESTIMATED ENGINE LOAD</div>
-                    <charts-spline></charts-spline>
                 </div>
             </div>
         </div>

@@ -34,3 +34,7 @@ Route::get('/bridge/overview', function(){
 Route::get('/bridge/performance', function(){
     return view('ui.bridge.performance');
 });
+
+Route::get('/bridge/prediction', function(){
+    return view('ui.bridge.prediction');
+});
