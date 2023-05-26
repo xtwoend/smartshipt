@@ -45,88 +45,140 @@
         <div class="container-fluid">
             <div class="d-flex content-scrolled">
                 <div class="sidebar" id="sidebar">
-                <ul class="list-group">
-                    <li class="list-group-item">
-                        <img src="{{asset('img/icons/alarm.png')}}" alt="" width="18" />
-                        Cyl 1 EXh Gas Temp vs Load
-                    </li>
-                    <li class="list-group-item">
-                        <img src="{{asset('img/icons/caution.png')}}" alt="" width="18" />
-                        Cyl 1 Compression Press vs Load
-                    </li>
-                    <li class="list-group-item">
-                        Avg Comp Press vs Load
-                    </li>
-                    <li class="list-group-item">
-                        Avg Exh Gas Temp vs Load
-                    </li>
-                    <li class="list-group-item">
-                        Avg IMEP vs Load
-                    </li>
-                    <li class="list-group-item">
-                        Avg Max press vs Load
-                    </li>
-                    <li class="list-group-item">
-                        Avg Comp Press vs Load
-                    </li>
-                    <li class="list-group-item">
-                        Avg Exh Gas Temp vs Load
-                    </li>
-                    <li class="list-group-item">
-                        Avg IMEP vs Load
-                    </li>
-                    <li class="list-group-item">
-                        Avg Max press vs Load
-                    </li>
-                    <li class="list-group-item">
-                        Avg Comp Press vs Load
-                    </li>
-                    <li class="list-group-item">
-                        Avg Exh Gas Temp vs Load
-                    </li>
-                    <li class="list-group-item">
-                        Avg IMEP vs Load
-                    </li>
-                    <li class="list-group-item">
-                        Avg Max press vs Load
-                    </li>
-                    <li class="list-group-item">
-                        Avg Comp Press vs Load
-                    </li>
-                    <li class="list-group-item">
-                        Avg Exh Gas Temp vs Load
-                    </li>
-                    <li class="list-group-item">
-                        Avg IMEP vs Load
-                    </li>
-                    <li class="list-group-item">
-                        Avg Max press vs Load
-                    </li>
-                    <li class="list-group-item">
-                        Avg Comp Press vs Load
-                    </li>
-                    <li class="list-group-item">
-                        Avg Exh Gas Temp vs Load
-                    </li>
-                    <li class="list-group-item">
-                        Avg IMEP vs Load
-                    </li>
-                    <li class="list-group-item">
-                        Avg Max press vs Load
-                    </li>
-                    <li class="list-group-item">
-                        Avg Comp Press vs Load
-                    </li>
-                    <li class="list-group-item">
-                        Avg Exh Gas Temp vs Load
-                    </li>
-                    <li class="list-group-item">
-                        Avg IMEP vs Load
-                    </li>
-                    <li class="list-group-item">
-                        Avg Max press vs Load
-                    </li>
-                </ul>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <a href="#">
+                                <img src="{{asset('img/icons/alarm.png')}}" alt="" width="18" />
+                                Cyl 1 EXh Gas Temp vs Load
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#">
+                                <img src="{{asset('img/icons/caution.png')}}" alt="" width="18" />
+                                Cyl 1 Compression Press vs Load
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#">
+                                Avg Comp Press vs Load
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#">
+                                Avg Exh Gas Temp vs Load
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#">
+                                Avg IMEP vs Load
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#">
+                                Avg Max press vs Load
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#">
+                                Avg Comp Press vs Load
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#">
+                                Avg Exh Gas Temp vs Load
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#">
+                                Avg IMEP vs Load
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#">
+                                Avg Max press vs Load
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#">
+                                Avg Comp Press vs Load
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#">
+                                Avg Exh Gas Temp vs Load
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#">
+                                Avg IMEP vs Load
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#">
+                                Avg Max press vs Load
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#">
+                                Avg Comp Press vs Load
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#">
+                                Avg Exh Gas Temp vs Load
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#">
+                                Avg IMEP vs Load
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#">
+                                Avg Max press vs Load
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#">
+                                Avg Comp Press vs Load
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#">
+                                Avg Exh Gas Temp vs Load
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#">
+                                Avg IMEP vs Load
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#">
+                                Avg Max press vs Load
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#">
+                                Avg Comp Press vs Load
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#">
+                                Avg Exh Gas Temp vs Load
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#">
+                                Avg IMEP vs Load
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#">
+                                Avg Max press vs Load
+                            </a>
+                        </li>
+                    </ul>
                 </div>
                 <button onclick="document.getElementsByClassName('sidebar')[0].classList.toggle('collapsed')" class="btn-sidebar">
                     <img src="{{asset('img/icons/chevron-prev.png')}}" alt="" width="12" />
