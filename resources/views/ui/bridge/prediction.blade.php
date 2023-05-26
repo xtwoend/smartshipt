@@ -4,7 +4,7 @@
 <main class="content">
     <div class="bridge-area">
         <div class="container-fluid">
-            <div class="row align-items-center mb-3">
+            <div class="row mb-3 fixed-top">
                 <div class="col-3">
                     <div class="card">
                         <div class="card-header">
@@ -43,8 +43,8 @@
             </div>
         </div>
         <div class="container-fluid">
-            <div class="d-flex">
-                <div class="sidebar sticky-top" id="sidebar">
+            <div class="d-flex content-scrolled">
+                <div class="sidebar" id="sidebar">
                 <ul class="list-group">
                     <li class="list-group-item">
                         <img src="{{asset('img/icons/alarm.png')}}" alt="" width="18" />
@@ -53,6 +53,42 @@
                     <li class="list-group-item">
                         <img src="{{asset('img/icons/caution.png')}}" alt="" width="18" />
                         Cyl 1 Compression Press vs Load
+                    </li>
+                    <li class="list-group-item">
+                        Avg Comp Press vs Load
+                    </li>
+                    <li class="list-group-item">
+                        Avg Exh Gas Temp vs Load
+                    </li>
+                    <li class="list-group-item">
+                        Avg IMEP vs Load
+                    </li>
+                    <li class="list-group-item">
+                        Avg Max press vs Load
+                    </li>
+                    <li class="list-group-item">
+                        Avg Comp Press vs Load
+                    </li>
+                    <li class="list-group-item">
+                        Avg Exh Gas Temp vs Load
+                    </li>
+                    <li class="list-group-item">
+                        Avg IMEP vs Load
+                    </li>
+                    <li class="list-group-item">
+                        Avg Max press vs Load
+                    </li>
+                    <li class="list-group-item">
+                        Avg Comp Press vs Load
+                    </li>
+                    <li class="list-group-item">
+                        Avg Exh Gas Temp vs Load
+                    </li>
+                    <li class="list-group-item">
+                        Avg IMEP vs Load
+                    </li>
+                    <li class="list-group-item">
+                        Avg Max press vs Load
                     </li>
                     <li class="list-group-item">
                         Avg Comp Press vs Load

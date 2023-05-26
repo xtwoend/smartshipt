@@ -4,7 +4,7 @@
 <main class="content">
     <div class="bridge-area">
         <div class="container-fluid">
-            <div class="row mb-3">
+            <div class="row mb-3 fixed-top">
                 <div class="col-3">
                     <div class="card">
                         <div class="card-header">
@@ -38,7 +38,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row content-scrolled">
                 <div class="col-12">
                     <table class="table table-sm table-overview">
                         <thead>
@@ -96,6 +96,258 @@
                                 <td style="border-right:none">CYL EXH GAS TEMP VS LOAD</td>
                                 <td style="border-right:none"><div class="bg-yellow p-2 text-center">61%</div></td>
                                 <td><div class="bg-danger p-2 text-center">348h</div></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="3" style="border-right:none">
+                                    <h6 class="text-yellow">Bridge</h6>
+                                    <div>MITSUI-MAN B&W 6G6OME-C5L5</div>
+                                    <div class="d-flex align-items-center gap-1">
+                                        <div class="card-status">
+                                            <div class="status-box bg-online"></div>
+                                        </div>
+                                        <small>RUNNING 1000 HRS</small>
+                                    </div>
+                                </td>
+                                <td rowspan="3"><img src="{{asset('img/icons/ship2.png')}}" alt="" /></td>
+                                <td>
+                                    <div><img src="{{asset('img/icons/maintenance.png')}}" alt="" /> 2018-10-08</div>
+                                </td>
+                                <td colspan="3" rowspan="3" class="text-center align-middle">
+                                    <div class="d-flex align-items-center justify-content-center gap-1">
+                                        <div class="card-status">
+                                            <div class="status-box bg-online"></div>
+                                        </div>
+                                        <small>WITHIN LIMITS</small>
+                                    </div>
+                                </td>
+                                <td colspan="3" rowspan="3" class="text-center align-middle">
+                                    <div class="d-flex align-items-center justify-content-center gap-1">
+                                        <div class="card-status">
+                                            <div class="status-box bg-online"></div>
+                                        </div>
+                                        <small>WITHIN LIMITS</small>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div><img src="{{asset('img/icons/clock.png')}}" alt="" /> 2018-10-08</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div><img src="{{asset('img/icons/settings.png')}}" alt="" /> 2018-10-08</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td rowspan="3" style="border-right:none">
+                                    <h6 class="text-yellow">Bridge</h6>
+                                    <div>MITSUI-MAN B&W 6G6OME-C5L5</div>
+                                    <div class="d-flex align-items-center gap-1">
+                                        <div class="card-status">
+                                            <div class="status-box bg-online"></div>
+                                        </div>
+                                        <small>RUNNING 1000 HRS</small>
+                                    </div>
+                                </td>
+                                <td rowspan="3"><img src="{{asset('img/icons/ship2.png')}}" alt="" /></td>
+                                <td>
+                                    <div><img src="{{asset('img/icons/maintenance.png')}}" alt="" /> 2018-10-08</div>
+                                </td>
+                                <td colspan="3" rowspan="3" class="text-center align-middle">
+                                    <div class="d-flex align-items-center justify-content-center gap-1">
+                                        <div class="card-status">
+                                            <div class="status-box bg-online"></div>
+                                        </div>
+                                        <small>WITHIN LIMITS</small>
+                                    </div>
+                                </td>
+                                <td colspan="3" rowspan="3" class="text-center align-middle">
+                                    <div class="d-flex align-items-center justify-content-center gap-1">
+                                        <div class="card-status">
+                                            <div class="status-box bg-online"></div>
+                                        </div>
+                                        <small>WITHIN LIMITS</small>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div><img src="{{asset('img/icons/clock.png')}}" alt="" /> 2018-10-08</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div><img src="{{asset('img/icons/settings.png')}}" alt="" /> 2018-10-08</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td rowspan="3" style="border-right:none">
+                                    <h6 class="text-yellow">Bridge</h6>
+                                    <div>MITSUI-MAN B&W 6G6OME-C5L5</div>
+                                    <div class="d-flex align-items-center gap-1">
+                                        <div class="card-status">
+                                            <div class="status-box bg-online"></div>
+                                        </div>
+                                        <small>RUNNING 1000 HRS</small>
+                                    </div>
+                                </td>
+                                <td rowspan="3"><img src="{{asset('img/icons/ship2.png')}}" alt="" /></td>
+                                <td>
+                                    <div><img src="{{asset('img/icons/maintenance.png')}}" alt="" /> 2018-10-08</div>
+                                </td>
+                                <td colspan="3" rowspan="3" class="text-center align-middle">
+                                    <div class="d-flex align-items-center justify-content-center gap-1">
+                                        <div class="card-status">
+                                            <div class="status-box bg-online"></div>
+                                        </div>
+                                        <small>WITHIN LIMITS</small>
+                                    </div>
+                                </td>
+                                <td colspan="3" rowspan="3" class="text-center align-middle">
+                                    <div class="d-flex align-items-center justify-content-center gap-1">
+                                        <div class="card-status">
+                                            <div class="status-box bg-online"></div>
+                                        </div>
+                                        <small>WITHIN LIMITS</small>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div><img src="{{asset('img/icons/clock.png')}}" alt="" /> 2018-10-08</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div><img src="{{asset('img/icons/settings.png')}}" alt="" /> 2018-10-08</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td rowspan="3" style="border-right:none">
+                                    <h6 class="text-yellow">Bridge</h6>
+                                    <div>MITSUI-MAN B&W 6G6OME-C5L5</div>
+                                    <div class="d-flex align-items-center gap-1">
+                                        <div class="card-status">
+                                            <div class="status-box bg-online"></div>
+                                        </div>
+                                        <small>RUNNING 1000 HRS</small>
+                                    </div>
+                                </td>
+                                <td rowspan="3"><img src="{{asset('img/icons/ship2.png')}}" alt="" /></td>
+                                <td>
+                                    <div><img src="{{asset('img/icons/maintenance.png')}}" alt="" /> 2018-10-08</div>
+                                </td>
+                                <td colspan="3" rowspan="3" class="text-center align-middle">
+                                    <div class="d-flex align-items-center justify-content-center gap-1">
+                                        <div class="card-status">
+                                            <div class="status-box bg-online"></div>
+                                        </div>
+                                        <small>WITHIN LIMITS</small>
+                                    </div>
+                                </td>
+                                <td colspan="3" rowspan="3" class="text-center align-middle">
+                                    <div class="d-flex align-items-center justify-content-center gap-1">
+                                        <div class="card-status">
+                                            <div class="status-box bg-online"></div>
+                                        </div>
+                                        <small>WITHIN LIMITS</small>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div><img src="{{asset('img/icons/clock.png')}}" alt="" /> 2018-10-08</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div><img src="{{asset('img/icons/settings.png')}}" alt="" /> 2018-10-08</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td rowspan="3" style="border-right:none">
+                                    <h6 class="text-yellow">Bridge</h6>
+                                    <div>MITSUI-MAN B&W 6G6OME-C5L5</div>
+                                    <div class="d-flex align-items-center gap-1">
+                                        <div class="card-status">
+                                            <div class="status-box bg-online"></div>
+                                        </div>
+                                        <small>RUNNING 1000 HRS</small>
+                                    </div>
+                                </td>
+                                <td rowspan="3"><img src="{{asset('img/icons/ship2.png')}}" alt="" /></td>
+                                <td>
+                                    <div><img src="{{asset('img/icons/maintenance.png')}}" alt="" /> 2018-10-08</div>
+                                </td>
+                                <td colspan="3" rowspan="3" class="text-center align-middle">
+                                    <div class="d-flex align-items-center justify-content-center gap-1">
+                                        <div class="card-status">
+                                            <div class="status-box bg-online"></div>
+                                        </div>
+                                        <small>WITHIN LIMITS</small>
+                                    </div>
+                                </td>
+                                <td colspan="3" rowspan="3" class="text-center align-middle">
+                                    <div class="d-flex align-items-center justify-content-center gap-1">
+                                        <div class="card-status">
+                                            <div class="status-box bg-online"></div>
+                                        </div>
+                                        <small>WITHIN LIMITS</small>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div><img src="{{asset('img/icons/clock.png')}}" alt="" /> 2018-10-08</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div><img src="{{asset('img/icons/settings.png')}}" alt="" /> 2018-10-08</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td rowspan="3" style="border-right:none">
+                                    <h6 class="text-yellow">Bridge</h6>
+                                    <div>MITSUI-MAN B&W 6G6OME-C5L5</div>
+                                    <div class="d-flex align-items-center gap-1">
+                                        <div class="card-status">
+                                            <div class="status-box bg-online"></div>
+                                        </div>
+                                        <small>RUNNING 1000 HRS</small>
+                                    </div>
+                                </td>
+                                <td rowspan="3"><img src="{{asset('img/icons/ship2.png')}}" alt="" /></td>
+                                <td>
+                                    <div><img src="{{asset('img/icons/maintenance.png')}}" alt="" /> 2018-10-08</div>
+                                </td>
+                                <td colspan="3" rowspan="3" class="text-center align-middle">
+                                    <div class="d-flex align-items-center justify-content-center gap-1">
+                                        <div class="card-status">
+                                            <div class="status-box bg-online"></div>
+                                        </div>
+                                        <small>WITHIN LIMITS</small>
+                                    </div>
+                                </td>
+                                <td colspan="3" rowspan="3" class="text-center align-middle">
+                                    <div class="d-flex align-items-center justify-content-center gap-1">
+                                        <div class="card-status">
+                                            <div class="status-box bg-online"></div>
+                                        </div>
+                                        <small>WITHIN LIMITS</small>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div><img src="{{asset('img/icons/clock.png')}}" alt="" /> 2018-10-08</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div><img src="{{asset('img/icons/settings.png')}}" alt="" /> 2018-10-08</div>
+                                </td>
                             </tr>
                             <tr>
                                 <td rowspan="3" style="border-right:none">
