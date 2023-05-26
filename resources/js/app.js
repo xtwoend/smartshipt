@@ -43,6 +43,12 @@ app.component('charts-fuel', ChartFuel);
 import ChartGraph from './components/charts/graph.vue';
 app.component('charts-graph', ChartGraph);
 
+import ChartSpline from './components/charts/spline.vue';
+app.component('charts-spline', ChartSpline);
+
+// import ChartLine from './components/charts/line.vue';
+// app.component('charts-line', ChartLine);
+
 import WidgetDateRange from './components/widgets/daterange.vue';
 app.component('widget-daterange', WidgetDateRange);
 
