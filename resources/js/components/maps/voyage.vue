@@ -27,7 +27,7 @@
                                 <label for="endDateInput">End Date</label>
                                 <input type="date" v-model="params.to" class="form-control" id="endDateInput">
                             </div>
-                            <button @click="selected" class="btn btn-outline-primary w-100">SHOW</button>
+                            <button @click="fetchData" class="btn btn-outline-primary w-100">SHOW</button>
                         </div>
                         <h6 class="text-primary">GENERATE REPORT</h6>
                         <table class="table text-sm">
@@ -40,41 +40,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                            <td scope="row">16/11/2023 10:34:00</td>
-                            <td>106.464°</td>
-                            <td>-58.37°</td>
-                            <td>14.5</td>
-                            </tr>
-                            <tr>
-                            <td scope="row">16/11/2023 10:04:00</td>
-                            <td>106.464°</td>
-                            <td>-58.37°</td>
-                            <td>14.5</td>
-                            </tr>
-                            <tr>
-                            <td scope="row">16/11/2023 09:44:00</td>
-                            <td>106.464°</td>
-                            <td>-58.37°</td>
-                            <td>14.5</td>
-                            </tr>
-                            <tr>
-                            <td scope="row">16/11/2023 09:14:00</td>
-                            <td>106.464°</td>
-                            <td>-58.37°</td>
-                            <td>14.5</td>
-                            </tr>
-                            <tr>
-                            <td scope="row">16/11/2023 08:54:00</td>
-                            <td>106.464°</td>
-                            <td>-58.37°</td>
-                            <td>14.5</td>
-                            </tr>
-                            <tr>
-                            <td scope="row">16/11/2023 10:34:00</td>
-                            <td>106.464°</td>
-                            <td>-58.37°</td>
-                            <td>14.5</td>
+                            <tr @click="selected(row)" v-for="row in histories" :key="row.id">
+                                <td scope="row">{{ $filters.dateformat(row.terminal_time, 'DD/MM/YY hh:mm')  }}</td>
+                                <td>{{ row.lng.toFixed(2) }}°</td>
+                                <td>{{ row.lat.toFixed(2) }}°</td>
+                                <td>{{ row.sog  }}</td>
                             </tr>
                         </tbody>
                         </table>
@@ -95,21 +65,35 @@
 <script>
 
     export default{
+        props: {
+            fleet: Object
+        },
         data () {
             return {
                 display: false,
                 params: {
                     from: null,
-                    to: null
-                }
+                    to: null,
+                    interval: 1800
+                },
+                histories: []
             }
         },
         methods: {
+            async fetchData() {
+                let res = await axios.get(`/api/fleet/${this.fleet.id}/nav/histories`, {params: this.params}).then(res => res.data)
+                res.forEach(row => {
+                    if(row.lat == 0 && row.lng == 0) return;
+                    this.histories.push(row)
+                })
+
+                this.$emit('history', this.histories)
+            },
             toggleText() {
                 this.display = !this.display;
             },
-            selected () {
-                this.$emit('selected', this.params)
+            selected(e) {
+                this.$emit('selected', e)
             }
         },
     }

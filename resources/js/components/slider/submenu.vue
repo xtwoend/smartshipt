@@ -3,9 +3,9 @@
       :slides-per-view="auto"
       :space-between="0"
       :navigation="{
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  }"
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      }"
       @swiper="onSwiper"
       @slideChange="onSlideChange"
     >
@@ -67,6 +67,7 @@
           console.log('slide change');
         };
         return {
+          auto: true,
           onSwiper,
           onSlideChange,
           modules: [Navigation, A11y],
