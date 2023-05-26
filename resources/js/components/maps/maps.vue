@@ -186,14 +186,21 @@ export default {
             this.positionShip(this.fleet)
         },
         toPotition(row) {
-            console.log(row)
+            let nav = Object.assign({}, {
+                id: this.fleet.id,
+                name: this.fleet.name,
+                image: this.fleet.image,
+                navigation: row
+            })
+            // console.log(nav)
+            this.positionShip(nav)
         },
         positionShip(row) {
             if(! row.navigation) return;
             // remove layers
-            let mapLayer = this.map.getLayer(`ship-positions`);
+            let mapLayer = this.map.getLayer(`ship-position`);
             if(typeof mapLayer !== 'undefined') {
-                this.map.removeLayer(`ship-positions`).removeSource(`ship-positions`);
+                this.map.removeLayer(`ship-position`).removeSource(`ship-points`);
             }
 
             this.map.addSource(`ship-points`, {
