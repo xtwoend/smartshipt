@@ -131,7 +131,7 @@ h6{
     .sidebar-collapser {
     transition: left, right, 0.3s;
     position: fixed;
-    left: calc(#{$sidebar-width} - 55px);
+    left: calc(#{$sidebar-width} - 20px);
     top: 20px;
     width: 20px;
     height: 20px;
