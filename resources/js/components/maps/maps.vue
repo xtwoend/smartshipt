@@ -79,7 +79,7 @@ export default {
             this.histories.forEach((row, i) => {
                 if(this.current){
                     let r = this.calcCrow(this.current[1], this.current[0], row.lat, row.lng);
-                    if(r > 20) {
+                    if(r > 80) {
                         return;
                     }
                 }
