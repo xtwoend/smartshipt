@@ -1,17 +1,17 @@
 <template>
     <div class="position-relative">
-        
-        <x-records></x-records>
-        <x-navigation></x-navigation>
-        <x-camera></x-camera>
-        <x-notification></x-notification>
-        <x-parameter></x-parameter>
-        
+        <x-search :fleets="fleets" @selected="findFleet"></x-search>
+        <!-- <x-records></x-records> -->
+        <!-- <x-navigation></x-navigation> -->
+        <!-- <x-camera></x-camera> -->
+        <!-- <x-notification></x-notification> -->
+        <!-- <x-parameter></x-parameter> -->
+        <div class="pointer-info" ref="pointerInfo"></div>
         <MapboxMap
             @mb-created="(mapboxInstance) => map = mapboxInstance"
             @mb-load="loaded"
             @mb-mousemove="pointerLocation"
-            style="height: calc(100vh - 0px); width: 100%;"
+            style="height: calc(100vh - 128px); width: 100%;"
             access-token="pk.eyJ1Ijoia3JvbmljayIsImEiOiJjaWxyZGZwcHQwOHRidWxrbnd0OTB0cDBzIn0.u2R3NY5PnevWH3cHRk6TWQ"
             map-style="mapbox://styles/mapbox/navigation-day-v1"
             :center="center"
