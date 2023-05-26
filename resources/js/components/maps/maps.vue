@@ -174,8 +174,8 @@ export default {
                 image: this.fleet.image,
                 navigation: latest
             })
-            console.log(nav)
-            // this.positionShip(nav)
+            // console.log(nav)
+            this.positionShip(nav)
             // this.positionShip({heading: latest.heading, lng: latest.lng, lat: latest.lat})
         },
         pointerLocation (e) {
