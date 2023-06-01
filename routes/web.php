@@ -27,7 +27,13 @@ Route::get('/fleet/{id}', [FleetController::class, 'index'])->name('fleet');
 
 Route::group([
     'as' => 'master.',
-    'prefix' => 'master'
+    'prefix' => 'master',
 ], function() {
     Route::resource('fleets', \App\Http\Controllers\Master\FleetController::class);
+    Route::group(['as' => 'fleets.', 'prefix' => 'fleets', 'controller' => \App\Http\Controllers\Master\FleetController::class], function(){
+        Route::get('fleets/{id}/edit-cargo-information','editCargo')->name('editCargo');
+        Route::put('fleets/{id}/update-cargo-information', 'updateCargo')->name('updateCargo');
+        Route::get('fleets/{id}/edit-bunker-information', 'editBunker')->name('editBunker');
+        Route::put('fleets/{id}/update-bunker-information', 'updateBunker')->name('updateBunker');
+    });
 });

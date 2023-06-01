@@ -53,4 +53,14 @@ class Fleet extends Model
     {
         return $this->hasOne(Engine::class, 'fleet_id');
     }
+
+    public function cargo_information()
+    {
+        return $this->hasOne(CargoInformation::class, 'fleet_id');
+    }
+
+    public function bunker_information()
+    {
+        return $this->hasOne(BunkerInformation::class, 'fleet_id');
+    }
 }

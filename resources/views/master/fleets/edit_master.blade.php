@@ -10,7 +10,7 @@
                         <div class="card-header">
                             Edit Fleet Master Data
                             <div class="text-right floating-btn">
-                                <a href="{{ route('master.fleets.show', $data->id) }}" class="btn btn-lg btn-secondary">Cancel</a>
+                                <button type="reset" class="btn btn-lg btn-secondary">Clear</button>
                                 <button type="submit" class="btn btn-lg btn-success ml-2">Save</button>
                             </div>
                         </div>

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
+use App\Models\BunkerInformation;
+use App\Models\CargoInformation;
 use App\Models\Fleet;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class FleetController extends Controller
 {
@@ -17,7 +20,7 @@ class FleetController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
     public function index()
     {
@@ -39,7 +42,7 @@ class FleetController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
@@ -56,18 +59,19 @@ class FleetController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return View
      */
     public function show($id)
     {
-        //
+        $data = $this->fleet->with(['cargo_information', 'bunker_information'])->findOrFail($id);
+        return view('master.fleets.show', compact('data'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return View
      */
     public function edit($id)
     {
@@ -80,7 +84,7 @@ class FleetController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id)
     {
@@ -90,6 +94,81 @@ class FleetController extends Controller
         $row->fill($request->all());
         $row->save();
         return redirect()->route('master.fleets.index')->with('message', 'Success update fleet detail');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return View
+     */
+    public function editCargo($id)
+    {
+        $fleet = $this->fleet->findOrFail($id);
+        $data = $fleet->cargo;
+        return view('master.fleets.edit_cargo')->with(['data' => $data, 'fleet' => $fleet]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function updateCargo(Request $request, $id)
+    {
+        $this->validate($request, [
+            'group' => 'required',
+            'total' => 'required',
+            'grade' => 'required',
+            'capacity' => 'required',
+            'capacity_percentage' => 'required',
+            'capacity_sg' => 'required',
+            'max_capacity' => 'required',
+            'max_capacity_percentage' => 'required',
+            'max_capacity_sg' => 'required',
+        ]);
+
+        $row = CargoInformation::updateOrCreate(['fleet_id' => $id], $request->all());
+
+        return redirect()->route('master.fleets.show', $id)->with('message', 'Success update fleet bunker information');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return View
+     */
+    public function editBunker($id)
+    {
+        $fleet = $this->fleet->findOrFail($id);
+        $data = $fleet->bunker;
+        return view('master.fleets.edit_bunker')->with(['data' => $data, 'fleet' => $fleet]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function updateBunker(Request $request, $id)
+    {
+        $this->validate($request, [
+            'speed_service' => 'required',
+            'pumping_rate' => 'required',
+            'presure_discharge' => 'required',
+            'loading_rate' => 'required',
+            'commision_days' => 'required',
+            'transport_loss' => 'required',
+        ]);
+
+        $row = BunkerInformation::updateOrCreate(['fleet_id' => $id], $request->all());
+
+        return redirect()->route('master.fleets.show', $id)->with('message', 'Success update fleet bunker information');
     }
 
     /**

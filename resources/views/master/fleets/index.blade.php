@@ -25,8 +25,7 @@
                                 <td>{{$data->connected ? 'connected': 'disconnected'}}</td>
                                 <td>{{$data->last_connection}}</td>
                                 <td>
-                                    <a href="{{ route('fleet', $data->id) }}">View</a> |
-                                    <a href="{{ route('master.fleets.edit', $data->id) }}">Edit</a>
+                                    <a href="{{ route('master.fleets.show', $data->id) }}">View Data</a>
                                 </td>
                             </tr>
                             @endforeach
