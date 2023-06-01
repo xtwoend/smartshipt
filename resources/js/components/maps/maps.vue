@@ -62,6 +62,13 @@ export default {
             this.histories = e
             let that = this
 
+            if(this.current.length > 0 && this.map.getLayer('route') !== 'undefined' && this.map.getLayer('points') !== 'undefined') {
+                this.map.removeLayer('route');
+                this.map.removeSource('route');
+                this.map.removeLayer('points');
+                this.map.removeSource('points');
+            }
+
             let routes = {
                 type: 'Feature',
                 properties: {},
@@ -77,12 +84,6 @@ export default {
             }
 
             this.histories.forEach((row, i) => {
-                // if(this.current){
-                //     let r = this.calcCrow(this.current[1], this.current[0], row.lat, row.lng);
-                //     if(r > 50) {
-                //         return;
-                //     }
-                // }
                 //routes
                 routes.geometry.coordinates.push([row.lng, row.lat])
                 //points
@@ -125,12 +126,12 @@ export default {
             });
              
             // point
-            that.map.addSource('points', {
+            this.map.addSource('points', {
                 "type": "geojson",
                 "data": points
             })
             
-            that.map.addLayer({
+            this.map.addLayer({
                 'id': 'points',
                 'type': 'circle',
                 'source': 'points',
@@ -255,23 +256,6 @@ export default {
             const text = `<b>${row.name} [ID]</b> at ${row.navigation.sog} <b>kn</b> / ${row.navigation.cog}&deg;<br>last update: <b>${timeago.format(row.navigation.updated_at + '+7')}</b>`;
             this.popup.setLngLat([row.navigation.lng, row.navigation.lat]).setHTML(text).addTo(this.map);
         },
-        calcCrow(lat1, lon1, lat2, lon2) {
-            var R = 6371; // km
-            var dLat = this.toRad(lat2-lat1);
-            var dLon = this.toRad(lon2-lon1);
-            var lat1 = this.toRad(lat1);
-            var lat2 = this.toRad(lat2);
-
-            var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-                Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
-            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-            var d = R * c;
-            
-            return d;
-        },
-        toRad(Value) {
-            return Value * Math.PI / 180;
-        }
     }
 }
 </script>

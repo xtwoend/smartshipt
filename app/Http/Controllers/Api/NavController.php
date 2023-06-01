@@ -21,17 +21,18 @@ class NavController extends Controller
 
         $from = Carbon::parse($from);
         $to = Carbon::parse($to);
-
         $fromClone = clone $from;
         $toClone = clone $to;
 
-        $fromDiff = $from->format("Y-m-01 00:00:00");
-        $toDiff = $to->format("Y-m-01 00:00:00");
+        $fromDiff = $fromClone->format("Y-m-01 00:00:00");
+        $toDiff = $toClone->format("Y-m-01 00:00:00");
+        $fromTable = Carbon::parse($fromDiff);
         
         $count = Carbon::parse($fromDiff)->diffInMonths(Carbon::parse($toDiff));
-
+       
         for($i=0; $i <= $count; $i++) {
-            $tableName = NavigationLog::table($fleet->id, $from)->getTable();
+            $tableName = NavigationLog::table($fleet->id, $fromTable)->getTable();
+           
             $query[] = "
             (select 
                 UNIX_TIMESTAMP(ct.terminal_time) as unix_time, ct.*
@@ -45,7 +46,8 @@ class NavController extends Controller
                     ) ctx 
                     on `ct`.`terminal_time` = `ctx`.`times`)
             ";
-            $from = $from->addMonth();
+            
+            $fromTable = $fromTable->addMonth();
         }
 
         $query = implode(' UNION ', $query);

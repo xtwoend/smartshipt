@@ -41,7 +41,7 @@
                         </thead>
                         <tbody>
                             <tr @click="selected(row)" v-for="row in histories" :key="row.id">
-                                <td scope="row">{{ $filters.dateformat(row.terminal_time, 'DD/MM/YY hh:mm')  }}</td>
+                                <td scope="row">{{ $filters.dateformat(row.terminal_time, 'DD/MM/YY HH:mm')  }}</td>
                                 <td>{{ row.lng.toFixed(2) }}°</td>
                                 <td>{{ row.lat.toFixed(2) }}°</td>
                                 <td>{{ row.sog  }}</td>
@@ -81,6 +81,7 @@
         },
         methods: {
             async fetchData() {
+                this.histories = []
                 let res = await axios.get(`/api/fleet/${this.fleet.id}/nav/histories`, {params: this.params}).then(res => res.data)
                 res.forEach(row => {
                     if(row.lat == 0 && row.lng == 0) return;

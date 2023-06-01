@@ -166,8 +166,13 @@ export default {
         }
     },
     methods: {
-        callback() {
-
+        callback(e) {
+            
+        }
+    },
+    watch: {
+        value: function(now, old) {
+            this.options.series[0].data = [now];
         }
     }
 }
