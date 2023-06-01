@@ -7,10 +7,10 @@
             <speedo-meter :value="fleet.navigation.wind_speed" :max="80" :title="scaleBeafort(fleet.navigation.wind_speed)"></speedo-meter>
         </div>
         <div class="col-3">
-          <speedo-meter :value="fleet.engine.main_engine_speed" :max="200" title="RPM"></speedo-meter>
+          <speedo-meter :value="fleet.engine.main_engine_speed" :max="20" title="RPM"></speedo-meter>
         </div>
         <div class="col-3">
-          <speedo-meter :value="fleet.engine.turbo_charger_speed_no_1" :max="200" title="TURBO 1"></speedo-meter>
+          <speedo-meter :value="fleet.engine.turbo_charger_speed_no_1 > 0? fleet.engine.turbo_charger_speed_no_1 / 1000 : 0" :max="20" title="TURBO 1"></speedo-meter>
         </div>
     </div>
   </template>
@@ -19,23 +19,23 @@
   import SpeedoMeter from './speedo.vue';
   export default {
     props: {
-      url: String
+      url: String,
+      fleet: Object
     },
     components: {
       SpeedoMeter: SpeedoMeter
     },
     mounted(){
-      this.fetchData();
+      // setInterval(() => this.fetchData(), 15*1000)
     },
     data() {
       return {
-        fleet: null,
+        // 
       }
     },
     methods: {
       async fetchData() {
         this.fleet = await axios.get(this.url).then(res => res.data);
-        console.log(this.fleet)
       },
       scaleBeafort(wind) {
         let text = '';
