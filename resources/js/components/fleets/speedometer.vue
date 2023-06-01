@@ -1,5 +1,5 @@
 <template>
-    <div class="row" v-if="fleet">
+    <div class="row">
         <div class="col-3">
             <speedo-meter :value="fleet.navigation.sog" :max="32" title="Speed (SOG)"></speedo-meter>
         </div>
@@ -16,7 +16,7 @@
   </template>
   
   <script>
-  import SpeedoMeter from './speedo.vue';
+  import SpeedoMeter from '@/components/charts/speedo.vue';
   export default {
     props: {
       url: String,
@@ -25,18 +25,7 @@
     components: {
       SpeedoMeter: SpeedoMeter
     },
-    mounted(){
-      // setInterval(() => this.fetchData(), 15*1000)
-    },
-    data() {
-      return {
-        // 
-      }
-    },
     methods: {
-      async fetchData() {
-        this.fleet = await axios.get(this.url).then(res => res.data);
-      },
       scaleBeafort(wind) {
         let text = '';
         if(wind <= 1)

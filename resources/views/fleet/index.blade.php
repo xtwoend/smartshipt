@@ -5,9 +5,10 @@
 <div class="bg-white">
     <slider-submenu></slider-submenu>
     <map-default :fleet="{{ json_encode($fleet) }}"></map-default>
+    <fleet-information url="{{ route('api.fleet', $fleet->id) }}"></fleet-information>
     {{-- <speedometer></speedometer> --}}
-    <charts-speedometer url="{{ route('api.fleet', $fleet->id) }}"></charts-speedometer>
-    <div class="container">
+    {{-- <charts-speedometer url="{{ route('api.fleet', $fleet->id) }}"></charts-speedometer> --}}
+    {{-- <div class="container">
         <div class="row">
             <!-- Navigation information -->
             <div class="col-6">
@@ -312,7 +313,7 @@
                 </table>
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>
 </main>
 @endsection

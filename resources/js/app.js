@@ -34,8 +34,8 @@ app.component('map-bridge', MapBridge);
 import SliderSubMenu from './components/slider/submenu.vue';
 app.component('slider-submenu', SliderSubMenu);
 
-import ChartSpeedometer from './components/charts/speedometer.vue';
-app.component('charts-speedometer', ChartSpeedometer);
+// import ChartSpeedometer from './components/charts/speedometer.vue';
+// app.component('charts-speedometer', ChartSpeedometer);
 
 import ChartFuel from './components/charts/fuel.vue';
 app.component('charts-fuel', ChartFuel);
@@ -46,14 +46,17 @@ app.component('charts-graph', ChartGraph);
 import ChartSpline from './components/charts/spline.vue';
 app.component('charts-spline', ChartSpline);
 
-import Speedometer from './components/charts/speedo.vue';
-app.component('speedometer', Speedometer);
+// import Speedometer from './components/charts/speedo.vue';
+// app.component('speedometer', Speedometer);
 
 // import ChartLine from './components/charts/line.vue';
 // app.component('charts-line', ChartLine);
 
 import WidgetDateRange from './components/widgets/daterange.vue';
 app.component('widget-daterange', WidgetDateRange);
+
+import FleetInformation from './components/fleets/information.vue';
+app.component('fleet-information', FleetInformation);
 
 /**
  * The following block of code may be used to automatically register your
