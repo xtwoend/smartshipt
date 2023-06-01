@@ -74,7 +74,7 @@
                 params: {
                     from: null,
                     to: null,
-                    interval: 1800
+                    interval: 900
                 },
                 histories: []
             }
