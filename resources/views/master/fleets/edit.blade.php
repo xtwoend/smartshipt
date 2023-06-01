@@ -9,10 +9,6 @@
                     <div class="card mb-3">
                         <div class="card-header">
                             Edit Fleet Master Data
-                            <div class="text-right floating-btn">
-                                <a href="{{ route('master.fleets.show', $data->id) }}" class="btn btn-lg btn-secondary">Cancel</a>
-                                <button type="submit" class="btn btn-lg btn-success ml-2">Save</button>
-                            </div>
                         </div>
 
                         <div class="card-body">
@@ -23,6 +19,10 @@
                             @endif
 
                             @include('master.fleets._form')
+                            <div class="float-end">
+                                <a href="{{ route('master.fleets.show', $data->id) }}" class="btn btn-lg btn-secondary">Cancel</a>
+                                <button type="submit" class="btn btn-lg btn-success ml-2">Save</button>
+                            </div>
                         </div>
                     </div>
                 </div>

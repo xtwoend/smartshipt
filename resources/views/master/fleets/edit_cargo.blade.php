@@ -16,21 +16,12 @@
                                 <label>Fleet Name</label>
                                 <input type="text" class="form-control" value="{{ $fleet->name }}" disabled readonly>
                             </div>
+                            <hr>
                             @include('master.fleets._form_cargo')
-                            <div class="text-right floating-btn">
+                            <div class="float-end">
                                 <button type="reset" class="btn btn-lg btn-secondary">Clear</button>
                                 <button type="submit" class="btn btn-lg btn-success ml-2">Save</button>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="card mb-3">
-                        <div class="card-header">
-                            Edit Fleet Bunker Information Data
-                        </div>
-
-                        <div class="card-body">
-                            @include('master.fleets._form_bunker')
                         </div>
                     </div>
                 </div>

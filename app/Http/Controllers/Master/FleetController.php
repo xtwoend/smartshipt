@@ -105,7 +105,7 @@ class FleetController extends Controller
     public function editCargo($id)
     {
         $fleet = $this->fleet->findOrFail($id);
-        $data = $fleet->cargo;
+        $data = $fleet->cargo_information;
         return view('master.fleets.edit_cargo')->with(['data' => $data, 'fleet' => $fleet]);
     }
 
@@ -144,7 +144,7 @@ class FleetController extends Controller
     public function editBunker($id)
     {
         $fleet = $this->fleet->findOrFail($id);
-        $data = $fleet->bunker;
+        $data = $fleet->bunker_information;
         return view('master.fleets.edit_bunker')->with(['data' => $data, 'fleet' => $fleet]);
     }
 

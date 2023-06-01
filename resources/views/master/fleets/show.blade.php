@@ -25,7 +25,7 @@
                         <div class="card-header d-flex justify-content-between">
                             <span>Edit Fleet Cargo Information Data</span>
                             <div class="float-end">
-                                <a href="{{ route('master.fleets.editCargo', $data->id) }}" class="btn btn-info">Edit Master Data</a>
+                                <a href="{{ route('master.fleets.editCargo', $data->id) }}" class="btn btn-info">Edit Cargo Data</a>
                             </div>
                         </div>
 
@@ -41,7 +41,7 @@
                         <div class="card-header d-flex justify-content-between">
                             <span>Edit Fleet Bunker Information Data</span>
                             <div class="float-end">
-                                <a href="{{ route('master.fleets.editBunker', $data->id) }}" class="btn btn-info">Edit Master Data</a>
+                                <a href="{{ route('master.fleets.editBunker', $data->id) }}" class="btn btn-info">Edit Bunker Data</a>
                             </div>
                         </div>
 

@@ -16,8 +16,9 @@
                                 <label>Fleet Name</label>
                                 <input type="text" class="form-control" value="{{ $fleet->name }}" disabled readonly>
                             </div>
+                            <hr>
                             @include('master.fleets._form_bunker')
-                            <div class="text-right floating-btn">
+                            <div class="float-end">
                                 <button type="reset" class="btn btn-lg btn-secondary">Clear</button>
                                 <button type="submit" class="btn btn-lg btn-success ml-2">Save</button>
                             </div>
