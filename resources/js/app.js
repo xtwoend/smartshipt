@@ -46,6 +46,9 @@ app.component('charts-graph', ChartGraph);
 import ChartSpline from './components/charts/spline.vue';
 app.component('charts-spline', ChartSpline);
 
+import Speedometer from './components/charts/speedo.vue';
+app.component('speedometer', Speedometer);
+
 // import ChartLine from './components/charts/line.vue';
 // app.component('charts-line', ChartLine);
 
