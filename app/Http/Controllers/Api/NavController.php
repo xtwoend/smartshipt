@@ -52,19 +52,6 @@ class NavController extends Controller
         $rows = collect(DB::select($query));
         $rows = $rows->sortBy('unix_time')->values()->all();
 
-        // $current = null;
-        // $data = [];
-        // foreach($rows as $row) {
-        //     if($current){
-        //         $r = calc_crow($current->lat, $current->lng, $row->lat, $row->lng);
-        //         if($r > 100) {
-        //             continue;
-        //         }
-        //     }
-        //     $current = $row;
-        //     $data[] = $row;
-        // }
-
         return response()->json($rows);
     }
 }
