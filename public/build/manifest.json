@@ -36,26 +36,6 @@
     "src": "resources/sass/app.scss",
     "isEntry": true
   },
-  "resources/js/libs/constants.js": {
-    "file": "assets/constants-9ec7b010.js",
-    "src": "resources/js/libs/constants.js",
-    "isEntry": true
-  },
-  "resources/js/index.js": {
-    "file": "assets/index-98024d67.js",
-    "src": "resources/js/index.js",
-    "isEntry": true,
-    "imports": [
-      "resources/js/libs/slide.js",
-      "resources/js/libs/constants.js",
-      "resources/js/libs/poppers.js",
-      "resources/js/libs/popper.js",
-      "_popper-b924b727.js"
-    ],
-    "css": [
-      "assets/app-17d52ff1.css"
-    ]
-  },
   "resources/tabler/src/js/tabler.esm.js": {
     "file": "assets/tabler.esm-4fe66c31.js",
     "src": "resources/tabler/src/js/tabler.esm.js",
@@ -74,6 +54,26 @@
       "resources/js/libs/popper.js",
       "_popper-b924b727.js"
     ]
+  },
+  "resources/js/index.js": {
+    "file": "assets/index-98024d67.js",
+    "src": "resources/js/index.js",
+    "isEntry": true,
+    "imports": [
+      "resources/js/libs/slide.js",
+      "resources/js/libs/constants.js",
+      "resources/js/libs/poppers.js",
+      "resources/js/libs/popper.js",
+      "_popper-b924b727.js"
+    ],
+    "css": [
+      "assets/app-17d52ff1.css"
+    ]
+  },
+  "resources/js/libs/constants.js": {
+    "file": "assets/constants-9ec7b010.js",
+    "src": "resources/js/libs/constants.js",
+    "isEntry": true
   },
   "resources/js/libs/slide.js": {
     "file": "assets/slide-02b0fce0.js",
@@ -102,7 +102,7 @@
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-e52b8c4b.js",
+    "file": "assets/app-abd7a88c.js",
     "src": "resources/js/app.js",
     "isEntry": true,
     "imports": [

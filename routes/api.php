@@ -5,6 +5,7 @@ use App\Models\Fleet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\NavController;
+use App\Http\Controllers\Api\FleetController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -31,3 +32,4 @@ Route::get('fleets', function(Request $request){
 });
 
 Route::get('fleet/{id}/nav/histories', [NavController::class, 'history']);
+Route::get('fleet/{id}', [FleetController::class, 'show'])->name('api.fleet');

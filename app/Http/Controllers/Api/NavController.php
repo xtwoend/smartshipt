@@ -34,7 +34,7 @@ class NavController extends Controller
             $tableName = NavigationLog::table($fleet->id, $from)->getTable();
             $query[] = "
             (select 
-                (UNIX_TIMESTAMP(ct.terminal_time) * 1000) as unix_time, ct.*
+                UNIX_TIMESTAMP(ct.terminal_time) as unix_time, ct.*
                 from {$tableName} as `ct` 
                     inner join 
                     (
@@ -43,13 +43,14 @@ class NavController extends Controller
                         WHERE DATE(terminal_time) BETWEEN '{$fromClone->format('Y-m-d')}' AND '{$toClone->format('Y-m-d')}' 
                         GROUP BY timekey
                     ) ctx 
-                    on `ct`.`terminal_time` = `ctx`.`times` order by unix_time)
+                    on `ct`.`terminal_time` = `ctx`.`times`)
             ";
             $from = $from->addMonth();
         }
 
         $query = implode(' UNION ', $query);
-        $rows = DB::select($query);
+        $rows = collect(DB::select($query));
+        $rows = $rows->sortBy('unix_time')->values()->all();
 
         return response()->json($rows);
     }

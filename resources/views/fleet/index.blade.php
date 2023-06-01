@@ -5,7 +5,8 @@
 <div class="bg-white">
     <slider-submenu></slider-submenu>
     <map-default :fleet="{{ json_encode($fleet) }}"></map-default>
-    <charts-speedometer></charts-speedometer>
+    {{-- <speedometer></speedometer> --}}
+    <charts-speedometer url="{{ route('api.fleet', $fleet->id) }}"></charts-speedometer>
     <div class="container">
         <div class="row">
             <!-- Navigation information -->

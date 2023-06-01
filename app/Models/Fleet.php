@@ -53,9 +53,4 @@ class Fleet extends Model
     {
         return $this->hasOne(Engine::class, 'fleet_id');
     }
-
-    public function navHistories($from, $to)
-    {
-
-    }
 }

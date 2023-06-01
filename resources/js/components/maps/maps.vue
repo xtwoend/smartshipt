@@ -77,12 +77,12 @@ export default {
             }
 
             this.histories.forEach((row, i) => {
-                if(this.current){
-                    let r = this.calcCrow(this.current[1], this.current[0], row.lat, row.lng);
-                    if(r > 100) {
-                        return;
-                    }
-                }
+                // if(this.current){
+                //     let r = this.calcCrow(this.current[1], this.current[0], row.lat, row.lng);
+                //     if(r > 50) {
+                //         return;
+                //     }
+                // }
                 //routes
                 routes.geometry.coordinates.push([row.lng, row.lat])
                 //points
