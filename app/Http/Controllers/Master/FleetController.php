@@ -35,7 +35,7 @@ class FleetController extends Controller
      */
     public function create()
     {
-        //
+        return view('master.fleets.create');
     }
 
     /**

@@ -20,47 +20,47 @@
                     <tr>
                         <th scope="row">•</th>
                         <td>Updated at</td>
-                        <td class="text-end">2023-01-17 10:49:06</td>
+                        <td class="text-end">{{ $fleet->navigation->updated_at }}</td>
                     </tr>
                     <tr>
                         <th scope="row">•</th>
                         <td>Coordinate</td>
-                        <td class="text-end">-5.534742 S, 104.59628 E</td>
+                        <td class="text-end">{{ $fleet->navigation->lat.' '.$fleet->navigation->lat_dir.', '.$fleet->navigation->lng.' '.$fleet->navigation->lng_dir }}</td>
                     </tr>
                     <tr>
                         <th scope="row">•</th>
                         <td>Heading</td>
-                        <td class="text-end">69.00 °</td>
+                        <td class="text-end">{{ $fleet->navigation->heading }} °</td>
                     </tr>
                     <tr>
                         <th scope="row">•</th>
                         <td>Course / COG</td>
-                        <td class="text-end">69.00 °</td>
+                        <td class="text-end">{{ $fleet->navigation->cog }} °</td>
                     </tr>
                     <tr>
                         <th scope="row">•</th>
                         <td>Speed / SOG</td>
-                        <td class="text-end">0.10 knot</td>
+                        <td class="text-end">{{ $fleet->navigation->sog }} knot</td>
                     </tr>
                     <tr>
                         <th scope="row">•</th>
                         <td>Depth</td>
-                        <td class="text-end">-27.00 meter</td>
+                        <td class="text-end">{{ $fleet->navigation->depth }} meter</td>
                     </tr>
                     <tr>
                         <th scope="row">•</th>
                         <td>Wind Speed</td>
-                        <td class="text-end">0.70 knot</td>
+                        <td class="text-end">{{ $fleet->navigation->wind_speed }} knot</td>
                     </tr>
                     <tr>
                         <th scope="row">•</th>
                         <td>Wind Direction</td>
-                        <td class="text-end">312.50 °</td>
+                        <td class="text-end">{{ $fleet->navigation->wind_direction }} °</td>
                     </tr>
                     <tr>
                         <th scope="row">•</th>
                         <td>Total Travel Distance</td>
-                        <td class="text-end">89,039.42 NM</td>
+                        <td class="text-end">{{ number_format($fleet->navigation->total_distance) }} NM</td>
                     </tr>
                 </tbody>
                 </table>

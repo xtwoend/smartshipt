@@ -6,7 +6,12 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Fleet List</div>
+                    <div class="card-header d-flex justify-content-between">
+                        <span>Fleet List</span>
+                        <div class="float-end">
+                            <a href="{{ route('master.fleets.create') }}" class="btn btn-info">Create New Fleet</a>
+                        </div>
+                    </div>
 
                     <div class="card-body">
                         <table class="table">
