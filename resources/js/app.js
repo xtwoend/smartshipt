@@ -77,8 +77,8 @@ app.component('fleet-information', FleetInformation);
  */
 
 app.config.globalProperties.$filters = {
-    dateformat(value, format='DD/MM/YYYY hh:mm') {
-        let date = moment(value, 'YYYY-MM-DD hh:mm:ss');
+    dateformat(value, format='DD/MM/YYYY HH:mm') {
+        let date = moment(value, 'YYYY-MM-DD HH:mm:ss');
         return date.format(format)
     },
     str_limit(value, limit=7) {

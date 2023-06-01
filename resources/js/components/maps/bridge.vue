@@ -89,7 +89,7 @@ export default {
             if(! row.navigation) return;
             let fleetId = row.id
             this.popup.remove();
-            const text = `<a class="no-style" href="/fleet/${fleetId}"><b>${row.name} [ID]</b> at ${row.navigation.sog} <b>kn</b> / ${row.navigation.cog}&deg;<br>last update: <b>${timeago.format(row.navigation.updated_at + '+7')}</b></a>`;
+            const text = `<a class="no-style" href="/fleet/${fleetId}"><b>${row.name} [ID]</b> at ${row.navigation.sog} <b>kn</b> / ${row.navigation.cog}&deg;<br>last update: <b>${timeago.format(row.navigation.updated_at )}</b></a>`;
             this.popup.setLngLat([row.navigation.lng, row.navigation.lat]).setHTML(text).addTo(this.map);
             this.center = [row.navigation.lng, row.navigation.lat]
             this.zoom = 5
@@ -131,7 +131,7 @@ export default {
                                 "image": row.image,
                                 "sog": row.navigation.sog,
                                 "cog": row.navigation.cog,
-                                "last_update": timeago.format(row.navigation.updated_at + '+7')
+                                "last_update": timeago.format(row.navigation.updated_at )
                             }
                         }
                     ]

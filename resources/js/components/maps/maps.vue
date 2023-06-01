@@ -223,7 +223,7 @@ export default {
                                 "image": row.image,
                                 "sog": row.navigation.sog,
                                 "cog": row.navigation.cog,
-                                "last_update": timeago.format(row.navigation.terminal_time + '+7')
+                                "last_update": timeago.format(row.navigation.terminal_time)
                             }
                         }
                     ]
@@ -253,7 +253,7 @@ export default {
 
             // Create a popup, but don't add it to the map yet.
             this.popup.remove();
-            const text = `<b>${row.name} [ID]</b> at ${row.navigation.sog} <b>kn</b> / ${row.navigation.cog}&deg;<br>last update: <b>${timeago.format(row.navigation.updated_at + '+7')}</b>`;
+            const text = `<b>${row.name} [ID]</b> at ${row.navigation.sog} <b>kn</b> / ${row.navigation.cog}&deg;<br>last update: <b>${timeago.format(row.navigation.updated_at)}</b>`;
             this.popup.setLngLat([row.navigation.lng, row.navigation.lat]).setHTML(text).addTo(this.map);
         },
     }
