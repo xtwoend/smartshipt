@@ -11,6 +11,39 @@ class Fleet extends Model
 
     protected $table = 'fleets';
 
+    protected $fillable = [
+        'name', 'imo_number', 'owner', 'ship_manager', 'cargo', 'type', 'email', 'telp', 'call_sign', 'builder', 'year', 'flag', 'home_port', 'class', 'mmsi', 'length', 'breadth', 'death', 'dwt', 'grt', 'nrt', 'lwt', 'draft', 'swl'
+    ];
+
+    public function rules(){
+        return [
+            'name' => 'required',
+            'imo_number' => 'required',
+            'owner' => 'required',
+            'ship_manager' => 'required',
+            'cargo' => 'required',
+            'type' => 'required',
+            'email' => 'required|email',
+            'telp' => 'required',
+            'call_sign' => 'required',
+            'builder' => 'required',
+            'year' => 'required',
+            'flag' => 'required',
+            'home_port' => 'required',
+            'class' => 'required',
+            'mmsi' => 'required',
+            'length' => 'required',
+            'breadth' => 'required',
+            'death' => 'required',
+            'dwt' => 'required',
+            'grt' => 'required',
+            'nrt' => 'required',
+            'lwt' => 'required',
+            'draft' => 'required',
+            'swl' => 'required',
+        ];
+    }
+
     public function navigation()
     {
         return $this->hasOne(Navigation::class, 'fleet_id');
@@ -23,6 +56,6 @@ class Fleet extends Model
 
     public function navHistories($from, $to)
     {
-        
+
     }
 }
