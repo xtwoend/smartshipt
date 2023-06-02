@@ -13,31 +13,31 @@
             <img :src="'/img/icons/chevron-prev.png'" alt="" />
         </div>
         <swiper-slide>
-            <a href="#" class="submenu-item active">INFO</a>
+            <a :href="`/fleet/${fleet.id}`" class="submenu-item" :class="{'active': (active == 'info')}">INFO</a>
         </swiper-slide>
         <swiper-slide>
-            <a href="#" class="submenu-item">TREND</a>
+            <a :href="`/fleet/${fleet.id}/trend`" class="submenu-item" :class="{'active': (active == 'trend')}">TREND</a>
         </swiper-slide>
         <swiper-slide>
-            <a href="#" class="submenu-item">NOTES</a>
+            <a :href="`/fleet/${fleet.id}/notes`" class="submenu-item" :class="{'active': (active == 'notes')}">NOTES</a>
         </swiper-slide>
         <swiper-slide>
-            <a href="#" class="submenu-item">DOCUMENTS</a>
+            <a :href="`/fleet/${fleet.id}/docs`" class="submenu-item" :class="{'active': (active == 'docs')}">DOCUMENTS</a>
         </swiper-slide>
         <swiper-slide>
-            <a href="#" class="submenu-item">REPORTS</a>
+            <a :href="`/fleet/${fleet.id}/reports`" class="submenu-item" :class="{'active': (active == 'reports')}">REPORTS</a>
         </swiper-slide>
         <swiper-slide>
-            <a href="#" class="submenu-item">DIAGNOSTICS</a>
+            <a :href="`/fleet/${fleet.id}/diagnotics`" class="submenu-item" :class="{'active': (active == 'diagnotics')}">DIAGNOSTICS</a>
         </swiper-slide>
         <swiper-slide>
-            <a href="#" class="submenu-item">NOTIFICATIONS</a>
+            <a :href="`/fleet/${fleet.id}/alarms`" class="submenu-item" :class="{'active': (active == 'alarms')}">NOTIFICATIONS</a>
         </swiper-slide>
         <swiper-slide>
-            <a href="#" class="submenu-item">EMISION REPORT</a>
+            <a :href="`/fleet/${fleet.id}/emision`" class="submenu-item" :class="{'active': (active == 'emision')}">EMISION REPORT</a>
         </swiper-slide>
         <swiper-slide>
-            <a href="#" class="submenu-item">CHARTER</a>
+            <a :href="`/fleet/${fleet.id}/charter`"  class="submenu-item" :class="{'active': (active == 'charter')}">CHARTER</a>
         </swiper-slide>
         <div class="swiper-button-next">
             <img :src="'/img/icons/chevron-next.png'" alt="" />
@@ -55,6 +55,10 @@
     import 'swiper/scss/navigation';
   
     export default {
+      props: {
+        fleet: Object,
+        active: String
+      },
       components: {
         Swiper,
         SwiperSlide,

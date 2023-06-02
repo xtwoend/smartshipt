@@ -36,13 +36,19 @@
     "src": "resources/sass/app.scss",
     "isEntry": true
   },
-  "resources/tabler/src/js/tabler.esm.js": {
-    "file": "assets/tabler.esm-4fe66c31.js",
-    "src": "resources/tabler/src/js/tabler.esm.js",
+  "resources/js/index.js": {
+    "file": "assets/index-98024d67.js",
+    "src": "resources/js/index.js",
     "isEntry": true,
     "imports": [
-      "_toast-fd51308c.js",
+      "resources/js/libs/slide.js",
+      "resources/js/libs/constants.js",
+      "resources/js/libs/poppers.js",
+      "resources/js/libs/popper.js",
       "_popper-b924b727.js"
+    ],
+    "css": [
+      "assets/app-17d52ff1.css"
     ]
   },
   "resources/js/libs/slide.js": {
@@ -62,28 +68,19 @@
       "_popper-b924b727.js"
     ]
   },
+  "resources/tabler/src/js/tabler.esm.js": {
+    "file": "assets/tabler.esm-4fe66c31.js",
+    "src": "resources/tabler/src/js/tabler.esm.js",
+    "isEntry": true,
+    "imports": [
+      "_toast-fd51308c.js",
+      "_popper-b924b727.js"
+    ]
+  },
   "resources/js/libs/constants.js": {
     "file": "assets/constants-9ec7b010.js",
     "src": "resources/js/libs/constants.js",
     "isEntry": true
-  },
-  "_popper-b924b727.js": {
-    "file": "assets/popper-b924b727.js"
-  },
-  "resources/js/index.js": {
-    "file": "assets/index-98024d67.js",
-    "src": "resources/js/index.js",
-    "isEntry": true,
-    "imports": [
-      "resources/js/libs/slide.js",
-      "resources/js/libs/constants.js",
-      "resources/js/libs/poppers.js",
-      "resources/js/libs/popper.js",
-      "_popper-b924b727.js"
-    ],
-    "css": [
-      "assets/app-17d52ff1.css"
-    ]
   },
   "resources/js/libs/poppers.js": {
     "file": "assets/poppers-2b93aeb1.js",
@@ -95,6 +92,9 @@
       "_popper-b924b727.js"
     ]
   },
+  "_popper-b924b727.js": {
+    "file": "assets/popper-b924b727.js"
+  },
   "_toast-fd51308c.js": {
     "file": "assets/toast-fd51308c.js",
     "imports": [
@@ -102,7 +102,7 @@
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-0e36b73c.js",
+    "file": "assets/app-5597c061.js",
     "src": "resources/js/app.js",
     "isEntry": true,
     "imports": [
