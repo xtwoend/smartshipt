@@ -13,6 +13,18 @@ class FleetController extends Controller
         return view('fleet.index', compact('fleet'));
     }
 
+    public function engine($id, Request $request)
+    {
+        $fleet =  Fleet::with('navigation', 'engine')->findOrFail($id);
+        return view('fleet.engine', compact('fleet'));
+    }
+
+    public function cargo($id, Request $request)
+    {
+        $fleet =  Fleet::with('navigation', 'engine')->findOrFail($id);
+        return view('fleet.cargo', compact('fleet'));
+    }
+
     public function trend($id, Request $request)
     {
         $fleet = Fleet::with('navigation', 'engine')->findOrFail($id);

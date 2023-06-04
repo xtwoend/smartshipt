@@ -4,7 +4,6 @@
 <main class="content">
 <div class="bg-white">
     <slider-submenu :fleet="{{ json_encode($fleet) }}" active="info"></slider-submenu>
-
     <map-default :fleet="{{ json_encode($fleet) }}"></map-default>
     <fleet-information url="{{ route('api.fleet', $fleet->id) }}"></fleet-information>
     {{-- <speedometer></speedometer> --}}

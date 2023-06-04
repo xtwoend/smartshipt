@@ -26,6 +26,10 @@ Route::group([
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/route', [NaviController::class, 'route'])->name('route');
     Route::get('/fleet/{id}', [FleetController::class, 'index'])->name('fleet');
+
+    Route::get('/fleet/{id}/engine', [FleetController::class, 'engine'])->name('fleet.engine');
+    Route::get('/fleet/{id}/cargo', [FleetController::class, 'cargo'])->name('fleet.cargo');
+
     Route::get('/fleet/{id}/trend', [FleetController::class, 'trend'])->name('fleet.trend');
     Route::get('/fleet/{id}/notes', [FleetController::class, 'notes'])->name('fleet.notes');
     Route::get('/fleet/{id}/docs', [FleetController::class, 'docs'])->name('fleet.docs');

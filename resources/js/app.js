@@ -58,6 +58,9 @@ app.component('widget-daterange', WidgetDateRange);
 import FleetInformation from './components/fleets/information.vue';
 app.component('fleet-information', FleetInformation);
 
+import Compass from './components/charts/compass.vue';
+app.component('compass', Compass);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

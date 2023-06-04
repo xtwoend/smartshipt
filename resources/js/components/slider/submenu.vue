@@ -13,13 +13,13 @@
             <img :src="'/img/icons/chevron-prev.png'" alt="" />
         </div>
         <swiper-slide>
-            <a :href="`/fleet/${fleet.id}`" class="submenu-item" :class="{'active': (active == 'info')}">INFO</a>
+            <a :href="`/fleet/${fleet.id}`" class="submenu-item" :class="{'active': (active == 'info')}">NAVIGASI</a>
         </swiper-slide>
         <swiper-slide>
-            <a :href="`/fleet/${fleet.id}/trend`" class="submenu-item" :class="{'active': (active == 'trend')}">TREND</a>
+            <a :href="`/fleet/${fleet.id}/engine`" class="submenu-item" :class="{'active': (active == 'engine')}">ENGINE</a>
         </swiper-slide>
         <swiper-slide>
-            <a :href="`/fleet/${fleet.id}/notes`" class="submenu-item" :class="{'active': (active == 'notes')}">NOTES</a>
+            <a :href="`/fleet/${fleet.id}/cargo`" class="submenu-item" :class="{'active': (active == 'cargo')}">CARGO</a>
         </swiper-slide>
         <swiper-slide>
             <a :href="`/fleet/${fleet.id}/docs`" class="submenu-item" :class="{'active': (active == 'docs')}">DOCUMENTS</a>
