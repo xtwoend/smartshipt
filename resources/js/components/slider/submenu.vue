@@ -22,19 +22,25 @@
             <a :href="`/fleet/${fleet.id}/cargo`" class="submenu-item" :class="{'active': (active == 'cargo')}">CARGO</a>
         </swiper-slide>
         <swiper-slide>
-            <a :href="`/fleet/${fleet.id}/docs`" class="submenu-item" :class="{'active': (active == 'docs')}">DOCUMENTS</a>
+            <a :href="`/fleet/${fleet.id}/cargo`" class="submenu-item" :class="{'active': (active == 'cargo')}">FUEL TANK</a>
         </swiper-slide>
         <swiper-slide>
-            <a :href="`/fleet/${fleet.id}/reports`" class="submenu-item" :class="{'active': (active == 'reports')}">REPORTS</a>
+            <a :href="`/fleet/${fleet.id}/cargo`" class="submenu-item" :class="{'active': (active == 'cargo')}">BALAST TANK</a>
         </swiper-slide>
         <swiper-slide>
             <a :href="`/fleet/${fleet.id}/diagnotics`" class="submenu-item" :class="{'active': (active == 'diagnotics')}">DIAGNOSTICS</a>
         </swiper-slide>
         <swiper-slide>
-            <a :href="`/fleet/${fleet.id}/alarms`" class="submenu-item" :class="{'active': (active == 'alarms')}">NOTIFICATIONS</a>
+            <a :href="`/fleet/${fleet.id}/alarms`" class="submenu-item" :class="{'active': (active == 'alarms')}">ALARAM</a>
         </swiper-slide>
         <swiper-slide>
             <a :href="`/fleet/${fleet.id}/emision`" class="submenu-item" :class="{'active': (active == 'emision')}">EMISION REPORT</a>
+        </swiper-slide>
+        <swiper-slide>
+            <a :href="`/fleet/${fleet.id}/docs`" class="submenu-item" :class="{'active': (active == 'docs')}">DOCUMENTS</a>
+        </swiper-slide>
+        <swiper-slide>
+            <a :href="`/fleet/${fleet.id}/reports`" class="submenu-item" :class="{'active': (active == 'reports')}">REPORTS</a>
         </swiper-slide>
         <swiper-slide>
             <a :href="`/fleet/${fleet.id}/charter`"  class="submenu-item" :class="{'active': (active == 'charter')}">CHARTER</a>
