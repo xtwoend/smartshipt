@@ -74,7 +74,7 @@ export default {
                     title: {
                         text: this.title,
                     },
-                    min: 0,
+                    min: 1,
                     max: 360,
                     lineColor: '#333',
                     offset: -20,
