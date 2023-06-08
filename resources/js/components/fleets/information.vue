@@ -52,6 +52,11 @@
                             </tr>
                             <tr>
                                 <th scope="row">•</th>
+                                <td>Travel Distance</td>
+                                <td class="text-end">{{ fleet.navigation.distance }} NM</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">•</th>
                                 <td>Total Travel Distance</td>
                                 <td class="text-end">{{ fleet.navigation.total_distance }} NM</td>
                             </tr>
