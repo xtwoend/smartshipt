@@ -10,7 +10,7 @@ class FleetController extends Controller
 {
     public function show($id, Request $request)
     {
-        $fleet = Fleet::with('navigation', 'engine')->findOrFail($id);
+        $fleet = Fleet::with('navigation')->findOrFail($id);
         return response()->json($fleet);
     }
 }

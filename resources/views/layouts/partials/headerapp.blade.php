@@ -135,4 +135,9 @@
             </div>
         </div>
     </div>
+    <div class="footer">
+        <div>
+            <img src="/logo-pis.svg" title="">
+        </div>
+    </div>
   </header>

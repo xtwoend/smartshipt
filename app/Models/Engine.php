@@ -7,5 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Engine extends Model
 {
-    use HasFactory;
+    /**
+     * The table associated with the model.
+     */
+    protected  $table = 'engines';
+
+    /**
+     * 
+     */
+    public static function table($fleetId)
+    {
+        $model = new self;
+        $tableName = $model->getTable() . "_{$fleetId}";
+
+        return $model->setTable($tableName);
+    }
 }

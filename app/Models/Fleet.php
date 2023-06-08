@@ -51,7 +51,7 @@ class Fleet extends Model
 
     public function engine()
     {
-        return $this->hasOne(Engine::class, 'fleet_id');
+        return Engine::table($this->id)->where('fleet_id', $this->id)->first();
     }
 
     public function cargo_information()
