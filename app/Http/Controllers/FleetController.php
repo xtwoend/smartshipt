@@ -25,6 +25,18 @@ class FleetController extends Controller
         return view('fleet.cargo', compact('fleet'));
     }
 
+    public function bunker($id, Request $request)
+    {
+        $fleet =  Fleet::with('navigation')->findOrFail($id);
+        return view('fleet.bunker', compact('fleet'));
+    }
+
+    public function ballast($id, Request $request)
+    {
+        $fleet =  Fleet::with('navigation')->findOrFail($id);
+        return view('fleet.ballast', compact('fleet'));
+    }
+
     public function trend($id, Request $request)
     {
         $fleet = Fleet::with('navigation')->findOrFail($id);

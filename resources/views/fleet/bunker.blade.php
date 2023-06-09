@@ -5,6 +5,7 @@
     <div class="bg-white">
         <slider-submenu :fleet="{{ json_encode($fleet) }}" active="bunker"></slider-submenu>
         <div class="container">
+            <fleet-bunker url="{{ route('api.fleet', $fleet->id) }}"></fleet-bunker>
             <div class="row">
                 <div class="d-flex align-items-center justify-content-between my-3">
                     <div class="dropdown">

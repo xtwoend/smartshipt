@@ -58,6 +58,18 @@ app.component('widget-daterange', WidgetDateRange);
 import FleetInformation from './components/fleets/information.vue';
 app.component('fleet-information', FleetInformation);
 
+import FleetEngine from './components/fleets/engine.vue';
+app.component('fleet-engine', FleetEngine);
+
+import FleetCargo from './components/fleets/cargo.vue';
+app.component('fleet-cargo', FleetCargo);
+
+import FleetBunker from './components/fleets/bunker.vue';
+app.component('fleet-bunker', FleetBunker);
+
+import FleetBallast from './components/fleets/ballast.vue';
+app.component('fleet-ballast', FleetBallast);
+
 import Compass from './components/charts/compass.vue';
 app.component('compass', Compass);
 

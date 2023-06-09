@@ -1,22 +1,23 @@
 <template>
-    <date-range-picker 
-        @update="updatePicker"
-        :locale-data="locale"
-        :dateRange="dateRange"
-        v-model="dateRange"
-    >
-    <!--Optional scope for the input displaying the dates -->
-    <div slot="input" class="form-control" slot-scope="picker">
-        {{ dateRange.startDate | '05-09-2018' }} - {{ dateRange.endDate | 'date' }}
-    </div>
-</date-range-picker>
+<!--    <date-range-picker-->
+<!--        @update="updatePicker"-->
+<!--        :locale-data="locale"-->
+<!--        :dateRange="dateRange"-->
+<!--        v-model="dateRange"-->
+<!--    >-->
+<!--    &lt;!&ndash;Optional scope for the input displaying the dates &ndash;&gt;-->
+<!--&lt;!&ndash;    <div slot="picker" class="form-control" >&ndash;&gt;-->
+<!--&lt;!&ndash;        {{ dateRange.startDate }} - {{ dateRange.endDate }}&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--</date-range-picker>-->
 </template>
-  
+
   <script>
   import DateRangePicker from 'vue3-daterange-picker'
   import moment from 'moment'
 
 export default {
+    name: 'DateRange',
     components: { DateRangePicker },
     data() {
         return {
@@ -26,7 +27,7 @@ export default {
             },
             locale: {
                 direction: 'ltr', //direction of text
-                format: 'dd mmm yyyy HH:mm', //fomart of the dates displayed
+                format: 'DD-MM-YYYY', //fomart of the dates displayed
                 separator: ' - ', //separator between the two ranges
                 applyLabel: 'Apply',
                 cancelLabel: 'Cancel',
@@ -45,7 +46,7 @@ export default {
     }
 }
   </script>
-  
+
   <style>
     .reportrange-text{
         width: 100%!important;

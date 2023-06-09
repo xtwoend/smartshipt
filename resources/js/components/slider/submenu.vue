@@ -22,10 +22,10 @@
             <a :href="`/fleet/${fleet.id}/cargo`" class="submenu-item" :class="{'active': (active == 'cargo')}">CARGO</a>
         </swiper-slide>
         <swiper-slide>
-            <a :href="`/fleet/${fleet.id}/cargo`" class="submenu-item" :class="{'active': (active == 'cargo')}">FUEL TANK</a>
+            <a :href="`/fleet/${fleet.id}/bunker`" class="submenu-item" :class="{'active': (active == 'bunker')}">FUEL TANK</a>
         </swiper-slide>
         <swiper-slide>
-            <a :href="`/fleet/${fleet.id}/cargo`" class="submenu-item" :class="{'active': (active == 'cargo')}">BALAST TANK</a>
+            <a :href="`/fleet/${fleet.id}/ballast`" class="submenu-item" :class="{'active': (active == 'ballast')}">BALAST TANK</a>
         </swiper-slide>
         <swiper-slide>
             <a :href="`/fleet/${fleet.id}/diagnotics`" class="submenu-item" :class="{'active': (active == 'diagnotics')}">DIAGNOSTICS</a>
@@ -55,11 +55,11 @@
 
     // Import Swiper Vue.js components
     import { Swiper, SwiperSlide } from 'swiper/vue';
-  
+
     // Import Swiper styles
     import 'swiper/scss';
     import 'swiper/scss/navigation';
-  
+
     export default {
       props: {
         fleet: Object,

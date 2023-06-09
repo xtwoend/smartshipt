@@ -63,14 +63,15 @@
                         </tbody>
                     </table>
                 </div>
+
                 <div class="col-12">
                     <div class="table-title mb-4 mt-2">
-                        <h6>Echo Sounder Trend</h6>
+                        <h6>Speed Trend</h6>
                     </div>
                     <div class="row justify-content-end">
                         <div class="col-6">
                             <form class="d-flex align-items-center justify-content-end gap-1">
-                                <widget-daterange></widget-daterange>
+<!--                                <widget-daterange></widget-daterange>-->
                                 <div class="dropdown">
                                         <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                         1 H
@@ -81,6 +82,56 @@
                                             <li><a class="dropdown-item" href="#">1 W</a></li>
                                         </ul>
                                     </div>
+                                <button type="submit" class="btn btn-primary">SHOW</button>
+                            </form>
+                        </div>
+                    </div>
+                    <charts-spline></charts-spline>
+                </div>
+
+                <div class="col-12">
+                    <div class="table-title mb-4 mt-2">
+                        <h6>Depth Trend</h6>
+                    </div>
+                    <div class="row justify-content-end">
+                        <div class="col-6">
+                            <form class="d-flex align-items-center justify-content-end gap-1">
+                                <!--                                <widget-daterange></widget-daterange>-->
+                                <div class="dropdown">
+                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                        1 H
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <li><a class="dropdown-item" href="#">1 H</a></li>
+                                        <li><a class="dropdown-item" href="#">1 D</a></li>
+                                        <li><a class="dropdown-item" href="#">1 W</a></li>
+                                    </ul>
+                                </div>
+                                <button type="submit" class="btn btn-primary">SHOW</button>
+                            </form>
+                        </div>
+                    </div>
+                    <charts-spline></charts-spline>
+                </div>
+
+                <div class="col-12">
+                    <div class="table-title mb-4 mt-2">
+                        <h6>Echo Sounder Trend</h6>
+                    </div>
+                    <div class="row justify-content-end">
+                        <div class="col-6">
+                            <form class="d-flex align-items-center justify-content-end gap-1">
+<!--                                <widget-daterange></widget-daterange>-->
+                                <div class="dropdown">
+                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                        1 H
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <li><a class="dropdown-item" href="#">1 H</a></li>
+                                        <li><a class="dropdown-item" href="#">1 D</a></li>
+                                        <li><a class="dropdown-item" href="#">1 W</a></li>
+                                    </ul>
+                                </div>
                                 <button type="submit" class="btn btn-primary">SHOW</button>
                             </form>
                         </div>
