@@ -25,7 +25,7 @@
             <a :href="`/fleet/${fleet.id}/bunker`" class="submenu-item" :class="{'active': (active == 'bunker')}">BUNKER TANK</a>
         </swiper-slide>
         <swiper-slide>
-            <a :href="`/fleet/${fleet.id}/ballast`" class="submenu-item" :class="{'active': (active == 'ballast')}">BALAST TANK</a>
+            <a :href="`/fleet/${fleet.id}/balast`" class="submenu-item" :class="{'active': (active == 'balast')}">BALAST TANK</a>
         </swiper-slide>
         <swiper-slide>
             <a :href="`/fleet/${fleet.id}/diagnotics`" class="submenu-item" :class="{'active': (active == 'diagnotics')}">DIAGNOSTICS</a>
