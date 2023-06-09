@@ -22,7 +22,7 @@
             <a :href="`/fleet/${fleet.id}/cargo`" class="submenu-item" :class="{'active': (active == 'cargo')}">CARGO</a>
         </swiper-slide>
         <swiper-slide>
-            <a :href="`/fleet/${fleet.id}/bunker`" class="submenu-item" :class="{'active': (active == 'bunker')}">FUEL TANK</a>
+            <a :href="`/fleet/${fleet.id}/bunker`" class="submenu-item" :class="{'active': (active == 'bunker')}">BUNKER TANK</a>
         </swiper-slide>
         <swiper-slide>
             <a :href="`/fleet/${fleet.id}/ballast`" class="submenu-item" :class="{'active': (active == 'ballast')}">BALAST TANK</a>
@@ -31,7 +31,7 @@
             <a :href="`/fleet/${fleet.id}/diagnotics`" class="submenu-item" :class="{'active': (active == 'diagnotics')}">DIAGNOSTICS</a>
         </swiper-slide>
         <swiper-slide>
-            <a :href="`/fleet/${fleet.id}/alarms`" class="submenu-item" :class="{'active': (active == 'alarms')}">ALARAM</a>
+            <a :href="`/fleet/${fleet.id}/alarms`" class="submenu-item" :class="{'active': (active == 'alarms')}">ALARM</a>
         </swiper-slide>
         <swiper-slide>
             <a :href="`/fleet/${fleet.id}/emision`" class="submenu-item" :class="{'active': (active == 'emision')}">EMISION REPORT</a>
