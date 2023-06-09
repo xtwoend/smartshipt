@@ -31,10 +31,10 @@ class FleetController extends Controller
         return view('fleet.bunker', compact('fleet'));
     }
 
-    public function ballast($id, Request $request)
+    public function balast($id, Request $request)
     {
         $fleet =  Fleet::with('navigation')->findOrFail($id);
-        return view('fleet.ballast', compact('fleet'));
+        return view('fleet.balast', compact('fleet'));
     }
 
     public function trend($id, Request $request)
