@@ -21,6 +21,10 @@
     </style>
     <!-- Scripts -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+    {{-- scadavis --}}
+    <script src="{{ asset('scadavis/synopticapi.js') }}"></script>
+    
     @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/js/index.js'])
 </head>
 <body>

@@ -19,8 +19,10 @@
             font-feature-settings: "cv03", "cv04", "cv11";
         }
     </style>
+
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    
 </head>
 <body>
     <div class="page" id="app">

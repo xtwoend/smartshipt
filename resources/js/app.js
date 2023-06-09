@@ -58,8 +58,8 @@ app.component('widget-daterange', WidgetDateRange);
 import FleetInformation from './components/fleets/information.vue';
 app.component('fleet-information', FleetInformation);
 
-import Compass from './components/charts/compass.vue';
-app.component('compass', Compass);
+import EngineTypeS from './components/fleets/EngineTypeS.vue';
+app.component('engine-type-s', EngineTypeS);
 
 /**
  * The following block of code may be used to automatically register your
