@@ -73,6 +73,9 @@ app.component('fleet-ballast', FleetBallast);
 import Compass from './components/charts/compass.vue';
 app.component('compass', Compass);
 
+import EngineTypeS from './components/fleets/EngineTypeS.vue';
+app.component('engine-type-s', EngineTypeS);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
