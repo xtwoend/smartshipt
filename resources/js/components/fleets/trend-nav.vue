@@ -34,8 +34,7 @@ export default {
                     }
                 },
                 title: {
-                    text: 'Navigation Trend',
-                    align: 'left'
+                    text: ''
                 },
                 xAxis: {
                     type: 'datetime',

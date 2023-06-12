@@ -70,6 +70,9 @@
                     </div>
                     <div class="row justify-content-end">
                         <div class="col-6">
+                            <dropdown-select :options="columns" @checked="(e) => trendParams.columns = e"></dropdown-select>
+                        </div>
+                        <div class="col-6">
                             <form class="d-flex align-items-center justify-content-end gap-1">
                                 <date-range @selected="(e) => trendParams.date = e "></date-range>
                                 <select class="form-control w-5 bordered" v-model="trendParams.interval">
@@ -91,19 +94,25 @@
 <script>
 import FleetSpeedometer from './speedometer.vue'
 import DateRange from '../widgets/daterange.vue'
+import DropdownSelect from '../widgets/dropdown.vue'
 import TrendNav from './trend-nav.vue'
 export default {
     props: {
         url: String,
     },
-    components: { FleetSpeedometer, DateRange, TrendNav },
+    components: { FleetSpeedometer, DateRange, TrendNav, DropdownSelect },
     data() {
         return {
             fleet: null,
             trendParams: {
                 interval: 60,
                 date: null
-            }
+            },
+            columns:[
+                {data: 'sog', text: 'Speed (knot)'},
+                {data: 'wind_speed', text: 'Wind Speed (knot)'},
+                {data: 'depth', text: 'Deep (m)'},
+            ]
         }
     },
     created() {

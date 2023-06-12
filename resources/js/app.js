@@ -101,6 +101,10 @@ app.config.globalProperties.$filters = {
     },
     str_limit(value, limit=7) {
         return value.toString().substring(0, limit)
+    },
+    textFormat(value) {
+        let text = value.toLowerCase();
+        return text.capitalize()
     }
 }
 
