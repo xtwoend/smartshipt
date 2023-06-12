@@ -19,8 +19,8 @@ class NavController extends Controller
         $to = $request->input('to', Carbon::now()->format('Y-m-d'));
         $interval = $request->input('interval', 1800);
 
-        $from = Carbon::parse($from)->timezone('Asia/Jakarta');
-        $to = Carbon::parse($to)->timezone('Asia/Jakarta');
+        $from = Carbon::parse($from);
+        $to = Carbon::parse($to);
         $fromClone = clone $from;
         $toClone = clone $to;
 
