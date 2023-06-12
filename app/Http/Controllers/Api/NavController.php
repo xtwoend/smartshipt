@@ -66,8 +66,8 @@ class NavController extends Controller
         $interval = $interval * 60;
         $select = $request->input('select', ['*']);
 
-        $from = Carbon::parse($date['startDate']);
-        $to = Carbon::parse($date['endDate']);
+        $from = Carbon::parse($date['startDate'])->timezone('Asia/Jakarta');
+        $to = Carbon::parse($date['endDate'])->timezone('Asia/Jakarta');
         $fromClone = clone $from;
         $toClone = clone $to;
 
