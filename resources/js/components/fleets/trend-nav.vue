@@ -1,5 +1,5 @@
 <template>
-    <Chart :options="chartOptions" :constructorType="'stockChart'" />
+    <Chart ref="chart" :options="options" :constructorType="'stockChart'" />
 </template>
   
   
@@ -7,31 +7,97 @@
 import { Chart } from "highcharts-vue";
 import Highcharts from "highcharts";
 import Accessbility from "highcharts/modules/accessibility";
+import colors from '../../libs/colors';
 
 Accessbility(Highcharts);
 
 export default {
     name: "spline",
     props: {
-        params: Object
+        params: Object,
+        fleet: Object,
+        default: Array
     },
     components: {
         Chart,
     },
     methods: {
-        show() {
-            console.log('called form parent', this.params)
+        async show() {
+            this.$refs.chart.chart.showLoading();
+
+            let series = [];
+            let label = [];
+            let select = [];
+            this.items.forEach((col, index) => {
+                let randColor = colors[index]; 
+                label[index] = {
+                    title: {
+                        text: col.text,
+                        style: {
+                            color: randColor,
+                            fontSize: '12px',
+                        }
+                    },
+                    lineColor: randColor,
+                    labels: {
+                        style: {
+                            color: randColor,
+                        },
+                        align: 'left',
+                        x: 14
+                    },
+                    lineWidth: 1,
+                    opposite: true,
+                };
+
+                if(col.range) {
+                    label[index].min = col.range[0];
+                    label[index].max = col.range[1];
+                }
+
+                series[index] = {
+                    id: col.data,
+                    row: col.data,
+                    yAxis: index,
+                    type: col.type? col.type : 'spline',
+                    name: col.text,
+                    color: randColor,  
+                    lineWidth: 1,
+                    data: []
+                };
+
+                select[index] = col.data;
+            })
+
+            this.options.series = series;
+            this.options.yAxis = label;
+            this.params.select = select;
+
+            let res = await axios.get(`/api/fleet/${this.fleet.id}/nav/trend`, {params: this.params}).then(res => res.data);
+            res.forEach(row => {
+                let time = row.unix_time;
+                this.options.series.forEach((s, index) => {
+                    let dt = row[s.row];
+                    this.options.series[index].data.push([time, dt]);
+                })
+            })
+
+            this.$refs.chart.chart.hideLoading();
+        },
+        selected(e){
+            this.items = e
+            this.show()
         }
     },
     data() {
         return {
-            chartOptions: {
+            items: this.default,
+            options: {
                 chart: {
-                    type: 'spline',
-                    scrollablePlotArea: {
-                        minWidth: 600,
-                        scrollPositionX: 1
-                    }
+                    type: 'spline'
+                },
+                time: {
+                    useUTC: false
                 },
                 title: {
                     text: ''
@@ -43,86 +109,9 @@ export default {
                     }
                 },
                 yAxis: {
-                    title: {
-                        text: 'Wind speed (m/s)'
-                    },
                     minorGridLineWidth: 0,
                     gridLineWidth: 0,
                     alternateGridColor: null,
-                    plotBands: [{ // Light air
-                        from: 0.3,
-                        to: 1.5,
-                        color: 'rgba(68, 170, 213, 0.1)',
-                        label: {
-                            text: 'Light air',
-                            style: {
-                                color: '#606060'
-                            }
-                        }
-                    }, { // Light breeze
-                        from: 1.5,
-                        to: 3.3,
-                        color: 'rgba(0, 0, 0, 0)',
-                        label: {
-                            text: 'Light breeze',
-                            style: {
-                                color: '#606060'
-                            }
-                        }
-                    }, { // Gentle breeze
-                        from: 3.3,
-                        to: 5.5,
-                        color: 'rgba(68, 170, 213, 0.1)',
-                        label: {
-                            text: 'Gentle breeze',
-                            style: {
-                                color: '#606060'
-                            }
-                        }
-                    }, { // Moderate breeze
-                        from: 5.5,
-                        to: 8,
-                        color: 'rgba(0, 0, 0, 0)',
-                        label: {
-                            text: 'Moderate breeze',
-                            style: {
-                                color: '#606060'
-                            }
-                        }
-                    }, { // Fresh breeze
-                        from: 8,
-                        to: 11,
-                        color: 'rgba(68, 170, 213, 0.1)',
-                        label: {
-                            text: 'Fresh breeze',
-                            style: {
-                                color: '#606060'
-                            }
-                        }
-                    }, { // Strong breeze
-                        from: 11,
-                        to: 14,
-                        color: 'rgba(0, 0, 0, 0)',
-                        label: {
-                            text: 'Strong breeze',
-                            style: {
-                                color: '#606060'
-                            }
-                        }
-                    }, { // High wind
-                        from: 14,
-                        to: 15,
-                        color: 'rgba(68, 170, 213, 0.1)',
-                        label: {
-                            text: 'High wind',
-                            style: {
-                                color: '#606060'
-                            }
-                        }
-                    }]
-                },
-                tooltip: {
-                    valueSuffix: ' m/s'
                 },
                 plotOptions: {
                     spline: {
@@ -134,25 +123,10 @@ export default {
                         },
                         marker: {
                             enabled: false
-                        },
-                        pointInterval: 3600000, // one hour
-                        pointStart: Date.UTC(2022, 5, 13, 0, 0, 0)
+                        }
                     }
                 },
-                series: [{
-                    name: 'Hestavollane',
-                    data: [
-                        4.5, 5.1, 4.4, 3.7, 4.2, 3.7, 4.3, 4, 5, 4.9,
-                        4.8, 4.6, 3.9, 3.8, 2.7, 3.1, 2.6, 3.3, 3.8,
-                        4.1, 1, 1.9, 3.2, 3.8, 4.2]
-
-                }, {
-                    name: 'Vik',
-                    data: [
-                        0.1, 0.1, 0.1, 0.2, 0.4, 0.4, 0.3, 0.4,
-                        0.1, 0, 0.2, 0.3, 0, 0, 0, 0, 0, 0.1,
-                        0.1, 0.1, 0, 0.1, 0, 0, 0]
-                }],
+                series: [],
                 navigation: {
                     menuItemStyle: {
                         fontSize: '10px'

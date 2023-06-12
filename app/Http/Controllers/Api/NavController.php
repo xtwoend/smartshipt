@@ -60,15 +60,14 @@ class NavController extends Controller
     public function trend($id, Request $request)  
     {
         $fleet = Fleet::findOrFail($id);
-
-        $from  = $request->input('from', Carbon::now()->subDay()->format('Y-m-d H:i:s'));
-        $to = $request->input('to', Carbon::now()->format('Y-m-d H:i:s'));
+        $date = $request->input('date');
+        
         $interval = $request->input('interval', 60);
         $interval = $interval * 60;
-        $select = $request->input('select', '*');
+        $select = $request->input('select', ['*']);
 
-        $from = Carbon::parse($from);
-        $to = Carbon::parse($to);
+        $from = Carbon::parse($date['startDate']);
+        $to = Carbon::parse($date['endDate']);
         $fromClone = clone $from;
         $toClone = clone $to;
 
@@ -83,7 +82,7 @@ class NavController extends Controller
            
             $query[] = "
             (select 
-                UNIX_TIMESTAMP(ct.terminal_time) as unix_time, ct.*
+                UNIX_TIMESTAMP(ct.terminal_time) * 1000 as unix_time, ct.*
                 from {$tableName} as `ct` 
                     inner join 
                     (

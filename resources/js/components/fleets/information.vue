@@ -70,10 +70,10 @@
                     </div>
                     <div class="row justify-content-end">
                         <div class="col-6">
-                            <dropdown-select :options="columns" @checked="(e) => trendParams.columns = e"></dropdown-select>
+                            <dropdown-select :options="columns" @checked="selected" :default="columns"></dropdown-select>
                         </div>
                         <div class="col-6">
-                            <form class="d-flex align-items-center justify-content-end gap-1">
+                            <div class="d-flex align-items-center justify-content-end gap-1">
                                 <date-range @selected="(e) => trendParams.date = e "></date-range>
                                 <select class="form-control w-5 bordered" v-model="trendParams.interval">
                                     <option value="30">30m</option>
@@ -81,10 +81,10 @@
                                     <option value="1440">1 D</option>
                                 </select>
                                 <button @click="showChart" class="btn btn-primary">SHOW</button>
-                            </form>
+                            </div>
                         </div>
                     </div>
-                    <trend-nav :params="trendParams" ref="trendNav"></trend-nav>
+                    <trend-nav :fleet="fleet" :params="trendParams" ref="trendNav" :default="columns"></trend-nav>
                 </div>
             </div>
         </div>
@@ -133,6 +133,9 @@ export default {
 
             // call api for charts data
             this.$refs.trendNav.show();
+        },
+        selected(e) {
+            this.$refs.trendNav.selected(e)
         }
     }
 }

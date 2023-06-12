@@ -18,7 +18,7 @@
 <script>
 import moment from 'moment';
 import DateRangePicker from 'vue3-daterange-picker'
-
+var d = new Date()
 export default {
     name: 'DateRange',
     components: { DateRangePicker },
@@ -30,7 +30,6 @@ export default {
             },
             locale: {
                 direction: 'ltr', //direction of text
-                // format: 'YYYY-MM-DD', //fomart of the dates displayed
                 separator: ' - ', //separator between the two ranges
                 applyLabel: 'Apply',
                 cancelLabel: 'Cancel',
