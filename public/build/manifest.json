@@ -3,13 +3,13 @@
     "file": "assets/ship-c94d8078.png",
     "src": "resources/js/components/maps/ship.png"
   },
-  "public/img/icons/date-light.png": {
-    "file": "assets/date-light-13b22e71.png",
-    "src": "public/img/icons/date-light.png"
-  },
   "public/remixicon/remixicon.eot": {
     "file": "assets/remixicon-e0d505c9.eot",
     "src": "public/remixicon/remixicon.eot"
+  },
+  "public/img/icons/date-light.png": {
+    "file": "assets/date-light-13b22e71.png",
+    "src": "public/img/icons/date-light.png"
   },
   "public/remixicon/remixicon.woff2": {
     "file": "assets/remixicon-50d59e6d.woff2",
@@ -35,6 +35,21 @@
     "file": "assets/app-17d52ff1.css",
     "src": "resources/sass/app.scss",
     "isEntry": true
+  },
+  "resources/js/index.js": {
+    "file": "assets/index-98024d67.js",
+    "src": "resources/js/index.js",
+    "isEntry": true,
+    "imports": [
+      "resources/js/libs/slide.js",
+      "resources/js/libs/constants.js",
+      "resources/js/libs/poppers.js",
+      "resources/js/libs/popper.js",
+      "_popper-b924b727.js"
+    ],
+    "css": [
+      "assets/app-17d52ff1.css"
+    ]
   },
   "resources/tabler/src/js/tabler.esm.js": {
     "file": "assets/tabler.esm-4fe66c31.js",
@@ -67,21 +82,6 @@
       "resources/js/libs/constants.js",
       "resources/js/libs/popper.js",
       "_popper-b924b727.js"
-    ]
-  },
-  "resources/js/index.js": {
-    "file": "assets/index-98024d67.js",
-    "src": "resources/js/index.js",
-    "isEntry": true,
-    "imports": [
-      "resources/js/libs/slide.js",
-      "resources/js/libs/constants.js",
-      "resources/js/libs/poppers.js",
-      "resources/js/libs/popper.js",
-      "_popper-b924b727.js"
-    ],
-    "css": [
-      "assets/app-17d52ff1.css"
     ]
   },
   "resources/js/libs/slide.js": {
