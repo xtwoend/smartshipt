@@ -56,4 +56,52 @@ class NavController extends Controller
 
         return response()->json($rows);
     }
+
+    public function trend($id, Request $request)  
+    {
+        $fleet = Fleet::findOrFail($id);
+
+        $from  = $request->input('from', Carbon::now()->subDay()->format('Y-m-d H:i:s'));
+        $to = $request->input('to', Carbon::now()->format('Y-m-d H:i:s'));
+        $interval = $request->input('interval', 60);
+        $interval = $interval * 60;
+        $select = $request->input('select', '*');
+
+        $from = Carbon::parse($from);
+        $to = Carbon::parse($to);
+        $fromClone = clone $from;
+        $toClone = clone $to;
+
+        $fromDiff = $fromClone->format("Y-m-01 00:00:00");
+        $toDiff = $toClone->format("Y-m-01 00:00:00");
+        $fromTable = Carbon::parse($fromDiff);
+        
+        $count = Carbon::parse($fromDiff)->diffInMonths(Carbon::parse($toDiff));
+       
+        for($i=0; $i <= $count; $i++) {
+            $tableName = NavigationLog::table($fleet->id, $fromTable)->getTable();
+           
+            $query[] = "
+            (select 
+                UNIX_TIMESTAMP(ct.terminal_time) as unix_time, ct.*
+                from {$tableName} as `ct` 
+                    inner join 
+                    (
+                        SELECT MIN(terminal_time) as times, FLOOR(UNIX_TIMESTAMP(terminal_time)/{$interval}) AS timekey 
+                        FROM {$tableName} 
+                        WHERE DATE(terminal_time) BETWEEN '{$fromClone->format('Y-m-d H:i:s')}' AND '{$toClone->format('Y-m-d H:i:s')}' 
+                        GROUP BY timekey
+                    ) ctx 
+                    on `ct`.`terminal_time` = `ctx`.`times`)
+            ";
+            
+            $fromTable = $fromTable->addMonth();
+        }
+
+        $query = implode(' UNION ', $query);
+        $rows = collect(DB::select($query));
+        $rows = $rows->sortBy('unix_time')->values()->all();
+
+        return response()->json($rows);
+    }
 }

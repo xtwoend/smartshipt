@@ -32,4 +32,5 @@ Route::get('fleets', function(Request $request){
 });
 
 Route::get('fleet/{id}/nav/histories', [NavController::class, 'history']);
+Route::get('fleet/{id}/nav/trend', [NavController::class, 'trend']);
 Route::get('fleet/{id}', [FleetController::class, 'show'])->name('api.fleet');
