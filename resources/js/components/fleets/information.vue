@@ -66,77 +66,22 @@
 
                 <div class="col-12">
                     <div class="table-title mb-4 mt-2">
-                        <h6>Speed Trend</h6>
+                        <h6>Trend View</h6>
                     </div>
                     <div class="row justify-content-end">
                         <div class="col-6">
                             <form class="d-flex align-items-center justify-content-end gap-1">
-<!--                                <widget-daterange></widget-daterange>-->
-                                <div class="dropdown">
-                                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                        1 H
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                            <li><a class="dropdown-item" href="#">1 H</a></li>
-                                            <li><a class="dropdown-item" href="#">1 D</a></li>
-                                            <li><a class="dropdown-item" href="#">1 W</a></li>
-                                        </ul>
-                                    </div>
-                                <button type="submit" class="btn btn-primary">SHOW</button>
+                                <date-range @selected="(e) => trendParams.date = e "></date-range>
+                                <select class="form-control w-5 bordered" v-model="trendParams.interval">
+                                    <option value="30">30m</option>
+                                    <option value="60">1 H</option>
+                                    <option value="1440">1 D</option>
+                                </select>
+                                <button @click="showChart" class="btn btn-primary">SHOW</button>
                             </form>
                         </div>
                     </div>
-                    <charts-spline></charts-spline>
-                </div>
-
-                <div class="col-12">
-                    <div class="table-title mb-4 mt-2">
-                        <h6>Depth Trend</h6>
-                    </div>
-                    <div class="row justify-content-end">
-                        <div class="col-6">
-                            <form class="d-flex align-items-center justify-content-end gap-1">
-                                <!--                                <widget-daterange></widget-daterange>-->
-                                <div class="dropdown">
-                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                        1 H
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                        <li><a class="dropdown-item" href="#">1 H</a></li>
-                                        <li><a class="dropdown-item" href="#">1 D</a></li>
-                                        <li><a class="dropdown-item" href="#">1 W</a></li>
-                                    </ul>
-                                </div>
-                                <button type="submit" class="btn btn-primary">SHOW</button>
-                            </form>
-                        </div>
-                    </div>
-                    <charts-spline></charts-spline>
-                </div>
-
-                <div class="col-12">
-                    <div class="table-title mb-4 mt-2">
-                        <h6>Echo Sounder Trend</h6>
-                    </div>
-                    <div class="row justify-content-end">
-                        <div class="col-6">
-                            <form class="d-flex align-items-center justify-content-end gap-1">
-<!--                                <widget-daterange></widget-daterange>-->
-                                <div class="dropdown">
-                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                        1 H
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                        <li><a class="dropdown-item" href="#">1 H</a></li>
-                                        <li><a class="dropdown-item" href="#">1 D</a></li>
-                                        <li><a class="dropdown-item" href="#">1 W</a></li>
-                                    </ul>
-                                </div>
-                                <button type="submit" class="btn btn-primary">SHOW</button>
-                            </form>
-                        </div>
-                    </div>
-                    <charts-spline></charts-spline>
+                    <trend-nav :params="trendParams" ref="trendNav"></trend-nav>
                 </div>
             </div>
         </div>
@@ -145,14 +90,20 @@
 
 <script>
 import FleetSpeedometer from './speedometer.vue'
+import DateRange from '../widgets/daterange.vue'
+import TrendNav from './trend-nav.vue'
 export default {
     props: {
         url: String,
     },
-    components: { FleetSpeedometer },
+    components: { FleetSpeedometer, DateRange, TrendNav },
     data() {
         return {
-            fleet: null
+            fleet: null,
+            trendParams: {
+                interval: 60,
+                date: null
+            }
         }
     },
     created() {
@@ -165,8 +116,21 @@ export default {
         async fetchData() {
             this.fleet = await axios.get(this.url).then(res => res.data);
         },
+        showChart() {
+            let params = this.trendParams
+            if(! params.date) {
+                alert('please selected date first')
+            }
+
+            // call api for charts data
+            this.$refs.trendNav.show();
+        }
     }
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.bordered {
+    border: 1px solid #616876 !important;
+}
+</style>

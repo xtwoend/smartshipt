@@ -1,6 +1,6 @@
 <template>
     <swiper
-      :slides-per-view="auto"
+      slides-per-view="auto"
       :space-between="0"
       :navigation="{
         nextEl: '.swiper-button-next',
@@ -71,10 +71,10 @@
       },
       setup() {
         const onSwiper = (swiper) => {
-          console.log(swiper);
+          // console.log(swiper);
         };
         const onSlideChange = () => {
-          console.log('slide change');
+          // console.log('slide change');
         };
         return {
           auto: true,
