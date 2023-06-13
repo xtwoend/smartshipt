@@ -1,6 +1,6 @@
 <template>
     <div>
-        <chart-svg path="/svg/engine.svg" :svgData="data" :height="550"></chart-svg>
+        <chart-svg path="/svg/engine-2.svg" :svgData="data" :height="550"></chart-svg>
     </div>
 </template>
 

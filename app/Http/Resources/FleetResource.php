@@ -16,7 +16,8 @@ class FleetResource extends JsonResource
     {
         $parrent = parent::toArray($request);
         return array_merge($parrent, [
-            'engine' => $this->engine()
+            'engine' => $this->engine(),
+            'cargo_data' => $this->cargo_data(),
         ]);
     }
 }

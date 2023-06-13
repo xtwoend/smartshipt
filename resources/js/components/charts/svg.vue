@@ -6,6 +6,7 @@
 
 <script>
 export default {
+    name: 'ChartSvg',
     props: {
         path: String,
         svgData: Object,
@@ -20,7 +21,7 @@ export default {
     async mounted () {
         await this.init()
         Object.keys(this.svgData).forEach(key => {
-            that.setValue(key, this.svgData[key])
+            this.setValue(key, this.svgData[key])
         });
     },
     created() {
