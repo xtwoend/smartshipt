@@ -1,6 +1,6 @@
 <template>
     <div>
-        <highcharts :options="options" :callback="callback"></highcharts>
+        <highcharts :options="options"></highcharts>
     </div>
 </template>
 

@@ -20,8 +20,23 @@
   "version" "7.18.6"
   dependencies:
     "@babel/helper-validator-identifier" "^7.18.6"
-    "chalk" "^2.0.0"
-    "js-tokens" "^4.0.0"
+    chalk "^2.0.0"
+    js-tokens "^4.0.0"
+
+"@babel/parser@^7.16.4":
+  version "7.20.7"
+  resolved "https://registry.npmjs.org/@babel/parser/-/parser-7.20.7.tgz"
+  integrity sha512-T3Z9oHybU+0vZlY9CiDSJQTD5ZapcW18ZctFMi0MOAl/4BjFF4ul7NVSARLdbGO5vDqy9eQiGTV0LtKfvCYvcg==
+
+"@esbuild/android-arm64@0.16.17":
+  version "0.16.17"
+  resolved "https://registry.yarnpkg.com/@esbuild/android-arm64/-/android-arm64-0.16.17.tgz#cf91e86df127aa3d141744edafcba0abdc577d23"
+  integrity sha512-MIGl6p5sc3RDTLLkYL1MyL8BMRN4tLMRCn+yRJJmEDvYZ2M7tmAf80hx1kbNEUX2KJ50RRtxZ4JHLvCfuB6kBg==
+
+"@esbuild/android-arm@0.16.17":
+  version "0.16.17"
+  resolved "https://registry.yarnpkg.com/@esbuild/android-arm/-/android-arm-0.16.17.tgz#025b6246d3f68b7bbaa97069144fb5fb70f2fff2"
+  integrity sha512-N9x1CMXVhtWEAMS7pNNONyA14f71VPQN9Cnavj1XQh6T7bskqiLLrSca4O0Vr8Wdcga943eThxnVp3JLnBMYtw==
 
 "@babel/parser@^7.16.4":
   "integrity" "sha512-T3Z9oHybU+0vZlY9CiDSJQTD5ZapcW18ZctFMi0MOAl/4BjFF4ul7NVSARLdbGO5vDqy9eQiGTV0LtKfvCYvcg=="
@@ -405,10 +420,15 @@
   optionalDependencies:
     "fsevents" "~2.3.2"
 
-"clone-response@^1.0.2":
-  "integrity" "sha512-ROoL94jJH2dUVML2Y/5PEDNaSHgeOdSDicUyS7izcF63G6sTc/FTjLub4b8Il9S8S0beOfYt0TaA5qvFK+w0wA=="
-  "resolved" "https://registry.npmjs.org/clone-response/-/clone-response-1.0.3.tgz"
-  "version" "1.0.3"
+click-outside-vue3@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/click-outside-vue3/-/click-outside-vue3-4.0.1.tgz#81a6ac01696b301764b42db6fdbdf28e7cd8ef95"
+  integrity sha512-sbplNecrup5oGqA3o4bo8XmvHRT6q9fvw21Z67aDbTqB9M6LF7CuYLTlLvNtOgKU6W3zst5H5zJuEh4auqA34g==
+
+clone-response@^1.0.2:
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/clone-response/-/clone-response-1.0.3.tgz"
+  integrity sha512-ROoL94jJH2dUVML2Y/5PEDNaSHgeOdSDicUyS7izcF63G6sTc/FTjLub4b8Il9S8S0beOfYt0TaA5qvFK+w0wA==
   dependencies:
     "mimic-response" "^1.0.0"
 
@@ -446,10 +466,10 @@
   "resolved" "https://registry.npmjs.org/csstype/-/csstype-2.6.21.tgz"
   "version" "2.6.21"
 
-"decamelize-keys@^1.1.0":
-  "integrity" "sha512-WiPxgEirIV0/eIOMcnFBA3/IJZAZqKnwAwWyvvdi4lsr1WCN22nhdf/3db3DoZcUjTV2SqfzIwNyp6y2xs3nmg=="
-  "resolved" "https://registry.npmjs.org/decamelize-keys/-/decamelize-keys-1.1.1.tgz"
-  "version" "1.1.1"
+decamelize-keys@^1.1.0:
+  version "1.1.1"
+  resolved "https://registry.npmjs.org/decamelize-keys/-/decamelize-keys-1.1.1.tgz"
+  integrity sha512-WiPxgEirIV0/eIOMcnFBA3/IJZAZqKnwAwWyvvdi4lsr1WCN22nhdf/3db3DoZcUjTV2SqfzIwNyp6y2xs3nmg==
   dependencies:
     "decamelize" "^1.1.0"
     "map-obj" "^1.0.0"
@@ -1031,10 +1051,10 @@
   "resolved" "https://registry.npmjs.org/picomatch/-/picomatch-2.3.1.tgz"
   "version" "2.3.1"
 
-"postcss@^8.1.10", "postcss@^8.1.14", "postcss@^8.4.20":
-  "integrity" "sha512-tP7u/Sn/dVxK2NnruI4H9BG+x+Wxz6oeZ1cJ8P6G/PZY0IKk4k/63TDsQf2kQq3+qoJeLm2kIBUNlZe3zgb4Zg=="
-  "resolved" "https://registry.npmjs.org/postcss/-/postcss-8.4.21.tgz"
-  "version" "8.4.21"
+postcss@^8.1.10, postcss@^8.1.14, postcss@^8.4.20:
+  version "8.4.21"
+  resolved "https://registry.npmjs.org/postcss/-/postcss-8.4.21.tgz"
+  integrity sha512-tP7u/Sn/dVxK2NnruI4H9BG+x+Wxz6oeZ1cJ8P6G/PZY0IKk4k/63TDsQf2kQq3+qoJeLm2kIBUNlZe3zgb4Zg==
   dependencies:
     "nanoid" "^3.3.4"
     "picocolors" "^1.0.0"
@@ -1337,10 +1357,15 @@
   "resolved" "https://registry.npmjs.org/vue-highcharts/-/vue-highcharts-0.1.0.tgz"
   "version" "0.1.0"
 
-"vue@^3.2.25", "vue@^3.2.37", "vue@>=1.0.0", "vue@>=2.0.0", "vue@3.2.45":
-  "integrity" "sha512-9Nx/Mg2b2xWlXykmCwiTUCWHbWIj53bnkizBxKai1g61f2Xit700A1ljowpTIM11e3uipOeiPcSqnmBg6gyiaA=="
-  "resolved" "https://registry.npmjs.org/vue/-/vue-3.2.45.tgz"
-  "version" "3.2.45"
+vue3-daterange-picker@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/vue3-daterange-picker/-/vue3-daterange-picker-1.0.1.tgz#640903959428efe556230b4404dbd4b105f0fc66"
+  integrity sha512-CnLfhgubeehqF3QqrnTJVCt7mx8XxTSKbY7yVMQT0kyZ2D90qrIqJ7MNf6uGAC7utE3DbBCKq6PHTk6371cDHQ==
+
+vue@^3.2.37:
+  version "3.2.45"
+  resolved "https://registry.npmjs.org/vue/-/vue-3.2.45.tgz"
+  integrity sha512-9Nx/Mg2b2xWlXykmCwiTUCWHbWIj53bnkizBxKai1g61f2Xit700A1ljowpTIM11e3uipOeiPcSqnmBg6gyiaA==
   dependencies:
     "@vue/compiler-dom" "3.2.45"
     "@vue/compiler-sfc" "3.2.45"

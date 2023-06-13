@@ -462,12 +462,12 @@
      showgrid="false"
      inkscape:window-width="2560"
      inkscape:window-height="1387"
-     inkscape:window-x="0"
+     inkscape:window-x="-1"
      inkscape:window-y="25"
      borderlayer="true"
      showguides="true"
      showborder="true"
-     inkscape:window-maximized="1"
+     inkscape:window-maximized="0"
      inkscape:showpageshadow="false"
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#8b8b8b">
@@ -970,7 +970,7 @@
        y="448.45596"
        id="text4752-9-0-3-5-7-5"
        transform="scale(0.93182941,1.0731578)"
-       inkscape:label="{&quot;align&quot;:&quot;Right&quot;,&quot;attr&quot;:&quot;get&quot;,&quot;tag&quot;:&quot;senipah_me_turbocharge&quot;,&quot;type&quot;:&quot;Good&quot;}"><tspan
+       inkscape:label="{&quot;align&quot;:&quot;Right&quot;,&quot;attr&quot;:&quot;get&quot;,&quot;tag&quot;:&quot;tachometer_turbocharge&quot;,&quot;type&quot;:&quot;Good&quot;}"><tspan
          sodipodi:role="line"
          id="tspan4754-8-3-9-6-4-1"
          x="376.57886"

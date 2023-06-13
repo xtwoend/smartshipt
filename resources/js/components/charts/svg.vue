@@ -20,6 +20,7 @@ export default {
     },
     async mounted () {
         await this.init()
+        let that = this
         Object.keys(this.svgData).forEach(key => {
             this.setValue(key, this.svgData[key])
         });

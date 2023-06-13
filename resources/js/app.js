@@ -52,8 +52,8 @@ app.component('charts-spline', ChartSpline);
 // import ChartLine from './components/charts/line.vue';
 // app.component('charts-line', ChartLine);
 
-import WidgetDateRange from './components/widgets/daterange.vue';
-app.component('widget-daterange', WidgetDateRange);
+// import WidgetDateRange from './components/widgets/daterange.vue';
+// app.component('widget-daterange', WidgetDateRange);
 
 import FleetInformation from './components/fleets/information.vue';
 app.component('fleet-information', FleetInformation);
@@ -98,6 +98,10 @@ app.config.globalProperties.$filters = {
     },
     str_limit(value, limit=7) {
         return value.toString().substring(0, limit)
+    },
+    textFormat(value) {
+        let text = value.toLowerCase();
+        return text.capitalize()
     }
 }
 

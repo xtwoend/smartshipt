@@ -1,6 +1,6 @@
 <template>
     <div>
-        <highcharts :options="options" :callback="callback"></highcharts>
+        <highcharts :options="options"></highcharts>
     </div>
 </template>
 
@@ -167,9 +167,7 @@ export default {
         }
     },
     methods: {
-        callback(e) {
-            
-        }
+        // 
     },
     watch: {
         value: function(now, old) {
