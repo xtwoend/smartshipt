@@ -2,15 +2,15 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   onload="var src; if (document.documentURI) src = document.documentURI; else if (this.getSrc) src = this.getSrc(); else src = document.location.href + ''; try {parent.preload.load(src);}catch(e) {}"
-   width="1024"
-   height="500"
-   id="svg2534"
-   sodipodi:version="0.32"
-   inkscape:version="1.2.2 (b0a8486, 2022-12-01)"
-   version="1.0"
-   sodipodi:docname="cargo_bargraph.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   sodipodi:docname="cargo_bargraph.svg"
+   version="1.0"
+   inkscape:version="1.2.2 (b0a8486, 2022-12-01)"
+   sodipodi:version="0.32"
+   id="svg2534"
+   height="500"
+   width="1024"
+   onload="var src; if (document.documentURI) src = document.documentURI; else if (this.getSrc) src = this.getSrc(); else src = document.location.href + ''; try {parent.preload.load(src);}catch(e) {}"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -474,19 +474,19 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.2319126"
-     inkscape:cx="271.12313"
-     inkscape:cy="88.886176"
+     inkscape:cx="464.72453"
+     inkscape:cy="173.71362"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1236"
-     inkscape:window-height="593"
+     inkscape:window-width="1680"
+     inkscape:window-height="950"
      inkscape:window-x="0"
      inkscape:window-y="25"
      borderlayer="true"
      showguides="true"
      showborder="true"
-     inkscape:window-maximized="0"
+     inkscape:window-maximized="1"
      inkscape:showpageshadow="false"
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#8b8b8b">
@@ -757,7 +757,7 @@
          id="tspan4754-8-088"
          x="378.57349"
          y="143.34937"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:11.5363px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';text-align:start;text-anchor:start;fill:#ffff00">%8.3f</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:11.5363px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';text-align:start;text-anchor:start;fill:#ffff00">%1.0f</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffff00;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -808,7 +808,7 @@
          id="tspan4754-8-0-7"
          x="380.15314"
          y="219.5312"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:11.5363px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';text-align:start;text-anchor:start;fill:#ffff00">%8.1f</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:11.5363px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';text-align:start;text-anchor:start;fill:#ffff00">%1.1f</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffff00;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -881,7 +881,7 @@
          id="tspan4754-8-8"
          x="505.18634"
          y="143.34937"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:11.5363px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';text-align:start;text-anchor:start;fill:#ffff00">%8.3f</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:11.5363px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';text-align:start;text-anchor:start;fill:#ffff00">%1.0f</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffff00;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -1375,17 +1375,16 @@
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:9.22905px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold'">Ullage</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#ffff00;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;white-space:pre;inline-size:0;fill:#ffff00;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="125.34769"
        y="143.34937"
        id="text4752-9"
        transform="scale(0.96051551,1.0411076)"
        inkscape:label="{&quot;align&quot;:&quot;Left&quot;,&quot;attr&quot;:&quot;get&quot;,&quot;tag&quot;:&quot;slop_port&quot;,&quot;type&quot;:&quot;Good&quot;}"><tspan
-         sodipodi:role="line"
          id="tspan4754-8"
          x="125.34769"
          y="143.34937"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:11.5363px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';text-align:start;text-anchor:start;fill:#ffff00">%8.3f</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:11.5363px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';text-align:start;text-anchor:start;fill:#ffff00">%1.0f</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffff00;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -1436,7 +1435,7 @@
          id="tspan4754-8-0"
          x="126.92731"
          y="217.61018"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:11.5363px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';text-align:start;text-anchor:start;fill:#ffff00">%8.1f</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:11.5363px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';text-align:start;text-anchor:start;fill:#ffff00">%1.1f</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffff00;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -1509,7 +1508,7 @@
          id="tspan4754-8-7"
          x="251.96057"
          y="143.34937"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:11.5363px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';text-align:start;text-anchor:start;fill:#ffff00">%8.3f</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:11.5363px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';text-align:start;text-anchor:start;fill:#ffff00">%1.0f</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffff00;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -1560,7 +1559,7 @@
          id="tspan4754-8-0-82"
          x="253.54019"
          y="219.53122"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:11.5363px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';text-align:start;text-anchor:start;fill:#ffff00">%8.1f</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:11.5363px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';text-align:start;text-anchor:start;fill:#ffff00">%1.1f</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffff00;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -2974,18 +2973,6 @@
          x="853.06317"
          y="291.14761"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:9.22905px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold'">0.000</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-       x="1004.467"
-       y="-66.523376"
-       id="text3325-2-7"
-       inkscape:label="{&quot;align&quot;:&quot;Left&quot;,&quot;attr&quot;:&quot;get&quot;,&quot;tag&quot;:&quot;($app.currentTime.hour%12 || 12)+ ':' + ($app.currentTime.minute&lt;10?('0'+$app.currentTime.minute):$app.currentTime.minute) + ':' + ($app.currentTime.second&lt;10?('0'+$app.currentTime.second):$app.currentTime.second) + ($app.currentTime.hour &lt; 12? 'AM': 'PM')&quot;,&quot;type&quot;:&quot;Live&quot;}"><tspan
-         sodipodi:role="line"
-         x="1004.467"
-         y="-66.523376"
-         id="tspan2933-1-79"
-         style="font-size:15px;line-height:1.25">XXXXXXXXXXX</tspan></text>
     <rect
        style="fill:url(#linearGradient5719);fill-opacity:1;stroke:none;stroke-width:1.14578867;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4756-3-7-1-4-1"
@@ -3117,21 +3104,23 @@
        y="295.99841"
        inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:15,&quot;min&quot;:0,&quot;tag&quot;:&quot;ct_slop_tk_s_level&quot;}" />
     <rect
-       style="fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.22006243;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.220062;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4750-0"
        width="17.917801"
        height="152.53586"
-       x="59.518806"
-       y="96.210037"
-       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:15,&quot;min&quot;:0,&quot;tag&quot;:&quot;ct_slop_tk_p_level&quot;}" />
+       x="-77.436607"
+       y="-248.7459"
+       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:15500,&quot;min&quot;:0,&quot;tag&quot;:&quot;slop_port&quot;}"
+       transform="scale(-1)" />
     <rect
-       style="fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.22006243;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.220062;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4750-0-8"
        width="17.917801"
        height="152.53586"
-       x="181.13246"
-       y="96.210037"
-       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:15,&quot;min&quot;:0,&quot;tag&quot;:&quot;ct_cot_6p_level&quot;}" />
+       x="-199.05026"
+       y="-248.7459"
+       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:15500,&quot;min&quot;:0,&quot;tag&quot;:&quot;tank_6_port&quot;}"
+       transform="scale(-1)" />
     <rect
        style="fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.22006243;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4750-0-5"
