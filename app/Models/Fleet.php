@@ -51,12 +51,12 @@ class Fleet extends Model
 
     public function engine()
     {
-        return Engine::table($this->id)->where('fleet_id', $this->id)->first();
+        return Engine::table($this->id)->where('fleet_id', $this->id)->first() ?: [];
     }
 
     public function cargo_data()
     {
-        return Cargo::table($this->id)->where('fleet_id', $this->id)->first();
+        return Cargo::table($this->id)->where('fleet_id', $this->id)->first() ?: [];
     }
 
     public function cargo_information()
