@@ -1,9 +1,4 @@
 {
-  "resources/js/components/maps/ship.png": {
-    "file": "assets/ship-c94d8078.png",
-    "src": "resources/js/components/maps/ship.png"
-  },
-<<<<<<< HEAD
   "resources/js/components/icon/ballast.png": {
     "file": "assets/ballast-a47985d3.png",
     "src": "resources/js/components/icon/ballast.png"
@@ -16,8 +11,10 @@
     "file": "assets/port-f4bfe255.png",
     "src": "resources/js/components/icon/port.png"
   },
-=======
->>>>>>> e5ad875006d938f0ade785ffbf44271082696ca8
+  "resources/js/components/maps/ship.png": {
+    "file": "assets/ship-c94d8078.png",
+    "src": "resources/js/components/maps/ship.png"
+  },
   "public/remixicon/remixicon.eot": {
     "file": "assets/remixicon-e0d505c9.eot",
     "src": "public/remixicon/remixicon.eot"
@@ -51,27 +48,18 @@
     "src": "resources/sass/app.scss",
     "isEntry": true
   },
-  "resources/js/libs/poppers.js": {
-    "file": "assets/poppers-2b93aeb1.js",
-    "src": "resources/js/libs/poppers.js",
-    "isEntry": true,
+  "_toast-fd51308c.js": {
+    "file": "assets/toast-fd51308c.js",
     "imports": [
-      "resources/js/libs/constants.js",
-      "resources/js/libs/popper.js",
       "_popper-b924b727.js"
     ]
   },
-  "resources/js/libs/constants.js": {
-    "file": "assets/constants-9ec7b010.js",
-    "src": "resources/js/libs/constants.js",
-    "isEntry": true
-  },
-  "resources/js/libs/popper.js": {
-    "file": "assets/popper-136662a8.js",
-    "src": "resources/js/libs/popper.js",
+  "resources/tabler/src/js/tabler.esm.js": {
+    "file": "assets/tabler.esm-4fe66c31.js",
+    "src": "resources/tabler/src/js/tabler.esm.js",
     "isEntry": true,
     "imports": [
-      "resources/js/libs/constants.js",
+      "_toast-fd51308c.js",
       "_popper-b924b727.js"
     ]
   },
@@ -90,33 +78,19 @@
       "assets/app-17d52ff1.css"
     ]
   },
-<<<<<<< HEAD
   "resources/js/libs/constants.js": {
     "file": "assets/constants-9ec7b010.js",
     "src": "resources/js/libs/constants.js",
     "isEntry": true
   },
-  "resources/js/libs/popper.js": {
-    "file": "assets/popper-136662a8.js",
-    "src": "resources/js/libs/popper.js",
+  "resources/js/libs/slide.js": {
+    "file": "assets/slide-02b0fce0.js",
+    "src": "resources/js/libs/slide.js",
     "isEntry": true,
     "imports": [
-      "resources/js/libs/constants.js",
-      "_popper-b924b727.js"
+      "resources/js/libs/constants.js"
     ]
   },
-=======
->>>>>>> e5ad875006d938f0ade785ffbf44271082696ca8
-  "resources/tabler/src/js/tabler.esm.js": {
-    "file": "assets/tabler.esm-4fe66c31.js",
-    "src": "resources/tabler/src/js/tabler.esm.js",
-    "isEntry": true,
-    "imports": [
-      "_toast-fd51308c.js",
-      "_popper-b924b727.js"
-    ]
-  },
-<<<<<<< HEAD
   "resources/js/libs/poppers.js": {
     "file": "assets/poppers-2b93aeb1.js",
     "src": "resources/js/libs/poppers.js",
@@ -127,39 +101,20 @@
       "_popper-b924b727.js"
     ]
   },
-  "resources/js/libs/slide.js": {
-    "file": "assets/slide-02b0fce0.js",
-    "src": "resources/js/libs/slide.js",
+  "resources/js/libs/popper.js": {
+    "file": "assets/popper-136662a8.js",
+    "src": "resources/js/libs/popper.js",
     "isEntry": true,
     "imports": [
-      "resources/js/libs/constants.js"
-    ]
-  },
-=======
->>>>>>> e5ad875006d938f0ade785ffbf44271082696ca8
-  "_popper-b924b727.js": {
-    "file": "assets/popper-b924b727.js"
-  },
-  "resources/js/libs/slide.js": {
-    "file": "assets/slide-02b0fce0.js",
-    "src": "resources/js/libs/slide.js",
-    "isEntry": true,
-    "imports": [
-      "resources/js/libs/constants.js"
-    ]
-  },
-  "_toast-fd51308c.js": {
-    "file": "assets/toast-fd51308c.js",
-    "imports": [
+      "resources/js/libs/constants.js",
       "_popper-b924b727.js"
     ]
   },
+  "_popper-b924b727.js": {
+    "file": "assets/popper-b924b727.js"
+  },
   "resources/js/app.js": {
-<<<<<<< HEAD
-    "file": "assets/app-0ee7e8dd.js",
-=======
-    "file": "assets/app-d8cf5799.js",
->>>>>>> e5ad875006d938f0ade785ffbf44271082696ca8
+    "file": "assets/app-f93e2c18.js",
     "src": "resources/js/app.js",
     "isEntry": true,
     "imports": [
