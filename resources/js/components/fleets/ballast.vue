@@ -32,9 +32,10 @@ export default {
     methods: {
         async fetchData() {
             this.fleet = await axios.get(this.url).then(res => res.data);
-            let cargo = this.fleet.cargo;
+            let cargo = this.fleet.cargo_data;
             if(cargo) {
                 this.data = cargo
+                this.data.fleet_name = this.fleet.name
             }
         },
     }
