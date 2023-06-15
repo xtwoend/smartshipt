@@ -58,6 +58,9 @@ app.component('charts-spline', ChartSpline);
 import FleetInformation from './components/fleets/information.vue';
 app.component('fleet-information', FleetInformation);
 
+import SideInfo from './components/maps/sideInfo.vue';
+app.component('fleet-side-info', SideInfo);
+
 import FleetCargo from './components/fleets/cargo.vue';
 app.component('fleet-cargo', FleetCargo);
 

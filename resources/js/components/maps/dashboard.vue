@@ -1,6 +1,12 @@
 <template>
     <div class="position-relative">
         <x-search :fleets="fleets" @selected="findFleet"></x-search>
+        <fleet-side-info 
+            v-if="fleet"
+            :fleet="fleet"
+            :display="showSideInfo"
+            @close="showSideInfo=false"
+        ></fleet-side-info>
         <!-- <x-records></x-records> -->
         <!-- <x-navigation></x-navigation> -->
         <!-- <x-camera></x-camera> -->
@@ -26,7 +32,7 @@
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { MapboxMap, MapboxNavigationControl } from '@studiometa/vue-mapbox-gl';
 import mapboxgl from 'mapbox-gl';
-import shipIcon from './ship.png'
+
 // import coordinates from './widuri.json';
 import search from './search.vue';
 import notification from './notification.vue';
@@ -35,6 +41,9 @@ import navigation from './navigation.vue';
 import camera from './camera.vue';
 import parameter from './parameter.vue';
 import * as timeago from 'timeago.js';
+import ballastIcon from '../icon/ballast.png';
+import ladenIcon from '../icon/laden.png';
+import portIcon from '../icon/port.png';
 
 export default {
     components: {
@@ -49,13 +58,20 @@ export default {
     },
     data() {
         return {
+            icons: {
+                ballast: ballastIcon,
+                laden: ladenIcon,
+                port: portIcon,
+            },
             map: null,
             current: [],
             timer: null,
             fleets: [],
             zoom: 3,
             center: [118, 0.0],
-            popup: null
+            popup: null,
+            fleet: null,
+            showSideInfo: false
         }
     },
     mounted(){
@@ -63,7 +79,7 @@ export default {
             this.loaded()
         }, (15 * 1000))
 
-        this.map.loadImage(shipIcon, (err, img) => {
+        this.map.loadImage(this.icons['ballast'], (err, img) => {
             if(err) throw err
             this.map.addImage(`ship`, img);
         })
@@ -143,7 +159,7 @@ export default {
                     "icon-image": `ship`,
                     "icon-allow-overlap": true,
                     "icon-ignore-placement": true,
-                    "icon-size": 0.3,
+                    "icon-size": 0.12,
                     "icon-rotate": {
                         property: "heading",
                         stops: [
@@ -165,7 +181,7 @@ export default {
             this.map.on('click', `ship-positions-${row.id}`, (e) => {
                 // open side information
                 let fleetId = e.features[0].properties.id;
-                location.href = `/fleet/${fleetId}`;
+                that.showInfo(fleetId)
             })
             
             this.map.on('mouseenter', `ship-positions-${row.id}`, (e) => {
@@ -182,6 +198,15 @@ export default {
                 that.map.getCanvas().style.cursor = '';
                 popup.remove();
             });
+        },
+        showInfo(fleetId) {
+            let fIndex = this.fleets.findIndex(function(row) {
+                return row.id === fleetId;
+            });
+            if(fIndex >= 0) {
+                this.fleet = this.fleets[fIndex];
+                this.showSideInfo = true
+            }
         }   
     }
 }
