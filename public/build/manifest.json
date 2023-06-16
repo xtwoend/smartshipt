@@ -1,7 +1,7 @@
 {
-  "resources/js/components/icon/ballast.png": {
-    "file": "assets/ballast-a47985d3.png",
-    "src": "resources/js/components/icon/ballast.png"
+  "resources/js/components/maps/ship.png": {
+    "file": "assets/ship-c94d8078.png",
+    "src": "resources/js/components/maps/ship.png"
   },
   "resources/js/components/icon/laden.png": {
     "file": "assets/laden-342241e2.png",
@@ -11,9 +11,9 @@
     "file": "assets/port-f4bfe255.png",
     "src": "resources/js/components/icon/port.png"
   },
-  "resources/js/components/maps/ship.png": {
-    "file": "assets/ship-c94d8078.png",
-    "src": "resources/js/components/maps/ship.png"
+  "resources/js/components/icon/ballast.png": {
+    "file": "assets/ballast-a47985d3.png",
+    "src": "resources/js/components/icon/ballast.png"
   },
   "public/remixicon/remixicon.eot": {
     "file": "assets/remixicon-e0d505c9.eot",
@@ -40,7 +40,7 @@
     "src": "public/remixicon/remixicon.svg"
   },
   "resources/js/app.css": {
-    "file": "assets/app-30d048a9.css",
+    "file": "assets/app-256a1942.css",
     "src": "resources/js/app.css"
   },
   "resources/sass/app.scss": {
@@ -48,18 +48,31 @@
     "src": "resources/sass/app.scss",
     "isEntry": true
   },
-  "_toast-fd51308c.js": {
-    "file": "assets/toast-fd51308c.js",
-    "imports": [
-      "_popper-b924b727.js"
-    ]
-  },
   "resources/tabler/src/js/tabler.esm.js": {
     "file": "assets/tabler.esm-4fe66c31.js",
     "src": "resources/tabler/src/js/tabler.esm.js",
     "isEntry": true,
     "imports": [
       "_toast-fd51308c.js",
+      "_popper-b924b727.js"
+    ]
+  },
+  "resources/js/libs/popper.js": {
+    "file": "assets/popper-136662a8.js",
+    "src": "resources/js/libs/popper.js",
+    "isEntry": true,
+    "imports": [
+      "resources/js/libs/constants.js",
+      "_popper-b924b727.js"
+    ]
+  },
+  "resources/js/libs/poppers.js": {
+    "file": "assets/poppers-2b93aeb1.js",
+    "src": "resources/js/libs/poppers.js",
+    "isEntry": true,
+    "imports": [
+      "resources/js/libs/constants.js",
+      "resources/js/libs/popper.js",
       "_popper-b924b727.js"
     ]
   },
@@ -91,30 +104,17 @@
       "resources/js/libs/constants.js"
     ]
   },
-  "resources/js/libs/poppers.js": {
-    "file": "assets/poppers-2b93aeb1.js",
-    "src": "resources/js/libs/poppers.js",
-    "isEntry": true,
-    "imports": [
-      "resources/js/libs/constants.js",
-      "resources/js/libs/popper.js",
-      "_popper-b924b727.js"
-    ]
-  },
-  "resources/js/libs/popper.js": {
-    "file": "assets/popper-136662a8.js",
-    "src": "resources/js/libs/popper.js",
-    "isEntry": true,
-    "imports": [
-      "resources/js/libs/constants.js",
-      "_popper-b924b727.js"
-    ]
-  },
   "_popper-b924b727.js": {
     "file": "assets/popper-b924b727.js"
   },
+  "_toast-fd51308c.js": {
+    "file": "assets/toast-fd51308c.js",
+    "imports": [
+      "_popper-b924b727.js"
+    ]
+  },
   "resources/js/app.js": {
-    "file": "assets/app-f93e2c18.js",
+    "file": "assets/app-e3a39375.js",
     "src": "resources/js/app.js",
     "isEntry": true,
     "imports": [
@@ -122,7 +122,7 @@
       "_popper-b924b727.js"
     ],
     "css": [
-      "assets/app-30d048a9.css"
+      "assets/app-256a1942.css"
     ],
     "assets": [
       "assets/ballast-a47985d3.png",
