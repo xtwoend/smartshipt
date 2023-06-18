@@ -1,16 +1,17 @@
 <template>
-    <div class="position-relative p-3 overflow-hidden">
+    <div class="position-relative overflow-hidden">
         <map-voyage 
             :fleet="fleet" 
             @history="setHistory" 
             @selected="toPotition"
+            :display="sidebar"
         ></map-voyage>
         <div class="pointer-info" ref="pointerInfo"></div>
         <MapboxMap
             @mb-created="(mapboxInstance) => map = mapboxInstance"
             @mb-load="loaded"
             @mb-mousemove="pointerLocation"
-            style="height: 450px; width: 100%;"
+            :style="style"
             access-token="pk.eyJ1Ijoia3JvbmljayIsImEiOiJjaWxyZGZwcHQwOHRidWxrbnd0OTB0cDBzIn0.u2R3NY5PnevWH3cHRk6TWQ"
             map-style="mapbox://styles/mapbox/navigation-day-v1"
             :center="[fleet.navigation.lng, fleet.navigation.lat]"
@@ -34,7 +35,9 @@ export default {
         MapboxNavigationControl
     },
     props: {
-        fleet: Object
+        fleet: Object,
+        style: Object,
+        sidebar: Boolean
     },
     data() {
         return {

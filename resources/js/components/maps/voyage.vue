@@ -1,8 +1,8 @@
 <template>
-    <div class="voyage-section p-3">
+    <div class="voyage-section">
         <div class="card voyage-card" v-if="display">
             <div class="card-header justify-content-between">
-                <button @click="toggleText()" class="btn btn-link bg-transparent p-0">
+                <button @click="display=!display" class="btn btn-link bg-transparent p-0">
                     <img :src="'/img/icons/close-fill.png'" alt="" />
                 </button>
                 <h5 class="fw-normal m-0">Voyage</h5>
@@ -55,7 +55,7 @@
                 </div>
             </div>
         </div> 
-        <button @click="toggleText()" class="btn btn-light btn-open">
+        <button @click="display=!display" class="btn btn-light btn-open">
             <img :src="'/img/icons/location-circle.png'" alt="" />
             Show fleet Track
         </button>
@@ -66,11 +66,11 @@
 
     export default{
         props: {
-            fleet: Object
+            fleet: Object,
+            display: Boolean
         },
         data () {
             return {
-                display: false,
                 params: {
                     from: null,
                     to: null,

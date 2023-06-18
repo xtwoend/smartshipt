@@ -10,15 +10,15 @@
             <div class="card-body">
                 <ul class="nav nav-pills nav-justified mb-3" id="pills-tab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link justify-content-center active" id="pills-home-tab" data-bs-toggle="pill"
+                        <button class="nav-link justify-content-left active" id="pills-home-tab" data-bs-toggle="pill"
                             data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
                             aria-selected="true">INFO</button>
                     </li>
-                    <li class="nav-item" role="presentation">
+                    <!-- <li class="nav-item" role="presentation">
                         <button class="nav-link justify-content-center" id="pills-profile-tab" data-bs-toggle="pill"
                             data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
                             aria-selected="false">TRACK</button>
-                    </li>
+                    </li> -->
                 </ul>
                 <div class="tab-content" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
@@ -35,6 +35,12 @@
                         <div class="m12">
                             <div class="st21">Last Update</div>
                             <div class="st22">{{ $filters.dateformat(fleet.last_connection) }} WIB</div>
+                        </div>
+                        <div class="m12">
+                            <div class="st21">Last Coordinates</div>
+                            <div class="st22">
+                                <a :href="`/fleet/${fleet.id}/track`" class="d-flex align-items-center">{{ fleet.navigation.lat.toFixed(4) }} {{ fleet.navigation.lat_dir }},
+                                    {{ fleet.navigation.lng.toFixed(4) }} {{ fleet.navigation.lng_dir }} <img width="11" height="11" src="/img/icons/external-link.png" style="margin-left: 6px;"></a></div>
                         </div>
                         <div class="m12">
                             <div class="st21">From</div>
@@ -127,7 +133,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                    <!-- <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                         <div class="mb-4">
                             <div class="form-group mb-3">
                                 <label for="startDateInput">Start Date</label>
@@ -158,7 +164,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
