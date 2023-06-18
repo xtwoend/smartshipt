@@ -14,7 +14,7 @@
             @mb-mousemove="pointerLocation"
             style="height: calc(100vh - 0px); width: 100%;"
             access-token="pk.eyJ1Ijoia3JvbmljayIsImEiOiJjaWxyZGZwcHQwOHRidWxrbnd0OTB0cDBzIn0.u2R3NY5PnevWH3cHRk6TWQ"
-            map-style="mapbox://styles/mapbox/navigation-day-v1"
+            map-style="mapbox://styles/mapbox/outdoors-v12"
             :center="center"
             :zoom="zoom"
             >
