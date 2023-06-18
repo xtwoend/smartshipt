@@ -56,7 +56,7 @@ class Fleet extends Model
         if(Schema::hasTable($model->getTable())) {
             return Engine::table($this->id)->where('fleet_id', $this->id)->first();
         }
-        return [];
+        return null;
     }
 
     public function cargo_data()
