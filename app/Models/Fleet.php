@@ -54,7 +54,7 @@ class Fleet extends Model
     {
         $model =  Engine::table($this->id);
         if(Schema::hasTable($model->getTable())) {
-            return Engine::table($this->id)->where('fleet_id', $this->id)->first();
+            return $model->where('fleet_id', $this->id)->first();
         }
         return null;
     }
@@ -63,7 +63,7 @@ class Fleet extends Model
     {
         $model = Cargo::table($this->id);
         if(Schema::hasTable($model->getTable())) {
-            return Cargo::table($this->id)->where('fleet_id', $this->id)->first();
+            return $model->where('fleet_id', $this->id)->first();
         }
         return null;
     }
