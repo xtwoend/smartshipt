@@ -6,6 +6,7 @@
             :fleet="fleet"
             :display="showSideInfo"
             @close="showSideInfo=false"
+            @history="buildTrack"
         ></fleet-side-info>
         <!-- <x-records></x-records> -->
         <!-- <x-navigation></x-navigation> -->
@@ -207,6 +208,9 @@ export default {
                 this.fleet = this.fleets[fIndex];
                 this.showSideInfo = true
             }
+        },
+        buildTrack(e) {
+            console.log(e)
         }   
     }
 }

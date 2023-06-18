@@ -55,9 +55,6 @@ export default {
         })
     },
     methods: {
-        tracks(e){
-            console.log(e)
-        },
         setHistory(e){
             this.histories = e
             let that = this

@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Fleet extends Model
 {
@@ -51,12 +52,20 @@ class Fleet extends Model
 
     public function engine()
     {
-        return Engine::table($this->id)->where('fleet_id', $this->id)->first() ?: [];
+        $model =  Engine::table($this->id);
+        if(Schema::has($model->getTable())) {
+            return Engine::table($this->id)->where('fleet_id', $this->id)->first() ?: [];
+        }
+        return [];
     }
 
     public function cargo_data()
     {
-        return Cargo::table($this->id)->where('fleet_id', $this->id)->first() ?: [];
+        $model = Cargo::table($this->id);
+        if(Schema::has($model->getName())) {
+            return Cargo::table($this->id)->where('fleet_id', $this->id)->first() ?: [];
+        }
+        return [];
     }
 
     public function cargo_information()
