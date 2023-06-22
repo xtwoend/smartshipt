@@ -35,7 +35,7 @@ class Engine extends Model
         if(strtoupper($this->fleet?->type) == 'S') {
             $attributes = [
                 'ME Control Air Inlet Press' => ['control_air_inlet', 'Bar', 0, 40],
-                'ME AC Cooling Water Inlet Cooler Press' => ['me_ac_cw_inlet_cooler', 'Bar', 0, 100],
+                'ME AC CW Inlet Cooler Press' => ['me_ac_cw_inlet_cooler', 'Bar', 0, 100],
                 'ME Jacket Cooling Water Press' => ['jcw_inlet', 'Bar', 0, 100],
                 'ME LO Inlet to T/C Press' => ['me_lo_inlet_to_turb', 'Bar', 0, 100],
                 'Scav Air Receiver Press' => ['scav_air_receiver', 'Bar', 0, 100],
