@@ -110,33 +110,34 @@ export default {
             this.fleets = data;
             this.fleets_point.features = [];
             data.forEach((row) => {
-                let icon = 'ship-blue';
-                if(row.fleet_status == 'at_port') {
-                    icon = 'ship-red';
-                }else if(row.fleet_status == 'laden') {
-                    icon = 'ship-green';
-                }
-                this.fleets_point.features.push({
-                    type: "Feature",
-                    geometry: {
-                        type: "Point",
-                        coordinates: [row.navigation.lng, row.navigation.lat],
-                    },
-                    properties: {
-                        scale: 1,
-                        id: row.id,
-                        heading: row.navigation.heading,
-                        name: row.name,
-                        image: row.image,
-                        status: row.fleet_status,
-                        icon: icon,
-                        sog: row.navigation.sog,
-                        cog: row.navigation.cog,
-                        last_update: timeago.format(row.last_connection)
+                if(row.navigation){
+                    let icon = 'ship-blue';
+                    if(row.fleet_status == 'at_port') {
+                        icon = 'ship-red';
+                    }else if(row.fleet_status == 'laden') {
+                        icon = 'ship-green';
                     }
-                })
+                    this.fleets_point.features.push({
+                        type: "Feature",
+                        geometry: {
+                            type: "Point",
+                            coordinates: [row.navigation.lng, row.navigation.lat],
+                        },
+                        properties: {
+                            scale: 1,
+                            id: row.id,
+                            heading: row.navigation.heading,
+                            name: row.name,
+                            image: row.image,
+                            status: row.fleet_status,
+                            icon: icon,
+                            sog: row.navigation.sog,
+                            cog: row.navigation.cog,
+                            last_update: timeago.format(row.last_connection)
+                        }
+                    })
+                }
             })
-            
         },
         async loaded() {
             await this.fetchData()

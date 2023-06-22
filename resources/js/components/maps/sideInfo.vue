@@ -81,10 +81,7 @@
                                         {{ key }} <span>{{ val.value }} {{ val.unit }}</span>
                                     </div>
                                     <div class="st22">
-                                        <div class="progress">
-                                            <div class="progress-bar bg-success" :style="{ width: '0%' }" role="progressbar"
-                                                aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
+                                        <progress-bar :min="val.min" :warning="val.warning" :danger="val.danger" :max="val.max" :value="val.value"></progress-bar>
                                     </div>
                                 </div>
                             </div>
@@ -100,8 +97,11 @@
 </template>
 
 <script>
-
+import Progress from '../widgets/progress.vue';
 export default {
+    components: {
+        'progress-bar': Progress
+    },
     props: {
         fleet: Object,
         display: Boolean
