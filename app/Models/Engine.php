@@ -43,9 +43,9 @@ class Engine extends Model
                 'ME LO Inlet Press' => ['main_lub_oil', 'Bar', 0, 100],
                 'ME FO Inlet Press' => ['me_fo_inlet_engine', 'Bar', 0, 100],
                 'ME RPM Turbocharge' => ['tachometer_turbocharge', 'rpm', 0, 100],
-                'DG No.1 RPM Turbocharge' => ['no1_dg_turbo_charger_speed', 'rpm', 0, 100],
-                'DG No.2 RPM Turbocharge' => ['no2_dg_turbo_charger_speed', 'rpm', 0, 100],
-                'DG No.3 RPM Turbocharge' => ['no3_dg_turbo_charger_speed', 'rpm', 0, 100],
+                'DG No.1 RPM Turbocharge' => ['turbo_charger_speed_no_1', 'rpm', 0, 100],
+                'DG No.2 RPM Turbocharge' => ['turbo_charger_speed_no_2', 'rpm', 0, 100],
+                'DG No.3 RPM Turbocharge' => ['turbo_charger_speed_no_3', 'rpm', 0, 100],
             ];
             
             foreach($attributes as $key => $val) {
