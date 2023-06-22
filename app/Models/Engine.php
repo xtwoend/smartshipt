@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Fleet;
+use App\Models\EngineLimit;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -32,30 +33,16 @@ class Engine extends Model
     public function information() 
     {
         $informations = [];
-        if(strtoupper($this->fleet?->type) == 'S') {
-            $attributes = [
-                'ME Control Air Inlet Press' => ['control_air_inlet', 'Bar', 0, 40],
-                'ME AC CW Inlet Cooler Press' => ['me_ac_cw_inlet_cooler', 'Bar', 0, 100],
-                'ME Jacket Cooling Water Press' => ['jcw_inlet', 'Bar', 0, 100],
-                'ME LO Inlet to T/C Press' => ['me_lo_inlet', 'Bar', 0, 100],
-                'Scav Air Receiver Press' => ['scav_air_receiver', 'Bar', 0, 100],
-                'Start Air Inlet Press' => ['start_air_inlet', 'Bar', 0, 100],
-                'ME LO Inlet Press' => ['main_lub_oil', 'Bar', 0, 100],
-                'ME FO Inlet Press' => ['me_fo_inlet_engine', 'Bar', 0, 100],
-                'ME RPM Turbocharge' => ['tachometer_turbocharge', 'rpm', 0, 100],
-                'DG No.1 RPM Turbocharge' => ['turbo_charger_speed_no_1', 'rpm', 0, 100],
-                'DG No.2 RPM Turbocharge' => ['turbo_charger_speed_no_2', 'rpm', 0, 100],
-                'DG No.3 RPM Turbocharge' => ['turbo_charger_speed_no_3', 'rpm', 0, 100],
+        foreach(EngineLimit::where('fleet_id', $this->fleet_id)->get() as $limit) {
+            $informations[$limit->name] = [
+                'value' => $this->{$limit->sensor_name},
+                'unit' => $limit->unit,
+                'min' => 0,
+                'normal' => $limit->normal_limit,
+                'warning' => $limit->warning_limit,
+                'danger' => $limit->danger_limit,
+                'max' => $limit->max_limit,
             ];
-            
-            foreach($attributes as $key => $val) {
-                $informations[$key] = [
-                    'value' => $this->{$val[0]},
-                    'unit' => $val[1],
-                    'min' => $val[2],
-                    'max' => $val[3],
-                ];
-            }
         }
 
         return (array) $informations;
