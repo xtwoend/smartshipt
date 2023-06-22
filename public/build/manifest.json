@@ -3,6 +3,10 @@
     "file": "assets/ship-c94d8078.png",
     "src": "resources/js/components/maps/ship.png"
   },
+  "resources/js/components/icon/red.png": {
+    "file": "assets/red-f4bfe255.png",
+    "src": "resources/js/components/icon/red.png"
+  },
   "resources/js/components/icon/blue.png": {
     "file": "assets/blue-a47985d3.png",
     "src": "resources/js/components/icon/blue.png"
@@ -10,10 +14,6 @@
   "resources/js/components/icon/green.png": {
     "file": "assets/green-342241e2.png",
     "src": "resources/js/components/icon/green.png"
-  },
-  "resources/js/components/icon/red.png": {
-    "file": "assets/red-f4bfe255.png",
-    "src": "resources/js/components/icon/red.png"
   },
   "public/remixicon/remixicon.eot": {
     "file": "assets/remixicon-e0d505c9.eot",
@@ -44,32 +44,37 @@
     "src": "resources/js/app.css"
   },
   "resources/sass/app.scss": {
-    "file": "assets/app-17d52ff1.css",
+    "file": "assets/app-57a766e3.css",
     "src": "resources/sass/app.scss",
     "isEntry": true
   },
-  "resources/tabler/src/js/tabler.esm.js": {
-    "file": "assets/tabler.esm-4fe66c31.js",
-    "src": "resources/tabler/src/js/tabler.esm.js",
+  "resources/js/libs/slide.js": {
+    "file": "assets/slide-02b0fce0.js",
+    "src": "resources/js/libs/slide.js",
     "isEntry": true,
     "imports": [
-      "_toast-fd51308c.js",
+      "resources/js/libs/constants.js"
+    ]
+  },
+  "resources/js/index.js": {
+    "file": "assets/index-340da666.js",
+    "src": "resources/js/index.js",
+    "isEntry": true,
+    "imports": [
+      "resources/js/libs/slide.js",
+      "resources/js/libs/constants.js",
+      "resources/js/libs/poppers.js",
+      "resources/js/libs/popper.js",
       "_popper-b924b727.js"
+    ],
+    "css": [
+      "assets/app-57a766e3.css"
     ]
   },
   "resources/js/libs/constants.js": {
     "file": "assets/constants-9ec7b010.js",
     "src": "resources/js/libs/constants.js",
     "isEntry": true
-  },
-  "resources/js/libs/popper.js": {
-    "file": "assets/popper-136662a8.js",
-    "src": "resources/js/libs/popper.js",
-    "isEntry": true,
-    "imports": [
-      "resources/js/libs/constants.js",
-      "_popper-b924b727.js"
-    ]
   },
   "resources/js/libs/poppers.js": {
     "file": "assets/poppers-2b93aeb1.js",
@@ -81,27 +86,22 @@
       "_popper-b924b727.js"
     ]
   },
-  "resources/js/libs/slide.js": {
-    "file": "assets/slide-02b0fce0.js",
-    "src": "resources/js/libs/slide.js",
+  "resources/js/libs/popper.js": {
+    "file": "assets/popper-136662a8.js",
+    "src": "resources/js/libs/popper.js",
     "isEntry": true,
     "imports": [
-      "resources/js/libs/constants.js"
+      "resources/js/libs/constants.js",
+      "_popper-b924b727.js"
     ]
   },
-  "resources/js/index.js": {
-    "file": "assets/index-98024d67.js",
-    "src": "resources/js/index.js",
+  "resources/tabler/src/js/tabler.esm.js": {
+    "file": "assets/tabler.esm-4fe66c31.js",
+    "src": "resources/tabler/src/js/tabler.esm.js",
     "isEntry": true,
     "imports": [
-      "resources/js/libs/slide.js",
-      "resources/js/libs/constants.js",
-      "resources/js/libs/poppers.js",
-      "resources/js/libs/popper.js",
+      "_toast-fd51308c.js",
       "_popper-b924b727.js"
-    ],
-    "css": [
-      "assets/app-17d52ff1.css"
     ]
   },
   "_popper-b924b727.js": {
