@@ -42,8 +42,12 @@
                                 <a :href="`/fleet/${fleet.id}/track`" class="d-flex align-items-center">{{ fleet.navigation.lat.toFixed(4) }} {{ fleet.navigation.lat_dir }},
                                     {{ fleet.navigation.lng.toFixed(4) }} {{ fleet.navigation.lng_dir }} <img width="11" height="11" src="/img/icons/external-link.png" style="margin-left: 6px;"></a></div>
                         </div>
+                        <div class="m12" v-if="fleet.fleet_status == 'at_port'">
+                            <div class="st21">At Port</div>
+                            <div class="st22">{{ fleet.last_port  }}</div>
+                        </div>
                         <div class="m12">
-                            <div class="st21">From</div>
+                            <div class="st21">Origin</div>
                             <div class="st22"></div>
                         </div>
                         <div class="m12">

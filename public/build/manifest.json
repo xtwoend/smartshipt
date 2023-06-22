@@ -1,19 +1,19 @@
 {
-  "resources/js/components/icon/blue.png": {
-    "file": "assets/blue-a47985d3.png",
-    "src": "resources/js/components/icon/blue.png"
+  "resources/js/components/maps/ship.png": {
+    "file": "assets/ship-c94d8078.png",
+    "src": "resources/js/components/maps/ship.png"
   },
   "resources/js/components/icon/green.png": {
     "file": "assets/green-342241e2.png",
     "src": "resources/js/components/icon/green.png"
   },
+  "resources/js/components/icon/blue.png": {
+    "file": "assets/blue-a47985d3.png",
+    "src": "resources/js/components/icon/blue.png"
+  },
   "resources/js/components/icon/red.png": {
     "file": "assets/red-f4bfe255.png",
     "src": "resources/js/components/icon/red.png"
-  },
-  "resources/js/components/maps/ship.png": {
-    "file": "assets/ship-c94d8078.png",
-    "src": "resources/js/components/maps/ship.png"
   },
   "public/img/icons/date-light.png": {
     "file": "assets/date-light-13b22e71.png",
@@ -48,11 +48,18 @@
     "src": "resources/sass/app.scss",
     "isEntry": true
   },
-  "_toast-fd51308c.js": {
-    "file": "assets/toast-fd51308c.js",
+  "resources/js/libs/slide.js": {
+    "file": "assets/slide-02b0fce0.js",
+    "src": "resources/js/libs/slide.js",
+    "isEntry": true,
     "imports": [
-      "_popper-b924b727.js"
+      "resources/js/libs/constants.js"
     ]
+  },
+  "resources/js/libs/constants.js": {
+    "file": "assets/constants-9ec7b010.js",
+    "src": "resources/js/libs/constants.js",
+    "isEntry": true
   },
   "resources/tabler/src/js/tabler.esm.js": {
     "file": "assets/tabler.esm-4fe66c31.js",
@@ -78,19 +85,6 @@
       "assets/app-17d52ff1.css"
     ]
   },
-  "resources/js/libs/constants.js": {
-    "file": "assets/constants-9ec7b010.js",
-    "src": "resources/js/libs/constants.js",
-    "isEntry": true
-  },
-  "resources/js/libs/slide.js": {
-    "file": "assets/slide-02b0fce0.js",
-    "src": "resources/js/libs/slide.js",
-    "isEntry": true,
-    "imports": [
-      "resources/js/libs/constants.js"
-    ]
-  },
   "resources/js/libs/poppers.js": {
     "file": "assets/poppers-2b93aeb1.js",
     "src": "resources/js/libs/poppers.js",
@@ -113,8 +107,14 @@
   "_popper-b924b727.js": {
     "file": "assets/popper-b924b727.js"
   },
+  "_toast-fd51308c.js": {
+    "file": "assets/toast-fd51308c.js",
+    "imports": [
+      "_popper-b924b727.js"
+    ]
+  },
   "resources/js/app.js": {
-    "file": "assets/app-7c0fcb6e.js",
+    "file": "assets/app-95221c1a.js",
     "src": "resources/js/app.js",
     "isEntry": true,
     "imports": [
