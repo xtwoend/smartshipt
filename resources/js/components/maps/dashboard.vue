@@ -42,9 +42,9 @@ import navigation from './navigation.vue';
 import camera from './camera.vue';
 import parameter from './parameter.vue';
 import * as timeago from 'timeago.js';
-import ballastIcon from '../icon/ballast.png';
-import ladenIcon from '../icon/laden.png';
-import portIcon from '../icon/port.png';
+import blueShip from '../icon/blue.png';
+import greenShip from '../icon/green.png';
+import redShip from '../icon/red.png';
 
 export default {
     components: {
@@ -60,9 +60,9 @@ export default {
     data() {
         return {
             icons: {
-                ballast: ballastIcon,
-                laden: ladenIcon,
-                port: portIcon,
+                ballast: blueShip,
+                laden: greenShip,
+                at_port: redShip,
             },
             map: null,
             current: [],
@@ -72,17 +72,31 @@ export default {
             center: [118, 0.0],
             popup: null,
             fleet: null,
-            showSideInfo: false
+            showSideInfo: false,
+            fleets_point: {
+                type: 'FeatureCollection',
+                features: []
+            }
         }
     },
     mounted(){
         this.timer = setInterval(() => {
-            this.loaded()
-        }, (15 * 1000))
+            this.refreshData()
+        }, (5 * 1000))
 
         this.map.loadImage(this.icons['ballast'], (err, img) => {
             if(err) throw err
-            this.map.addImage(`ship`, img);
+            this.map.addImage('ship-blue', img);
+        })
+
+        this.map.loadImage(this.icons['at_port'], (err, img) => {
+            if(err) throw err
+            this.map.addImage('ship-red', img);
+        })
+
+        this.map.loadImage(this.icons['laden'], (err, img) => {
+            if(err) throw err
+            this.map.addImage('ship-green', img);
         })
 
         this.popup = new mapboxgl.Popup({
@@ -91,73 +105,66 @@ export default {
         });
     },
     methods: {
-        async loaded() {
+        async fetchData() {
             let {data} = await axios.get('/api/fleets')
             this.fleets = data;
+            this.fleets_point.features = [];
             data.forEach((row) => {
-                this.positionShip(row)
-            })
-        },
-        
-        findFleet(row) {
-            if(! row.navigation) return;
-            let fleetId = row.id
-            this.popup.remove();
-            const text = `<a class="no-style" href="/fleet/${fleetId}"><b>${row.name} [ID]</b> at ${row.navigation.sog} <b>kn</b> / ${row.navigation.cog}&deg;<br>last update: <b>${timeago.format(row.navigation.updated_at )}</b></a>`;
-            this.popup.setLngLat([row.navigation.lng, row.navigation.lat]).setHTML(text).addTo(this.map);
-            this.center = [row.navigation.lng, row.navigation.lat]
-            this.zoom = 5
-        },
-
-        pointerLocation (e) {
-            let position = e.lngLat.wrap();
-            this.$refs.pointerInfo.innerHTML = `<span> ${position.lat.toFixed(5)}</span><span> ${position.lng.toFixed(5)}</span>` 
-        },
-
-        positionShip(row) {
-
-            // skip if nav null
-            if(! row.navigation) return;
-            let that = this
-
-            // remove layers
-            let mapLayer = this.map.getLayer(`ship-positions-${row.id}`);
-            if(typeof mapLayer !== 'undefined') {
-                this.map.removeLayer(`ship-positions-${row.id}`).removeSource(`ship-positions-${row.id}`);
-            }
-            
-            this.map.addSource(`ship-positions-${row.id}`, {
-                "type": "geojson",
-                "data": {
-                    "type": "FeatureCollection",
-                    "features": [
-                        {
-                            "type": "Feature",
-                            "geometry": {
-                                "type": "Point",
-                                "coordinates": [row.navigation.lng, row.navigation.lat],
-                            },
-                            "properties": {
-                                "scale": 1,
-                                "id": row.id,
-                                "heading": row.navigation.heading,
-                                "name": row.name,
-                                "image": row.image,
-                                "sog": row.navigation.sog,
-                                "cog": row.navigation.cog,
-                                "last_update": timeago.format(row.navigation.updated_at )
-                            }
-                        }
-                    ]
+                let icon = 'ship-blue';
+                if(row.fleet_status == 'at_port') {
+                    icon = 'ship-red';
+                }else if(row.fleet_status == 'laden') {
+                    icon = 'ship-green';
                 }
-            });
+                this.fleets_point.features.push({
+                    type: "Feature",
+                    geometry: {
+                        type: "Point",
+                        coordinates: [row.navigation.lng, row.navigation.lat],
+                    },
+                    properties: {
+                        scale: 1,
+                        id: row.id,
+                        heading: row.navigation.heading,
+                        name: row.name,
+                        image: row.image,
+                        status: row.fleet_status,
+                        icon: icon,
+                        sog: row.navigation.sog,
+                        cog: row.navigation.cog,
+                        last_update: timeago.format(row.last_connection)
+                    }
+                })
+            })
+            
+        },
+        async loaded() {
+            await this.fetchData()
+            this.buildLayer()
+        },
 
+        async refreshData() {
+            await this.fetchData()
+            let data = this.map.getSource('ship-position');
+            if(data) {
+                data.setData(this.fleets_point)
+            }
+        },
+
+        buildLayer() {
+            let that = this;
+            // point
+            this.map.addSource('ship-position', {
+                type: 'geojson',
+                data: this.fleets_point
+            })
+            
             this.map.addLayer({
-                "id": `ship-positions-${row.id}`,
-                "type": "symbol",
-                "source": `ship-positions-${row.id}`,
-                "layout": {
-                    "icon-image": `ship`,
+                id: 'ship-position',
+                type: 'symbol',
+                source: 'ship-position',
+                layout: {
+                    "icon-image": ['get', 'icon'],
                     "icon-allow-overlap": true,
                     "icon-ignore-placement": true,
                     "icon-size": 0.12,
@@ -179,13 +186,13 @@ export default {
                 closeOnClick: false
             });
 
-            this.map.on('click', `ship-positions-${row.id}`, (e) => {
+            this.map.on('click', 'ship-position', (e) => {
                 // open side information
                 let fleetId = e.features[0].properties.id;
                 that.showInfo(fleetId)
             })
             
-            this.map.on('mouseenter', `ship-positions-${row.id}`, (e) => {
+            this.map.on('mouseenter', 'ship-position', (e) => {
                 that.map.getCanvas().style.cursor = 'pointer';
                 const coordinates = e.features[0].geometry.coordinates.slice();
                 const text = `<b>${e.features[0].properties.name} [ID]</b> at ${e.features[0].properties.sog} <b>kn</b> / ${e.features[0].properties.cog}&deg;<br>last update: <b>${e.features[0].properties.last_update}</b>`;
@@ -195,11 +202,27 @@ export default {
                 popup.setLngLat(coordinates).setHTML(text).addTo(that.map);
             });
             
-            this.map.on('mouseleave', `ship-positions-${row.id}`, () => {
+            this.map.on('mouseleave', 'ship-position', () => {
                 that.map.getCanvas().style.cursor = '';
                 popup.remove();
             });
         },
+        
+        findFleet(row) {
+            if(! row.navigation) return;
+            let fleetId = row.id
+            this.popup.remove();
+            const text = `<a class="no-style" href="/fleet/${fleetId}"><b>${row.name} [ID]</b> at ${row.navigation.sog} <b>kn</b> / ${row.navigation.cog}&deg;<br>last update: <b>${timeago.format(row.navigation.updated_at )}</b></a>`;
+            this.popup.setLngLat([row.navigation.lng, row.navigation.lat]).setHTML(text).addTo(this.map);
+            this.center = [row.navigation.lng, row.navigation.lat]
+            this.zoom = 5
+        },
+
+        pointerLocation (e) {
+            let position = e.lngLat.wrap();
+            this.$refs.pointerInfo.innerHTML = `<span> ${position.lat.toFixed(5)}</span><span> ${position.lng.toFixed(5)}</span>` 
+        },
+
         showInfo(fleetId) {
             let fIndex = this.fleets.findIndex(function(row) {
                 return row.id === fleetId;
