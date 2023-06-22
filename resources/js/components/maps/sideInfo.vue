@@ -68,86 +68,21 @@
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link justify-content-center" id="pills-pump-tab" data-bs-toggle="pill"
                                     data-bs-target="#pills-pump" type="button" role="tab" aria-controls="pills-pump"
-                                    aria-selected="false">Pump</button>
+                                    aria-selected="false">Pump Status</button>
                             </li>
                         </ul>
                         <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade show active" id="pills-main-engine" role="tabpanel"
                                 aria-labelledby="pills-main-engine-tab">
                                 <div class="tt01">Main Engine Latest Status</div>
-                                <div class="m13">
+
+                                <div class="m13" v-for="(val, key) in fleet.engine_info" :key="key">
                                     <div class="st21">
-                                        Fuel Oil Temp <span>189&deg;</span>
+                                        {{ key }} <span>{{ val.value }} {{ val.unit }}</span>
                                     </div>
                                     <div class="st22">
                                         <div class="progress">
-                                            <div class="progress-bar" :style="{ width: '89%' }" role="progressbar"
-                                                aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="m13">
-                                    <div class="st21">
-                                        Exhaust Gas Turbo Charge inlet <span>1139 mt/12^2</span>
-                                    </div>
-                                    <div class="st22">
-                                        <div class="progress">
-                                            <div class="progress-bar" :style="{ width: '50%' }" role="progressbar"
-                                                aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="m13">
-                                    <div class="st21">
-                                        Jacket Cooling Temp <span>130&deg;</span>
-                                    </div>
-                                    <div class="st22">
-                                        <div class="progress">
-                                            <div class="progress-bar" :style="{ width: '12%' }" role="progressbar"
-                                                aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="m13">
-                                    <div class="st21">
-                                        Lube Oil temp <span>112&deg;</span>
-                                    </div>
-                                    <div class="st22">
-                                        <div class="progress">
-                                            <div class="progress-bar" :style="{ width: '24%' }" role="progressbar"
-                                                aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="m13">
-                                    <div class="st21">
-                                        Lube Pressure <span>74 bar</span>
-                                    </div>
-                                    <div class="st22">
-                                        <div class="progress">
-                                            <div class="progress-bar" :style="{ width: '70%' }" role="progressbar"
-                                                aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="m13">
-                                    <div class="st21">
-                                        Scaving Air Temp<span>130&deg;</span>
-                                    </div>
-                                    <div class="st22">
-                                        <div class="progress">
-                                            <div class="progress-bar" :style="{ width: '50%' }" role="progressbar"
-                                                aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="m13">
-                                    <div class="st21">
-                                        Scaving Air Pressure<span>74 bar</span>
-                                    </div>
-                                    <div class="st22">
-                                        <div class="progress">
-                                            <div class="progress-bar" :style="{ width: '50%' }" role="progressbar"
+                                            <div class="progress-bar bg-success" :style="{ width: '50%' }" role="progressbar"
                                                 aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                     </div>

@@ -34,22 +34,27 @@ class Engine extends Model
         $informations = [];
         if(strtoupper($this->fleet?->type) == 'S') {
             $attributes = [
-                'ME Control Air Inlet Press (Bar)' => 'control_air_inlet',
-                'ME AC Cooling Water Inlet Cooler Press' => 'me_ac_cw_inlet_cooler',
-                'ME Jacket Cooling Water Press' => 'jcw_inlet',
-                'ME LO Inlet to T/C Press' => 'me_lo_inlet_to_turb',
-                'Scav Air Receiver Oress' => 'scav_air_receiver',
-                'Start Air Inlet Press' => 'start_air_inlet',
-                'ME LO Inlet Press' => 'main_lub_oil',
-                'ME FO Inlet Press' => 'me_fo_inlet_engine',
-                'ME RPM Turbocharge' => 'tachometer_turbocharge',
-                'DG No.1 RPM Turbocharge' => 'no1_dg_turbo_charger_speed',
-                'DG No.2 RPM Turbocharge' => 'no2_dg_turbo_charger_speed',
-                'DG No.3 RPM Turbocharge' => 'no3_dg_turbo_charger_speed'
+                'ME Control Air Inlet Press' => ['control_air_inlet', 'Bar', 0, 40],
+                'ME AC Cooling Water Inlet Cooler Press' => ['me_ac_cw_inlet_cooler', 'Bar', 0, 100],
+                'ME Jacket Cooling Water Press' => ['jcw_inlet', 'Bar', 0, 100],
+                'ME LO Inlet to T/C Press' => ['me_lo_inlet_to_turb', 'Bar', 0, 100],
+                'Scav Air Receiver Press' => ['scav_air_receiver', 'Bar', 0, 100],
+                'Start Air Inlet Press' => ['start_air_inlet', 'Bar', 0, 100],
+                'ME LO Inlet Press' => ['main_lub_oil', 'Bar', 0, 100],
+                'ME FO Inlet Press' => ['me_fo_inlet_engine', 'Bar', 0, 100],
+                'ME RPM Turbocharge' => ['tachometer_turbocharge', 'rpm', 0, 100],
+                'DG No.1 RPM Turbocharge' => ['no1_dg_turbo_charger_speed', 'rpm', 0, 100],
+                'DG No.2 RPM Turbocharge' => ['no2_dg_turbo_charger_speed', 'rpm', 0, 100],
+                'DG No.3 RPM Turbocharge' => ['no3_dg_turbo_charger_speed', 'rpm', 0, 100],
             ];
             
             foreach($attributes as $key => $val) {
-                $informations[$key] = $this->{$val};
+                $informations[$key] = [
+                    'value' => $this->{$val[0]},
+                    'unit' => $val[1],
+                    'min' => $val[2],
+                    'max' => $val[3],
+                ];
             }
         }
 
