@@ -82,7 +82,7 @@
                                     </div>
                                     <div class="st22">
                                         <div class="progress">
-                                            <div class="progress-bar bg-success" :style="{ width: '50%' }" role="progressbar"
+                                            <div class="progress-bar bg-success" :style="{ width: '0%' }" role="progressbar"
                                                 aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                     </div>
