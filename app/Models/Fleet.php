@@ -68,6 +68,15 @@ class Fleet extends Model
         return null;
     }
 
+    public function cargo_pump()
+    {
+        $model = CargoPump::table($this->id);
+        if(Schema::hasTable($model->getTable())) {
+            return $model->where('fleet_id', $this->id)->first();
+        }
+        return null;
+    }
+
     public function cargo_information()
     {
         return $this->hasOne(CargoInformation::class, 'fleet_id');
