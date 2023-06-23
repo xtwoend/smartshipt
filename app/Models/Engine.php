@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use App\Models\Fleet;
 use App\Models\EngineLimit;
 use Illuminate\Database\Eloquent\Model;
@@ -34,9 +35,11 @@ class Engine extends Model
     {
         $informations = [];
         foreach(EngineLimit::where('fleet_id', $this->fleet_id)->orderBy('id')->get() as $limit) {
+            $diff = Carbon::parse($this->updated_at)->diffInMinutes(Carbon::now());
+            $value = $diff < 15 ?  number_format($this->{$limit->sensor_name}, 3, '.') : 0;
             $informations[$limit->id] = [
                 'title' => $limit->name,
-                'value' => $this->{$limit->sensor_name},
+                'value' => $value,
                 'unit' => $limit->unit,
                 'min' => 0,
                 'normal' => $limit->normal_limit,
