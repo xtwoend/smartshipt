@@ -116,31 +116,13 @@ export default {
     },
     data() {
         return {
-            params: {
-                from: null,
-                to: null,
-                interval: 900
-            },
-            histories: []
+            // 
         }
     },
     methods: {
-        async fetchData() {
-            this.histories = []
-            let res = await axios.get(`/api/fleet/${this.fleet.id}/nav/histories`, { params: this.params }).then(res => res.data)
-            res.forEach(row => {
-                if (row.lat == 0 && row.lng == 0) return;
-                this.histories.push(row)
-            })
-
-            this.$emit('history', this.histories)
-        },
         toggleText() {
             this.display = !this.display;
         },
-        selected(e) {
-            this.$emit('selected', e)
-        }
     },
 }
 </script>
