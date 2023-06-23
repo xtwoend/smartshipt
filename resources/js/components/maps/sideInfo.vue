@@ -78,7 +78,7 @@
 
                                 <div class="m13" v-for="(val, key) in fleet.engine_info" :key="key">
                                     <div class="st21">
-                                        {{ key }} <span>{{ val.value }} {{ val.unit }}</span>
+                                        {{ val.title }} <span>{{ val.value }} <span v-html="val.unit"></span></span>
                                     </div>
                                     <div class="st22">
                                         <progress-bar :min="val.min" :warning="val.warning" :danger="val.danger" :max="val.max" :value="val.value"></progress-bar>
@@ -87,6 +87,14 @@
                             </div>
                             <div class="tab-pane" id="pills-pump" role="tabpanel" aria-labelledby="pills-pump-tab">
                                 <div class="tt01">Cargo/Ballast/Stripping/Vacuum Pump</div>
+                                <div class="m13" v-for="(val, key) in fleet.cargo_pump_info" :key="key">
+                                    <div class="st21">
+                                        {{ val.title }} <span>{{ val.value }} <span v-html="val.unit"></span></span>
+                                    </div>
+                                    <div class="st22">
+                                        <progress-bar :min="val.min" :warning="val.warning" :danger="val.danger" :max="val.max" :value="val.value"></progress-bar>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -164,7 +172,7 @@ export default {
 
 .voyage-card {
     background: #fff;
-    width: 320px;
+    width: 350px;
     height: 100% !important;
     z-index: 3;
     border: 0 !important;

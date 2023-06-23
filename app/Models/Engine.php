@@ -33,8 +33,9 @@ class Engine extends Model
     public function information() 
     {
         $informations = [];
-        foreach(EngineLimit::where('fleet_id', $this->fleet_id)->get() as $limit) {
-            $informations[$limit->name] = [
+        foreach(EngineLimit::where('fleet_id', $this->fleet_id)->orderBy('id')->get() as $limit) {
+            $informations[$limit->id] = [
+                'title' => $limit->name,
                 'value' => $this->{$limit->sensor_name},
                 'unit' => $limit->unit,
                 'min' => 0,

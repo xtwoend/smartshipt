@@ -28,9 +28,10 @@ class CargoPump extends Model
     public function information() 
     {
         $informations = [];
-        foreach(CargoPumpLimit::where('fleet_id', $this->fleet_id)->get() as $limit) {
-            $informations[$limit->name] = [
-                'value' => $this->{$limit->sensor_name},
+        foreach(CargoPumpLimit::where('fleet_id', $this->fleet_id)->orderBy('id')->get() as $limit) {
+            $informations[$limit->id] = [
+                'title' => $limit->name,
+                'value' => number_format($this->{$limit->sensor_name}, 3, '.'),
                 'unit' => $limit->unit,
                 'min' => 0,
                 'normal' => $limit->normal_limit,
