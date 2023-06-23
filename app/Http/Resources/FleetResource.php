@@ -19,6 +19,8 @@ class FleetResource extends JsonResource
             'engine' => $this->engine(),
             'engine_info' => $this->engine()?->information(),
             'cargo_data' => $this->cargo_data(),
+            'cargo_pump' => $this->cargo_pump(),
+            'cargo_pump_info' => $this->cargo_pump_info()?->information(),
         ]);
     }
 }
