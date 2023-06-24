@@ -40,11 +40,10 @@ class Engine extends Model
                 'title' => $limit->name,
                 'value' => $value,
                 'unit' => $limit->unit,
-                'min' => 0,
-                'normal' => $limit->normal_limit,
-                'warning' => $limit->warning_limit,
-                'danger' => $limit->danger_limit,
-                'max' => $limit->max_limit,
+                'min' => $limit->min,
+                'normal' => $limit->normal,
+                'danger' => $limit->danger,
+                'max' => $limit->max,
             ];
         }
 

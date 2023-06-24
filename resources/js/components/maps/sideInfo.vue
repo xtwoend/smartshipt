@@ -92,7 +92,7 @@
                                         {{ val.title }} <span v-if="val.value > 0">{{ val.value }} <span v-html="val.unit"></span></span> <span v-if="val.value == 0">OFF</span>
                                     </div>
                                     <div class="st22">
-                                        <progress-bar :min="val.min" :warning="val.warning" :danger="val.danger" :max="val.max" :value="val.value"></progress-bar>
+                                        <progress-bar :min="val.min" :normal="val.normal" :danger="val.danger" :max="val.max" :value="val.value"></progress-bar>
                                     </div>
                                 </div>
                             </div>

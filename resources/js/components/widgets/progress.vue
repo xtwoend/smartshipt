@@ -11,7 +11,7 @@ export default {
         min: Number,
         max: Number,
         value: Number,
-        warning: Number,
+        normal: Number,
         danger: Number
     },
     data() {
@@ -27,7 +27,7 @@ export default {
         color() {
             let color = 'bg-success';
             let percentage = (this.value / this.max) * 100;
-            if(percentage > this.warning && percentage < this.danger) {
+            if(percentage > this.normal && percentage < this.danger) {
                 color = 'bg-warning'
             }else if(percentage > this.danger) {
                 color = 'bg-danger'

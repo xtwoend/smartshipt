@@ -1,12 +1,4 @@
 {
-  "resources/js/components/maps/ship.png": {
-    "file": "assets/ship-c94d8078.png",
-    "src": "resources/js/components/maps/ship.png"
-  },
-  "resources/js/components/icon/green.png": {
-    "file": "assets/green-342241e2.png",
-    "src": "resources/js/components/icon/green.png"
-  },
   "resources/js/components/icon/blue.png": {
     "file": "assets/blue-a47985d3.png",
     "src": "resources/js/components/icon/blue.png"
@@ -14,6 +6,14 @@
   "resources/js/components/icon/red.png": {
     "file": "assets/red-f4bfe255.png",
     "src": "resources/js/components/icon/red.png"
+  },
+  "resources/js/components/icon/green.png": {
+    "file": "assets/green-342241e2.png",
+    "src": "resources/js/components/icon/green.png"
+  },
+  "resources/js/components/maps/ship.png": {
+    "file": "assets/ship-c94d8078.png",
+    "src": "resources/js/components/maps/ship.png"
   },
   "public/remixicon/remixicon.eot": {
     "file": "assets/remixicon-e0d505c9.eot",
@@ -57,16 +57,6 @@
       "_popper-b924b727.js"
     ]
   },
-  "resources/js/libs/poppers.js": {
-    "file": "assets/poppers-2b93aeb1.js",
-    "src": "resources/js/libs/poppers.js",
-    "isEntry": true,
-    "imports": [
-      "resources/js/libs/constants.js",
-      "resources/js/libs/popper.js",
-      "_popper-b924b727.js"
-    ]
-  },
   "resources/js/index.js": {
     "file": "assets/index-340da666.js",
     "src": "resources/js/index.js",
@@ -80,14 +70,6 @@
     ],
     "css": [
       "assets/app-57a766e3.css"
-    ]
-  },
-  "resources/js/libs/slide.js": {
-    "file": "assets/slide-02b0fce0.js",
-    "src": "resources/js/libs/slide.js",
-    "isEntry": true,
-    "imports": [
-      "resources/js/libs/constants.js"
     ]
   },
   "resources/js/libs/constants.js": {
@@ -104,6 +86,24 @@
       "_popper-b924b727.js"
     ]
   },
+  "resources/js/libs/poppers.js": {
+    "file": "assets/poppers-2b93aeb1.js",
+    "src": "resources/js/libs/poppers.js",
+    "isEntry": true,
+    "imports": [
+      "resources/js/libs/constants.js",
+      "resources/js/libs/popper.js",
+      "_popper-b924b727.js"
+    ]
+  },
+  "resources/js/libs/slide.js": {
+    "file": "assets/slide-02b0fce0.js",
+    "src": "resources/js/libs/slide.js",
+    "isEntry": true,
+    "imports": [
+      "resources/js/libs/constants.js"
+    ]
+  },
   "_popper-b924b727.js": {
     "file": "assets/popper-b924b727.js"
   },
@@ -114,7 +114,7 @@
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-155755ee.js",
+    "file": "assets/app-caf6d3f4.js",
     "src": "resources/js/app.js",
     "isEntry": true,
     "imports": [
