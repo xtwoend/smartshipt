@@ -1,27 +1,27 @@
 {
-  "resources/js/components/maps/ship.png": {
-    "file": "assets/ship-c94d8078.png",
-    "src": "resources/js/components/maps/ship.png"
+  "resources/js/components/icon/blue.png": {
+    "file": "assets/blue-a47985d3.png",
+    "src": "resources/js/components/icon/blue.png"
   },
   "resources/js/components/icon/green.png": {
     "file": "assets/green-342241e2.png",
     "src": "resources/js/components/icon/green.png"
   },
-  "resources/js/components/icon/blue.png": {
-    "file": "assets/blue-a47985d3.png",
-    "src": "resources/js/components/icon/blue.png"
-  },
   "resources/js/components/icon/red.png": {
     "file": "assets/red-f4bfe255.png",
     "src": "resources/js/components/icon/red.png"
   },
-  "public/img/icons/date-light.png": {
-    "file": "assets/date-light-13b22e71.png",
-    "src": "public/img/icons/date-light.png"
+  "resources/js/components/maps/ship.png": {
+    "file": "assets/ship-c94d8078.png",
+    "src": "resources/js/components/maps/ship.png"
   },
   "public/remixicon/remixicon.eot": {
     "file": "assets/remixicon-e0d505c9.eot",
     "src": "public/remixicon/remixicon.eot"
+  },
+  "public/img/icons/date-light.png": {
+    "file": "assets/date-light-13b22e71.png",
+    "src": "public/img/icons/date-light.png"
   },
   "public/remixicon/remixicon.woff2": {
     "file": "assets/remixicon-50d59e6d.woff2",
@@ -57,14 +57,6 @@
       "_popper-b924b727.js"
     ]
   },
-  "resources/js/libs/slide.js": {
-    "file": "assets/slide-02b0fce0.js",
-    "src": "resources/js/libs/slide.js",
-    "isEntry": true,
-    "imports": [
-      "resources/js/libs/constants.js"
-    ]
-  },
   "resources/js/index.js": {
     "file": "assets/index-340da666.js",
     "src": "resources/js/index.js",
@@ -79,6 +71,22 @@
     "css": [
       "assets/app-57a766e3.css"
     ]
+  },
+  "_popper-b924b727.js": {
+    "file": "assets/popper-b924b727.js"
+  },
+  "resources/js/libs/slide.js": {
+    "file": "assets/slide-02b0fce0.js",
+    "src": "resources/js/libs/slide.js",
+    "isEntry": true,
+    "imports": [
+      "resources/js/libs/constants.js"
+    ]
+  },
+  "resources/js/libs/constants.js": {
+    "file": "assets/constants-9ec7b010.js",
+    "src": "resources/js/libs/constants.js",
+    "isEntry": true
   },
   "resources/js/libs/poppers.js": {
     "file": "assets/poppers-2b93aeb1.js",
@@ -99,14 +107,6 @@
       "_popper-b924b727.js"
     ]
   },
-  "resources/js/libs/constants.js": {
-    "file": "assets/constants-9ec7b010.js",
-    "src": "resources/js/libs/constants.js",
-    "isEntry": true
-  },
-  "_popper-b924b727.js": {
-    "file": "assets/popper-b924b727.js"
-  },
   "_toast-fd51308c.js": {
     "file": "assets/toast-fd51308c.js",
     "imports": [
@@ -114,7 +114,7 @@
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-34e164c6.js",
+    "file": "assets/app-155755ee.js",
     "src": "resources/js/app.js",
     "isEntry": true,
     "imports": [

@@ -33,8 +33,8 @@
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { MapboxMap, MapboxNavigationControl } from '@studiometa/vue-mapbox-gl';
 import mapboxgl from 'mapbox-gl';
+window.mapboxgl = mapboxgl
 
-// import coordinates from './widuri.json';
 import search from './search.vue';
 import notification from './notification.vue';
 import records from './records.vue';
@@ -45,6 +45,8 @@ import * as timeago from 'timeago.js';
 import blueShip from '../icon/blue.png';
 import greenShip from '../icon/green.png';
 import redShip from '../icon/red.png';
+
+import  * as interpolate from 'interpolateheatmaplayer';
 
 export default {
     components: {
@@ -59,6 +61,7 @@ export default {
     },
     data() {
         return {
+            weatherKey: 'dfc256782db426c6a8d3b8daaefa5b33',
             icons: {
                 ballast: blueShip,
                 laden: greenShip,
@@ -141,6 +144,7 @@ export default {
         },
         async loaded() {
             await this.fetchData()
+            // await this.buildWeathers()
             this.buildLayer()
         },
 
@@ -207,6 +211,44 @@ export default {
                 that.map.getCanvas().style.cursor = '';
                 popup.remove();
             });
+        },
+
+        async buildWeathers() {
+            const startingLatitude = -40;
+            const startingLongitude = -140;
+            const endingLatitude = 40;
+            const endingLongitude = 140;
+            const n = 10;
+            const points = [];
+            for (let i=0; i < n; i++) {
+                for (let j=0; j < n; j++) {
+                    points.push({
+                        lat: startingLatitude + i * (endingLatitude - startingLatitude)/n,
+                        lng: startingLongitude + j * (endingLongitude - startingLongitude)/n,
+                        val: 0
+                    })
+                }
+            }
+            // Create the URLs
+            const baseUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&lat=";
+            const urls = points.map(point => baseUrl + point.lat + "&lon=" + point.lng + "&appid=" + this.weatherKey);
+            // Fetch the weather data
+            const weathers = await Promise.all(urls.map(async url => {
+                const response = await fetch(url);
+                return response.text();
+            }));
+            // Set the temperature
+            points.forEach((point, index) => {
+                point.val = JSON.parse(weathers[index]).main.temp;
+            })
+
+            let layer = interpolate.create({
+                points: points,
+                layerId: 'temp',
+                opacity: 0.2
+            });
+            
+            this.map.addLayer(layer);
         },
         
         findFleet(row) {
