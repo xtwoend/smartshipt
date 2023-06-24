@@ -23,9 +23,8 @@ return new class extends Migration
             $table->string('unit')->nullable();
             $table->float('min', 15, 5)->default(0);
             $table->float('max', 15, 5)->default(0);
-            $table->float('warning', 15, 5)->default(0);
+            $table->float('normal', 15, 5)->default(0);
             $table->float('danger', 15, 5)->default(0);
-            $table->timestamps();
             $table->timestamps();
         });
     }
