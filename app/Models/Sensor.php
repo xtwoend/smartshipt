@@ -11,7 +11,8 @@ class Sensor extends Model
 
     protected $guarded = ['id'];
     
-    public function fleet() {
+    public function fleet() 
+    {
         return $this->belongsTo(Fleet::class, 'fleet_id');
     }
 }

@@ -29,7 +29,7 @@ class CargoPump extends Model
     public function information() 
     {
         $informations = [];
-        foreach(CargoPumpLimit::where('fleet_id', $this->fleet_id)->orderBy('id')->get() as $limit) {
+        foreach(Sensor::where('fleet_id', $this->fleet_id)->whereGroup('cargo_pump')->orderBy('id')->get() as $limit) {
             $diff = Carbon::parse($this->updated_at)->diffInMinutes(Carbon::now());
             $value = $diff < 10 ?  $this->{$limit->sensor_name} : 0;
             $informations[$limit->id] = [

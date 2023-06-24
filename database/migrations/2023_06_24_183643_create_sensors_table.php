@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('sensors', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('fleet_id');
-            $table->string('fleet_type')->nullable();
             $table->string('group');
             $table->string('name');
             $table->string('sensor_name');
