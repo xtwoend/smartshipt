@@ -105,6 +105,10 @@ app.config.globalProperties.$filters = {
     textFormat(value) {
         let text = value.toLowerCase();
         return text.capitalize()
+    },
+    number(value) {
+        let num = Number.parseFloat(value).toFixed(2);
+        return Number.parseFloat(num).toLocaleString();
     }
 }
 

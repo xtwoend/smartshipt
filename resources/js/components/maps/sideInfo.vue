@@ -78,7 +78,7 @@
 
                                 <div class="m13" v-for="(val, key) in fleet.engine_info" :key="key">
                                     <div class="st21">
-                                        {{ val.title }} <span v-if="val.value > 0">{{ val.value }} <span v-html="val.unit"></span></span> <span v-if="val.value == 0">OFF</span>
+                                        {{ val.title }} <span v-if="val.value > 0">{{ $filters.number(val.value) }} <span v-html="val.unit"></span></span> <span v-if="val.value == 0">OFF</span>
                                     </div>
                                     <div class="st22">
                                         <progress-bar :min="val.min" :warning="val.warning" :danger="val.danger" :max="val.max" :value="val.value"></progress-bar>
@@ -89,7 +89,7 @@
                                 <div class="tt01">Cargo/Ballast/Stripping/Vacuum Pump</div>
                                 <div class="m13" v-for="(val, key) in fleet.cargo_pump_info" :key="key">
                                     <div class="st21">
-                                        {{ val.title }} <span v-if="val.value > 0">{{ val.value }} <span v-html="val.unit"></span></span> <span v-if="val.value == 0">OFF</span>
+                                        {{ val.title }} <span v-if="val.value > 0">{{ $filters.number(val.value) }} <span v-html="val.unit"></span></span> <span v-if="val.value == 0">OFF</span>
                                     </div>
                                     <div class="st22">
                                         <progress-bar :min="val.min" :normal="val.normal" :danger="val.danger" :max="val.max" :value="val.value"></progress-bar>

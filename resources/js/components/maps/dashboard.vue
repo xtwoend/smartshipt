@@ -46,7 +46,7 @@ import blueShip from '../icon/blue.png';
 import greenShip from '../icon/green.png';
 import redShip from '../icon/red.png';
 
-import  * as interpolate from 'interpolateheatmaplayer';
+// import  * as interpolate from 'interpolateheatmaplayer';
 
 export default {
     components: {
@@ -62,6 +62,7 @@ export default {
     data() {
         return {
             weatherKey: 'dfc256782db426c6a8d3b8daaefa5b33',
+            weathers: [],
             icons: {
                 ballast: blueShip,
                 laden: greenShip,
@@ -107,6 +108,9 @@ export default {
             closeOnClick: false
         });
     },
+    // async created() {
+    //     await this.buildWeathers()
+    // },
     methods: {
         async fetchData() {
             let {data} = await axios.get('/api/fleets')
@@ -144,13 +148,12 @@ export default {
         },
         async loaded() {
             await this.fetchData()
-            // await this.buildWeathers()
             this.buildLayer()
         },
 
         async refreshData() {
             await this.fetchData()
-            let data = this.map.getSource('ship-position');
+            let data = await this.map.getSource('ship-position');
             if(data) {
                 data.setData(this.fleets_point)
             }
@@ -211,13 +214,16 @@ export default {
                 that.map.getCanvas().style.cursor = '';
                 popup.remove();
             });
+
+            // console.log(this.weathers);
+            
         },
 
         async buildWeathers() {
-            const startingLatitude = -40;
-            const startingLongitude = -140;
-            const endingLatitude = 40;
-            const endingLongitude = 140;
+            const startingLatitude = -80;
+            const startingLongitude = -180;
+            const endingLatitude = 80;
+            const endingLongitude = 180;
             const n = 10;
             const points = [];
             for (let i=0; i < n; i++) {
@@ -225,7 +231,9 @@ export default {
                     points.push({
                         lat: startingLatitude + i * (endingLatitude - startingLatitude)/n,
                         lng: startingLongitude + j * (endingLongitude - startingLongitude)/n,
-                        val: 0
+                        val: 0,
+                        wind: {},
+                        weather: {}
                     })
                 }
             }
@@ -239,16 +247,20 @@ export default {
             }));
             // Set the temperature
             points.forEach((point, index) => {
-                point.val = JSON.parse(weathers[index]).main.temp;
+                let parse = JSON.parse(weathers[index]);
+                point.val = parse.main.temp;
+                point.wind = parse.wind
+                point.weather = parse.weather[0]
             })
-
-            let layer = interpolate.create({
-                points: points,
-                layerId: 'temp',
-                opacity: 0.2
-            });
             
-            this.map.addLayer(layer);
+            this.weathers = points
+            // let layer = interpolate.create({
+            //     points: points,
+            //     layerId: 'temp',
+            //     opacity: 0.2
+            // });
+            
+            // this.map.addLayer(layer);
         },
         
         findFleet(row) {
