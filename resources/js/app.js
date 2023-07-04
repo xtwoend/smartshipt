@@ -76,6 +76,9 @@ app.component('compass', Compass);
 import EngineTypeS from './components/fleets/EngineTypeS.vue';
 app.component('engine-type-s', EngineTypeS);
 
+import UserPermission from './components/UserPermission.vue';
+app.component('user-permission', UserPermission);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

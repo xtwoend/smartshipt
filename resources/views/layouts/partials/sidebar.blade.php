@@ -35,7 +35,7 @@
                         </span>
                           <span class="menu-title">{{ $item->name }}</span>
                         </a>
-                      </li>                     
+                      </li>
                       @endforeach
                     </ul>
                   </div>
@@ -71,6 +71,24 @@
                     </span>
                     <span class="menu-title">Account </span>
                   </a>
+                    <div class="sub-menu-list">
+                        <ul class="scroller" style="heigth: 200px;">
+                            <li class="menu-item">
+                                <a href="{{ route('master.user.index') }}">
+                                    <span class="menu-icon">
+                                    </span>
+                                    <span class="menu-title">List User</span>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="{{ route('master.permission.index') }}">
+                                    <span class="menu-icon">
+                                    </span>
+                                    <span class="menu-title">List Permission</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
             </ul>
         </nav>
