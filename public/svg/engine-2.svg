@@ -21,6 +21,12 @@
    xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
      id="defs2536">
+    <rect
+       x="-446.55582"
+       y="524.94062"
+       width="355.10689"
+       height="289.78623"
+       id="rect2930" />
     <linearGradient
        inkscape:collect="always"
        id="linearGradient6916">
@@ -158,7 +164,7 @@
        x2="905.51672"
        y2="211.6058"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.99437472,0,0,1,-1000.8854,430.96683)" />
+       gradientTransform="matrix(0.99437472,0,0,1,121.64584,306.26374)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient6916"
@@ -168,7 +174,7 @@
        x2="232.47533"
        y2="178.20538"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(-449.59726,569.64485)" />
+       gradientTransform="translate(672.93398,444.94176)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient6666"
@@ -178,7 +184,7 @@
        x2="349.0159"
        y2="178.22894"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(-449.59726,569.64485)" />
+       gradientTransform="translate(672.93398,444.94176)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient6916"
@@ -188,7 +194,7 @@
        x2="232.42242"
        y2="151.85739"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(-449.59726,569.64485)" />
+       gradientTransform="translate(672.93398,444.94176)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient6666"
@@ -198,7 +204,7 @@
        x2="348.9668"
        y2="151.88095"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(-449.59726,569.64485)" />
+       gradientTransform="translate(672.93398,444.94176)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient6916"
@@ -208,7 +214,7 @@
        x2="232.5262"
        y2="126.72768"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(-449.74076,568.64037)" />
+       gradientTransform="translate(672.79048,443.93728)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient6666"
@@ -218,7 +224,7 @@
        x2="349.06311"
        y2="126.75123"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(-449.74076,568.64037)" />
+       gradientTransform="translate(672.79048,443.93728)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient6916"
@@ -228,7 +234,7 @@
        x2="232.65533"
        y2="100.37967"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(-449.59726,569.64485)" />
+       gradientTransform="translate(672.93398,444.94176)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient6666"
@@ -238,7 +244,7 @@
        x2="349.01401"
        y2="100.40323"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(-449.59726,569.64485)" />
+       gradientTransform="translate(672.93398,444.94176)" />
     <linearGradient
        gradientTransform="translate(0.52642353,0.2049591)"
        inkscape:collect="always"
@@ -823,19 +829,19 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.84199999"
-     inkscape:cx="309.38243"
-     inkscape:cy="257.12589"
+     inkscape:cx="311.1639"
+     inkscape:cy="258.31354"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1391"
-     inkscape:window-height="709"
+     inkscape:window-width="2560"
+     inkscape:window-height="1387"
      inkscape:window-x="0"
      inkscape:window-y="25"
      borderlayer="true"
      showguides="true"
      showborder="true"
-     inkscape:window-maximized="0"
+     inkscape:window-maximized="1"
      inkscape:showpageshadow="false"
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1">
@@ -891,179 +897,179 @@
          y="56.393372"
          style="font-size:40px;line-height:1.25"> </tspan></text>
     <rect
-       style="fill:url(#linearGradient6682-7);fill-opacity:1;stroke:#000000;stroke-width:0.3549304;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:url(#linearGradient6682-7);fill-opacity:1;stroke:#000000;stroke-width:0.35493;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4756-3-1-28"
        width="116.78137"
        height="24.055899"
-       x="-217.36462"
-       y="658.02014" />
+       x="905.16663"
+       y="533.31708" />
     <rect
-       style="fill:url(#linearGradient5158-8);fill-opacity:1;stroke:none;stroke-width:0.36406243;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:url(#linearGradient5158-8);fill-opacity:1;stroke:none;stroke-width:0.364062;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4756-9-25-0-5"
        width="122.86803"
        height="24.055899"
-       x="-339.99194"
-       y="657.99658" />
+       x="782.53931"
+       y="533.29352" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="-350.17044"
-       y="630.26538"
+       x="854.48273"
+       y="514.06335"
        id="text4752-92-3-5"
        transform="scale(0.93182941,1.0731578)"><tspan
          sodipodi:role="line"
          id="tspan4754-9-4-4"
-         x="-350.17044"
-         y="630.26538"
+         x="854.48273"
+         y="514.06335"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10.848px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold'">A/E NO.1 TURBO CH</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="-120.3591"
-       y="628.55219"
+       x="1084.2941"
+       y="512.35016"
        id="text4752-9-0-3-2"
        transform="scale(0.93182941,1.0731578)"
        inkscape:label="{&quot;align&quot;:&quot;Right&quot;,&quot;attr&quot;:&quot;get&quot;,&quot;tag&quot;:&quot;senipah_no_1_turbocharge&quot;,&quot;type&quot;:&quot;Good&quot;}"><tspan
          sodipodi:role="line"
          id="tspan4754-8-3-9-86"
-         x="-120.3591"
-         y="628.55219"
+         x="1084.2941"
+         y="512.35016"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.56px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';text-align:end;text-anchor:end;fill:#000000">0.000</tspan></text>
     <rect
-       style="fill:url(#linearGradient6680-1);fill-opacity:1;stroke:#000000;stroke-width:0.3549304;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:url(#linearGradient6680-1);fill-opacity:1;stroke:#000000;stroke-width:0.35493;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4756-3-1-2-0"
        width="116.78137"
        height="24.055899"
-       x="-217.45905"
-       y="683.36371" />
+       x="905.0722"
+       y="558.66064" />
     <rect
-       style="fill:url(#linearGradient5176-7);fill-opacity:1;stroke:none;stroke-width:0.36406243;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:url(#linearGradient5176-7);fill-opacity:1;stroke:none;stroke-width:0.364062;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4756-9-25-0-8-30"
        width="122.86803"
        height="24.055899"
-       x="-340.08252"
-       y="683.34015" />
+       x="782.44873"
+       y="558.63708" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="-350.27176"
-       y="653.88129"
+       x="854.38141"
+       y="537.67926"
        id="text4752-92-3-3-0"
        transform="scale(0.93182941,1.0731578)"><tspan
          sodipodi:role="line"
          id="tspan4754-9-4-6-3"
-         x="-350.27176"
-         y="653.88129"
+         x="854.38141"
+         y="537.67926"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10.848px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold'">A/E NO.2 TURBO CH</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="-120.46036"
-       y="652.16803"
+       x="1084.1927"
+       y="535.966"
        id="text4752-9-0-3-5-8"
        transform="scale(0.93182941,1.0731578)"
        inkscape:label="{&quot;align&quot;:&quot;Right&quot;,&quot;attr&quot;:&quot;get&quot;,&quot;tag&quot;:&quot;senipah_no_2_turbocharge&quot;,&quot;type&quot;:&quot;Good&quot;}"><tspan
          sodipodi:role="line"
          id="tspan4754-8-3-9-6-0"
-         x="-120.46036"
-         y="652.16803"
+         x="1084.1927"
+         y="535.966"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.56px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';text-align:end;text-anchor:end;fill:#000000">0.000</tspan></text>
     <rect
-       style="fill:url(#linearGradient6678-7);fill-opacity:1;stroke:#000000;stroke-width:0.3549304;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:url(#linearGradient6678-7);fill-opacity:1;stroke:#000000;stroke-width:0.35493;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4756-3-1-24-1"
        width="116.78137"
        height="24.055899"
-       x="-217.41187"
-       y="709.49786" />
+       x="905.11938"
+       y="584.7948" />
     <rect
-       style="fill:url(#linearGradient5174-7);fill-opacity:1;stroke:none;stroke-width:0.36406243;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:url(#linearGradient5174-7);fill-opacity:1;stroke:none;stroke-width:0.364062;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4756-9-25-0-82-5"
        width="122.86803"
        height="24.055899"
-       x="-340.04285"
-       y="709.4743" />
+       x="782.4884"
+       y="584.77124" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="-350.22116"
-       y="678.23389"
+       x="854.43201"
+       y="562.03186"
        id="text4752-92-3-0-6"
        transform="scale(0.93182941,1.0731578)"><tspan
          sodipodi:role="line"
          id="tspan4754-9-4-3-7"
-         x="-350.22116"
-         y="678.23389"
+         x="854.43201"
+         y="562.03186"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10.848px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold'">A/E NO.3 TURBO CH</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="-120.40976"
-       y="676.52063"
+       x="1084.2434"
+       y="560.3186"
        id="text4752-9-0-3-4-3"
        transform="scale(0.93182941,1.0731578)"
        inkscape:label="{&quot;align&quot;:&quot;Right&quot;,&quot;attr&quot;:&quot;get&quot;,&quot;tag&quot;:&quot;senipah_no_3_turbocharge&quot;,&quot;type&quot;:&quot;Good&quot;}"><tspan
          sodipodi:role="line"
          id="tspan4754-8-3-9-8-73"
-         x="-120.40976"
-         y="676.52063"
+         x="1084.2434"
+         y="560.3186"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.56px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';text-align:end;text-anchor:end;fill:#000000">0.000</tspan></text>
     <rect
-       style="fill:url(#linearGradient6676-1);fill-opacity:1;stroke:#000000;stroke-width:0.3549304;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:url(#linearGradient6676-1);fill-opacity:1;stroke:#000000;stroke-width:0.35493;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4756-3-1-2-9-8"
        width="116.78137"
        height="24.055899"
-       x="-217.36279"
-       y="735.84589" />
+       x="905.16846"
+       y="611.14282" />
     <rect
-       style="fill:url(#linearGradient5172-8);fill-opacity:1;stroke:none;stroke-width:0.36406243;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:url(#linearGradient5172-8);fill-opacity:1;stroke:none;stroke-width:0.364062;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4756-9-25-0-8-3-4"
        width="122.86803"
        height="24.055899"
-       x="-339.98993"
-       y="735.82233" />
+       x="782.54132"
+       y="611.11926" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="-350.16855"
-       y="702.78577"
+       x="854.48462"
+       y="586.58374"
        id="text4752-92-3-3-4-7"
        transform="scale(0.93182941,1.0731578)"><tspan
          sodipodi:role="line"
          id="tspan4754-9-4-6-6-9"
-         x="-350.16855"
-         y="702.78577"
+         x="854.48462"
+         y="586.58374"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10.848px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold'">M/E TURBO CH</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="-120.35703"
-       y="701.07251"
+       x="1084.2961"
+       y="584.87048"
        id="text4752-9-0-3-5-7-5"
        transform="scale(0.93182941,1.0731578)"
        inkscape:label="{&quot;align&quot;:&quot;Right&quot;,&quot;attr&quot;:&quot;get&quot;,&quot;tag&quot;:&quot;senipah_me_turbocharge&quot;,&quot;type&quot;:&quot;Good&quot;}"><tspan
          sodipodi:role="line"
          id="tspan4754-8-3-9-6-4-1"
-         x="-120.35703"
-         y="701.07251"
+         x="1084.2961"
+         y="584.87048"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.56px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';text-align:end;text-anchor:end;fill:#000000">0.000</tspan></text>
     <rect
-       style="fill:url(#linearGradient6922-4);fill-opacity:1;stroke:#000000;stroke-width:0.35600895;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:url(#linearGradient6922-4);fill-opacity:1;stroke:#000000;stroke-width:0.356009;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4756-9-25-0-2-6"
        width="117.49219"
        height="24.055899"
-       x="-218.1322"
-       y="630.54468" />
+       x="904.39905"
+       y="505.84158" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffff00;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="-222.67032"
-       y="602.27716"
+       x="981.98285"
+       y="486.07516"
        id="text4752-9-3-10-6-8"
        transform="scale(0.93182941,1.0731578)"><tspan
          sodipodi:role="line"
          id="tspan4754-8-2-5-0-9"
-         x="-222.67032"
-         y="602.27716"
+         x="981.98285"
+         y="486.07516"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#000000">SPEED RPM</tspan></text>
     <rect
        style="fill:url(#linearGradient6637);fill-opacity:1;stroke:none;stroke-width:1.14578867;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -1077,12 +1083,13 @@
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="23.897245"
        y="21.451408"
-       id="text12011-8"><tspan
+       id="text12011-8"
+       inkscape:label="{&quot;align&quot;:&quot;Right&quot;,&quot;attr&quot;:&quot;get&quot;,&quot;tag&quot;:&quot;fleet_name&quot;,&quot;type&quot;:&quot;Good&quot;}"><tspan
          sodipodi:role="line"
          id="tspan12013-7"
          x="23.897245"
          y="21.451408"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:15px;line-height:1.25;font-family:Tahoma;-inkscape-font-specification:'Tahoma Bold';fill:#000000;fill-opacity:1">MT SENIPAH - MACHINERY MONITORING</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:15px;line-height:1.25;font-family:Tahoma;-inkscape-font-specification:'Tahoma Bold';fill:#000000;fill-opacity:1">MT %s - MACHINERY MONITORING</tspan></text>
     <rect
        style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.755;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect16797"
@@ -3505,5 +3512,9 @@
          x="938.6748"
          y="340.96869"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#000000">C</tspan></text>
+    <text
+       xml:space="preserve"
+       id="text2928"
+       style="white-space:pre;shape-inside:url(#rect2930);display:inline;fill:none" />
   </g>
 </svg>
