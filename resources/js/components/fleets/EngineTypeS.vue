@@ -29,6 +29,7 @@ export default {
             let engine = this.fleet.engine;
             if(engine) {
                 this.data = engine
+                this.data.fleet_name = this.fleet.name
             }
         },
     }
