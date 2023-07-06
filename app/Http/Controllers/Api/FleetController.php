@@ -11,7 +11,7 @@ class FleetController extends Controller
 {
     public function fleets(Request $request)
     {
-        $fleets = Fleet::with('navigation');
+        $fleets = Fleet::with('navigation')->active();
         if($request->has('q')){
             $fleets = $fleets->where('name', $request->q);
         }
