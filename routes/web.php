@@ -52,6 +52,7 @@ Route::group([
             Route::get('fleets/{id}/edit-bunker-information', 'editBunker')->name('editBunker');
             Route::put('fleets/{id}/update-bunker-information', 'updateBunker')->name('updateBunker');
         });
+        Route::resource('users', \App\Http\Controllers\Master\UserController::class);
     });
 
 });

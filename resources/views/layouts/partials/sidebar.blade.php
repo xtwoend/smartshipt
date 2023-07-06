@@ -49,6 +49,14 @@
                   </a>
                 </li>
                 <li class="menu-item">
+                  <a href="{{ route('master.users.index') }}">
+                    <span class="menu-icon">
+                    <img src="{{asset('img/icons/help.png')}}" alt="" />
+                    </span>
+                    <span class="menu-title">User Manager</span>
+                  </a>
+                </li>
+                <li class="menu-item">
                   <a href="#">
                     <span class="menu-icon">
                     <img src="{{asset('img/icons/help.png')}}" alt="" />
