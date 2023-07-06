@@ -1,0 +1,77 @@
+<template>
+    <div class="table-responsive">
+        <table class="table table-vcenter card-table">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th v-for="(header, i) in columns" :key="i">{{ header.name }}</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(item, index) in items" :key="item.id">
+                    <td>{{ 1 + index }}</td>
+                    <td v-for="(col, ix) in columns" :key="ix">
+                        <template v-if="isFieldSlot(col.field)">
+                            <slot :name="col.field"
+                            :row-data="item" :row-index="index" :row-field="col"
+                            ></slot>
+                        </template>
+                        <template v-else-if="col.field == 'sensor_name' && item.isEdit">
+                            <select v-model="items[index][col.field]" class="form-select">
+                                <option :value="sensor" v-for="(sensor, inx) in sensorList" :key="inx">{{ sensor }}</option>
+                            </select>
+                        </template>
+                        <template v-else-if="item.isEdit">
+                            <input type="text" class="form-control" v-model="items[index][col.field]">
+                        </template>
+                        <template v-else>
+                            <span v-if="col.isHtml" v-html="item[col.field]"></span>
+                            <span v-else>{{ item[col.field] }}</span>
+                        </template>
+                    </td>
+                    <td>
+                        <a href="#" @click="editRowHandler(item, index)" v-if="!item.isEdit">Edit</a>
+                        <a href="#" @click="saveRowHandler(item, index)" v-if="item.isEdit">Done</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</template>
+
+<script>
+export default {
+    props: {
+        columns: Array,
+        data: Array,
+        editUrl: String,
+        sensorList: Object
+    },
+    data () {
+        return {
+            items: []
+        }
+    },
+    mounted() {
+        this.data.forEach(item => this.items.push(item))
+        this.items = this.items.map(item => ({...item, isEdit: false}));
+    },
+    methods: {
+        editRowHandler(data, index) {
+            this.items[index].isEdit = !this.items[index].isEdit;
+        },
+        async saveRowHandler(data, index) {
+            this.items[index].isEdit = !this.items[index].isEdit;
+            await axios.post(this.editUrl, data);
+        },
+        isFieldSlot (fieldName) {
+            return !!this.$slots[fieldName]
+        },
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+
+</style>

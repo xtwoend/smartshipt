@@ -55,6 +55,11 @@ class Fleet extends Model
         return $this->hasOne(Navigation::class, 'fleet_id');
     }
 
+    public function sensors()
+    {
+        return $this->hasMany(Sensor::class, 'fleet_id');
+    }
+
     public function engine()
     {
         $model =  Engine::table($this->id);
@@ -62,6 +67,16 @@ class Fleet extends Model
             return $model->where('fleet_id', $this->id)->first();
         }
         return null;
+    }
+
+    public function engineColumns() 
+    {   
+        $model =  Engine::table($this->id);
+        if(Schema::hasTable($model->getTable())) {
+            $columns = Schema::getColumnListing($model->getTable());
+            return array_diff($columns, ['id', 'created_at', 'updated_at', 'terminal_time', 'fleet_id']);
+        }
+        return [];
     }
 
     public function cargo_data()
@@ -80,6 +95,16 @@ class Fleet extends Model
             return $model->where('fleet_id', $this->id)->first();
         }
         return null;
+    }
+
+    public function cargoPumpColumns() 
+    {   
+        $model =  CargoPump::table($this->id);
+        if(Schema::hasTable($model->getTable())) {
+            $columns = Schema::getColumnListing($model->getTable());
+            return array_diff($columns, ['id', 'created_at', 'updated_at', 'terminal_time', 'fleet_id']);
+        }
+        return [];
     }
 
     public function cargo_information()

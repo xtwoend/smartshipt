@@ -6,49 +6,61 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-12">
-                    <div class="card mb-3">
-                        <div class="card-header d-flex justify-content-between">
-                            <span>Fleet Master Data</span>
-                            <div class="float-end">
-                                <a href="{{ route('master.fleets.edit', $data->id) }}" class="btn btn-info">Edit Master Data</a>
-                            </div>
-                        </div>
+                    {{-- tabs --}}
 
+                    <div class="card">
+                        <div class="card-header">
+                            <ul class="nav nav-tabs card-header-tabs" data-bs-toggle="tabs">
+                                <li class="nav-item">
+                                    <a href="#info" class="nav-link active" data-bs-toggle="tab">Fleet Information</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#cargo" class="nav-link" data-bs-toggle="tab">Cargo Information</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#bunker" class="nav-link" data-bs-toggle="tab">Bunker Information</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#engine" class="nav-link" data-bs-toggle="tab">Engine Sensor</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#pumps" class="nav-link" data-bs-toggle="tab">Pumps Sensor</a>
+                                </li>
+                            </ul>
+                        </div>
                         <div class="card-body">
-                            {!! Form::model($data, ['route' => ['master.fleets.index'], 'method' => 'PUT']) !!}
-                            @include('master.fleets._form', ['disabled' => 'disabled'])
-                            {!! Form::close() !!}
-                        </div>
-                    </div>
-
-                    <div class="card mb-3">
-                        <div class="card-header d-flex justify-content-between">
-                            <span>Edit Fleet Cargo Information Data</span>
-                            <div class="float-end">
-                                <a href="{{ route('master.fleets.editCargo', $data->id) }}" class="btn btn-info">Edit Cargo Data</a>
+                            <div class="tab-content">
+                                <div class="tab-pane active show" id="info">
+                                    <div class="action-edit">
+                                        <a href="{{ route('master.fleets.edit', $data->id) }}" class="btn btn-info">Edit Master Data</a>
+                                    </div>
+                                    {!! Form::model($data, ['route' => ['master.fleets.index'], 'method' => 'PUT']) !!}
+                                    @include('master.fleets._form', ['disabled' => 'disabled'])
+                                    {!! Form::close() !!}
+                                </div>
+                                <div class="tab-pane" id="cargo">
+                                    <div class="action-edit">
+                                        <a href="{{ route('master.fleets.editCargo', $data->id) }}" class="btn btn-info">Edit Cargo Data</a>
+                                    </div>
+                                    {!! Form::model($data->cargo_information, ['route' => ['master.fleets.index'], 'method' => 'PUT']) !!}
+                                    @include('master.fleets._form_cargo', ['disabled' => 'disabled'])
+                                    {!! Form::close() !!}
+                                </div>
+                                <div class="tab-pane" id="bunker">
+                                    <div class="action-edit">
+                                        <a href="{{ route('master.fleets.editBunker', $data->id) }}" class="btn btn-info">Edit Bunker Data</a>
+                                    </div>
+                                    {!! Form::model($data->bunker_information, ['route' => ['master.fleets.index'], 'method' => 'PUT']) !!}
+                                    @include('master.fleets._form_bunker', ['disabled' => 'disabled'])
+                                    {!! Form::close() !!}
+                                </div>
+                                <div class="tab-pane" id="engine">
+                                    @include('master.fleets._form_engine_sensor', ['lists' => $engines, 'sensors' => $engine_sensor_lists])
+                                </div>
+                                <div class="tab-pane" id="pumps">
+                                    @include('master.fleets._form_pump_sensor', ['lists' => $pumps, 'sensors' => $pumps_sensor_lists])
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="card-body">
-                            {!! Form::model($data->cargo_information, ['route' => ['master.fleets.index'], 'method' => 'PUT']) !!}
-                            @include('master.fleets._form_cargo', ['disabled' => 'disabled'])
-                            {!! Form::close() !!}
-
-                        </div>
-                    </div>
-
-                    <div class="card mb-3">
-                        <div class="card-header d-flex justify-content-between">
-                            <span>Edit Fleet Bunker Information Data</span>
-                            <div class="float-end">
-                                <a href="{{ route('master.fleets.editBunker', $data->id) }}" class="btn btn-info">Edit Bunker Data</a>
-                            </div>
-                        </div>
-
-                        <div class="card-body">
-                            {!! Form::model($data->bunker_information, ['route' => ['master.fleets.index'], 'method' => 'PUT']) !!}
-                            @include('master.fleets._form_bunker', ['disabled' => 'disabled'])
-                            {!! Form::close() !!}
                         </div>
                     </div>
                 </div>

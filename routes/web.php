@@ -53,6 +53,8 @@ Route::group([
             Route::put('fleets/{id}/update-bunker-information', 'updateBunker')->name('updateBunker');
         });
         Route::resource('users', \App\Http\Controllers\Master\UserController::class);
+
+        Route::post('sensors-update', [\App\Http\Controllers\Master\SensorController::class, 'update'])->name('sensors.edit');
     });
 
 });
