@@ -19,4 +19,12 @@ class UserController extends Controller
         $row = User::find($id);
         return view('master.users.show', compact('row'));
     }
+
+    function create(Request $request) : View {
+        return view('master.users.create');
+    }
+
+    function edit($id, Request $request) : View {
+        return view('master.users.edit');
+    }
 }
