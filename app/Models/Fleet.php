@@ -13,7 +13,7 @@ class Fleet extends Model
     protected $table = 'fleets';
 
     protected $fillable = [
-        'name', 'imo_number', 'owner', 'ship_manager', 'cargo', 'type', 'email', 'telp', 'call_sign', 'builder', 'year', 'flag', 'home_port', 'class', 'mmsi', 'length', 'breadth', 'death', 'dwt', 'grt', 'nrt', 'lwt', 'draft', 'swl'
+        'active', 'name', 'imo_number', 'owner', 'ship_manager', 'cargo', 'type', 'email', 'telp', 'call_sign', 'builder', 'year', 'flag', 'home_port', 'class', 'mmsi', 'length', 'breadth', 'death', 'dwt', 'grt', 'nrt', 'lwt', 'draft', 'swl'
     ];
 
     public function rules(){
@@ -43,6 +43,11 @@ class Fleet extends Model
             'draft' => 'required',
             'swl' => 'required',
         ];
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('active', 1);
     }
 
     public function navigation()
