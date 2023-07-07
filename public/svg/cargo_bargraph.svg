@@ -480,13 +480,13 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.6031422"
-     inkscape:cx="393.60201"
-     inkscape:cy="236.09883"
+     inkscape:cx="379.56708"
+     inkscape:cy="235.78694"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="2560"
-     inkscape:window-height="1387"
+     inkscape:window-width="1680"
+     inkscape:window-height="950"
      inkscape:window-x="0"
      inkscape:window-y="25"
      borderlayer="true"
@@ -3109,7 +3109,7 @@
        height="152.53586"
        x="-77.436607"
        y="-448.53427"
-       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:15,&quot;min&quot;:0,&quot;tag&quot;:&quot;slop_stb&quot;}"
+       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:15500,&quot;min&quot;:0,&quot;tag&quot;:&quot;slop_stb_bar&quot;}"
        transform="scale(-1)" />
     <rect
        style="fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.220062;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -3118,7 +3118,7 @@
        height="152.53586"
        x="-77.436607"
        y="-248.74591"
-       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:15,&quot;min&quot;:0,&quot;tag&quot;:&quot;slop_port&quot;}"
+       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:15500,&quot;min&quot;:0,&quot;tag&quot;:&quot;slop_port_bar&quot;}"
        transform="scale(-1)" />
     <rect
        style="fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.220062;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -3127,7 +3127,7 @@
        height="152.53586"
        x="-199.05026"
        y="-248.74591"
-       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:15,&quot;min&quot;:0,&quot;tag&quot;:&quot;tank_6_port&quot;}"
+       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:15500,&quot;min&quot;:0,&quot;tag&quot;:&quot;tank_6_port_bar&quot;}"
        transform="scale(-1)" />
     <rect
        style="fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.220062;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -3136,7 +3136,7 @@
        height="152.53586"
        x="-320.66391"
        y="-248.74591"
-       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:15,&quot;min&quot;:0,&quot;tag&quot;:&quot;tank_5_port&quot;}"
+       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:15500,&quot;min&quot;:0,&quot;tag&quot;:&quot;tank_5_port_bar&quot;}"
        transform="scale(-1)" />
     <rect
        style="fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.220062;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -3145,7 +3145,7 @@
        height="152.53586"
        x="-442.27756"
        y="-248.74591"
-       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:15,&quot;min&quot;:0,&quot;tag&quot;:&quot;tank_4_port&quot;}"
+       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:15500,&quot;min&quot;:0,&quot;tag&quot;:&quot;tank_4_port_bar&quot;}"
        transform="scale(-1)" />
     <rect
        style="fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.220062;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -3154,7 +3154,7 @@
        height="152.53586"
        x="-563.89117"
        y="-248.74591"
-       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:15,&quot;min&quot;:0,&quot;tag&quot;:&quot;tank_3_port&quot;}"
+       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:15500,&quot;min&quot;:0,&quot;tag&quot;:&quot;tank_3_port_bar&quot;}"
        transform="scale(-1)" />
     <rect
        style="fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.220062;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -3163,7 +3163,7 @@
        height="152.53586"
        x="-685.50482"
        y="-248.74591"
-       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:15,&quot;min&quot;:0,&quot;tag&quot;:&quot;tank_2_port&quot;}"
+       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:15500,&quot;min&quot;:0,&quot;tag&quot;:&quot;tank_2_port_bar&quot;}"
        transform="scale(-1)" />
     <rect
        style="fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.220062;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -3190,7 +3190,7 @@
        height="152.53586"
        x="-685.50482"
        y="-448.53427"
-       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:15,&quot;min&quot;:0,&quot;tag&quot;:&quot;tank_2_stb&quot;}"
+       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:15500,&quot;min&quot;:0,&quot;tag&quot;:&quot;tank_2_stb_bar&quot;}"
        transform="scale(-1)" />
     <rect
        style="fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.220062;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -3199,7 +3199,7 @@
        height="152.53586"
        x="-563.89117"
        y="-448.53427"
-       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:15,&quot;min&quot;:0,&quot;tag&quot;:&quot;tank_3_stb&quot;}"
+       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:15500,&quot;min&quot;:0,&quot;tag&quot;:&quot;tank_3_stb_bar&quot;}"
        transform="scale(-1)" />
     <rect
        style="fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.220062;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -3208,7 +3208,7 @@
        height="152.53586"
        x="-442.27756"
        y="-448.53427"
-       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:15,&quot;min&quot;:0,&quot;tag&quot;:&quot;tank_4_stb&quot;}"
+       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:15500,&quot;min&quot;:0,&quot;tag&quot;:&quot;tank_4_stb_bar&quot;}"
        transform="scale(-1)" />
     <rect
        style="fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.220062;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -3217,7 +3217,7 @@
        height="152.53586"
        x="-320.66391"
        y="-448.53427"
-       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:15,&quot;min&quot;:0,&quot;tag&quot;:&quot;tank_5_stb&quot;}"
+       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:15500,&quot;min&quot;:0,&quot;tag&quot;:&quot;tank_5_stb_bar&quot;}"
        transform="scale(-1)" />
     <rect
        style="fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.220062;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -3226,7 +3226,7 @@
        height="152.53586"
        x="-199.05026"
        y="-448.53427"
-       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:15,&quot;min&quot;:0,&quot;tag&quot;:&quot;tank_6_stb&quot;}"
+       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:15500,&quot;min&quot;:0,&quot;tag&quot;:&quot;tank_6_stb_bar&quot;}"
        transform="scale(-1)" />
     <text
        xml:space="preserve"

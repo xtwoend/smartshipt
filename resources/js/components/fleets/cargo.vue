@@ -35,6 +35,12 @@ export default {
             let cargo = this.fleet.cargo_data;
             if(cargo) {
                 this.data = cargo
+                let x = ['id', 'fleet_id', 'created_at', 'updated_at', 'terminal_time'];
+                Object.keys(cargo).forEach(key => {
+                    if(! x.includes(key)) {
+                        this.data[key + '_bar'] = cargo[key] * 1000;
+                    }
+                })
             }
         },
     }

@@ -29,6 +29,12 @@ export default {
             let engine = this.fleet.engine;
             if(engine) {
                 this.data = engine
+                let x = ['id', 'fleet_id', 'created_at', 'updated_at', 'terminal_time'];
+                Object.keys(engine).forEach(key => {
+                    if(! x.includes(key)) {
+                        this.data[key + '_bar'] = engine[key] * 1000;
+                    }
+                })
                 this.data.fleet_name = this.fleet.name
             }
         },
