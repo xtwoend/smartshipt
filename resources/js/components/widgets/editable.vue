@@ -1,4 +1,7 @@
 <template>
+    <div class="action-edit">
+        <button type="button" class="btn btn-info" @click="addItem">Add Data</button>
+    </div>
     <div class="table-responsive">
         <table class="table table-vcenter card-table">
             <thead>
@@ -17,9 +20,9 @@
                             :row-data="item" :row-index="index" :row-field="col"
                             ></slot>
                         </template>
-                        <template v-else-if="col.field == 'sensor_name' && item.isEdit">
+                        <template v-else-if="col.editType == 'select' && item.isEdit">
                             <select v-model="items[index][col.field]" class="form-select">
-                                <option :value="sensor" v-for="(sensor, inx) in sensorList" :key="inx">{{ sensor }}</option>
+                                <option :value="sensor" v-for="(sensor, inx) in col.options" :key="inx">{{ sensor }}</option>
                             </select>
                         </template>
                         <template v-else-if="item.isEdit">
@@ -33,6 +36,7 @@
                     <td>
                         <a href="#" @click="editRowHandler(item, index)" v-if="!item.isEdit">Edit</a>
                         <a href="#" @click="saveRowHandler(item, index)" v-if="item.isEdit">Done</a>
+                        | <a href="#" @click="del(item, index)">Delete</a>
                     </td>
                 </tr>
             </tbody>
@@ -46,7 +50,7 @@ export default {
         columns: Array,
         data: Array,
         editUrl: String,
-        sensorList: Object
+        delUrl: String
     },
     data () {
         return {
@@ -58,6 +62,14 @@ export default {
         this.items = this.items.map(item => ({...item, isEdit: false}));
     },
     methods: {
+        addItem () {
+            let item = this.items[0];
+            item.id = 0
+            item.isEdit = true
+            this.columns.forEach(row => {
+                item[row.field] = null
+            })
+        },
         editRowHandler(data, index) {
             this.items[index].isEdit = !this.items[index].isEdit;
         },
@@ -68,6 +80,28 @@ export default {
         isFieldSlot (fieldName) {
             return !!this.$slots[fieldName]
         },
+        del(data, index) {
+            let that = this
+            this.$swal({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    axios.delete(that.delUrl + '/' + data.id)
+                    that.items.splice(index, 1);
+                    that.$swal(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    )
+                }
+            }) 
+        }
     }
 }
 </script>

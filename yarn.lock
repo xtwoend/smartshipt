@@ -1368,6 +1368,11 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.npmjs.org/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
+sweetalert2@11.x:
+  version "11.7.12"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-11.7.12.tgz#3ac15a3138159ccdcd2ec55ea7abe749cd528a80"
+  integrity sha512-TQJy8mQymJLzqWPQOMQErd81Zd/rSYr0UL4pEc7bqEihtjS+zt7LWJXLhfPp93e+Hf3Z2FHMB6QGNskAMCsdTg==
+
 swiper@^9.3.2:
   version "9.3.2"
   resolved "https://registry.npmjs.org/swiper/-/swiper-9.3.2.tgz"
@@ -1453,6 +1458,13 @@ vue-highcharts@^0.1.0:
   version "0.1.0"
   resolved "https://registry.npmjs.org/vue-highcharts/-/vue-highcharts-0.1.0.tgz"
   integrity sha512-P0474D2s6P1ww5c/KbMN4iG8IOp7L1nWgjQwRJvKsq2yCNaeywg49/EHa2zHOKbS1MFxOXkRN2Vu1OSBc+gFYQ==
+
+vue-sweetalert2@^5.0.5:
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/vue-sweetalert2/-/vue-sweetalert2-5.0.5.tgz#298663884149c7675d514490d1389f0614d875c0"
+  integrity sha512-Q7+TjQxNwGruT2jfPaSKMz18HHWs81r4umEwlrrtOf/QL5Iwl1T+tUaNkcvKB7Rf9rYftubt7NnOMjfDMnDH3A==
+  dependencies:
+    sweetalert2 "11.x"
 
 vue3-daterange-picker@^1.0.1:
   version "1.0.1"

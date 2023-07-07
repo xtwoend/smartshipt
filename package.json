@@ -32,6 +32,7 @@
         "swiper": "^9.3.2",
         "timeago.js": "^4.0.2",
         "vue-highcharts": "^0.1.0",
+        "vue-sweetalert2": "^5.0.5",
         "vue3-daterange-picker": "^1.0.1"
     }
 }

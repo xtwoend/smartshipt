@@ -1,27 +1,27 @@
 {
-  "resources/js/components/icon/green.png": {
-    "file": "assets/green-342241e2.png",
-    "src": "resources/js/components/icon/green.png"
+  "resources/js/components/maps/ship.png": {
+    "file": "assets/ship-c94d8078.png",
+    "src": "resources/js/components/maps/ship.png"
   },
   "resources/js/components/icon/blue.png": {
     "file": "assets/blue-a47985d3.png",
     "src": "resources/js/components/icon/blue.png"
   },
+  "resources/js/components/icon/green.png": {
+    "file": "assets/green-342241e2.png",
+    "src": "resources/js/components/icon/green.png"
+  },
   "resources/js/components/icon/red.png": {
     "file": "assets/red-f4bfe255.png",
     "src": "resources/js/components/icon/red.png"
   },
-  "resources/js/components/maps/ship.png": {
-    "file": "assets/ship-c94d8078.png",
-    "src": "resources/js/components/maps/ship.png"
+  "public/remixicon/remixicon.eot": {
+    "file": "assets/remixicon-e0d505c9.eot",
+    "src": "public/remixicon/remixicon.eot"
   },
   "public/img/icons/date-light.png": {
     "file": "assets/date-light-13b22e71.png",
     "src": "public/img/icons/date-light.png"
-  },
-  "public/remixicon/remixicon.eot": {
-    "file": "assets/remixicon-e0d505c9.eot",
-    "src": "public/remixicon/remixicon.eot"
   },
   "public/remixicon/remixicon.woff2": {
     "file": "assets/remixicon-50d59e6d.woff2",
@@ -40,22 +40,13 @@
     "src": "public/remixicon/remixicon.svg"
   },
   "resources/js/app.css": {
-    "file": "assets/app-581d8c63.css",
+    "file": "assets/app-32212d03.css",
     "src": "resources/js/app.css"
   },
   "resources/sass/app.scss": {
     "file": "assets/app-7a8c2353.css",
     "src": "resources/sass/app.scss",
     "isEntry": true
-  },
-  "resources/tabler/src/js/tabler.esm.js": {
-    "file": "assets/tabler.esm-4fe66c31.js",
-    "src": "resources/tabler/src/js/tabler.esm.js",
-    "isEntry": true,
-    "imports": [
-      "_toast-fd51308c.js",
-      "_popper-b924b727.js"
-    ]
   },
   "resources/js/index.js": {
     "file": "assets/index-dcec33a0.js",
@@ -72,22 +63,12 @@
       "assets/app-7a8c2353.css"
     ]
   },
-  "_popper-b924b727.js": {
-    "file": "assets/popper-b924b727.js"
-  },
-  "_toast-fd51308c.js": {
-    "file": "assets/toast-fd51308c.js",
-    "imports": [
-      "_popper-b924b727.js"
-    ]
-  },
-  "resources/js/libs/poppers.js": {
-    "file": "assets/poppers-2b93aeb1.js",
-    "src": "resources/js/libs/poppers.js",
+  "resources/tabler/src/js/tabler.esm.js": {
+    "file": "assets/tabler.esm-4fe66c31.js",
+    "src": "resources/tabler/src/js/tabler.esm.js",
     "isEntry": true,
     "imports": [
-      "resources/js/libs/constants.js",
-      "resources/js/libs/popper.js",
+      "_toast-fd51308c.js",
       "_popper-b924b727.js"
     ]
   },
@@ -104,6 +85,16 @@
       "resources/js/libs/constants.js"
     ]
   },
+  "resources/js/libs/poppers.js": {
+    "file": "assets/poppers-2b93aeb1.js",
+    "src": "resources/js/libs/poppers.js",
+    "isEntry": true,
+    "imports": [
+      "resources/js/libs/constants.js",
+      "resources/js/libs/popper.js",
+      "_popper-b924b727.js"
+    ]
+  },
   "resources/js/libs/popper.js": {
     "file": "assets/popper-136662a8.js",
     "src": "resources/js/libs/popper.js",
@@ -113,8 +104,17 @@
       "_popper-b924b727.js"
     ]
   },
+  "_popper-b924b727.js": {
+    "file": "assets/popper-b924b727.js"
+  },
+  "_toast-fd51308c.js": {
+    "file": "assets/toast-fd51308c.js",
+    "imports": [
+      "_popper-b924b727.js"
+    ]
+  },
   "resources/js/app.js": {
-    "file": "assets/app-129a585d.js",
+    "file": "assets/app-14f69e9b.js",
     "src": "resources/js/app.js",
     "isEntry": true,
     "imports": [
@@ -122,7 +122,7 @@
       "_popper-b924b727.js"
     ],
     "css": [
-      "assets/app-581d8c63.css"
+      "assets/app-32212d03.css"
     ],
     "assets": [
       "assets/blue-a47985d3.png",

@@ -54,7 +54,8 @@ Route::group([
         });
         Route::resource('users', \App\Http\Controllers\Master\UserController::class);
 
-        Route::post('sensors-update', [\App\Http\Controllers\Master\SensorController::class, 'update'])->name('sensors.edit');
+        Route::delete('sensors/delete/{id}', [\App\Http\Controllers\Master\SensorController::class, 'destroy'])->name('sensors.destroy');
+        Route::post('sensors/update', [\App\Http\Controllers\Master\SensorController::class, 'update'])->name('sensors.edit');
     });
 
 });

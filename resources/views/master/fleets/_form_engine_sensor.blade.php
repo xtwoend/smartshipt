@@ -1,4 +1,3 @@
-
 <table-editable
     :columns="[
         {
@@ -9,7 +8,9 @@
         {
             name: 'Sensor Name',
             field: 'sensor_name',
-            editable: true
+            editable: true,
+            editType: 'select',
+            options: {{ json_encode($sensors) }}
         },
         {
             name: 'Unit',
@@ -35,5 +36,5 @@
     ]"
     :data="{{ json_encode($lists) }}"
     edit-url="{{ route('master.sensors.edit') }}"
-    :sensor-list="{{ json_encode($sensors) }}"
+    del-url="/master/sensors/delete"
 ></table-editable>
