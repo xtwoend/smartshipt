@@ -80,6 +80,9 @@ app.component('compass', Compass);
 import EngineTypeS from './components/fleets/EngineTypeS.vue';
 app.component('engine-type-s', EngineTypeS);
 
+import UserPermission from './components/UserPermission.vue';
+app.component('user-permission', UserPermission);
+
 import TableEditable from './components/widgets/editable.vue';
 app.component('table-editable', TableEditable);
 

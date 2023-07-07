@@ -52,6 +52,18 @@ Route::group([
             Route::get('fleets/{id}/edit-bunker-information', 'editBunker')->name('editBunker');
             Route::put('fleets/{id}/update-bunker-information', 'updateBunker')->name('updateBunker');
         });
+
+        Route::resource('user', \App\Http\Controllers\Master\UserController::class);
+        Route::group(['as' => 'user.', 'prefix' => 'user', 'controller' => \App\Http\Controllers\Master\UserController::class], function(){
+            Route::get('change-password', 'changePassword')->name('change-password');
+            Route::post('change-password', 'changePasswordPost')->name('change-password.post');
+            Route::get('{id}/permission', 'editUserPermission')->name('permission');
+            Route::get('{id}/get-permission', 'getUserPermission')->name('permission.get');
+            Route::post('{id}/update-permission', 'updateUserPermission')->name('permission.update');
+        });
+
+        Route::get('permission/json', [\App\Http\Controllers\Master\PermissionController::class, 'json'])->name('permission.json');
+        Route::resource('permission', \App\Http\Controllers\Master\PermissionController::class);
         Route::resource('users', \App\Http\Controllers\Master\UserController::class);
 
         Route::delete('sensors/delete/{id}', [\App\Http\Controllers\Master\SensorController::class, 'destroy'])->name('sensors.destroy');
