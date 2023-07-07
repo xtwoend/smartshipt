@@ -64,6 +64,10 @@ Route::group([
 
         Route::get('permission/json', [\App\Http\Controllers\Master\PermissionController::class, 'json'])->name('permission.json');
         Route::resource('permission', \App\Http\Controllers\Master\PermissionController::class);
+        Route::resource('users', \App\Http\Controllers\Master\UserController::class);
+
+        Route::delete('sensors/delete/{id}', [\App\Http\Controllers\Master\SensorController::class, 'destroy'])->name('sensors.destroy');
+        Route::post('sensors/update', [\App\Http\Controllers\Master\SensorController::class, 'update'])->name('sensors.edit');
     });
 
 });

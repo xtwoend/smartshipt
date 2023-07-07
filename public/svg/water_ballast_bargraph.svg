@@ -359,20 +359,20 @@
      objecttolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.84925498"
-     inkscape:cx="387.39837"
-     inkscape:cy="167.79413"
+     inkscape:zoom="1.5492653"
+     inkscape:cx="447.95427"
+     inkscape:cy="225.5908"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1348"
-     inkscape:window-height="717"
+     inkscape:window-width="2560"
+     inkscape:window-height="1387"
      inkscape:window-x="0"
      inkscape:window-y="25"
      borderlayer="true"
      showguides="true"
      showborder="true"
-     inkscape:window-maximized="0"
+     inkscape:window-maximized="1"
      inkscape:showpageshadow="false"
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#8b8b8b">
@@ -748,7 +748,7 @@
          id="tspan4754-8-44-2"
          x="316.34448"
          y="184.54778"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#ffff00">%i</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#ffff00">%5.3f</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffff00;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -813,7 +813,7 @@
          id="tspan4754-8-44-24"
          x="421.9581"
          y="184.54778"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#ffff00">%i</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#ffff00">%5.3f</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffff00;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -878,7 +878,7 @@
          id="tspan4754-8-44-9"
          x="531.57178"
          y="184.54778"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#ffff00">%i</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#ffff00">%5.3f</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffff00;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -943,7 +943,7 @@
          id="tspan4754-8-44-8"
          x="637.18549"
          y="184.54778"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#ffff00">%i</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#ffff00">%5.3f</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffff00;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -1008,7 +1008,7 @@
          x="744.79907"
          y="184.54778"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#ffff00"
-         id="tspan17285">%i</tspan></text>
+         id="tspan17285">%5.3f</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffff00;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -1073,7 +1073,7 @@
          id="tspan4754-8-44-3-2"
          x="208.73076"
          y="382.27252"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#ffff00">%i</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#ffff00">%5.3f</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffff00;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -1138,7 +1138,7 @@
          id="tspan4754-8-44-2-2"
          x="316.34445"
          y="382.27252"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#ffff00">%i</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#ffff00">%5.3f</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffff00;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -1203,7 +1203,7 @@
          id="tspan4754-8-44-24-2"
          x="421.9581"
          y="382.27252"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#ffff00">%i</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#ffff00">%5.3f</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffff00;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -1268,7 +1268,7 @@
          id="tspan4754-8-44-9-3"
          x="531.57178"
          y="382.27252"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#ffff00">%i</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#ffff00">%5.3f</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffff00;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -1333,7 +1333,7 @@
          id="tspan4754-8-44-8-3"
          x="637.18549"
          y="382.27252"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#ffff00">%i</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#ffff00">%5.3f</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffff00;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -1398,7 +1398,7 @@
          id="tspan4754-8-44-5-5"
          x="744.79907"
          y="382.27252"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#ffff00">%i</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#ffff00">%5.3f</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffff00;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -1488,7 +1488,7 @@
          id="tspan4754-8-44-89"
          x="855.66663"
          y="286.41766"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#ffff00">%i</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#ffff00">%5.3f</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffff00;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -1578,7 +1578,7 @@
          id="tspan4754-8-44"
          x="97.273308"
          y="294.04803"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#ffff00">%i</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#ffff00">%5.3f</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffff00;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -1668,7 +1668,7 @@
          id="tspan4754-8-44-3"
          x="208.73"
          y="184.54863"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#ffff00">%i</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#ffff00">%5.3f</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffff00;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -2052,7 +2052,7 @@
        height="152.53586"
        x="-830.80945"
        y="-353.08347"
-       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:16550,&quot;min&quot;:0,&quot;tag&quot;:&quot;fore_peak&quot;}"
+       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:16,&quot;min&quot;:0,&quot;tag&quot;:&quot;fore_peak&quot;}"
        transform="scale(-1)" />
     <rect
        style="fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.220062;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -2061,7 +2061,7 @@
        height="152.53586"
        x="-719.94189"
        y="-251.21365"
-       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:17500,&quot;min&quot;:0,&quot;tag&quot;:&quot;water_ballas_1_port&quot;}"
+       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:17,&quot;min&quot;:0,&quot;tag&quot;:&quot;water_ballas_1_port&quot;}"
        transform="scale(-1)" />
     <rect
        style="fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.220062;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -2079,7 +2079,7 @@
        height="152.53586"
        x="-506.7146"
        y="-251.21365"
-       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:16850,&quot;min&quot;:0,&quot;tag&quot;:&quot;water_ballas_3_port&quot;}"
+       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:17,&quot;min&quot;:0,&quot;tag&quot;:&quot;water_ballas_3_port&quot;}"
        transform="scale(-1)" />
     <rect
        style="fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.220062;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -2088,7 +2088,7 @@
        height="152.53586"
        x="-399.10095"
        y="-251.21365"
-       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:16750,&quot;min&quot;:0,&quot;tag&quot;:&quot;water_ballas_4_port&quot;}"
+       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:17,&quot;min&quot;:0,&quot;tag&quot;:&quot;water_ballas_4_port&quot;}"
        transform="scale(-1)" />
     <rect
        style="fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.220062;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -2097,7 +2097,7 @@
        height="152.53586"
        x="-293.4873"
        y="-251.21365"
-       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:16097,&quot;min&quot;:0,&quot;tag&quot;:&quot;water_ballas_5_port&quot;}"
+       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:16,&quot;min&quot;:0,&quot;tag&quot;:&quot;water_ballas_5_port&quot;}"
        transform="scale(-1)" />
     <rect
        style="fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.220062;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -2106,7 +2106,7 @@
        height="152.53586"
        x="-185.87283"
        y="-251.21445"
-       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:16750,&quot;min&quot;:0,&quot;tag&quot;:&quot;water_ballas_6_port&quot;}"
+       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:17,&quot;min&quot;:0,&quot;tag&quot;:&quot;water_ballas_6_port&quot;}"
        transform="scale(-1)" />
     <rect
        style="fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.220062;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -2115,7 +2115,7 @@
        height="152.53586"
        x="-719.94189"
        y="-448.93845"
-       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:17500,&quot;min&quot;:0,&quot;tag&quot;:&quot;water_ballas_1_stb&quot;}"
+       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:18,&quot;min&quot;:0,&quot;tag&quot;:&quot;water_ballas_1_stb&quot;}"
        transform="scale(-1)" />
     <rect
        style="fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.220062;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -2124,7 +2124,7 @@
        height="152.53586"
        x="-614.32825"
        y="-448.93845"
-       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:16850,&quot;min&quot;:0,&quot;tag&quot;:&quot;water_ballas_2_stb&quot;}"
+       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:17,&quot;min&quot;:0,&quot;tag&quot;:&quot;water_ballas_2_stb&quot;}"
        transform="scale(-1)" />
     <rect
        style="fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.220062;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -2133,7 +2133,7 @@
        height="152.53586"
        x="-506.7146"
        y="-448.93845"
-       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:16850,&quot;min&quot;:0,&quot;tag&quot;:&quot;water_ballas_3_stb&quot;}"
+       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:17,&quot;min&quot;:0,&quot;tag&quot;:&quot;water_ballas_3_stb&quot;}"
        transform="scale(-1)" />
     <rect
        style="fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.220062;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -2142,7 +2142,7 @@
        height="152.53586"
        x="-399.10095"
        y="-448.93845"
-       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:16750,&quot;min&quot;:0,&quot;tag&quot;:&quot;water_ballas_4_stb&quot;}"
+       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:17,&quot;min&quot;:0,&quot;tag&quot;:&quot;water_ballas_4_stb&quot;}"
        transform="scale(-1)" />
     <rect
        style="fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.220062;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -2151,7 +2151,7 @@
        height="152.53586"
        x="-293.4873"
        y="-448.93845"
-       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:17550,&quot;min&quot;:0,&quot;tag&quot;:&quot;water_ballas_5_stb&quot;}"
+       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:18,&quot;min&quot;:0,&quot;tag&quot;:&quot;water_ballas_5_stb&quot;}"
        transform="scale(-1)" />
     <rect
        style="fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.220062;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -2160,7 +2160,7 @@
        height="152.53586"
        x="-185.87286"
        y="-448.93924"
-       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:16750,&quot;min&quot;:0,&quot;tag&quot;:&quot;water_ballas_6_stb&quot;}"
+       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:17,&quot;min&quot;:0,&quot;tag&quot;:&quot;water_ballas_6_stb&quot;}"
        transform="scale(-1)" />
     <rect
        style="fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:0.220062;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -2169,7 +2169,7 @@
        height="152.53586"
        x="54.498329"
        y="-360.71381"
-       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:4600,&quot;min&quot;:0,&quot;tag&quot;:&quot;after_peak&quot;}"
+       inkscape:label="{&quot;attr&quot;:&quot;bar&quot;,&quot;max&quot;:5,&quot;min&quot;:0,&quot;tag&quot;:&quot;after_peak&quot;}"
        transform="scale(1,-1)" />
   </g>
 </svg>

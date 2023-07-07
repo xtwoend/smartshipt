@@ -36,11 +36,13 @@
                             </div>
                             <div class="text-muted text-sm">{{ fleet.imo_number }}</div>
                         </div>
-                        <div class="col-auto"  v-if="fleet.connected">
+                        <div class="col-auto" v-if="fleet.connected">
                             <div class="badge bg-success"></div><span class="text-xs ml-1">Online</span>
+                            <div class="text-xs">{{ $filters.dateformat(fleet.last_connection, 'DD/MM HH:mm') }}</div>
                         </div>
-                        <div class="col-auto"  v-if="!fleet.connected">
+                        <div class="col-auto" v-if="!fleet.connected">
                             <div class="badge bg-danger"></div><span class="text-xs ml-1">Offline</span>
+                            <div class="text-xs">{{ $filters.dateformat(fleet.last_connection, 'DD/MM HH:mm') }}</div>
                         </div>
                     </div>
                     <!-- <div class="row mt-2">
@@ -53,8 +55,8 @@
                             <div class="text-muted text-sm">ID JKT</div>
                             <div class="text-xs">ETA 27/12</div>
                         </div>
-                    </div> -->
-                    <!-- <div class="row">
+                    </div>
+                    <div class="row">
                         <div class="col-12">
                             <div class="progress mt-2">
                                 <div class="progress-bar arrow-right bg-green" style="width: 38%" role="progressbar" aria-valuenow="38" aria-valuemin="0" aria-valuemax="100" aria-label="38% Complete">

@@ -14,22 +14,19 @@
                             data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
                             aria-selected="true">INFO</button>
                     </li>
-                    <!-- <li class="nav-item" role="presentation">
-                        <button class="nav-link justify-content-center" id="pills-profile-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
-                            aria-selected="false">TRACK</button>
-                    </li> -->
                 </ul>
                 <div class="tab-content" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                         <div class="m12">
                             <div class="st21">Name</div>
                             <div class="st22">
-                                <a :href="`/fleet/${fleet.id}`" class="d-flex align-items-center">{{ fleet.name }} <img width="11" height="11" src="/img/icons/external-link.png" style="margin-left: 6px;"></a>
+                                <a :href="`/fleet/${fleet.id}`" class="d-flex align-items-center">{{ fleet.name }} <img
+                                        width="11" height="11" src="/img/icons/external-link.png"
+                                        style="margin-left: 6px;"></a>
                             </div>
                         </div>
                         <div class="m12">
-                            <div class="st21">Imo Number</div>
+                            <div class="st21">IMO Number</div>
                             <div class="st22">{{ fleet.imo_number }}</div>
                         </div>
                         <div class="m12">
@@ -39,11 +36,18 @@
                         <div class="m12">
                             <div class="st21">Last Coordinates</div>
                             <div class="st22">
-                                <a :href="`/fleet/${fleet.id}/track`" class="d-flex align-items-center">{{ fleet.navigation.lat.toFixed(4) }} {{ fleet.navigation.lat_dir }},
-                                    {{ fleet.navigation.lng.toFixed(4) }} {{ fleet.navigation.lng_dir }} <img width="11" height="11" src="/img/icons/external-link.png" style="margin-left: 6px;"></a></div>
+                                <a :href="`/fleet/${fleet.id}/track`" class="d-flex align-items-center">{{
+                                    fleet.navigation.lat.toFixed(4) }} {{ fleet.navigation.lat_dir }},
+                                    {{ fleet.navigation.lng.toFixed(4) }} {{ fleet.navigation.lng_dir }} <img width="11"
+                                        height="11" src="/img/icons/external-link.png" style="margin-left: 6px;"></a>
+                            </div>
+                        </div>
+                        <div class="m12" v-if="fleet.fleet_status == 'at_port'">
+                            <div class="st21">At Port</div>
+                            <div class="st22">{{ fleet.last_port }}</div>
                         </div>
                         <div class="m12">
-                            <div class="st21">From</div>
+                            <div class="st21">Origin</div>
                             <div class="st22"></div>
                         </div>
                         <div class="m12">
@@ -54,117 +58,46 @@
                             <div class="st21">ETA</div>
                             <div class="st22"></div>
                         </div>
-                        <div class="tt01">Engine Latest Status</div>
-                        <div class="m13">
-                            <div class="st21">
-                                Fuel Oil Temp <span>189&deg;</span>
-                            </div>
-                            <div class="st22">
-                                <div class="progress">
-                                    <div class="progress-bar" :style="{width: '89%'}" role="progressbar" aria-valuenow="0" aria-valuemin="0"
-                                        aria-valuemax="100"></div>
+                        <br>
+                        <ul class="nav nav-pills nav-justified mb-3" id="pills-tab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link justify-content-left active" id="pills-main-engine-tab"
+                                    data-bs-toggle="pill" data-bs-target="#pills-main-engine" type="button" role="tab"
+                                    aria-controls="pills-main-engine" aria-selected="true">Main Engine</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link justify-content-center" id="pills-pump-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-pump" type="button" role="tab" aria-controls="pills-pump"
+                                    aria-selected="false">Pump Status</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="pills-main-engine" role="tabpanel"
+                                aria-labelledby="pills-main-engine-tab">
+                                <div class="tt01">Main Engine Latest Status</div>
+
+                                <div class="m13" v-for="(val, key) in fleet.engine_info" :key="key">
+                                    <div class="st21">
+                                        {{ val.title }} <span v-if="val.value > 0">{{ $filters.number(val.value) }} <span v-html="val.unit"></span></span> <span v-if="val.value == 0">OFF</span>
+                                    </div>
+                                    <div class="st22">
+                                        <progress-bar :min="val.min" :warning="val.warning" :danger="val.danger" :max="val.max" :value="val.value"></progress-bar>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="m13">
-                            <div class="st21">
-                                Exhaust Gas Turbo Charge inlet <span>1139 mt/12^2</span>
-                            </div>
-                            <div class="st22">
-                                <div class="progress">
-                                    <div class="progress-bar" :style="{width: '50%'}" role="progressbar" aria-valuenow="0" aria-valuemin="0"
-                                        aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="m13">
-                            <div class="st21">
-                                Jacket Cooling Temp <span>130&deg;</span>
-                            </div>
-                            <div class="st22">
-                                <div class="progress">
-                                    <div class="progress-bar" :style="{width: '12%'}" role="progressbar" aria-valuenow="0" aria-valuemin="0"
-                                        aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="m13">
-                            <div class="st21">
-                                Lube Oil temp <span>112&deg;</span>
-                            </div>
-                            <div class="st22">
-                                <div class="progress">
-                                    <div class="progress-bar" :style="{width: '24%'}" role="progressbar" aria-valuenow="0" aria-valuemin="0"
-                                        aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="m13">
-                            <div class="st21">
-                                Lube Pressure <span>74 bar</span>
-                            </div>
-                            <div class="st22">
-                                <div class="progress">
-                                    <div class="progress-bar" :style="{width: '70%'}" role="progressbar" aria-valuenow="0" aria-valuemin="0"
-                                        aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="m13">
-                            <div class="st21">
-                                Scaving Air Temp<span>130&deg;</span>
-                            </div>
-                            <div class="st22">
-                                <div class="progress">
-                                    <div class="progress-bar" :style="{width: '50%'}" role="progressbar" aria-valuenow="0" aria-valuemin="0"
-                                        aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="m13">
-                            <div class="st21">
-                                Scaving Air Pressure<span>74 bar</span>
-                            </div>
-                            <div class="st22">
-                                <div class="progress">
-                                    <div class="progress-bar" :style="{width: '50%'}" role="progressbar" aria-valuenow="0" aria-valuemin="0"
-                                        aria-valuemax="100"></div>
+                            <div class="tab-pane" id="pills-pump" role="tabpanel" aria-labelledby="pills-pump-tab">
+                                <div class="tt01">Cargo/Ballast/Stripping/Vacuum Pump</div>
+                                <div class="m13" v-for="(val, key) in fleet.cargo_pump_info" :key="key">
+                                    <div class="st21">
+                                        {{ val.title }} <span v-if="val.value > 0">{{ $filters.number(val.value) }} <span v-html="val.unit"></span></span> <span v-if="val.value == 0">OFF</span>
+                                    </div>
+                                    <div class="st22">
+                                        <progress-bar :min="val.min" :normal="val.normal" :danger="val.danger" :max="val.max" :value="val.value"></progress-bar>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                        <div class="mb-4">
-                            <div class="form-group mb-3">
-                                <label for="startDateInput">Start Date</label>
-                                <input type="date" v-model="params.from" class="form-control" id="startDateInput">
-                            </div>
-                            <div class="form-group mb-3">
-                                <label for="endDateInput">End Date</label>
-                                <input type="date" v-model="params.to" class="form-control" id="endDateInput">
-                            </div>
-                            <button @click="fetchData" class="btn btn-outline-primary w-100">SHOW</button>
-                        </div>
-                        <h6 class="text-primary">GENERATE REPORT</h6>
-                        <table class="table text-sm">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Time</th>
-                                    <th scope="col">Lon</th>
-                                    <th scope="col">Lat</th>
-                                    <th scope="col">Speed</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr @click="selected(row)" v-for="row in histories" :key="row.id">
-                                    <td scope="row">{{ $filters.dateformat(row.terminal_time, 'DD/MM/YY HH:mm') }}</td>
-                                    <td>{{ row.lng.toFixed(2) }}°</td>
-                                    <td>{{ row.lat.toFixed(2) }}°</td>
-                                    <td>{{ row.sog }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div> -->
                 </div>
             </div>
         </div>
@@ -172,39 +105,24 @@
 </template>
 
 <script>
-
+import Progress from '../widgets/progress.vue';
 export default {
+    components: {
+        'progress-bar': Progress
+    },
     props: {
         fleet: Object,
         display: Boolean
     },
     data() {
         return {
-            params: {
-                from: null,
-                to: null,
-                interval: 900
-            },
-            histories: []
+            // 
         }
     },
     methods: {
-        async fetchData() {
-            this.histories = []
-            let res = await axios.get(`/api/fleet/${this.fleet.id}/nav/histories`, { params: this.params }).then(res => res.data)
-            res.forEach(row => {
-                if (row.lat == 0 && row.lng == 0) return;
-                this.histories.push(row)
-            })
-
-            this.$emit('history', this.histories)
-        },
         toggleText() {
             this.display = !this.display;
         },
-        selected(e) {
-            this.$emit('selected', e)
-        }
     },
 }
 </script>
@@ -236,7 +154,7 @@ export default {
 
 .voyage-card {
     background: #fff;
-    width: 320px;
+    width: 350px;
     height: 100% !important;
     z-index: 3;
     border: 0 !important;
@@ -292,15 +210,17 @@ export default {
     color: #fff;
     margin-bottom: 15px;
 }
+
 .m13 {
     font-size: 12px;
     margin-bottom: 15px;
+
     .st21 {
         display: flex;
         justify-content: space-between;
+
         span {
             font-weight: bold;
         }
     }
-}
-</style>
+}</style>

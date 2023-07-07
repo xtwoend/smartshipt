@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Master;
 
-use App\Http\Controllers\Controller;
-use App\Models\BunkerInformation;
-use App\Models\CargoInformation;
 use App\Models\Fleet;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
+use App\Models\CargoInformation;
+use App\Models\BunkerInformation;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Schema;
 
 class FleetController extends Controller
 {
@@ -64,7 +65,13 @@ class FleetController extends Controller
     public function show($id)
     {
         $data = $this->fleet->with(['cargo_information', 'bunker_information'])->findOrFail($id);
-        return view('master.fleets.show', compact('data'));
+        $engines = $data->sensors()->where('group', 'engine')->get();
+        $pumps = $data->sensors()->where('group', 'cargo_pump')->get();
+    
+        $engine_sensor_lists = $data->engineColumns();
+        $pumps_sensor_lists = $data->cargoPumpColumns();
+     
+        return view('master.fleets.show', compact('data', 'engines', 'pumps', 'engine_sensor_lists', 'pumps_sensor_lists'));
     }
 
     /**

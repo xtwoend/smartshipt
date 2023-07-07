@@ -7,6 +7,8 @@
 import './bootstrap';
 import { createApp } from 'vue';
 import moment from 'moment';
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -15,6 +17,8 @@ import moment from 'moment';
  */
 
 const app = createApp({});
+
+app.use(VueSweetalert2);
 
 import MapDashboard from './components/maps/dashboard.vue';
 app.component('map-dashboard', MapDashboard);
@@ -79,6 +83,9 @@ app.component('engine-type-s', EngineTypeS);
 import UserPermission from './components/UserPermission.vue';
 app.component('user-permission', UserPermission);
 
+import TableEditable from './components/widgets/editable.vue';
+app.component('table-editable', TableEditable);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -108,6 +115,10 @@ app.config.globalProperties.$filters = {
     textFormat(value) {
         let text = value.toLowerCase();
         return text.capitalize()
+    },
+    number(value) {
+        let num = Number.parseFloat(value).toFixed(2);
+        return Number.parseFloat(num).toLocaleString();
     }
 }
 

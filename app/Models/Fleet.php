@@ -13,7 +13,7 @@ class Fleet extends Model
     protected $table = 'fleets';
 
     protected $fillable = [
-        'name', 'imo_number', 'owner', 'ship_manager', 'cargo', 'type', 'email', 'telp', 'call_sign', 'builder', 'year', 'flag', 'home_port', 'class', 'mmsi', 'length', 'breadth', 'death', 'dwt', 'grt', 'nrt', 'lwt', 'draft', 'swl'
+        'active', 'name', 'imo_number', 'owner', 'ship_manager', 'cargo', 'type', 'email', 'telp', 'call_sign', 'builder', 'year', 'flag', 'home_port', 'class', 'mmsi', 'length', 'breadth', 'death', 'dwt', 'grt', 'nrt', 'lwt', 'draft', 'swl'
     ];
 
     public function rules(){
@@ -45,9 +45,19 @@ class Fleet extends Model
         ];
     }
 
+    public function scopeActive($query)
+    {
+        return $query->where('active', 1);
+    }
+
     public function navigation()
     {
         return $this->hasOne(Navigation::class, 'fleet_id');
+    }
+
+    public function sensors()
+    {
+        return $this->hasMany(Sensor::class, 'fleet_id');
     }
 
     public function engine()
@@ -59,6 +69,16 @@ class Fleet extends Model
         return null;
     }
 
+    public function engineColumns() 
+    {   
+        $model =  Engine::table($this->id);
+        if(Schema::hasTable($model->getTable())) {
+            $columns = Schema::getColumnListing($model->getTable());
+            return array_diff($columns, ['id', 'created_at', 'updated_at', 'terminal_time', 'fleet_id']);
+        }
+        return [];
+    }
+
     public function cargo_data()
     {
         $model = Cargo::table($this->id);
@@ -66,6 +86,25 @@ class Fleet extends Model
             return $model->where('fleet_id', $this->id)->first();
         }
         return null;
+    }
+
+    public function cargo_pump()
+    {
+        $model = CargoPump::table($this->id);
+        if(Schema::hasTable($model->getTable())) {
+            return $model->where('fleet_id', $this->id)->first();
+        }
+        return null;
+    }
+
+    public function cargoPumpColumns() 
+    {   
+        $model =  CargoPump::table($this->id);
+        if(Schema::hasTable($model->getTable())) {
+            $columns = Schema::getColumnListing($model->getTable());
+            return array_diff($columns, ['id', 'created_at', 'updated_at', 'terminal_time', 'fleet_id']);
+        }
+        return [];
     }
 
     public function cargo_information()
