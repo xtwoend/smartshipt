@@ -86,6 +86,9 @@ app.component('user-permission', UserPermission);
 import TableEditable from './components/widgets/editable.vue';
 app.component('table-editable', TableEditable);
 
+import TrendView from './components/charts/trend.vue';
+app.component('trend-view', TrendView);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

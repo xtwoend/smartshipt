@@ -7,13 +7,13 @@
     "file": "assets/green-342241e2.png",
     "src": "resources/js/components/icon/green.png"
   },
-  "resources/js/components/icon/red.png": {
-    "file": "assets/red-f4bfe255.png",
-    "src": "resources/js/components/icon/red.png"
-  },
   "resources/js/components/maps/ship.png": {
     "file": "assets/ship-c94d8078.png",
     "src": "resources/js/components/maps/ship.png"
+  },
+  "resources/js/components/icon/red.png": {
+    "file": "assets/red-f4bfe255.png",
+    "src": "resources/js/components/icon/red.png"
   },
   "public/remixicon/remixicon.eot": {
     "file": "assets/remixicon-e0d505c9.eot",
@@ -48,15 +48,6 @@
     "src": "resources/sass/app.scss",
     "isEntry": true
   },
-  "resources/tabler/src/js/tabler.esm.js": {
-    "file": "assets/tabler.esm-4fe66c31.js",
-    "src": "resources/tabler/src/js/tabler.esm.js",
-    "isEntry": true,
-    "imports": [
-      "_toast-fd51308c.js",
-      "_popper-b924b727.js"
-    ]
-  },
   "resources/js/index.js": {
     "file": "assets/index-dcec33a0.js",
     "src": "resources/js/index.js",
@@ -71,11 +62,6 @@
     "css": [
       "assets/app-7a8c2353.css"
     ]
-  },
-  "resources/js/libs/constants.js": {
-    "file": "assets/constants-9ec7b010.js",
-    "src": "resources/js/libs/constants.js",
-    "isEntry": true
   },
   "resources/js/libs/slide.js": {
     "file": "assets/slide-02b0fce0.js",
@@ -94,9 +80,6 @@
       "_popper-b924b727.js"
     ]
   },
-  "_popper-b924b727.js": {
-    "file": "assets/popper-b924b727.js"
-  },
   "resources/js/libs/poppers.js": {
     "file": "assets/poppers-2b93aeb1.js",
     "src": "resources/js/libs/poppers.js",
@@ -107,6 +90,23 @@
       "_popper-b924b727.js"
     ]
   },
+  "resources/tabler/src/js/tabler.esm.js": {
+    "file": "assets/tabler.esm-4fe66c31.js",
+    "src": "resources/tabler/src/js/tabler.esm.js",
+    "isEntry": true,
+    "imports": [
+      "_toast-fd51308c.js",
+      "_popper-b924b727.js"
+    ]
+  },
+  "resources/js/libs/constants.js": {
+    "file": "assets/constants-9ec7b010.js",
+    "src": "resources/js/libs/constants.js",
+    "isEntry": true
+  },
+  "_popper-b924b727.js": {
+    "file": "assets/popper-b924b727.js"
+  },
   "_toast-fd51308c.js": {
     "file": "assets/toast-fd51308c.js",
     "imports": [
@@ -114,7 +114,7 @@
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-facf4823.js",
+    "file": "assets/app-840fee9e.js",
     "src": "resources/js/app.js",
     "isEntry": true,
     "imports": [

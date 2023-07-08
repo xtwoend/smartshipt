@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\NavController;
 use App\Http\Controllers\Api\FleetController;
+use App\Http\Controllers\Api\EngineController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -27,3 +28,10 @@ Route::get('fleets', [FleetController::class, 'fleets'])->name('api.fleets');
 Route::get('fleet/{id}/nav/histories', [NavController::class, 'history']);
 Route::get('fleet/{id}/nav/trend', [NavController::class, 'trend']);
 Route::get('fleet/{id}', [FleetController::class, 'show'])->name('api.fleet');
+
+Route::group([
+    'as' => 'api.fleet.',
+    'prefix' => 'fleet',
+], function (){
+    Route::get('/{id}/engine/trend', [EngineController::class, 'trend'])->name('engine.trend');
+});
