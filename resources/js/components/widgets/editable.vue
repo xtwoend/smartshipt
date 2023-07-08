@@ -1,6 +1,7 @@
 <template>
+    <form-modal :fields="columns" title="Add Data" :url="editUrl" :show="formShow" :fleet="fleet" @saved="saved"></form-modal>
     <div class="action-edit">
-        <button type="button" class="btn btn-info" @click="addItem">Add Data</button>
+        <button type="button" class="btn btn-info" @click="formShow = true">Add Data</button>
     </div>
     <div class="table-responsive">
         <table class="table table-vcenter card-table">
@@ -45,15 +46,19 @@
 </template>
 
 <script>
+import FormModal from './form-modal.vue';
 export default {
+    components: {FormModal},
     props: {
         columns: Array,
         data: Array,
         editUrl: String,
-        delUrl: String
+        delUrl: String,
+        fleet: Object,
     },
     data () {
         return {
+            formShow: false,
             items: []
         }
     },
@@ -62,13 +67,10 @@ export default {
         this.items = this.items.map(item => ({...item, isEdit: false}));
     },
     methods: {
-        addItem () {
-            let item = this.items[0];
-            item.id = 0
-            item.isEdit = true
-            this.columns.forEach(row => {
-                item[row.field] = null
-            })
+        saved(res) {
+            res.isEdit = false
+            this.items.push(res)
+            this.formShow = false
         },
         editRowHandler(data, index) {
             this.items[index].isEdit = !this.items[index].isEdit;

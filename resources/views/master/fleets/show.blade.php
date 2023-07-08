@@ -55,10 +55,10 @@
                                     {!! Form::close() !!}
                                 </div>
                                 <div class="tab-pane" id="engine">
-                                    @include('master.fleets._form_engine_sensor', ['lists' => $engines, 'sensors' => $engine_sensor_lists])
+                                    @include('master.fleets._form_engine_sensor', ['lists' => $engines, 'sensors' => $engine_sensor_lists, 'fleet' => $data])
                                 </div>
                                 <div class="tab-pane" id="pumps">
-                                    @include('master.fleets._form_pump_sensor', ['lists' => $pumps, 'sensors' => $pumps_sensor_lists])
+                                    @include('master.fleets._form_pump_sensor', ['lists' => $pumps, 'sensors' => $pumps_sensor_lists, 'fleet' => $data])
                                 </div>
                             </div>
                         </div>

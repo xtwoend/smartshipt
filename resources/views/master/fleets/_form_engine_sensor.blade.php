@@ -34,6 +34,7 @@
             editable: true
         },
     ]"
+    :fleet="{fleetId: {{ $fleet->id }}, group: 'engine'}"
     :data="{{ json_encode($lists) }}"
     edit-url="{{ route('master.sensors.edit') }}"
     del-url="/master/sensors/delete"

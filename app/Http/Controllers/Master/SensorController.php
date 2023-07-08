@@ -10,7 +10,7 @@ class SensorController extends Controller
 {
     public function update(Request $request)
     {
-        if($request->id !== 0) {
+        if($request->has('id') && $request->id !== 0) {
             $sensor = Sensor::find($request->id)->update($request->all());
         }else{
             $sensor = Sensor::create($request->all());
