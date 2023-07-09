@@ -96,6 +96,17 @@ class Fleet extends Model
         return null;
     }
 
+    public function engine_logs(): Model
+    {
+        $group = $this->group_data()->where('group', 'engine_logs')->first();
+        $classModel  = $group->class_handler;
+        if(! class_exists($classModel)) {
+            return null;
+        }
+
+        return (new $classModel);
+    }
+
     public function engineColumns() 
     {   
         $group = $this->group_data()->where('group', 'engine')->first();
@@ -127,6 +138,17 @@ class Fleet extends Model
             return $model->where('fleet_id', $this->id)->first();
         }
         return null;
+    }
+
+    public function cargo_logs(): Model
+    {
+        $group = $this->group_data()->where('group', 'cargo_logs')->first();
+        $classModel  = $group->class_handler;
+        if(! class_exists($classModel)) {
+            return null;
+        }
+
+        return (new $classModel);
     }
 
     public function cargoColumns() 
@@ -161,6 +183,17 @@ class Fleet extends Model
         }
         return null;
     }
+
+    public function cargo_pump_logs(): Model
+    {
+        $group = $this->group_data()->where('group', 'cargo_pump_logs')->first();
+        $classModel  = $group->class_handler;
+        if(! class_exists($classModel)) {
+            return null;
+        }
+
+        return (new $classModel);
+    }
     
     public function cargoPumpColumns() 
     {   
@@ -194,6 +227,17 @@ class Fleet extends Model
         }
         return null;
     }
+
+    public function bunker_logs(): Model
+    {
+        $group = $this->group_data()->where('group', 'bunker_logs')->first();
+        $classModel  = $group->class_handler;
+        if(! class_exists($classModel)) {
+            return null;
+        }
+
+        return (new $classModel);
+    }
     
     public function bunkerColumns() 
     {   
@@ -226,6 +270,17 @@ class Fleet extends Model
             return $model->where('fleet_id', $this->id)->first();
         }
         return null;
+    }
+
+    public function ballast_logs(): Model
+    {
+        $group = $this->group_data()->where('group', 'ballast_logs')->first();
+        $classModel  = $group->class_handler;
+        if(! class_exists($classModel)) {
+            return null;
+        }
+
+        return (new $classModel);
     }
     
     public function ballastColumns() 
