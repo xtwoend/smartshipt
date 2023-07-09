@@ -27,7 +27,7 @@
                                     <a href="#pumps" class="nav-link" data-bs-toggle="tab">Pumps Sensor</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#cargo" class="nav-link" data-bs-toggle="tab">Cargo Sensor</a>
+                                    <a href="#cargo_sensor" class="nav-link" data-bs-toggle="tab">Cargo Sensor</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="#fuel" class="nav-link" data-bs-toggle="tab">Fuel Sensor</a>
@@ -67,22 +67,46 @@
                                     {!! Form::close() !!}
                                 </div>
                                 <div class="tab-pane" id="engine">
-                                    @include('master.fleets._form_engine_sensor', ['lists' => $engines, 'sensors' => $engine_sensor_lists, 'fleet' => $data])
+                                    @include('master.fleets._form_engine_sensor', [
+                                        'lists' => $data->sensors()->where('group', 'engine')->get(), 
+                                        'sensors' => $data->engineColumns(), 
+                                        'fleet' => $data
+                                        ])
                                 </div>
                                 <div class="tab-pane" id="pumps">
-                                    @include('master.fleets._form_pump_sensor', ['lists' => $pumps, 'sensors' => $pumps_sensor_lists, 'fleet' => $data])
+                                    @include('master.fleets._form_pump_sensor', [
+                                        'lists' => $data->sensors()->where('group', 'cargo_pump')->get(), 
+                                        'sensors' => $data->cargoPumpColumns(), 
+                                        'fleet' => $data
+                                    ])
                                 </div>
-                                <div class="tab-pane" id="cargo">
-                                    @include('master.fleets._form_cargo_sensor', ['lists' => $cargos, 'sensors' => $cargos_sensor_lists, 'fleet' => $data])
+                                <div class="tab-pane" id="cargo_sensor">
+                                    @include('master.fleets._form_cargo_sensor', [
+                                        'lists' => $data->sensors()->where('group', 'cargo')->get(), 
+                                        'sensors' => $data->cargoColumns(), 
+                                        'fleet' => $data
+                                    ])
                                 </div>
                                 <div class="tab-pane" id="fuel">
-                                    @include('master.fleets._form_fuel_sensor', ['lists' => $fuels, 'sensors' => $fuels_sensor_lists, 'fleet' => $data])
+                                    @include('master.fleets._form_fuel_sensor', [
+                                        'lists' => $data->sensors()->where('group', 'fuel')->get(), 
+                                        'sensors' => $data->fuelColumns(), 
+                                        'fleet' => $data
+                                    ])
                                 </div>
                                 <div class="tab-pane" id="ballast">
-                                    @include('master.fleets._form_ballast_sensor', ['lists' => $ballast, 'sensors' => $ballast_sensor_lists, 'fleet' => $data])
+                                    @include('master.fleets._form_ballast_sensor', [
+                                        'lists' => $data->sensors()->where('group', 'ballast')->get(), 
+                                        'sensors' => $data->ballastColumns(), 
+                                        'fleet' => $data
+                                    ])
                                 </div>
                                 <div class="tab-pane" id="draft">
-                                    @include('master.fleets._form_draft_sensor', ['lists' => $draft, 'sensors' => $draft_sensor_lists, 'fleet' => $data])
+                                    @include('master.fleets._form_draft_sensor', [
+                                        'lists' => $data->sensors()->where('group', 'draft')->get(), 
+                                        'sensors' => $data->draftColumns(), 
+                                        'fleet' => $data
+                                    ])
                                 </div>
                             </div>
                         </div>
