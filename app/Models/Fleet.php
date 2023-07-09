@@ -330,6 +330,56 @@ class Fleet extends Model
         return [];
     }
 
+    public function draft()
+    {
+        $group = $this->group_data()->where('group', 'draft')->first();
+        if(is_null($group)) return null;
+
+        $classModel  = $group->class_handler;
+        if(! class_exists($classModel)) {
+            return null;
+        }
+        
+        $model = (new $classModel)->table($this->id);
+
+        if(Schema::hasTable($model->getTable())) {
+            return $model->where('fleet_id', $this->id)->first();
+        }
+        return null;
+    }
+
+    public function draft_logs(): Model
+    {
+        $group = $this->group_data()->where('group', 'draft_logs')->first();
+        if(is_null($group)) return null;
+
+        $classModel  = $group->class_handler;
+        if(! class_exists($classModel)) {
+            return null;
+        }
+
+        return (new $classModel);
+    }
+    
+    public function draftColumns() 
+    {   
+        $group = $this->group_data()->where('group', 'draft')->first();
+        if(is_null($group)) return [];
+
+        $classModel  = $group->class_handler;
+        if(! class_exists($classModel)) {
+            return [];
+        }
+        
+        $model = (new $classModel)->table($this->id);
+
+        if(Schema::hasTable($model->getTable())) {
+            $columns = Schema::getColumnListing($model->getTable());
+            return array_diff($columns, ['id', 'created_at', 'updated_at', 'terminal_time', 'fleet_id']);
+        }
+        return [];
+    }
+
     public function cargo_information()
     {
         return $this->hasOne(CargoInformation::class, 'fleet_id');
