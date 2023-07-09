@@ -5,9 +5,12 @@ use App\Models\Fleet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\NavController;
+use App\Http\Controllers\Api\FuelController;
 use App\Http\Controllers\Api\CargoController;
+use App\Http\Controllers\Api\DraftController;
 use App\Http\Controllers\Api\FleetController;
 use App\Http\Controllers\Api\EngineController;
+use App\Http\Controllers\Api\BallastController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -36,4 +39,7 @@ Route::group([
 ], function (){
     Route::get('/{id}/engine/trend', [EngineController::class, 'trend'])->name('engine.trend');
     Route::get('/{id}/cargo/trend', [CargoController::class, 'trend'])->name('cargo.trend');
+    Route::get('/{id}/fuel/trend', [FuelController::class, 'trend'])->name('fuel.trend');
+    Route::get('/{id}/ballast/trend', [BallastController::class, 'trend'])->name('ballast.trend');
+    Route::get('/{id}/draft/trend', [DraftController::class, 'trend'])->name('draft.trend');
 });
