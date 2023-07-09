@@ -60,6 +60,21 @@ class Fleet extends Model
         return $this->hasMany(Sensor::class, 'fleet_id');
     }
 
+    public function trendOptions($group) 
+    {
+        $rows = $this->sensors()->where('group', $group)->get();
+        $options = [];
+
+        foreach($rows as $row) {
+            $options[] = [
+                'data' => $row->sensor_name,
+                'text' => $row->name,
+            ];
+        }
+
+        return $options;
+    }
+
     public function engine()
     {
         $model =  Engine::table($this->id);

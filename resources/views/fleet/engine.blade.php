@@ -9,6 +9,7 @@
             <engine-type-s url="{{ route('api.fleet', $fleet->id) }}"></engine-type-s>
             @endif
 
+            @endphp
             <trend-view 
                 title="Trend View Engine"
                 url="{{ route('api.fleet.engine.trend', $fleet->id) }}"
