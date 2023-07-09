@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Fleet extends Model
@@ -75,9 +76,20 @@ class Fleet extends Model
         return $options;
     }
 
+    function group_data() : HasMany {
+        return $this->hasMany(GroupData::class, 'fleet_id');
+    }
+
     public function engine()
     {
-        $model =  Engine::table($this->id);
+        $group = $this->group_data()->where('group', 'engine')->first();
+        $classModel  = $group->class_handler;
+        if(! class_exists($classModel)) {
+            return null;
+        }
+
+        $model = (new $classModel)->table($this->id);
+
         if(Schema::hasTable($model->getTable())) {
             return $model->where('fleet_id', $this->id)->first();
         }
@@ -86,7 +98,14 @@ class Fleet extends Model
 
     public function engineColumns() 
     {   
-        $model =  Engine::table($this->id);
+        $group = $this->group_data()->where('group', 'engine')->first();
+        $classModel  = $group->class_handler;
+        if(! class_exists($classModel)) {
+            return null;
+        }
+        
+        $model = (new $classModel)->table($this->id);
+
         if(Schema::hasTable($model->getTable())) {
             $columns = Schema::getColumnListing($model->getTable());
             return array_diff($columns, ['id', 'created_at', 'updated_at', 'terminal_time', 'fleet_id']);
@@ -94,27 +113,131 @@ class Fleet extends Model
         return [];
     }
 
-    public function cargo_data()
+    public function cargo()
     {
-        $model = Cargo::table($this->id);
+        $group = $this->group_data()->where('group', 'cargo')->first();
+        $classModel  = $group->class_handler;
+        if(! class_exists($classModel)) {
+            return null;
+        }
+        
+        $model = (new $classModel)->table($this->id);
+
         if(Schema::hasTable($model->getTable())) {
             return $model->where('fleet_id', $this->id)->first();
         }
         return null;
+    }
+
+    public function cargoColumns() 
+    {   
+        $group = $this->group_data()->where('group', 'cargo')->first();
+        $classModel  = $group->class_handler;
+        if(! class_exists($classModel)) {
+            return null;
+        }
+        
+        $model = (new $classModel)->table($this->id);
+
+        if(Schema::hasTable($model->getTable())) {
+            $columns = Schema::getColumnListing($model->getTable());
+            return array_diff($columns, ['id', 'created_at', 'updated_at', 'terminal_time', 'fleet_id']);
+        }
+        return [];
     }
 
     public function cargo_pump()
     {
-        $model = CargoPump::table($this->id);
+        $group = $this->group_data()->where('group', 'cargo_pump')->first();
+        $classModel  = $group->class_handler;
+        if(! class_exists($classModel)) {
+            return null;
+        }
+        
+        $model = (new $classModel)->table($this->id);
+
         if(Schema::hasTable($model->getTable())) {
             return $model->where('fleet_id', $this->id)->first();
         }
         return null;
     }
-
+    
     public function cargoPumpColumns() 
     {   
-        $model =  CargoPump::table($this->id);
+        $group = $this->group_data()->where('group', 'cargo_pump')->first();
+        $classModel  = $group->class_handler;
+        if(! class_exists($classModel)) {
+            return null;
+        }
+        
+        $model = (new $classModel)->table($this->id);
+
+        if(Schema::hasTable($model->getTable())) {
+            $columns = Schema::getColumnListing($model->getTable());
+            return array_diff($columns, ['id', 'created_at', 'updated_at', 'terminal_time', 'fleet_id']);
+        }
+        return [];
+    }
+
+    public function bunker()
+    {
+        $group = $this->group_data()->where('group', 'bunker')->first();
+        $classModel  = $group->class_handler;
+        if(! class_exists($classModel)) {
+            return null;
+        }
+        
+        $model = (new $classModel)->table($this->id);
+
+        if(Schema::hasTable($model->getTable())) {
+            return $model->where('fleet_id', $this->id)->first();
+        }
+        return null;
+    }
+    
+    public function bunkerColumns() 
+    {   
+        $group = $this->group_data()->where('group', 'bunker')->first();
+        $classModel  = $group->class_handler;
+        if(! class_exists($classModel)) {
+            return null;
+        }
+        
+        $model = (new $classModel)->table($this->id);
+
+        if(Schema::hasTable($model->getTable())) {
+            $columns = Schema::getColumnListing($model->getTable());
+            return array_diff($columns, ['id', 'created_at', 'updated_at', 'terminal_time', 'fleet_id']);
+        }
+        return [];
+    }
+
+    public function ballast()
+    {
+        $group = $this->group_data()->where('group', 'ballast')->first();
+        $classModel  = $group->class_handler;
+        if(! class_exists($classModel)) {
+            return null;
+        }
+        
+        $model = (new $classModel)->table($this->id);
+
+        if(Schema::hasTable($model->getTable())) {
+            return $model->where('fleet_id', $this->id)->first();
+        }
+        return null;
+    }
+    
+    public function ballastColumns() 
+    {   
+        $group = $this->group_data()->where('group', 'ballast')->first();
+        $classModel  = $group->class_handler;
+        if(! class_exists($classModel)) {
+            return null;
+        }
+        
+        $model = (new $classModel)->table($this->id);
+
         if(Schema::hasTable($model->getTable())) {
             $columns = Schema::getColumnListing($model->getTable());
             return array_diff($columns, ['id', 'created_at', 'updated_at', 'terminal_time', 'fleet_id']);
