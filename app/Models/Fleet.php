@@ -83,6 +83,8 @@ class Fleet extends Model
     public function engine()
     {
         $group = $this->group_data()->where('group', 'engine')->first();
+        if(is_null($group)) return null;
+
         $classModel  = $group->class_handler;
         if(! class_exists($classModel)) {
             return null;
@@ -99,6 +101,8 @@ class Fleet extends Model
     public function engine_logs(): Model
     {
         $group = $this->group_data()->where('group', 'engine_logs')->first();
+        if(is_null($group)) return null;
+
         $classModel  = $group->class_handler;
         if(! class_exists($classModel)) {
             return null;
@@ -110,6 +114,8 @@ class Fleet extends Model
     public function engineColumns() 
     {   
         $group = $this->group_data()->where('group', 'engine')->first();
+        if(is_null($group)) return [];
+
         $classModel  = $group->class_handler;
         if(! class_exists($classModel)) {
             return null;
@@ -127,6 +133,8 @@ class Fleet extends Model
     public function cargo()
     {
         $group = $this->group_data()->where('group', 'cargo')->first();
+        if(is_null($group)) return null;
+
         $classModel  = $group->class_handler;
         if(! class_exists($classModel)) {
             return null;
@@ -143,6 +151,8 @@ class Fleet extends Model
     public function cargo_logs(): Model
     {
         $group = $this->group_data()->where('group', 'cargo_logs')->first();
+        if(is_null($group)) return null;
+
         $classModel  = $group->class_handler;
         if(! class_exists($classModel)) {
             return null;
@@ -154,9 +164,11 @@ class Fleet extends Model
     public function cargoColumns() 
     {   
         $group = $this->group_data()->where('group', 'cargo')->first();
+        if(is_null($group)) return [];
+
         $classModel  = $group->class_handler;
         if(! class_exists($classModel)) {
-            return null;
+            return [];
         }
         
         $model = (new $classModel)->table($this->id);
@@ -171,6 +183,8 @@ class Fleet extends Model
     public function cargo_pump()
     {
         $group = $this->group_data()->where('group', 'cargo_pump')->first();
+        if(is_null($group)) return null;
+
         $classModel  = $group->class_handler;
         if(! class_exists($classModel)) {
             return null;
@@ -187,6 +201,8 @@ class Fleet extends Model
     public function cargo_pump_logs(): Model
     {
         $group = $this->group_data()->where('group', 'cargo_pump_logs')->first();
+        if(is_null($group)) return null;
+        
         $classModel  = $group->class_handler;
         if(! class_exists($classModel)) {
             return null;
@@ -198,9 +214,11 @@ class Fleet extends Model
     public function cargoPumpColumns() 
     {   
         $group = $this->group_data()->where('group', 'cargo_pump')->first();
+        if(is_null($group)) return [];
+
         $classModel  = $group->class_handler;
         if(! class_exists($classModel)) {
-            return null;
+            return [];
         }
         
         $model = (new $classModel)->table($this->id);
@@ -215,6 +233,8 @@ class Fleet extends Model
     public function bunker()
     {
         $group = $this->group_data()->where('group', 'bunker')->first();
+        if(is_null($group)) return null;
+
         $classModel  = $group->class_handler;
         if(! class_exists($classModel)) {
             return null;
@@ -231,6 +251,8 @@ class Fleet extends Model
     public function bunker_logs(): Model
     {
         $group = $this->group_data()->where('group', 'bunker_logs')->first();
+        if(is_null($group)) return null;
+
         $classModel  = $group->class_handler;
         if(! class_exists($classModel)) {
             return null;
@@ -242,9 +264,11 @@ class Fleet extends Model
     public function bunkerColumns() 
     {   
         $group = $this->group_data()->where('group', 'bunker')->first();
+        if(is_null($group)) return [];
+
         $classModel  = $group->class_handler;
         if(! class_exists($classModel)) {
-            return null;
+            return [];
         }
         
         $model = (new $classModel)->table($this->id);
@@ -259,6 +283,8 @@ class Fleet extends Model
     public function ballast()
     {
         $group = $this->group_data()->where('group', 'ballast')->first();
+        if(is_null($group)) return null;
+
         $classModel  = $group->class_handler;
         if(! class_exists($classModel)) {
             return null;
@@ -275,6 +301,8 @@ class Fleet extends Model
     public function ballast_logs(): Model
     {
         $group = $this->group_data()->where('group', 'ballast_logs')->first();
+        if(is_null($group)) return null;
+
         $classModel  = $group->class_handler;
         if(! class_exists($classModel)) {
             return null;
@@ -286,9 +314,11 @@ class Fleet extends Model
     public function ballastColumns() 
     {   
         $group = $this->group_data()->where('group', 'ballast')->first();
+        if(is_null($group)) return [];
+
         $classModel  = $group->class_handler;
         if(! class_exists($classModel)) {
-            return null;
+            return [];
         }
         
         $model = (new $classModel)->table($this->id);
