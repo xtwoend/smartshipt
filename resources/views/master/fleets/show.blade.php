@@ -26,6 +26,18 @@
                                 <li class="nav-item">
                                     <a href="#pumps" class="nav-link" data-bs-toggle="tab">Pumps Sensor</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="#cargo" class="nav-link" data-bs-toggle="tab">Cargo Sensor</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#fuel" class="nav-link" data-bs-toggle="tab">Fuel Sensor</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#ballast" class="nav-link" data-bs-toggle="tab">Ballast Sensor</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#draft" class="nav-link" data-bs-toggle="tab">Draft Sensor</a>
+                                </li>
                             </ul>
                         </div>
                         <div class="card-body">
@@ -59,6 +71,18 @@
                                 </div>
                                 <div class="tab-pane" id="pumps">
                                     @include('master.fleets._form_pump_sensor', ['lists' => $pumps, 'sensors' => $pumps_sensor_lists, 'fleet' => $data])
+                                </div>
+                                <div class="tab-pane" id="cargo">
+                                    @include('master.fleets._form_cargo_sensor', ['lists' => $cargos, 'sensors' => $cargos_sensor_lists, 'fleet' => $data])
+                                </div>
+                                <div class="tab-pane" id="fuel">
+                                    @include('master.fleets._form_fuel_sensor', ['lists' => $fuels, 'sensors' => $fuels_sensor_lists, 'fleet' => $data])
+                                </div>
+                                <div class="tab-pane" id="ballast">
+                                    @include('master.fleets._form_ballast_sensor', ['lists' => $ballast, 'sensors' => $ballast_sensor_lists, 'fleet' => $data])
+                                </div>
+                                <div class="tab-pane" id="draft">
+                                    @include('master.fleets._form_draft_sensor', ['lists' => $draft, 'sensors' => $draft_sensor_lists, 'fleet' => $data])
                                 </div>
                             </div>
                         </div>

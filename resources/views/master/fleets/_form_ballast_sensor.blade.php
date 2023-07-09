@@ -1,4 +1,3 @@
-
 <table-editable
     :columns="[
         {
@@ -35,7 +34,7 @@
             editable: true
         },
     ]"
-    :fleet="{fleetId: {{ $fleet->id }}, group: 'cargo_pump'}"
+    :fleet="{fleetId: {{ $fleet->id }}, group: 'ballast'}"
     :data="{{ json_encode($lists) }}"
     edit-url="{{ route('master.sensors.edit') }}"
     del-url="/master/sensors/delete"

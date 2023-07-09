@@ -5,6 +5,7 @@ use App\Models\Fleet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\NavController;
+use App\Http\Controllers\Api\CargoController;
 use App\Http\Controllers\Api\FleetController;
 use App\Http\Controllers\Api\EngineController;
 /*
@@ -34,4 +35,5 @@ Route::group([
     'prefix' => 'fleet',
 ], function (){
     Route::get('/{id}/engine/trend', [EngineController::class, 'trend'])->name('engine.trend');
+    Route::get('/{id}/cargo/trend', [CargoController::class, 'trend'])->name('cargo.trend');
 });

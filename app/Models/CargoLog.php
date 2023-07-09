@@ -1,0 +1,31 @@
+<?php
+
+namespace App\Models;
+
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
+
+class CargoLog extends Model
+{
+    /**
+     * The table associated with the model.
+     */
+    protected  $table = 'cargo_log';
+
+    /**
+     * The attributes that should be cast to native types.
+     */
+    protected $casts = [
+        'terminal_time' => 'datetime'
+    ];
+
+    // create table cargo if not found table
+    public static function table($fleetId, $date = null)
+    {
+        $date = is_null($date) ? date('Ym'): Carbon::parse($date)->format('Ym');
+        $model = new self;
+        $tableName = $model->getTable() . "_{$fleetId}_{$date}";
+
+        return $model->setTable($tableName);
+    }
+}

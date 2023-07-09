@@ -65,13 +65,8 @@ class FleetController extends Controller
     public function show($id)
     {
         $data = $this->fleet->with(['cargo_information', 'bunker_information'])->findOrFail($id);
-        $engines = $data->sensors()->where('group', 'engine')->get();
-        $pumps = $data->sensors()->where('group', 'cargo_pump')->get();
-    
-        $engine_sensor_lists = $data->engineColumns();
-        $pumps_sensor_lists = $data->cargoPumpColumns();
-     
-        return view('master.fleets.show', compact('data', 'engines', 'pumps', 'engine_sensor_lists', 'pumps_sensor_lists'));
+        
+        return view('master.fleets.show', compact('data'));
     }
 
     /**

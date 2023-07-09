@@ -11,7 +11,7 @@ class GroupData extends Model
 {
     use HasFactory;
     
-    protected array $groups = ['engine', 'cargo', 'cargo_pump', 'bunker', 'ballast'];
+    protected array $groups = ['engine', 'cargo', 'cargo_pump', 'fuel', 'ballast'];
 
     protected $table = 'group_data';
 
