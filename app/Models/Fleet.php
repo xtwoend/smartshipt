@@ -233,7 +233,7 @@ class Fleet extends Model
 
     public function fuel()
     {
-        $group = $this->group_data()->where('group', 'bunker')->first();
+        $group = $this->group_data()->where('group', 'fuel')->first();
         if(is_null($group)) return null;
 
         $classModel  = $group->class_handler;
@@ -251,7 +251,7 @@ class Fleet extends Model
 
     public function fuel_logs(): Model
     {
-        $group = $this->group_data()->where('group', 'bunker_logs')->first();
+        $group = $this->group_data()->where('group', 'fuel_logs')->first();
         if(is_null($group)) return null;
 
         $classModel  = $group->class_handler;
@@ -264,7 +264,7 @@ class Fleet extends Model
     
     public function fuelColumns() 
     {   
-        $group = $this->group_data()->where('group', 'bunker')->first();
+        $group = $this->group_data()->where('group', 'fuel')->first();
         if(is_null($group)) return [];
 
         $classModel  = $group->class_handler;
