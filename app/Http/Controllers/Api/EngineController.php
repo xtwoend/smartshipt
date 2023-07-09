@@ -33,7 +33,11 @@ class EngineController extends Controller
         $count = Carbon::parse($fromDiff)->diffInMonths(Carbon::parse($toDiff));
         $query = [];
         for($i=0; $i <= $count; $i++) {
-            $tableName = EngineLog::table($fleet->id, $fromTable)->getTable();
+
+            $classModel = $fleet->engine_logs();
+            if(is_null($classModel)) continue;
+
+            $tableName = $classModel::table($fleet->id, $fromTable)->getTable();
             if(! Schema::hasTable($tableName)) continue;
             
             $query[] = "
