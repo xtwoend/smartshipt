@@ -19,6 +19,12 @@
             </svg>
         </span>
         <ul class="items" v-if="show">
+            <li class="bb">
+                <div>
+                    <input id="check-all" type="checkbox" v-model="checkAll" @change="toggleAll">
+                    <label for="check-all">Toggle All</label>
+                </div>
+            </li>
             <li v-for="(option, index) in groups" :key="index">
                 <div v-if="Array.isArray(option)">
                     <span>{{ index }}</span>
@@ -56,7 +62,8 @@ export default {
     data() {
         return {
             show: false,
-            selected: this.default
+            selected: this.default,
+            checkAll: true
         }
     },
     methods: {
@@ -68,6 +75,13 @@ export default {
         },
         groupBy(x, f) {
             return x.reduce((a,b,i)=>((a[f(b,i,x)]||=[]).push(b),a),{});
+        },
+        toggleAll(e) {
+            if(this.checkAll) {
+                this.selected = this.options
+            }else{
+                this.selected = []
+            }
         }
     },
     computed:  {
@@ -157,5 +171,8 @@ export default {
 
 .dropdown-check-list.visible .items {
     display: block;
+}
+.bb {
+    border-bottom: 1px solid #ddd;
 }
 </style>

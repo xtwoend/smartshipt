@@ -76,6 +76,11 @@ export default {
                     minorGridLineWidth: 0,
                     gridLineWidth: 0,
                     alternateGridColor: null,
+                    plotLines: [{
+                        value: 0,
+                        width: 2,
+                        color: 'silver'
+                    }]
                 },
                 plotOptions: {
                     spline: {
@@ -125,7 +130,7 @@ export default {
                         text: col.text,
                         style: {
                             color: randColor,
-                            fontSize: '12px',
+                            fontSize: '10px',
                         }
                     },
                     lineColor: randColor,
