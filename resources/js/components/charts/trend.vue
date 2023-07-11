@@ -6,7 +6,7 @@
             </div>
             <div class="row justify-content-end">
                 <div class="col-6">
-                    <dropdown-select :options="columns" @checked="selected" :default="defColumns"></dropdown-select>
+                    <dropdown-select :options="columns" @checked="selected" :default="columns"></dropdown-select>
                 </div>
                 <div class="col-6">
                     <div class="d-flex align-items-center justify-content-end gap-1">
@@ -53,7 +53,6 @@ export default {
                 interval: 60
             },
             items: this.columns,
-            defColumns: [],
             options: {
                 chart: {
                     type: 'spline',
