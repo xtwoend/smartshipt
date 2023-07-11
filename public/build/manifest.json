@@ -15,13 +15,13 @@
     "file": "assets/red-f4bfe255.png",
     "src": "resources/js/components/icon/red.png"
   },
-  "public/remixicon/remixicon.eot": {
-    "file": "assets/remixicon-e0d505c9.eot",
-    "src": "public/remixicon/remixicon.eot"
-  },
   "public/img/icons/date-light.png": {
     "file": "assets/date-light-13b22e71.png",
     "src": "public/img/icons/date-light.png"
+  },
+  "public/remixicon/remixicon.eot": {
+    "file": "assets/remixicon-e0d505c9.eot",
+    "src": "public/remixicon/remixicon.eot"
   },
   "public/remixicon/remixicon.woff2": {
     "file": "assets/remixicon-50d59e6d.woff2",
@@ -48,25 +48,6 @@
     "src": "resources/sass/app.scss",
     "isEntry": true
   },
-  "resources/js/libs/poppers.js": {
-    "file": "assets/poppers-2b93aeb1.js",
-    "src": "resources/js/libs/poppers.js",
-    "isEntry": true,
-    "imports": [
-      "resources/js/libs/constants.js",
-      "resources/js/libs/popper.js",
-      "_popper-b924b727.js"
-    ]
-  },
-  "resources/js/libs/popper.js": {
-    "file": "assets/popper-136662a8.js",
-    "src": "resources/js/libs/popper.js",
-    "isEntry": true,
-    "imports": [
-      "resources/js/libs/constants.js",
-      "_popper-b924b727.js"
-    ]
-  },
   "resources/js/index.js": {
     "file": "assets/index-dcec33a0.js",
     "src": "resources/js/index.js",
@@ -82,13 +63,15 @@
       "assets/app-7a8c2353.css"
     ]
   },
-  "_popper-b924b727.js": {
-    "file": "assets/popper-b924b727.js"
-  },
-  "resources/js/libs/constants.js": {
-    "file": "assets/constants-9ec7b010.js",
-    "src": "resources/js/libs/constants.js",
-    "isEntry": true
+  "resources/js/libs/poppers.js": {
+    "file": "assets/poppers-2b93aeb1.js",
+    "src": "resources/js/libs/poppers.js",
+    "isEntry": true,
+    "imports": [
+      "resources/js/libs/constants.js",
+      "resources/js/libs/popper.js",
+      "_popper-b924b727.js"
+    ]
   },
   "resources/tabler/src/js/tabler.esm.js": {
     "file": "assets/tabler.esm-4fe66c31.js",
@@ -96,6 +79,20 @@
     "isEntry": true,
     "imports": [
       "_toast-fd51308c.js",
+      "_popper-b924b727.js"
+    ]
+  },
+  "resources/js/libs/constants.js": {
+    "file": "assets/constants-9ec7b010.js",
+    "src": "resources/js/libs/constants.js",
+    "isEntry": true
+  },
+  "resources/js/libs/popper.js": {
+    "file": "assets/popper-136662a8.js",
+    "src": "resources/js/libs/popper.js",
+    "isEntry": true,
+    "imports": [
+      "resources/js/libs/constants.js",
       "_popper-b924b727.js"
     ]
   },
@@ -107,6 +104,9 @@
       "resources/js/libs/constants.js"
     ]
   },
+  "_popper-b924b727.js": {
+    "file": "assets/popper-b924b727.js"
+  },
   "_toast-fd51308c.js": {
     "file": "assets/toast-fd51308c.js",
     "imports": [
@@ -114,7 +114,7 @@
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-6884ef4d.js",
+    "file": "assets/app-6a7662e3.js",
     "src": "resources/js/app.js",
     "isEntry": true,
     "imports": [
