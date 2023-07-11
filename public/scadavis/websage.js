@@ -2324,6 +2324,8 @@ var WebSAGE = {
         Color_BackgroundSVG = cor = sodipodibase.attributes.pagecolor.value
       else return
     }
+    // overide backgroup color to #fff
+    cor = '#fff';
 
     // bg color on SVG root
     SVGDoc.setAttributeNS(null, 'style', 'background-color: ' + cor + ';')
