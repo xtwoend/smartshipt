@@ -10,6 +10,7 @@ import moment from 'moment';
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
+
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
  * registering components with the application instance so they are ready
@@ -88,6 +89,12 @@ app.component('table-editable', TableEditable);
 
 import TrendView from './components/charts/trend.vue';
 app.component('trend-view', TrendView);
+
+import TrendLive from './components/charts/trend-live.vue';
+app.component('trend-live', TrendLive);
+
+import SocketIo from './components/SocketIo.vue';
+app.component('socket-io', SocketIo)
 
 /**
  * The following block of code may be used to automatically register your

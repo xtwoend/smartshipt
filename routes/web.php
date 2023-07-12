@@ -16,8 +16,6 @@ use App\Http\Controllers\FleetController;
 |
 */
 
-
-
 Auth::routes(['register' => false, 'reset' => false]);
 
 Route::group([
@@ -70,4 +68,9 @@ Route::group([
         Route::post('sensors/update', [\App\Http\Controllers\Master\SensorController::class, 'update'])->name('sensors.edit');
     });
 
+});
+
+
+Route::get('/coba', function(){
+    return view('test');
 });
