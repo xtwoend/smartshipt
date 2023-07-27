@@ -10,7 +10,7 @@
                 title="Trend Live Bunker"
                 url="{{ route('api.fleet.logger', ['id' => $fleet->id, 'group'=> 'cargo']) }}" 
                 :fleet="{{ json_encode($fleet) }}"
-                :socket-config="{ url: 'ws://127.0.0.1:9502', event: 'cargo_{{ $fleet->id }}'}"
+                :socket-config="{ url: '{{ config('websocket.url') }}', event: 'cargo_{{ $fleet->id }}'}"
                 :columns="{{ json_encode($fleet->trendOptions('fuel')) }}">
             </trend-live>
             <trend-view 

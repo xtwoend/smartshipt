@@ -12,7 +12,7 @@
                 title="Trend Live Engine"
                 url="{{ route('api.fleet.logger', ['id' => $fleet->id, 'group'=> 'engine']) }}" 
                 :fleet="{{ json_encode($fleet) }}"
-                :socket-config="{ url: 'ws://127.0.0.1:9502', event: 'engine_{{ $fleet->id }}'}"
+                :socket-config="{ url: '{{ config('websocket.url') }}', event: 'engine_{{ $fleet->id }}'}"
                 :columns="{{ json_encode($fleet->trendOptions('engine')) }}">
             </trend-live>
             <trend-view 

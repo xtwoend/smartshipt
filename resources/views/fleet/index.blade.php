@@ -13,7 +13,7 @@
                     title="Trend Live"
                     url="{{ route('api.fleet.logger', ['id' => $fleet->id, 'group'=> 'navigation']) }}" 
                     :fleet="{{ json_encode($fleet) }}"
-                    :socket-config="{ url: 'ws://127.0.0.1:9502', event: 'navigation_{{ $fleet->id }}'}"
+                    :socket-config="{ url: '{{ config('websocket.url') }}', event: 'navigation_{{ $fleet->id }}'}"
                     :columns="{{ json_encode([
                         [
                             'data' => 'sog',
