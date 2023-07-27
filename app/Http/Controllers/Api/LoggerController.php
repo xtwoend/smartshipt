@@ -15,7 +15,7 @@ class LoggerController extends Controller
         $fleet = Fleet::findOrFail($id);
 
         $group = $request->input('group', 'navigation');
-        $data = Logger::table($fleet->id)->orderBy('terminal_time', 'asc')->limit(500)->get();
+        $data = Logger::table($fleet->id)->where('group', $group)->orderBy('terminal_time', 'asc')->limit(500)->get();
 
         return response()->json($data, 200);
     }

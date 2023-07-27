@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-12">
             <div class="table-title mb-4 mt-2">
-                <h6>{{ title }} {{ connected }}</h6>
+                <h6>{{ title }}</h6>
             </div>
             <div class="row justify-content-end">
                 <div class="col-12">

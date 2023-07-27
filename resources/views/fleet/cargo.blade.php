@@ -8,6 +8,14 @@
         <div class="container">
             <fleet-cargo url="{{ route('api.fleet', $fleet->id) }}"></fleet-cargo>
 
+            <trend-live 
+                title="Trend Live Cargo"
+                url="{{ route('api.fleet.logger', ['id' => $fleet->id, 'group'=> 'cargo']) }}" 
+                :fleet="{{ json_encode($fleet) }}"
+                :socket-config="{ url: 'ws://127.0.0.1:9502', event: 'cargo_{{ $fleet->id }}'}"
+                :columns="{{ json_encode($fleet->trendOptions('cargo')) }}">
+            </trend-live>
+
             <trend-view 
                     title="Trend View Cargo"
                     url="{{ route('api.fleet.cargo.trend', $fleet->id) }}"
