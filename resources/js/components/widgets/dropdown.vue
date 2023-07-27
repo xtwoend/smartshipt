@@ -21,8 +21,11 @@
         <ul class="items" v-if="show">
             <li class="bb">
                 <div>
-                    <input id="check-all" type="checkbox" v-model="checkAll" @change="toggleAll">
-                    <label for="check-all">Toggle All</label>
+                    <input id="check-all" type="checkbox" v-model="selectAll">
+                    <label for="check-all">
+                        <template v-if="! selectAll">Check All</template>
+                        <template v-else>Uncheck All</template>
+                    </label>
                 </div>
             </li>
             <li v-for="(option, index) in groups" :key="index">
@@ -62,8 +65,7 @@ export default {
     data() {
         return {
             show: false,
-            selected: this.default,
-            checkAll: true
+            selected: []
         }
     },
     methods: {
@@ -75,13 +77,6 @@ export default {
         },
         groupBy(x, f) {
             return x.reduce((a,b,i)=>((a[f(b,i,x)]||=[]).push(b),a),{});
-        },
-        toggleAll(e) {
-            if(this.checkAll) {
-                this.selected = this.options
-            }else{
-                this.selected = []
-            }
         }
     },
     computed:  {
@@ -90,11 +85,26 @@ export default {
                 return this.groupBy(this.options, v => v.group)
             }
             return this.options;
+        },
+        selectAll: {
+            get() {
+                return this.options ? this.selected.length == this.options.length : false;
+            },
+            set(val) {
+                if(val) {
+                    this.selected = this.options;
+                }else{
+                    this.selected = []
+                }
+            }
         }
     },
     watch: {
         selected(val) {
             this.$emit('checked', val)
+        },
+        default(val) {
+            this.selected = val
         }
     },
     directives: {

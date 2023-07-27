@@ -26,8 +26,8 @@ class FuelController extends Controller
 
         $select_column = implode(',', $formattingSelect);
 
-        $from = Carbon::parse($date['startDate']);
-        $to = Carbon::parse($date['endDate']);
+        $from = Carbon::parse($request->input('from'))->timezone('Asia/Jakarta');
+        $to = Carbon::parse($request->input('to'))->timezone('Asia/Jakarta');
         $fromClone = clone $from;
         $toClone = clone $to;
 

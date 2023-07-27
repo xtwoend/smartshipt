@@ -1,5 +1,29 @@
 <template>
-    <Chart ref="chart" :options="options" :constructorType="'stockChart'" />
+    <div class="col-12">
+        <div class="table-title mb-4 mt-2">
+            <h6>Trend View</h6>
+        </div>
+        <div class="row justify-content-end">
+            <div class="col-6">
+                <dropdown-select :options="columns" @checked="selected" :default="columns"></dropdown-select>
+            </div>
+            <div class="col-6">
+                <div class="d-flex align-items-center justify-content-end gap-1">
+                    <VueDatePicker timezone="Asia/Jakarta" v-model="trendParams.from"></VueDatePicker>
+                    <VueDatePicker timezone="Asia/Jakarta" v-model="trendParams.to"></VueDatePicker>
+                    <select class="form-control w-5 bordered" v-model="trendParams.interval">
+                        <option value="5">5m</option>
+                        <option value="30">30m</option>
+                        <option value="60">1 H</option>
+                        <option value="1440">1 D</option>
+                    </select>
+                    <button @click="showChart" class="btn btn-primary">SHOW</button>
+                </div>
+            </div>
+        </div>
+        <Chart ref="chart" :options="options" :constructorType="'stockChart'" />
+    </div>
+    
 </template>
   
   
@@ -14,9 +38,9 @@ Accessbility(Highcharts);
 export default {
     name: "spline",
     props: {
-        params: Object,
         fleet: Object,
-        default: Array
+        default: Array,
+        url: String,
     },
     components: {
         Chart,
@@ -92,6 +116,11 @@ export default {
     data() {
         return {
             items: this.default,
+            params: {
+                interval: 60,
+                from: null,
+                to: null
+            },
             options: {
                 chart: {
                     type: 'spline'

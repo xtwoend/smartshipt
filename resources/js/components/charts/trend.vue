@@ -6,12 +6,14 @@
             </div>
             <div class="row justify-content-end">
                 <div class="col-6">
-                    <dropdown-select :options="columns" @checked="selected" :default="columns"></dropdown-select>
+                    <dropdown-select :options="columns" @checked="selected" :default="defColumns"></dropdown-select>
                 </div>
                 <div class="col-6">
                     <div class="d-flex align-items-center justify-content-end gap-1">
-                        <date-range @selected="(e) => params.date = e"></date-range>
+                        <VueDatePicker v-model="params.from"></VueDatePicker>
+                        <VueDatePicker v-model="params.to"></VueDatePicker>
                         <select class="form-control w-5 bordered" v-model="params.interval">
+                            <option value="5">5m</option>
                             <option value="30">30m</option>
                             <option value="60">1 H</option>
                             <option value="1440">1 D</option>
@@ -32,6 +34,7 @@ import Accessbility from "highcharts/modules/accessibility";
 import colors from '../../libs/colors';
 import DropdownSelect from '../widgets/dropdown.vue';
 import DateRange from '../widgets/daterange.vue'
+import _ from 'lodash';
 
 Accessbility(Highcharts);
 
@@ -49,9 +52,11 @@ export default {
     data() {
         return {
             params: {
-                date: null,
+                from: new Date(new Date().setDate(new Date().getDate() - 1 )),
+                to: new Date(),
                 interval: 60
             },
+            defColumns: [],
             items: this.columns,
             options: {
                 chart: {
@@ -105,7 +110,7 @@ export default {
         }
     },
     mounted() {
-
+        this.defColumns = _.sampleSize(this.columns, 5);
     },
     methods: {
         selected(e) {
@@ -114,10 +119,6 @@ export default {
         },
         async showChart() {
             
-            if(! this.params.date) {
-                alert('please selected date first')
-            }
-
             this.$refs.chart.chart.showLoading();
 
             let series = [];

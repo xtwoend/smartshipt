@@ -19,6 +19,7 @@
     "dependencies": {
         "@mapbox/mapbox-gl-geocoder": "^5.0.1",
         "@studiometa/vue-mapbox-gl": "^2.0.4",
+        "@vuepic/vue-datepicker": "^5.4.0",
         "autosize": "^5.0.2",
         "click-outside-vue3": "^4.0.1",
         "css-pro-layout": "^1.1.0",
@@ -29,7 +30,7 @@
         "jquery": "^3.6.3",
         "mapbox-gl": "^2.12.0",
         "moment": "^2.29.4",
-        "socket.io-client": "2.3.0",
+        "socket.io-client": "^2.5.0",
         "swiper": "^9.3.2",
         "timeago.js": "^4.0.2",
         "vue-highcharts": "^0.1.0",

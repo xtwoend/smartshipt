@@ -19,8 +19,8 @@ class NavController extends Controller
         $to = $request->input('to', Carbon::now()->format('Y-m-d'));
         $interval = $request->input('interval', 1800);
 
-        $from = Carbon::parse($from);
-        $to = Carbon::parse($to);
+        $from = Carbon::parse($from)->timezone('Asia/Jakarta');
+        $to = Carbon::parse($to)->timezone('Asia/Jakarta');
         $fromClone = clone $from;
         $toClone = clone $to;
 
@@ -66,8 +66,8 @@ class NavController extends Controller
         $interval = $interval * 60;
         $select = $request->input('select', ['*']);
 
-        $from = Carbon::parse($date['startDate'])->timezone('Asia/Jakarta');
-        $to = Carbon::parse($date['endDate'])->timezone('Asia/Jakarta');
+        $from = Carbon::parse($request->input('from'))->timezone('Asia/Jakarta');
+        $to = Carbon::parse($request->input('to'))->timezone('Asia/Jakarta');
         $fromClone = clone $from;
         $toClone = clone $to;
 

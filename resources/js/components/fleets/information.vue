@@ -63,29 +63,6 @@
                         </tbody>
                     </table>
                 </div>
-
-                <div class="col-12">
-                    <div class="table-title mb-4 mt-2">
-                        <h6>Trend View</h6>
-                    </div>
-                    <div class="row justify-content-end">
-                        <div class="col-6">
-                            <dropdown-select :options="columns" @checked="selected" :default="columns"></dropdown-select>
-                        </div>
-                        <div class="col-6">
-                            <div class="d-flex align-items-center justify-content-end gap-1">
-                                <date-range @selected="(e) => trendParams.date = e "></date-range>
-                                <select class="form-control w-5 bordered" v-model="trendParams.interval">
-                                    <option value="30">30m</option>
-                                    <option value="60">1 H</option>
-                                    <option value="1440">1 D</option>
-                                </select>
-                                <button @click="showChart" class="btn btn-primary">SHOW</button>
-                            </div>
-                        </div>
-                    </div>
-                    <trend-nav :fleet="fleet" :params="trendParams" ref="trendNav" :default="columns"></trend-nav>
-                </div>
             </div>
         </div>
     </div>
@@ -93,26 +70,14 @@
 
 <script>
 import FleetSpeedometer from './speedometer.vue'
-import DateRange from '../widgets/daterange.vue'
-import DropdownSelect from '../widgets/dropdown.vue'
-import TrendNav from './trend-nav.vue'
 export default {
+    components: { FleetSpeedometer},
     props: {
-        url: String,
+        url: String
     },
-    components: { FleetSpeedometer, DateRange, TrendNav, DropdownSelect },
     data() {
         return {
-            fleet: null,
-            trendParams: {
-                interval: 60,
-                date: null
-            },
-            columns:[
-                {data: 'sog', text: 'Speed (knot)'},
-                {data: 'wind_speed', text: 'Wind Speed (knot)'},
-                {data: 'depth', text: 'Deep (m)'},
-            ]
+            fleet: null
         }
     },
     created() {
@@ -124,18 +89,6 @@ export default {
     methods: {
         async fetchData() {
             this.fleet = await axios.get(this.url).then(res => res.data);
-        },
-        showChart() {
-            let params = this.trendParams
-            if(! params.date) {
-                alert('please selected date first')
-            }
-
-            // call api for charts data
-            this.$refs.trendNav.show();
-        },
-        selected(e) {
-            this.$refs.trendNav.selected(e)
         }
     }
 }

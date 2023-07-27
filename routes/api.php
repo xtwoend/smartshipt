@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\CargoController;
 use App\Http\Controllers\Api\DraftController;
 use App\Http\Controllers\Api\FleetController;
 use App\Http\Controllers\Api\EngineController;
+use App\Http\Controllers\Api\LoggerController;
 use App\Http\Controllers\Api\BallastController;
 /*
 |--------------------------------------------------------------------------
@@ -30,16 +31,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('fleets', [FleetController::class, 'fleets'])->name('api.fleets');
 
 Route::get('fleet/{id}/nav/histories', [NavController::class, 'history']);
-Route::get('fleet/{id}/nav/trend', [NavController::class, 'trend']);
 Route::get('fleet/{id}', [FleetController::class, 'show'])->name('api.fleet');
 
 Route::group([
     'as' => 'api.fleet.',
     'prefix' => 'fleet',
 ], function (){
+
+    Route::get('/{id}/nav/trend', [NavController::class, 'trend'])->name('nav.trend');
     Route::get('/{id}/engine/trend', [EngineController::class, 'trend'])->name('engine.trend');
     Route::get('/{id}/cargo/trend', [CargoController::class, 'trend'])->name('cargo.trend');
     Route::get('/{id}/fuel/trend', [FuelController::class, 'trend'])->name('fuel.trend');
     Route::get('/{id}/ballast/trend', [BallastController::class, 'trend'])->name('ballast.trend');
     Route::get('/{id}/draft/trend', [DraftController::class, 'trend'])->name('draft.trend');
+    Route::get('/{id}/logger', [LoggerController::class, 'data'])->name('logger');
 });

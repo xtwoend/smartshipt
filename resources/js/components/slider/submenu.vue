@@ -27,13 +27,13 @@
         <swiper-slide>
             <a :href="`/fleet/${fleet.id}/balast`" class="submenu-item" :class="{'active': (active == 'balast')}">BALAST TANK</a>
         </swiper-slide>
-        <swiper-slide>
+        <!-- <swiper-slide>
             <a :href="`/fleet/${fleet.id}/diagnotics`" class="submenu-item" :class="{'active': (active == 'diagnotics')}">DIAGNOSTICS</a>
-        </swiper-slide>
+        </swiper-slide> -->
         <swiper-slide>
             <a :href="`/fleet/${fleet.id}/alarms`" class="submenu-item" :class="{'active': (active == 'alarms')}">ALARM</a>
         </swiper-slide>
-        <swiper-slide>
+        <!-- <swiper-slide>
             <a :href="`/fleet/${fleet.id}/emision`" class="submenu-item" :class="{'active': (active == 'emision')}">EMISION REPORT</a>
         </swiper-slide>
         <swiper-slide>
@@ -44,7 +44,7 @@
         </swiper-slide>
         <swiper-slide>
             <a :href="`/fleet/${fleet.id}/charter`"  class="submenu-item" :class="{'active': (active == 'charter')}">CHARTER</a>
-        </swiper-slide>
+        </swiper-slide> -->
         <div class="swiper-button-next">
             <img :src="'/img/icons/chevron-next.png'" alt="" />
         </div>
