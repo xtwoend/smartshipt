@@ -112,10 +112,11 @@ export default {
         onMessage(e) {
             let row = JSON.parse(e.toString());
             let time = parseInt((new Date(row.terminal_time).getTime()).toFixed(0)); //row.unix_time;
-            // remove first el
-            this.options.series[index].data.shift();
+            
             // add el
             this.options.series.forEach((s, index) => {
+                // remove first el
+                this.options.series[index].data.shift();
                 let dt = row[s.row];
                 this.options.series[index].data.push([time, dt]);
             })
