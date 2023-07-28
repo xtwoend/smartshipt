@@ -2217,6 +2217,7 @@ var WebSAGE = {
   }, // drawSVG
 
   zoomPan: function (opc, mul, event) {
+    
     if (SVGDoc === null) {
       return
     }
@@ -2303,7 +2304,6 @@ var WebSAGE = {
       default:
         break
     }
-
     SVGDoc.setAttributeNS(
       null,
       'viewBox',
@@ -2485,7 +2485,7 @@ var WebSAGE = {
 
   init: function () {
     WebSAGE.g_loadtime = new Date()
-
+    
     // vai nos objetos com 'id' e coloca como 'title' a mensagem correspondente de Titles, carrega as imagens (de images.js)
     //$('img[id]').attr('src', function (index) {
     //  return Imgs[this.id]
@@ -2541,12 +2541,12 @@ var WebSAGE = {
     // adjust SVG dimensions to max sizes
     if (typeof SVGDoc != 'undefined')
       if (SVGDoc != null) {
-        SVGDoc.setAttributeNS(null, 'width', ScreenViewer_SVGMaxWidth)
-        SVGDoc.setAttributeNS(null, 'height', ScreenViewer_SVGMaxHeight)
+        SVGDoc.setAttributeNS(null, 'width', ScreenViewer_SVGMaxWidth * 1.2)
+        SVGDoc.setAttributeNS(null, 'height', ScreenViewer_SVGMaxHeight * 1.2)
         
         // viewbox
         SVGDoc.setAttributeNS(null, 'viewBox',
-          WebSAGE.g_zpX +
+          WebSAGE.g_zpX  +
           ' ' +
           WebSAGE.g_zpY +
           ' ' +
@@ -2562,7 +2562,7 @@ var WebSAGE = {
 
     WebSAGE.g_zpW = ScreenViewer_SVGMaxWidth
     WebSAGE.g_zpH = ScreenViewer_SVGMaxHeight
-
+  
     try {
       WebSAGE.preprocessSVGDisplay()
     } catch (err) {
@@ -2572,6 +2572,7 @@ var WebSAGE = {
 
     // mouse wheel zoom
     $(SVGDoc).bind('mousewheel wheel DOMMouseScroll', function (event) {
+      
       if (window.wheelBlock === false) {
         if (
           event.originalEvent.wheelDelta > 0 ||
