@@ -4,7 +4,7 @@
 <main class="content">
     <div class="bg-white">
         <slider-submenu :fleet="{{ json_encode($fleet) }}" active="bunker"></slider-submenu>
-        <div class="container">
+        <div class="p-3">
             <fleet-bunker url="{{ route('api.fleet', $fleet->id) }}"></fleet-bunker>
             <trend-live 
                 title="Trend Live Bunker"

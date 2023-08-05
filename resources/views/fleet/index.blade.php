@@ -6,7 +6,7 @@
     <slider-submenu :fleet="{{ json_encode($fleet) }}" active="info"></slider-submenu>
     <map-default :fleet="{{ json_encode($fleet) }}" style="height: 450px; width:100%;"></map-default>
     <fleet-information url="{{ route('api.fleet', $fleet->id) }}"></fleet-information>
-    <div class="container">
+    <div class="p-3">
         <div class="row">
             <div class="col">
                 <trend-live 

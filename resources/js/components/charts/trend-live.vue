@@ -18,12 +18,14 @@
 import { Chart } from "highcharts-vue";
 import Highcharts from "highcharts";
 import Accessbility from "highcharts/modules/accessibility";
+import Exporting from "highcharts/modules/exporting";
 import colors from '../../libs/colors';
 import DropdownSelect from '../widgets/dropdown.vue';
 import DateRange from '../widgets/daterange.vue';
 import _ from 'lodash';
 
 Accessbility(Highcharts);
+Exporting(Highcharts);
 
 export default {
     components: {
@@ -47,7 +49,8 @@ export default {
             items: this.columns,
             options: {
                 chart: {
-                    type: 'spline',
+                    // type: 'spline',
+                    zoomType: 'x'
                 },
                 time: {
                     useUTC: false

@@ -4,7 +4,7 @@
 <main class="content">
     <div class="bg-white">
         <slider-submenu :fleet="{{ json_encode($fleet) }}" active="trend"></slider-submenu>
-        <div class="container">
+        <div class="p-3">
             <div class="row">
                 <div class="d-flex align-items-center justify-content-between my-3">
                     <div class="dropdown">

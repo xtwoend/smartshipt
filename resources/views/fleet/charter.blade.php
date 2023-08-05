@@ -5,7 +5,7 @@
     <div class="bg-white">
         <slider-submenu :fleet="{{ json_encode($fleet) }}" active="charter"></slider-submenu>
         <map-default :fleet="{{ json_encode($fleet) }}"></map-default>
-        <div class="container">
+        <div class="p-3">
             <div class="row">
                 <!-- Navigation information -->
                 <div class="col-12">

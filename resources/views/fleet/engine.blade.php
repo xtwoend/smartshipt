@@ -4,8 +4,8 @@
 <main class="content">
     <div class="bg-white">
         <slider-submenu :fleet="{{ json_encode($fleet) }}" active="engine"></slider-submenu>
-        <div class="container">
-            @if(strtoupper($fleet->type) == 'S')
+        <div class="p-3">
+            @if(strtoupper($fleet->type) == 'M')
             <engine-type-s url="{{ route('api.fleet', $fleet->id) }}"></engine-type-s>
             @endif
             <trend-live 

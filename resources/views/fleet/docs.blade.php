@@ -4,7 +4,7 @@
 <main class="content">
     <div class="bg-white">
         <slider-submenu :fleet="{{ json_encode($fleet) }}" active="docs"></slider-submenu>
-        <div class="container">
+        <div class="p-3">
             
         </div>
     </div>

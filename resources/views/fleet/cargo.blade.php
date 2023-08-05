@@ -5,7 +5,7 @@
     <div class="bg-white">
         <slider-submenu :fleet="{{ json_encode($fleet) }}" active="cargo"></slider-submenu>
 
-        <div class="container">
+        <div class="p-3">
             <fleet-cargo url="{{ route('api.fleet', $fleet->id) }}"></fleet-cargo>
 
             <trend-live 
