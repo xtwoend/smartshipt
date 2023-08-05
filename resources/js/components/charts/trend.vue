@@ -65,6 +65,15 @@ export default {
                     // type: 'spline',
                     zoomType: 'x'
                 },
+                exporting: {
+                    filename: this.title,
+                    sourceWidth: 1600,
+                    sourceHeight: 480,
+                    scale: 1,
+                    // chartOptions: {
+                    //     subtitle: null
+                    // }
+                },
                 time: {
                     useUTC: false
                 },
