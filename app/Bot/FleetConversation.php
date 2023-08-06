@@ -22,8 +22,8 @@ class FleetConversation extends Conversation
             ->fallback('Maaf kami tidak mengetahui apa yang anda cari.')
             ->callbackId('start_menu')
             ->addButtons([
-                Button::create('Informasi Kapal')->value('fleet_information'),
-                Button::create('Keluar')->value('exit')
+                Button::create('INFORMASI KAPAL')->value('fleet_information'),
+                Button::create('KELUAR')->value('exit')
             ]);
         
         return $this->ask($question, function (Answer $answer) {
@@ -46,6 +46,7 @@ class FleetConversation extends Conversation
         foreach ($fleets as $fleet) {
             $buttons[] = Button::create($fleet->name)->value($fleet->id);
         }
+        $buttons[] = Button::create('MAIN MENU')->value('main_menu');
 
         $question = Question::create('Ini beberapa kapal yang bisa kamu pilih')
             ->fallback('kamu tidak memilih kapal manapun.')
@@ -54,10 +55,14 @@ class FleetConversation extends Conversation
 
         return $this->ask($question, function (Answer $answer) {
             if ($answer->isInteractiveMessageReply()) {
-                $this->fleet = Fleet::find($answer->getValue());
-                if($this->fleet) {
-                    $this->say("Anda telah memilih armada kapal {$this->fleet->name}");
-                    $this->fleetMenu();
+                if(\is_string($answer->getValue()) && $answer->getValue() == 'main_menu') {
+                    $this->started();
+                }else{
+                    $this->fleet = Fleet::find($answer->getValue());
+                    if($this->fleet) {
+                        $this->say("Anda telah memilih armada kapal {$this->fleet->name}");
+                        $this->fleetMenu();
+                    }
                 }
             }
         });
@@ -68,13 +73,13 @@ class FleetConversation extends Conversation
             ->fallback('Informasi yang ada cari belum tersedia.')
             ->callbackId('select_ship')
             ->addButtons([
-                Button::create('Navigasi')->value('nav'),
-                Button::create('Main Engine')->value('me'),
-                Button::create('Bunker')->value('bunker'),
-                Button::create('Cargo')->value('cargo'),
-                Button::create('Pump')->value('pump'),
-                Button::create('Balast')->value('balast'),
-                Button::create('Kembali')->value('fleet'),
+                Button::create('NAVIGASI')->value('nav'),
+                Button::create('MAIN ENGINE')->value('me'),
+                Button::create('BUNKER')->value('bunker'),
+                Button::create('CARGO')->value('cargo'),
+                Button::create('PUMP')->value('pump'),
+                Button::create('BALAST')->value('balast'),
+                Button::create('FLEET LIST')->value('fleet'),
             ]);
 
         return $this->ask($question, function(Answer $answer) {
@@ -82,16 +87,14 @@ class FleetConversation extends Conversation
                 switch ($answer->getValue()) {
                     case 'nav':
                         $text = $this->nav();
-                        $this->say($text);
+                        $this->say($text, ['parse_mode' => 'Markdown']);
                         $attachment = new Location(
                             $this->fleet->navigation?->lat,
                             $this->fleet->navigation?->lng,
                             [ 'custom_payload' => true]
                         );
-                        $map = OutgoingMessage::create('coordinate')
-                            ->withAttachment($attachment);
+                        $map = OutgoingMessage::create('coordinate')->withAttachment($attachment);
                         $this->say($map);
-                        
                         $this->fleetMenu();
                         break;
                     case 'me':
@@ -140,8 +143,8 @@ class FleetConversation extends Conversation
             ['Total Travel Distance', $nav->total_distance]
         ];
         $t = new TextTable($headers, $values);
-
-        return "```{$t->render()}```";
+        // $t->setAlgin(['L', 'R']);
+        return "``` \n{$t->render()}```";
     }
 
     function run() : void {
