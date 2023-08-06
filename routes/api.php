@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\FleetController;
 use App\Http\Controllers\Api\EngineController;
 use App\Http\Controllers\Api\LoggerController;
 use App\Http\Controllers\Api\BallastController;
+use App\Http\Controllers\TelegramBotController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -46,3 +47,7 @@ Route::group([
     Route::get('/{id}/draft/trend', [DraftController::class, 'trend'])->name('draft.trend');
     Route::get('/{id}/logger', [LoggerController::class, 'data'])->name('logger');
 });
+
+
+// callback telegram
+Route::match(['get', 'post'], '/callback_telegram', [TelegramBotController::class, '__invoke']);

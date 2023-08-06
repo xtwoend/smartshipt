@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NaviController;
 use App\Http\Controllers\FleetController;
+use App\Http\Controllers\TelegramBotController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,7 +70,6 @@ Route::group([
     });
 
 });
-
 
 Route::get('/coba', function(){
     return view('test');
