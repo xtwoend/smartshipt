@@ -3,6 +3,7 @@
 namespace App\Bot;
 
 use App\Models\Fleet;
+use App\Bot\TextTable;
 use BotMan\BotMan\Messages\Incoming\Answer;
 use BotMan\BotMan\Messages\Outgoing\Question;
 use BotMan\BotMan\Messages\Attachments\Location;
@@ -80,7 +81,17 @@ class FleetConversation extends Conversation
             if ($answer->isInteractiveMessageReply()) {
                 switch ($answer->getValue()) {
                     case 'nav':
-                        $this->say("Data navigasi belum tesedia");
+                        $text = $this->nav();
+                        $this->say($text);
+                        $attachment = new Location(
+                            $this->fleet->navigation?->lat,
+                            $this->fleet->navigation?->lng,
+                            [ 'custom_payload' => true]
+                        );
+                        $map = OutgoingMessage::create('coordinate')
+                            ->withAttachment($attachment);
+                        $this->say($map);
+                        
                         $this->fleetMenu();
                         break;
                     case 'me':
@@ -112,6 +123,25 @@ class FleetConversation extends Conversation
                 }
             }
         });
+    }
+
+    function nav(): string {
+        $nav = $this->fleet->navigation;
+        $headers = ['Info', 'Value'];
+        $values = [
+            ['Coordinate', "{$nav->lat} {$nav->lat_dir}, {$nav->lng} {$nav->lng_dir}"],
+            ['Heading', $nav->heading],
+            ['COG', $nav->cog],
+            ['SOG', $nav->sog],
+            ['Deep', $nav->depth],
+            ['Wind Speed', $nav->wind_speed],
+            ['Wind Direction', $nav->wind_direction],
+            ['Travel Distance', $nav->distance],
+            ['Total Travel Distance', $nav->total_distance]
+        ];
+        $t = new TextTable($headers, $values);
+
+        return "```{$t->render()}```";
     }
 
     function run() : void {
