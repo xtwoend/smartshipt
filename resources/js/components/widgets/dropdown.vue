@@ -81,7 +81,7 @@ export default {
     },
     computed:  {
         groups () {
-            if(this.options[0].hasOwnProperty('group')) {
+            if(this.options.length > 0 && this.options[0].hasOwnProperty('group')) {
                 return this.groupBy(this.options, v => v.group)
             }
             return this.options;
