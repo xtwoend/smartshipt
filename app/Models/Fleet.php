@@ -98,7 +98,7 @@ class Fleet extends Model
         return null;
     }
 
-    public function engine_logs(): Model
+    public function engine_logs()
     {
         $group = $this->group_data()->where('group', 'engine_logs')->first();
         if(is_null($group)) return null;
@@ -148,7 +148,7 @@ class Fleet extends Model
         return null;
     }
 
-    public function cargo_logs(): Model
+    public function cargo_logs()
     {
         $group = $this->group_data()->where('group', 'cargo_logs')->first();
         if(is_null($group)) return null;
@@ -198,7 +198,7 @@ class Fleet extends Model
         return null;
     }
 
-    public function cargo_pump_logs(): Model
+    public function cargo_pump_logs()
     {
         $group = $this->group_data()->where('group', 'cargo_pump_logs')->first();
         if(is_null($group)) return null;
@@ -249,7 +249,7 @@ class Fleet extends Model
         return null;
     }
 
-    public function fuel_logs(): Model
+    public function fuel_logs()
     {
         $group = $this->group_data()->where('group', 'fuel_logs')->first();
         if(is_null($group)) return null;
@@ -299,7 +299,7 @@ class Fleet extends Model
         return null;
     }
 
-    public function ballast_logs(): Model
+    public function ballast_logs()
     {
         $group = $this->group_data()->where('group', 'ballast_logs')->first();
         if(is_null($group)) return null;
@@ -349,7 +349,7 @@ class Fleet extends Model
         return null;
     }
 
-    public function draft_logs(): Model
+    public function draft_logs()
     {
         $group = $this->group_data()->where('group', 'draft_logs')->first();
         if(is_null($group)) return null;
