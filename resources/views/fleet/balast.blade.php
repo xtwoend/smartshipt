@@ -5,9 +5,11 @@
     <div class="bg-white">
         <slider-submenu :fleet="{{ json_encode($fleet) }}" active="balast"></slider-submenu>
         <div class="p-3">
+            @if(strtoupper($fleet->type) == 'M')
             <fleet-ballast url="{{ route('api.fleet', $fleet->id) }}"></fleet-ballast>
+            @endif
             <trend-live 
-                title="Trend Live Bunker"
+                title="Trend Live Ballast"
                 url="{{ route('api.fleet.logger', ['id' => $fleet->id, 'group'=> 'cargo']) }}" 
                 :fleet="{{ json_encode($fleet) }}"
                 :socket-config="{ url: '{{ config('websocket.url') }}', event: 'cargo_{{ $fleet->id }}'}"

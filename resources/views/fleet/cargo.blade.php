@@ -6,8 +6,9 @@
         <slider-submenu :fleet="{{ json_encode($fleet) }}" active="cargo"></slider-submenu>
 
         <div class="p-3">
+            @if(strtoupper($fleet->type) == 'M')
             <fleet-cargo url="{{ route('api.fleet', $fleet->id) }}"></fleet-cargo>
-
+            @endif
             <trend-live 
                 title="Trend Live Cargo"
                 url="{{ route('api.fleet.logger', ['id' => $fleet->id, 'group'=> 'cargo']) }}" 
