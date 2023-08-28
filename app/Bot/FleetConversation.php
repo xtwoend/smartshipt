@@ -171,7 +171,7 @@ class FleetConversation extends Conversation
             // unset($bunker_information[$key]);
         }
 
-        $infos = array_merge($fleets, $cargo_information ?? [], $bunker_information ?? []);
+        $infos = array_merge($fleets, $cargo_information ?: [], $bunker_information ?: []);
         $headers = ['Name', 'Value'];
         $values = [];
         foreach($infos as $key => $val) {
