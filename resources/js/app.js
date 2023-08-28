@@ -96,6 +96,9 @@ app.component('trend-view', TrendView);
 import TrendLive from './components/charts/trend-live.vue';
 app.component('trend-live', TrendLive);
 
+import SensorInfo from './components/fleets/sensor-info.vue';
+app.component('sensor-info', SensorInfo);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

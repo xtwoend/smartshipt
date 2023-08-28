@@ -4,6 +4,7 @@ namespace App\Bot;
 
 use App\Models\Fleet;
 use App\Bot\TextTable;
+use Illuminate\Support\Str;
 use BotMan\BotMan\Messages\Incoming\Answer;
 use BotMan\BotMan\Messages\Outgoing\Question;
 use BotMan\BotMan\Messages\Attachments\Location;
@@ -18,23 +19,42 @@ class FleetConversation extends Conversation
     protected $user;
 
     function started() : Conversation{
-        $question = Question::create("Silahkan pilih menu yang anda inginkan.")
+
+        $fleets = Fleet::where('active', 1)->get();
+        $buttons = [];
+        foreach ($fleets as $fleet) {
+            $buttons[] = Button::create($fleet->name)->value($fleet->id);
+        }
+        $buttons[] = Button::create('KELUAR')->value('exit');
+
+        $question = Question::create("Silahkan pilih informasi kapal yang anda inginkan")
             ->fallback('Maaf kami tidak mengetahui apa yang anda cari.')
             ->callbackId('start_menu')
-            ->addButtons([
-                Button::create('INFORMASI KAPAL')->value('fleet_information'),
-                Button::create('KELUAR')->value('exit')
-            ]);
+            ->addButtons($buttons);
         
+        // return $this->ask($question, function (Answer $answer) {
+        //     if ($answer->isInteractiveMessageReply()) {
+        //         switch ($answer->getValue()) {
+        //             case 'fleet_information':
+        //                     $this->searchFleet();
+        //                 break;
+        //             default:
+        //                     $this->say("untuk memulai kembali ketik /start atau mulai");
+        //                 break;
+        //         }
+        //     }
+        // });
+
         return $this->ask($question, function (Answer $answer) {
             if ($answer->isInteractiveMessageReply()) {
-                switch ($answer->getValue()) {
-                    case 'fleet_information':
-                            $this->searchFleet();
-                        break;
-                    default:
-                            $this->say("untuk memulai kembali ketik /start atau mulai");
-                        break;
+                if(\is_string($answer->getValue()) && $answer->getValue() == 'exit') {
+                    $this->sayGoodby();
+                }else{
+                    $this->fleet = Fleet::find($answer->getValue());
+                    if($this->fleet) {
+                        $this->say("Anda telah memilih armada kapal {$this->fleet->name}");
+                        $this->fleetMenu();
+                    }
                 }
             }
         });
@@ -46,7 +66,7 @@ class FleetConversation extends Conversation
         foreach ($fleets as $fleet) {
             $buttons[] = Button::create($fleet->name)->value($fleet->id);
         }
-        $buttons[] = Button::create('MAIN MENU')->value('main_menu');
+        $buttons[] = Button::create('KELUAR')->value('exit');
 
         $question = Question::create('Ini beberapa kapal yang bisa kamu pilih')
             ->fallback('kamu tidak memilih kapal manapun.')
@@ -55,8 +75,8 @@ class FleetConversation extends Conversation
 
         return $this->ask($question, function (Answer $answer) {
             if ($answer->isInteractiveMessageReply()) {
-                if(\is_string($answer->getValue()) && $answer->getValue() == 'main_menu') {
-                    $this->started();
+                if(\is_string($answer->getValue()) && $answer->getValue() == 'exit') {
+                    $this->sayGoodby();
                 }else{
                     $this->fleet = Fleet::find($answer->getValue());
                     if($this->fleet) {
@@ -69,22 +89,26 @@ class FleetConversation extends Conversation
     }
 
     function fleetMenu() : Conversation {
-        $question = Question::create('Informasi apa yang anda ingin lihat?')
+        $question = Question::create('Ini beberapa informasi yang anda bisa pilih.')
             ->fallback('Informasi yang ada cari belum tersedia.')
             ->callbackId('select_ship')
             ->addButtons([
-                Button::create('NAVIGASI')->value('nav'),
-                Button::create('MAIN ENGINE')->value('me'),
-                Button::create('BUNKER')->value('bunker'),
-                Button::create('CARGO')->value('cargo'),
-                Button::create('PUMP')->value('pump'),
-                Button::create('BALAST')->value('balast'),
+                Button::create('INFORMATION & SLA')->value('info'),
+                Button::create('NAVIGATION & POSITION')->value('nav'),
+                Button::create('MACHINERY')->value('machine'),
+                Button::create('TANK')->value('tank'),
+                Button::create('REPORT')->value('report'),
                 Button::create('FLEET LIST')->value('fleet'),
             ]);
 
         return $this->ask($question, function(Answer $answer) {
             if ($answer->isInteractiveMessageReply()) {
                 switch ($answer->getValue()) {
+                    case 'info': 
+                        $text = $this->fleetInfo();
+                        $this->say($text, ['parse_mode' => 'Markdown']);
+                        $this->fleetMenu();
+                        break;
                     case 'nav':
                         $text = $this->nav();
                         $this->say($text, ['parse_mode' => 'Markdown']);
@@ -97,24 +121,12 @@ class FleetConversation extends Conversation
                         $this->say($map);
                         $this->fleetMenu();
                         break;
-                    case 'me':
-                        $this->say("Data main engine belum tesedia");
+                    case 'machine':
+                        $this->say("Data Machinery belum tesedia");
                         $this->fleetMenu();
                         break;
-                    case 'bunker':
-                        $this->say("Data bunker belum tesedia");
-                        $this->fleetMenu();
-                        break;
-                    case 'cargo':
-                        $this->say("Data cagro belum tesedia");
-                        $this->fleetMenu();
-                        break;
-                    case 'pump':
-                        $this->say("Data Pump belum tesedia");
-                        $this->fleetMenu();
-                        break;
-                    case 'balast':
-                        $this->say("Data Balast belum tesedia");
+                    case 'tank':
+                        $this->say("Data tank belum tesedia");
                         $this->fleetMenu();
                         break;
                     case 'fleet':
@@ -143,8 +155,23 @@ class FleetConversation extends Conversation
             ['Total Travel Distance', $nav->total_distance]
         ];
         $t = new TextTable($headers, $values);
-        // $t->setAlgin(['L', 'R']);
         return "``` \n{$t->render()}```";
+    }
+
+    function fleetInfo() : string {
+        $fleet = $this->fleet;
+        $headers = ['Info', 'Value'];
+        $values = [];
+        foreach($fleet->toArray() as $key => $val) {
+            $title = Str::title(str_replace('_', ' ', $key));
+            $values[][$title] = $val;
+        }
+        $t = new TextTable($headers, $values);
+        return "``` \n{$t->render()}```";
+    }
+
+    function sayGoodby() : void {
+        $this->say("Untuk memulai ulang silahkan ketik /start atau /mulai");
     }
 
     function run() : void {

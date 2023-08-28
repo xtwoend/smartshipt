@@ -51,6 +51,11 @@ class Fleet extends Model
         return $query->where('active', 1);
     }
 
+    public function submenu()
+    {
+        return $this->hasMany(FleetMenu::class, 'fleet_id');
+    }
+
     public function navigation()
     {
         return $this->hasOne(Navigation::class, 'fleet_id');

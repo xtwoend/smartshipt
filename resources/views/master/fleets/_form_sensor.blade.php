@@ -6,15 +6,13 @@
             editable: true
         },
         {
-            name: 'Sensor Name',
-            field: 'sensor_name',
+            name: 'Sensor Group',
+            field: 'group',
             editable: true,
-            editType: 'select',
-            options: {{ json_encode($sensors) }}
         },
         {
-            name: 'Sensor Group',
-            field: 'sensor_group',
+            name: 'Sensor Name',
+            field: 'sensor_name',
             editable: true,
             editType: 'select',
             options: {{ json_encode($sensors) }}
@@ -41,7 +39,7 @@
             editable: true
         },
     ]"
-    :fleet="{fleetId: {{ $fleet->id }}, group: 'cargo'}"
+    :fleet="{fleetId: {{ $fleet->id }} }"
     :data="{{ json_encode($lists) }}"
     edit-url="{{ route('master.sensors.edit') }}"
     del-url="/master/sensors/delete"

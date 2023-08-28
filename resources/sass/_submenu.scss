@@ -1,0 +1,27 @@
+.submenu {
+    height: 3.5em !important;
+    border-radius: 8px;
+    padding-left: 1em;
+    padding-right: 1em;
+    background: #2C74B3 !important;
+    .nav-link {
+        text-transform: uppercase;
+        color: #fff !important;
+    }
+}
+
+.navbar-dark {
+    &.bg-primary {
+        --tblr-navbar-border-color: #2C74B3 !important;
+    }
+}
+
+.navbar {
+    min-height: auto !important;
+
+    .nav-item {
+        &.active {
+            background: #488dc9;
+        }
+    }
+}

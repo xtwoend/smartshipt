@@ -3,8 +3,15 @@
 @section('content')
 <main class="content">
     <div class="bg-white">
-        <slider-submenu :fleet="{{ json_encode($fleet) }}" active="cargo"></slider-submenu>
-
+        @if($fleet->submenu()->count() > 0)
+            @include('fleet.menu', ['fleet' => $fleet])
+        @else
+            <slider-submenu :fleet="{{ json_encode($fleet) }}" active="cargo"></slider-submenu>
+        @endif
+        
+        @if($fleet->id == 6)
+            @include('fleets.walio.cargo', ['fleet' => $fleet])
+        @else
         <div class="p-3">
             @if(strtoupper($fleet->type) == 'M')
             <fleet-cargo url="{{ route('api.fleet', $fleet->id) }}"></fleet-cargo>
@@ -22,6 +29,7 @@
                     url="{{ route('api.fleet.cargo.trend', $fleet->id) }}"
                     :columns="{{ json_encode($fleet->trendOptions('cargo')) }}"></trend-view>
         </div>
+        @endif
     </div>
 </main>
 @endsection

@@ -3,7 +3,11 @@
 @section('content')
 <main class="content">
     <div class="bg-white">
-        <slider-submenu :fleet="{{ json_encode($fleet) }}" active="balast"></slider-submenu>
+        @if($fleet->submenu()->count() > 0)
+            @include('fleet.menu', ['fleet' => $fleet])
+        @else
+            <slider-submenu :fleet="{{ json_encode($fleet) }}" active="balast"></slider-submenu>
+        @endif
         <div class="p-3">
             @if(strtoupper($fleet->type) == 'M')
             <fleet-ballast url="{{ route('api.fleet', $fleet->id) }}"></fleet-ballast>

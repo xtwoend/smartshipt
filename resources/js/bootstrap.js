@@ -4,7 +4,7 @@ window._ = _;
 import $ from 'jquery';
 window.$ = $;
 
-import 'bootstrap';
+import * as bootstrap from 'bootstrap'
 
 import '../tabler/src/js/tabler.esm.js';
 

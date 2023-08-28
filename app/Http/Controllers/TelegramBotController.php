@@ -26,7 +26,7 @@ class TelegramBotController extends Controller
     function __invoke() : void {
         $this->bot->hears('/start|mulai', function(BotMan $bot) {
             $user = $bot->getUser();
-            $bot->reply("Hallo, {$user->getFirstName()}. \n\nSelamat datang di Smartship");
+            $bot->reply("Hallo, {$user->getFirstName()}. \n\nSelamat datang di PIS Smartship");
             $bot->startConversation(new FleetConversation());
         })->stopsConversation();
 
