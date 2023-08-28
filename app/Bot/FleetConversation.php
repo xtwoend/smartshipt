@@ -166,14 +166,14 @@ class FleetConversation extends Conversation
         $exclude = ['id', 'created_at', 'updated_at'];
         foreach($exclude as $key) {
             unset($fleet[$key]);
-            // unset($cargo_information[$key]);
-            // unset($bunker_information[$key]);
+            unset($cargo_information[$key]);
+            unset($bunker_information[$key]);
         }
 
         $infos = array_merge($fleetInfo, $cargo_information ?: [], $bunker_information ?: []);
         $headers = ['Name', 'Value'];
         $values = [];
-        foreach($infosc as $key => $val) {
+        foreach($infos as $key => $val) {
             $title = Str::title(str_replace('_', ' ', $key));
             $values[] = [$title, $val];
         }
