@@ -162,18 +162,18 @@ class FleetConversation extends Conversation
         $fleet = $this->fleet->toArray();
         $cargo_information = $fleet->cargo_information->toArray();
         $bunker_information = $fleet->bunker_information->toArray();
+
         $exclude = ['id', 'created_at', 'updated_at'];
         foreach($exclude as $key) {
             unset($fleet[$key]);
-            unset($cargo_information[$key]);
-            unset($bunker_information[$key]);
+            // unset($cargo_information[$key]);
+            // unset($bunker_information[$key]);
         }
 
-       
         $infos = array_merge($fleetInfo, $cargo_information, $bunker_information);
         $headers = ['Name', 'Value'];
         $values = [];
-        foreach($infos as $key => $val) {
+        foreach($infosc as $key => $val) {
             $title = Str::title(str_replace('_', ' ', $key));
             $values[] = [$title, $val];
         }
