@@ -160,8 +160,8 @@ class FleetConversation extends Conversation
 
     function fleetInfo() : string {
         $fleet = $this->fleet->toArray();
-        $cargo_information = $fleet->cargo_information->toArray();
-        $bunker_information = $fleet->bunker_information->toArray();
+        $cargo_information = $fleet->cargo_information?->toArray();
+        $bunker_information = $fleet->bunker_information?->toArray();
 
         $exclude = ['id', 'created_at', 'updated_at'];
         foreach($exclude as $key) {
@@ -170,7 +170,7 @@ class FleetConversation extends Conversation
             // unset($bunker_information[$key]);
         }
 
-        $infos = array_merge($fleetInfo, $cargo_information, $bunker_information);
+        $infos = array_merge($fleetInfo, $cargo_information ?: [], $bunker_information ?: []);
         $headers = ['Name', 'Value'];
         $values = [];
         foreach($infosc as $key => $val) {
