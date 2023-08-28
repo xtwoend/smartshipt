@@ -160,11 +160,11 @@ class FleetConversation extends Conversation
 
     function fleetInfo() : string {
         $fleet = $this->fleet;
-        $headers = ['Info', 'Value'];
+        $headers = ['Name', 'Value'];
         $values = [];
         foreach($fleet->toArray() as $key => $val) {
             $title = Str::title(str_replace('_', ' ', $key));
-            $values[][$title] = $val;
+            $values[] = [$title, $val];
         }
         $t = new TextTable($headers, $values);
         return "``` \n{$t->render()}```";
