@@ -72,4 +72,10 @@ class CargoController extends Controller
 
         return response()->json($rows, 200);
     }
+    
+    public function currentCargo($id) 
+    {
+        $fleet = Fleet::findOrFail($id);
+        return response()->json($fleet->cargo(), 200);
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alarm;
 use App\Models\Fleet;
 use Illuminate\Http\Request;
 
@@ -35,6 +36,13 @@ class FleetController extends Controller
     public function cargo($id, Request $request)
     {
         $fleet =  Fleet::findOrFail($id);
+        $routeName = $request->route()->getName();
+        if($fleet->submenu()->count() > 0) {
+            $page = $fleet->submenu()->where('route', 'fleet.cargo')->first();
+            if($page && !is_null($page->views)) {
+                return view($page->views, compact('fleet'));
+            }
+        }
         return view('fleet.cargo', compact('fleet'));
     }
 
@@ -83,7 +91,8 @@ class FleetController extends Controller
     public function alarms($id, Request $request)
     {
         $fleet = Fleet::findOrFail($id);
-        return view('fleet.alarms', compact('fleet'));
+        $alarms = Alarm::table($fleet->id)->latest()->paginate(25);
+        return view('fleet.alarms', compact('fleet', 'alarms'));
     }
 
     public function emision($id, Request $request)

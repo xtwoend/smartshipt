@@ -102,6 +102,10 @@ app.component('sensor-info', SensorInfo);
 import MimicSvg from './components/fleets/mimic.vue';
 app.component('mimic-svg', MimicSvg);
 
+
+import DataInformation from './components/fleets/table-info.vue';
+app.component('data-info', DataInformation);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

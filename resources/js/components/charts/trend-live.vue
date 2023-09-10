@@ -124,7 +124,7 @@ export default {
         onMessage(e) {
             let row = JSON.parse(e.toString());
             let time = parseInt((new Date(row.terminal_time).getTime()).toFixed(0)); //row.unix_time;
-            
+           
             // add el
             this.options.series.forEach((s, index) => {
                 // remove first el
@@ -192,7 +192,7 @@ export default {
             res.forEach(row => {
                 let time = parseInt((new Date(row.terminal_time).getTime()).toFixed(0)); //row.unix_time;
                 this.options.series.forEach((s, index) => {
-                    let dt = row.data[s.row];
+                    let dt = parseFloat(row.data[s.row]);
                     this.options.series[index].data.push([time, dt]);
                 })
             })

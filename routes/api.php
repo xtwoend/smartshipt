@@ -42,6 +42,7 @@ Route::group([
     Route::get('/{id}/nav/trend', [NavController::class, 'trend'])->name('nav.trend');
     Route::get('/{id}/engine/trend', [EngineController::class, 'trend'])->name('engine.trend');
     Route::get('/{id}/cargo/trend', [CargoController::class, 'trend'])->name('cargo.trend');
+    Route::get('/{id}/cargo/current', [CargoController::class, 'currentCargo'])->name('cargo.current');
     Route::get('/{id}/fuel/trend', [FuelController::class, 'trend'])->name('fuel.trend');
     Route::get('/{id}/ballast/trend', [BallastController::class, 'trend'])->name('ballast.trend');
     Route::get('/{id}/draft/trend', [DraftController::class, 'trend'])->name('draft.trend');

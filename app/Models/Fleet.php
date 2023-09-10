@@ -85,6 +85,7 @@ class Fleet extends Model
             $options[] = [
                 'data' => $row->sensor_name,
                 'text' => $row->name,
+                'unit' => $row->unit,
             ];
         }
 

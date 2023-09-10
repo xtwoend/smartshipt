@@ -11,6 +11,8 @@ use Illuminate\Database\Schema\Blueprint;
 class Logger extends Model
 {
     protected $table = 'loggers';
+    public $incrementing = false;
+    protected $keyType = 'string';
 
     protected $casts = [
         'data' => 'array',
