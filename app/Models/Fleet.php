@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Alarm;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -64,6 +65,15 @@ class Fleet extends Model
     public function sensors()
     {
         return $this->hasMany(Sensor::class, 'fleet_id');
+    }
+    
+    public function alarms()
+    {
+        $model = Alarm::table($this->id);
+        if(Schema::hasTable($model->getTable())) {
+            return $model;
+        }
+        return null;
     }
 
     public function trendOptions($group) 

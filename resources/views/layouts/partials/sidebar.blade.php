@@ -48,14 +48,14 @@
                     <span class="menu-title">Fleet  Master Data</span>
                   </a>
                 </li>
-                <li class="menu-item">
+                {{-- <li class="menu-item">
                   <a href="{{ route('master.users.index') }}">
                     <span class="menu-icon">
                     <img src="{{asset('img/icons/help.png')}}" alt="" />
                     </span>
                     <span class="menu-title">User Manager</span>
                   </a>
-                </li>
+                </li> --}}
                 <li class="menu-item">
                   <a href="#">
                     <span class="menu-icon">
@@ -64,27 +64,26 @@
                     <span class="menu-title">Help</span>
                   </a>
                 </li>
-                <li class="menu-item">
+                {{-- <li class="menu-item">
                   <a href="#">
                     <span class="menu-icon">
                     <img src="{{asset('img/icons/message.png')}}" alt="" />
                     </span>
                     <span class="menu-title">Chat </span>
                   </a>
-                </li>
+                </li> --}}
                 <li class="menu-item">
                   <a href="#">
                     <span class="menu-icon">
                     <img src="{{asset('img/icons/account.png')}}" alt="" />
                     </span>
-                    <span class="menu-title">Account </span>
+                    <span class="menu-title">Account</span>
                   </a>
                     <div class="sub-menu-list">
                         <ul class="scroller" style="heigth: 200px;">
                             <li class="menu-item">
                                 <a href="{{ route('master.user.index') }}">
-                                    <span class="menu-icon">
-                                    </span>
+                                    <span class="menu-icon"></span>
                                     <span class="menu-title">List User</span>
                                 </a>
                             </li>

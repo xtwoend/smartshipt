@@ -99,6 +99,9 @@ app.component('trend-live', TrendLive);
 import SensorInfo from './components/fleets/sensor-info.vue';
 app.component('sensor-info', SensorInfo);
 
+import MimicSvg from './components/fleets/mimic.vue';
+app.component('mimic-svg', MimicSvg);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

@@ -22,6 +22,13 @@ class FleetController extends Controller
     public function engine($id, Request $request)
     {
         $fleet =  Fleet::findOrFail($id);
+        $routeName = $request->route()->getName();
+        if($fleet->submenu()->count() > 0) {
+            $page = $fleet->submenu()->where('route', 'fleet.engine')->first();
+            if($page && !is_null($page->views)) {
+                return view($page->views, compact('fleet'));
+            }
+        }
         return view('fleet.engine', compact('fleet'));
     }
 
