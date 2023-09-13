@@ -26,7 +26,7 @@
                     <span class="menu-title">My Fleets</span>
                   </a>
                   <div class="sub-menu-list">
-                    <ul class="scroller" style="heigth: 200px;">
+                    <ul class="scroller" style="heigth: 400px;">
                       @foreach (\App\Models\Fleet::active()->get() as $item)
                       <li class="menu-item">
                         <a href="{{ route('fleet', $item->id) }}">
@@ -80,7 +80,7 @@
                     <span class="menu-title">Account</span>
                   </a>
                     <div class="sub-menu-list">
-                        <ul class="scroller" style="heigth: 200px;">
+                        <ul>
                             <li class="menu-item">
                                 <a href="{{ route('master.user.index') }}">
                                     <span class="menu-icon"></span>

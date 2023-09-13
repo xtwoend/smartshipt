@@ -90,7 +90,19 @@
       list-style: none;
       overflow-x: hidden;
       overflow-y: scroll;
-      height: 300px;
+      height: 400px;
+      direction:rtl; 
+      &::-webkit-scrollbar {
+        width: 8px;
+      }
+      &::-webkit-scrollbar-track {
+        background: #000;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: #fff ;
+        border-radius: 8px;
+        border: 3px solid #fff;
+      }
     }
   }
 }

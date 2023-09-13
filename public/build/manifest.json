@@ -66,9 +66,9 @@
   },
   "resources/js/index.js": {
     "css": [
-      "assets/app-d1a7e1ff.css"
+      "assets/app-b92b3d32.css"
     ],
-    "file": "assets/index-58680e43.js",
+    "file": "assets/index-cf64800a.js",
     "imports": [
       "resources/js/libs/slide.js",
       "resources/js/libs/constants.js",
@@ -112,7 +112,7 @@
     "src": "resources/js/libs/slide.js"
   },
   "resources/sass/app.scss": {
-    "file": "assets/app-d1a7e1ff.css",
+    "file": "assets/app-b92b3d32.css",
     "isEntry": true,
     "src": "resources/sass/app.scss"
   },
