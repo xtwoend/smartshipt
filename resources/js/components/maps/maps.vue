@@ -7,6 +7,12 @@
             :display="sidebar"
         ></map-voyage>
         <div class="pointer-info" ref="pointerInfo"></div>
+        <div class="lengend">
+            <div class="title">Fleet Color Information</div>
+            <div><img src="../icon/blue.png"> Ballast</div>
+            <div><img src="../icon/green.png"> Laden</div>
+            <div><img src="../icon/red.png"> At Port</div>
+        </div>
         <MapboxMap
             @mb-created="(mapboxInstance) => map = mapboxInstance"
             @mb-load="loaded"
@@ -273,6 +279,28 @@ export default {
         display: block;
         text-align: right;
         text-shadow: 0 0 4px #000;
+    }
+}
+
+
+.lengend {
+    position: absolute;
+    left: 20px;
+    bottom: 40px;
+    width: 200px;
+    z-index: 2;
+    color: #fff;
+    // box-shadow: #000;
+    text-shadow: 2px 2px 5px rgb(26, 25, 25);
+    div {
+        display: flex;
+    }
+    .title {
+        font-weight: bold;
+    }
+    img {
+        height: 20px;
+        margin-right: 10px;
     }
 }
 </style>
