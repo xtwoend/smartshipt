@@ -333,7 +333,7 @@ a.no-style {
 .lengend {
     position: absolute;
     right: 20px;
-    top: 40px;
+    top: 10px;
     width: 200px;
     z-index: 2;
     color: #fff;
