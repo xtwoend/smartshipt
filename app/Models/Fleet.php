@@ -66,6 +66,11 @@ class Fleet extends Model
     {
         return $this->hasMany(Sensor::class, 'fleet_id');
     }
+
+    public function pic()
+    {
+        return $this->hasMany(FleetPic::class, 'fleet_id');
+    }
     
     public function alarms()
     {

@@ -183,4 +183,12 @@ class FleetController extends Controller
     {
         //
     }
+
+    
+    public function addPic($id, Request $request)
+    {
+        $fleet = Fleet::findOrFail($id);
+
+        return redirect()->route('master.fleets.show', $id)->with('message', 'Success add fleet pic information');
+    }
 }

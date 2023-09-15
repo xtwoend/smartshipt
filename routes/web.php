@@ -46,6 +46,7 @@ Route::group([
     ], function() {
         Route::resource('fleets', \App\Http\Controllers\Master\FleetController::class);
         Route::group(['as' => 'fleets.', 'prefix' => 'fleets', 'controller' => \App\Http\Controllers\Master\FleetController::class], function(){
+            Route::put('fleets/{id}/pic', 'pic')->name('pic');
             Route::get('fleets/{id}/edit-cargo-information','editCargo')->name('editCargo');
             Route::put('fleets/{id}/update-cargo-information', 'updateCargo')->name('updateCargo');
             Route::get('fleets/{id}/edit-bunker-information', 'editBunker')->name('editBunker');

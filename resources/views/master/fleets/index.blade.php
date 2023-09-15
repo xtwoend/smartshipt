@@ -17,18 +17,22 @@
                         <table class="table">
                             <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Connect Status</th>
-                                <th>Last Connection</th>
-                                <th>Action</th>
+                                <th>NAME</th>
+                                <th>IMO NUMBER</th>
+                                <th>FLEET MANAGER</th>
+                                <th>EMAIL</th>
+                                <th>BUILD YEAR</th>
+                                <th>ACTION</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($list as $data)
                             <tr class="">
                                 <td>{{$data->name}}</td>
-                                <td>{{$data->connected ? 'connected': 'disconnected'}}</td>
-                                <td>{{$data->last_connection}}</td>
+                                <td>{{$data->imo_number}}</td>
+                                <td>{{$data->ship_manager}}</td>
+                                <td>{{$data->email}}</td>
+                                <td>{{$data->year}}</td>
                                 <td>
                                     <a href="{{ route('master.fleets.show', $data->id) }}">View Data</a>
                                 </td>
