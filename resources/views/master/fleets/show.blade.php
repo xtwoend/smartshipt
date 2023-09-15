@@ -12,16 +12,16 @@
                         <div class="card-header">
                             <ul class="nav nav-tabs card-header-tabs" data-bs-toggle="tabs">
                                 <li class="nav-item">
-                                    <a href="#info" class="nav-link active" data-bs-toggle="tab">Fleet Information</a>
+                                    <a href="#info" class="nav-link active" data-bs-toggle="tab">Fleet</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#pic" class="nav-link" data-bs-toggle="tab">PIC Information</a>
+                                    <a href="#pic" class="nav-link" data-bs-toggle="tab">PIC</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#cargo" class="nav-link" data-bs-toggle="tab">Cargo Information</a>
+                                    <a href="#cargo" class="nav-link" data-bs-toggle="tab">Cargo</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#bunker" class="nav-link" data-bs-toggle="tab">Bunker Information</a>
+                                    <a href="#bunker" class="nav-link" data-bs-toggle="tab">Bunker</a>
                                 </li>
                                 
                                 <li class="nav-item">
