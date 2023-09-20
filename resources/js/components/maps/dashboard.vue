@@ -16,9 +16,10 @@
         <div class="pointer-info" ref="pointerInfo"></div>
         <div class="lengend">
             <div class="title">Fleet Color Information</div>
-            <div><img src="../icon/blue.png"> Ballast</div>
-            <div><img src="../icon/green.png"> Laden</div>
-            <div><img src="../icon/red.png"> At Port</div>
+            <div><img src="../icon/green.png"> Underway </div>
+            <div><img src="../icon/red.png"> Other </div>
+            <div><img src="../icon/blue.png"> At Port </div>
+            <div><img src="../icon/yellow.png"> At Anchorage</div>
         </div>
         <MapboxMap
             @mb-created="(mapboxInstance) => map = mapboxInstance"
