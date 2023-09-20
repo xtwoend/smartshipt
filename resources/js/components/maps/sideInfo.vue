@@ -42,6 +42,10 @@
                                         height="11" src="/img/icons/external-link.png" style="margin-left: 6px;"></a>
                             </div>
                         </div>
+                        <div class="m12">
+                            <div class="st21">Status</div>
+                            <div class="st22">{{ fleet.fleet_status.replace('_', ' ').toUpperCase() }}</div>
+                        </div>
                         <div class="m12" v-if="fleet.fleet_status == 'at_port'">
                             <div class="st21">At Port</div>
                             <div class="st22">{{ fleet.last_port }}</div>
