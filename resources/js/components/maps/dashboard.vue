@@ -51,6 +51,7 @@ import * as timeago from 'timeago.js';
 import blueShip from '../icon/blue.png';
 import greenShip from '../icon/green.png';
 import redShip from '../icon/red.png';
+import yellowShip from '../icon/yellow.png';
 
 // import  * as interpolate from 'interpolateheatmaplayer';
 
@@ -70,9 +71,10 @@ export default {
             weatherKey: 'dfc256782db426c6a8d3b8daaefa5b33',
             weathers: [],
             icons: {
-                ballast: blueShip,
-                laden: greenShip,
-                at_port: redShip,
+                at_port: blueShip,
+                underway: greenShip,
+                other: redShip,
+                at_anchorage: yellowShip
             },
             map: null,
             current: [],
@@ -94,19 +96,24 @@ export default {
             this.refreshData()
         }, (5 * 1000))
 
-        this.map.loadImage(this.icons['ballast'], (err, img) => {
-            if(err) throw err
-            this.map.addImage('ship-blue', img);
-        })
-
         this.map.loadImage(this.icons['at_port'], (err, img) => {
             if(err) throw err
-            this.map.addImage('ship-red', img);
+            this.map.addImage('at_port', img);
         })
 
-        this.map.loadImage(this.icons['laden'], (err, img) => {
+        this.map.loadImage(this.icons['other'], (err, img) => {
             if(err) throw err
-            this.map.addImage('ship-green', img);
+            this.map.addImage('other', img);
+        })
+
+        this.map.loadImage(this.icons['underway'], (err, img) => {
+            if(err) throw err
+            this.map.addImage('underway', img);
+        })
+
+        this.map.loadImage(this.icons['at_anchorage'], (err, img) => {
+            if(err) throw err
+            this.map.addImage('at_anchorage', img);
         })
 
         this.popup = new mapboxgl.Popup({
@@ -124,12 +131,7 @@ export default {
             this.fleets_point.features = [];
             data.forEach((row) => {
                 if(row.navigation){
-                    let icon = 'ship-blue';
-                    if(row.fleet_status == 'at_port') {
-                        icon = 'ship-red';
-                    }else if(row.fleet_status == 'laden') {
-                        icon = 'ship-green';
-                    }
+                    let icon = row.fleet_status;
                     this.fleets_point.features.push({
                         type: "Feature",
                         geometry: {

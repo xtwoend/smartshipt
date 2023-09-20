@@ -32,15 +32,16 @@
   },
   "resources/js/app.js": {
     "assets": [
-      "assets/blue-a47985d3.png",
-      "assets/green-342241e2.png",
-      "assets/red-f4bfe255.png",
+      "assets/blue-a08778d1.png",
+      "assets/green-fc37c2da.png",
+      "assets/red-81ec77e5.png",
+      "assets/yellow-bbf4eb24.png",
       "assets/ship-c94d8078.png"
     ],
     "css": [
       "assets/app-ec1eeeca.css"
     ],
-    "file": "assets/app-cee959ac.js",
+    "file": "assets/app-d397fe53.js",
     "imports": [
       "resources/tabler/src/js/tabler.esm.js",
       "_popper-528ebbd5.js"
@@ -49,16 +50,20 @@
     "src": "resources/js/app.js"
   },
   "resources/js/components/icon/blue.png": {
-    "file": "assets/blue-a47985d3.png",
+    "file": "assets/blue-a08778d1.png",
     "src": "resources/js/components/icon/blue.png"
   },
   "resources/js/components/icon/green.png": {
-    "file": "assets/green-342241e2.png",
+    "file": "assets/green-fc37c2da.png",
     "src": "resources/js/components/icon/green.png"
   },
   "resources/js/components/icon/red.png": {
-    "file": "assets/red-f4bfe255.png",
+    "file": "assets/red-81ec77e5.png",
     "src": "resources/js/components/icon/red.png"
+  },
+  "resources/js/components/icon/yellow.png": {
+    "file": "assets/yellow-bbf4eb24.png",
+    "src": "resources/js/components/icon/yellow.png"
   },
   "resources/js/components/maps/ship.png": {
     "file": "assets/ship-c94d8078.png",
