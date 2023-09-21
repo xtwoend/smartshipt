@@ -13,6 +13,10 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
 
+import Donut from 'vue-css-donut-chart';
+import 'vue-css-donut-chart/dist/vcdonut.css';
+
+
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
  * registering components with the application instance so they are ready
@@ -21,6 +25,7 @@ import '@vuepic/vue-datepicker/dist/main.css';
 
 const app = createApp({});
 
+app.use(Donut);
 app.use(VueSweetalert2);
 app.component('VueDatePicker', VueDatePicker);
 

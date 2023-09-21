@@ -1628,6 +1628,11 @@ vt-pbf@^3.1.3:
     "@mapbox/vector-tile" "^1.3.1"
     pbf "^3.2.1"
 
+vue-css-donut-chart@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/vue-css-donut-chart/-/vue-css-donut-chart-2.0.0.tgz#9f6b9137a75d878f437c322d6719ff04c7b9cdb3"
+  integrity sha512-rT7Ytk2IYBLS3hfWSiTWaY+kVS649+ZwAQofl1Xq1wOhH5FgmcjT0a/whu67bVQ59aTVGX45MGvGppweu+u3Cw==
+
 vue-highcharts@^0.1.0:
   version "0.1.0"
   resolved "https://registry.npmjs.org/vue-highcharts/-/vue-highcharts-0.1.0.tgz"
