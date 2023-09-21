@@ -1,5 +1,20 @@
 <div class="row">
     <div class="col-12">
+        <div class="row">
+            <div class="col-6"></div>
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-body">
+                        <img src="{{ asset($data->image) }}">
+                    </div>
+                    <div class="card-footer m-0 p-0">
+                        <input type="file" class="form-control" name="image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12">
         <div class="form-group mb-3">
             <label>Name</label>
             {!! Form::text('name', null, ['class' => 'form-control', ($disabled ?? '')]) !!}

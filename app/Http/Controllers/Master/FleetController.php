@@ -91,9 +91,12 @@ class FleetController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, $this->fleet->rules());
-
+        $input = $request->all();
+        if($request->has('image') && $request->file('image')->isValid()) {
+            $input['image'] = $request->image->store('fleets');          
+        }
         $row = $this->fleet->findOrFail($id);
-        $row->fill($request->all());
+        $row->fill($input);
         $row->save();
         return redirect()->route('master.fleets.index')->with('message', 'Success update fleet detail');
     }

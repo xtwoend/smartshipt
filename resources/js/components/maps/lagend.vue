@@ -6,7 +6,7 @@
             </div>
             <div class="card-body row">
                 <div class="col">
-                    <vc-donut v-if="fleets" :size="100" :sections="fleetsGroup" unit="%" :total="fleets.length">
+                    <vc-donut v-if="fleets" :size="100" :sections="fleetsGroup" unit="%" :total="fleets.length" :auto-adjust-text-size="true">
                         <div class="fleet-count">{{ fleets.length }}</div>
                         Vessels
                     </vc-donut>
@@ -55,7 +55,7 @@ export default {
                 that.fleetsGroup.push({
                     value: value,
                     color: that.colors[key],
-                    label: key
+                    label: key,
                 })
             }) 
         }

@@ -2,7 +2,7 @@
 
 @section('content')
     <main class="content">
-        {!! Form::model($data, ['route' => ['master.fleets.update', $data->id], 'method' => 'PUT']) !!}
+        {!! Form::model($data, ['route' => ['master.fleets.update', $data->id], 'method' => 'PUT', 'files' => true]) !!}
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-12">
