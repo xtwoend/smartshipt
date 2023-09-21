@@ -17,9 +17,10 @@
         <div class="lengend">
             <div class="title">Fleet Color Information</div>
             <div><img src="../icon/green.png"> Underway </div>
-            <div><img src="../icon/red.png"> Other </div>
             <div><img src="../icon/blue.png"> At Port </div>
             <div><img src="../icon/yellow.png"> At Anchorage</div>
+            <div><img src="../icon/purple.png"> Other</div>
+            <div><img src="../icon/red.png"> Lost Connection</div>
         </div>
         <MapboxMap
             @mb-created="(mapboxInstance) => map = mapboxInstance"
@@ -53,6 +54,7 @@ import blueShip from '../icon/blue.png';
 import greenShip from '../icon/green.png';
 import redShip from '../icon/red.png';
 import yellowShip from '../icon/yellow.png';
+import purpleShip from '../icon/purple.png';
 
 // import  * as interpolate from 'interpolateheatmaplayer';
 
@@ -74,8 +76,9 @@ export default {
             icons: {
                 at_port: blueShip,
                 underway: greenShip,
-                other: redShip,
-                at_anchorage: yellowShip
+                lost_connection: redShip,
+                at_anchorage: yellowShip,
+                other : purpleShip
             },
             map: null,
             current: [],
@@ -97,25 +100,13 @@ export default {
             this.refreshData()
         }, (5 * 1000))
 
-        this.map.loadImage(this.icons['at_port'], (err, img) => {
-            if(err) throw err
-            this.map.addImage('at_port', img);
-        })
-
-        this.map.loadImage(this.icons['other'], (err, img) => {
-            if(err) throw err
-            this.map.addImage('other', img);
-        })
-
-        this.map.loadImage(this.icons['underway'], (err, img) => {
-            if(err) throw err
-            this.map.addImage('underway', img);
-        })
-
-        this.map.loadImage(this.icons['at_anchorage'], (err, img) => {
-            if(err) throw err
-            this.map.addImage('at_anchorage', img);
-        })
+        let that = this
+        Object.keys(this.icons).forEach(function(key) {
+            that.map.loadImage(that.icons[key], (err, img) => {
+                if(err) throw err
+                that.map.addImage(key, img);
+            })
+        });
 
         this.popup = new mapboxgl.Popup({
             closeButton: true,
@@ -147,8 +138,10 @@ export default {
                             image: row.image,
                             status: row.fleet_status,
                             icon: icon,
+                            depth: row.navigation.depth,
                             sog: row.navigation.sog,
                             cog: row.navigation.cog,
+                            imo: row.imo_number,
                             last_update: timeago.format(row.last_connection)
                         }
                     })

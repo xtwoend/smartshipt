@@ -36,12 +36,13 @@
       "assets/green-fc37c2da.png",
       "assets/red-81ec77e5.png",
       "assets/yellow-bbf4eb24.png",
+      "assets/purple-47482fdf.png",
       "assets/ship-c94d8078.png"
     ],
     "css": [
       "assets/app-ec1eeeca.css"
     ],
-    "file": "assets/app-33c4e4d8.js",
+    "file": "assets/app-8550af66.js",
     "imports": [
       "resources/tabler/src/js/tabler.esm.js",
       "_popper-528ebbd5.js"
@@ -56,6 +57,10 @@
   "resources/js/components/icon/green.png": {
     "file": "assets/green-fc37c2da.png",
     "src": "resources/js/components/icon/green.png"
+  },
+  "resources/js/components/icon/purple.png": {
+    "file": "assets/purple-47482fdf.png",
+    "src": "resources/js/components/icon/purple.png"
   },
   "resources/js/components/icon/red.png": {
     "file": "assets/red-81ec77e5.png",
