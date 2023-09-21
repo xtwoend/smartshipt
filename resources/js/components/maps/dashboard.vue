@@ -14,14 +14,7 @@
         <!-- <x-notification></x-notification> -->
         <!-- <x-parameter></x-parameter> -->
         <div class="pointer-info" ref="pointerInfo"></div>
-        <div class="lengend">
-            <div class="title">Fleet Color Information</div>
-            <div><img src="../icon/green.png"> Underway </div>
-            <div><img src="../icon/blue.png"> At Port </div>
-            <div><img src="../icon/yellow.png"> At Anchorage</div>
-            <div><img src="../icon/purple.png"> Other</div>
-            <div><img src="../icon/red.png"> Lost Connection</div>
-        </div>
+        <x-legend :fleets="fleets"></x-legend>
         <MapboxMap
             @mb-created="(mapboxInstance) => map = mapboxInstance"
             @mb-load="loaded"
@@ -55,6 +48,7 @@ import greenShip from '../icon/green.png';
 import redShip from '../icon/red.png';
 import yellowShip from '../icon/yellow.png';
 import purpleShip from '../icon/purple.png';
+import fleetLegend from './lagend.vue';
 
 // import  * as interpolate from 'interpolateheatmaplayer';
 
@@ -66,6 +60,7 @@ export default {
         'x-navigation': navigation,
         'x-camera': camera,
         'x-parameter': parameter,
+        'x-legend': fleetLegend,
         MapboxMap, 
         MapboxNavigationControl
     },
@@ -92,7 +87,8 @@ export default {
             fleets_point: {
                 type: 'FeatureCollection',
                 features: []
-            }
+            },
+            fleetsGroup: []
         }
     },
     mounted(){
@@ -119,6 +115,7 @@ export default {
     methods: {
         async fetchData() {
             let {data} = await axios.get('/api/fleets')
+            
             this.fleets = data;
             this.fleets_point.features = [];
             data.forEach((row) => {
@@ -152,7 +149,6 @@ export default {
             await this.fetchData()
             this.buildLayer()
         },
-
         async refreshData() {
             await this.fetchData()
             let data = await this.map.getSource('ship-position');
@@ -160,7 +156,6 @@ export default {
                 data.setData(this.fleets_point)
             }
         },
-
         buildLayer() {
             let that = this;
             // point
@@ -217,8 +212,6 @@ export default {
                 popup.remove();
             });
 
-            // console.log(this.weathers);
-            
         },
 
         async buildWeathers() {
@@ -326,24 +319,4 @@ a.no-style {
     color: #000;
 }
 
-.lengend {
-    position: absolute;
-    right: 20px;
-    top: 10px;
-    width: 200px;
-    z-index: 2;
-    color: #fff;
-    // box-shadow: #000;
-    text-shadow: 2px 2px 5px rgb(26, 25, 25);
-    div {
-        display: flex;
-    }
-    .title {
-        font-weight: bold;
-    }
-    img {
-        height: 20px;
-        margin-right: 10px;
-    }
-}
 </style>

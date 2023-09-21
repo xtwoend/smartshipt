@@ -283,25 +283,4 @@ export default {
     }
 }
 
-
-.lengend {
-    position: absolute;
-    right: 20px;
-    top: 10px;
-    width: 200px;
-    z-index: 2;
-    color: #fff;
-    // box-shadow: #000;
-    text-shadow: 2px 2px 5px rgb(26, 25, 25);
-    div {
-        display: flex;
-    }
-    .title {
-        font-weight: bold;
-    }
-    img {
-        height: 20px;
-        margin-right: 10px;
-    }
-}
 </style>
