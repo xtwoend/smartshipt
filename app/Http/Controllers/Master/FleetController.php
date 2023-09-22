@@ -25,7 +25,7 @@ class FleetController extends Controller
      */
     public function index()
     {
-        $list = $this->fleet->get();
+        $list = $this->fleet->paginate(25);
         return view('master.fleets.index')->with(['list' => $list]);
     }
 
