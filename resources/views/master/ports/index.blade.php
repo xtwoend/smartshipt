@@ -7,9 +7,9 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
-                        <span>Fleet List</span>
+                        <span>Port List</span>
                         <div class="float-end">
-                            <a href="{{ route('master.fleets.create') }}" class="btn btn-info">Create New Fleet</a>
+                            <a href="{{ route('master.ports.create') }}" class="btn btn-info">Add New Port</a>
                         </div>
                     </div>
 
@@ -17,24 +17,22 @@
                         <table class="table">
                             <thead>
                             <tr>
-                                <th>NAME</th>
-                                <th>IMO NUMBER</th>
-                                <th>FLEET MANAGER</th>
-                                <th>EMAIL</th>
-                                <th>BUILD YEAR</th>
-                                <th>ACTION</th>
+                                <th>Name</th>
+                                <th>Location</th>
+                                <th>Latitude</th>
+                                <th>Longitude</th>
+                                <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($list as $data)
                             <tr class="">
                                 <td>{{$data->name}}</td>
-                                <td>{{$data->imo_number}}</td>
-                                <td>{{$data->ship_manager}}</td>
-                                <td>{{$data->email}}</td>
-                                <td>{{$data->year}}</td>
+                                <td>{{$data->location}}</td>
+                                <td>{{$data->lat}}</td>
+                                <td>{{$data->lng}}</td>
                                 <td>
-                                    <a href="{{ route('master.fleets.show', $data->id) }}">View Data</a>
+                                    <a href="{{ route('master.ports.edit', $data->id) }}">Edit Data</a>
                                 </td>
                             </tr>
                             @endforeach

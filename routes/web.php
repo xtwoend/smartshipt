@@ -53,6 +53,8 @@ Route::group([
             Route::put('fleets/{id}/update-bunker-information', 'updateBunker')->name('updateBunker');
         });
 
+        Route::resource('ports', \App\Http\Controllers\Master\PortController::class);
+
         Route::resource('user', \App\Http\Controllers\Master\UserController::class);
         Route::group(['as' => 'user.', 'prefix' => 'user', 'controller' => \App\Http\Controllers\Master\UserController::class], function(){
             Route::get('change-password', 'changePassword')->name('change-password');

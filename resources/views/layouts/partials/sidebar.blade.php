@@ -43,7 +43,7 @@
                 <li class="menu-item">
                   <a href="{{ route('master.fleets.index') }}">
                     <span class="menu-icon">
-                    <img src="{{asset('img/icons/help.png')}}" alt="" />
+                    <img src="{{asset('img/icons/vessel.png')}}" alt="" />
                     </span>
                     <span class="menu-title">Fleet  Master Data</span>
                   </a>
@@ -57,6 +57,15 @@
                   </a>
                 </li> --}}
                 <li class="menu-item">
+                  <a href="{{ route('master.ports.index') }}">
+                    <span class="menu-icon">
+                    <img src="{{asset('img/icons/dock.png')}}" alt="" />
+                    </span>
+                    <span class="menu-title">Ports </span>
+                  </a>
+                </li>
+
+                <li class="menu-item">
                   <a href="#">
                     <span class="menu-icon">
                     <img src="{{asset('img/icons/help.png')}}" alt="" />
@@ -64,14 +73,6 @@
                     <span class="menu-title">Help</span>
                   </a>
                 </li>
-                {{-- <li class="menu-item">
-                  <a href="#">
-                    <span class="menu-icon">
-                    <img src="{{asset('img/icons/message.png')}}" alt="" />
-                    </span>
-                    <span class="menu-title">Chat </span>
-                  </a>
-                </li> --}}
                 <li class="menu-item">
                   <a href="#">
                     <span class="menu-icon">
