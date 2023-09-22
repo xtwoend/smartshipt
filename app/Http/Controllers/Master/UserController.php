@@ -26,7 +26,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $list = $this->users->paginte(25);
+        $list = $this->users->paginate(25);
         return view('master.user.index')->with(['list' => $list]);
     }
 
