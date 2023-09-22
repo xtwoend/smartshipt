@@ -40,11 +40,11 @@ export default {
                 other : '#A32B7C'
             },
             icons:  {
-                at_port: {  name: 'At Port', img: '../icon/blue.png' },
-                underway: { img: '../icon/green.png', name: 'Underway' },
-                lost_connection: { img: '../icon/red.png', name: 'Lost Connection' },
-                at_anchorage: { img: '../icon/yellow.png', name: 'At Anchorage' },
-                other : { img: '../icon/purple.png', name: 'Other' },
+                at_port: {  name: 'At Port', img: '/icon/blue.png' },
+                underway: { img: '/icon/green.png', name: 'Underway' },
+                lost_connection: { img: '/icon/red.png', name: 'Lost Connection' },
+                at_anchorage: { img: '/icon/yellow.png', name: 'At Anchorage' },
+                other : { img: '/icon/purple.png', name: 'Other' },
             }
         }
     },
