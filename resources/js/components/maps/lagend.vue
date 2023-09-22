@@ -12,11 +12,7 @@
                     </vc-donut>
                 </div>
                 <div class="col">
-                    <div><img src="../icon/green.png"> Underway </div>
-                    <div><img src="../icon/blue.png"> At Port </div>
-                    <div><img src="../icon/yellow.png"> At Anchorage</div>
-                    <div><img src="../icon/purple.png"> Other</div>
-                    <div><img src="../icon/red.png"> Lost Connection</div>
+                    <div v-for="f in fleetsGroup" :key="f.label"><img :src="f.img"> {{ f.name }} ({{ f.value  }}) </div>
                 </div>
             </div>
         </div>
@@ -42,6 +38,13 @@ export default {
                 lost_connection: '#E13711',
                 at_anchorage: '#F1D244',
                 other : '#A32B7C'
+            },
+            icons:  {
+                at_port: {  name: 'At Port', img: '../icon/blue.png' },
+                underway: { img: '../icon/green.png', name: 'Underway' },
+                lost_connection: { img: '../icon/red.png', name: 'Lost Connection' },
+                at_anchorage: { img: '../icon/yellow.png', name: 'At Anchorage' },
+                other : { img: '../icon/purple.png', name: 'Other' },
             }
         }
     },
@@ -56,6 +59,8 @@ export default {
                     value: value,
                     color: that.colors[key],
                     label: key,
+                    name: that.icons[key].name,
+                    img: that.icons[key].img,
                 })
             }) 
         }
