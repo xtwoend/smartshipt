@@ -5,13 +5,13 @@
                 <div class="title">Fleet Color Information</div>
             </div>
             <div class="card-body row">
-                <div class="col">
+                <div class="col-5">
                     <vc-donut v-if="fleets" :size="100" :sections="fleetsGroup" unit="%" :total="fleets.length" :auto-adjust-text-size="true">
                         <div class="fleet-count">{{ fleets.length }}</div>
                         Vessels
                     </vc-donut>
                 </div>
-                <div class="col">
+                <div class="col-7">
                     <div v-for="f in fleetsGroup" :key="f.label"><img :src="f.img"> {{ f.name }} ({{ f.value  }}) </div>
                 </div>
             </div>
