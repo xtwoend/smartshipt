@@ -77,7 +77,7 @@ export default {
     position: absolute;
     right: 20px;
     top: 10px;
-    width: 350px;
+    width: 370px;
     z-index: 2;
     .card {
         background: rgba(255, 255, 255, 0.7) !important;
