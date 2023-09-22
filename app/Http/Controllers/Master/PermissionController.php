@@ -27,7 +27,7 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        $list = $this->permissions->get();
+        $list = $this->permissions->paginate(25);
         return view('master.permission.index', compact('list'));
     }
 
