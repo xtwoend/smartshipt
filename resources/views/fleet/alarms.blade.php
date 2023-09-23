@@ -29,7 +29,7 @@
                                 <td>{{ $alarm->started_at }}</td>
                                 <td>{{ $alarm->message }}</td>
                                 <td>{{ $alarm->duration }}</td>
-                                <td class="{{ if($alarm->status) ? 'warning': '' }}">{{ $alarm->status ? 'OPEN' : 'CLOSE'}}</td>
+                                <td class="{{ $alarm->status ? 'warning': '' }}">{{ $alarm->status ? 'OPEN' : 'CLOSE'}}</td>
                             </tr>
                             @endforeach
                         </tbody>
