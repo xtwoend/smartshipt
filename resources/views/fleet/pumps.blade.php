@@ -10,7 +10,7 @@
         @endif
         <div class="p-3">
             {{--  --}}
-            <mimic-svg group="pumps" svg-path="/svg/pumps.svg" url="{{ route('api.fleet', $fleet->id) }}"></mimic-svg> 
+            <mimic-svg group="cargo_pump" svg-path="/svg/pumps.svg" url="{{ route('api.fleet', $fleet->id) }}"></mimic-svg> 
         </div>
     </div>
 </main>
