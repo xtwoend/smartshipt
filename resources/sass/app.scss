@@ -476,3 +476,10 @@ overflow: hidden;
       background-color: #12CA19;
   }
   }
+
+  table.alarm {
+    .warning {
+        background: rgb(171, 15, 15);
+        color: #fff;
+    }
+  }
