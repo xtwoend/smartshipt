@@ -2,7 +2,7 @@
     <div class="lengend">
         <div class="card">
             <div class="card-header">
-                <div class="title">Fleet Color Information</div>
+                <div class="title">Fleets Information</div>
             </div>
             <div class="card-body row">
                 <div class="col-5">
