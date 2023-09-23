@@ -45,7 +45,7 @@
                     <span class="menu-icon">
                     <img src="{{asset('img/icons/vessel.png')}}" alt="" />
                     </span>
-                    <span class="menu-title">Fleet  Master Data</span>
+                    <span class="menu-title">Fleet Master Data</span>
                   </a>
                 </li>
                 {{-- <li class="menu-item">
@@ -61,7 +61,7 @@
                     <span class="menu-icon">
                     <img src="{{asset('img/icons/dock.png')}}" alt="" />
                     </span>
-                    <span class="menu-title">Ports </span>
+                    <span class="menu-title">Master Ports </span>
                   </a>
                 </li>
 
