@@ -104,7 +104,7 @@ app.component('trend-live', TrendLive);
 import SensorInfo from './components/fleets/sensor-info.vue';
 app.component('sensor-info', SensorInfo);
 
-import MimicSvg from './components/fleets/mimic.vue';
+import MimicSvg from './components/fleets/mimic-svg.vue';
 app.component('mimic-svg', MimicSvg);
 
 

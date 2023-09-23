@@ -5,7 +5,7 @@
     <div class="bg-white">
         @include('fleet.menu', ['fleet' => $fleet])
         <div class="p-3">
-            <mimic-svg svg-path="/svg/kakap/engine.svg" url="{{ route('api.fleet', $fleet->id) }}"></mimic-svg> 
+            <mimic-svg group="engine" svg-path="/svg/kakap/engine.svg" url="{{ route('api.fleet', $fleet->id) }}"></mimic-svg> 
             <trend-live 
                 title="Trend Live Engine"
                 url="{{ route('api.fleet.logger', ['id' => $fleet->id, 'group'=> 'engine']) }}" 
