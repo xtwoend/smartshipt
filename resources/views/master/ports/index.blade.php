@@ -32,7 +32,14 @@
                                 <td>{{$data->lat}}</td>
                                 <td>{{$data->lng}}</td>
                                 <td>
-                                    <a href="{{ route('master.ports.edit', $data->id) }}">Edit Data</a>
+                                    <div class="d-flex flex-row">
+                                        <a href="{{ route('master.ports.edit', $data->id) }}" class="btn btn-success btn-sm">Edit Data</a>
+                                        <form action="{{ route('master.ports.destroy',$data->id) }}" method="POST" >
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Sure Want Delete?')">Delete</button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach

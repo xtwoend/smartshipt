@@ -111,6 +111,9 @@ app.component('mimic-svg', MimicSvg);
 import DataInformation from './components/fleets/table-info.vue';
 app.component('data-info', DataInformation);
 
+import MapPinned from './components/maps/pinned.vue';
+app.component('map-pinned', MapPinned);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

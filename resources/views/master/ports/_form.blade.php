@@ -17,22 +17,10 @@
             @endif
         </div>
     </div>
-    <div class="col-12">
-        <div class="form-group mb-3">
-            <label>Latitude</label>
-            {!! Form::text('lat', null, ['class' => 'form-control']) !!}
-            @if ($errors->has('lat'))
-                <small class="form-text text-danger">{{ $errors->first('lat') }}</small>
-            @endif
-        </div>
-    </div>
-    <div class="col-12">
-        <div class="form-group mb-3">
-            <label>Longitude</label>
-            {!! Form::text('lng', null, ['class' => 'form-control']) !!}
-            @if ($errors->has('lng'))
-                <small class="form-text text-danger">{{ $errors->first('lng') }}</small>
-            @endif
-        </div>
-    </div>
+    {{-- pinned map --}}
+    @if(isset($data))
+    <map-pinned lat="{{ $data->lat }}" lng="{{ $data->lng }}" style="height: 200px; width:100%;"></map-pinned>
+    @else
+    <map-pinned lat="-5.101189" lng="112.421518" style="height: 200px; width:100%;"></map-pinned>
+    @endif
 </div>
