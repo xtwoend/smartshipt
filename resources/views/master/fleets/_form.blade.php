@@ -5,7 +5,7 @@
             <div class="col-6">
                 <div class="card">
                     <div class="card-body">
-                        <img src="{{ asset($data->image) }}">
+                        <img src="{{ isset($data) ? asset($data->image) : null }}">
                     </div>
                     <div class="card-footer m-0 p-0">
                         <input type="file" class="form-control" name="image">
