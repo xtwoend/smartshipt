@@ -106,4 +106,10 @@ class FleetController extends Controller
         $fleet = Fleet::findOrFail($id);
         return view('fleet.charter', compact('fleet'));
     }
+
+    public function pumps($id, Request $request)
+    {
+        $fleet = Fleet::findOrFail($id);
+        return view('fleet.pumps', compact('fleet'));
+    }
 }

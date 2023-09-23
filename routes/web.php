@@ -26,6 +26,7 @@ Route::group([
     Route::get('/route', [NaviController::class, 'route'])->name('route');
     Route::get('/fleet/{id}', [FleetController::class, 'index'])->name('fleet');
     Route::get('/fleet/{id}/track', [FleetController::class, 'track'])->name('fleet.track');
+    Route::get('/fleet/{id}/pumps', [FleetController::class, 'pumps'])->name('fleet.pumps');
     Route::get('/fleet/{id}/engine', [FleetController::class, 'engine'])->name('fleet.engine');
     Route::get('/fleet/{id}/cargo', [FleetController::class, 'cargo'])->name('fleet.cargo');
     Route::get('/fleet/{id}/bunker', [FleetController::class, 'bunker'])->name('fleet.bunker');
