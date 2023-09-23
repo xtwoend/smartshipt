@@ -16,16 +16,19 @@
             <a :href="`/fleet/${fleet.id}`" class="submenu-item" :class="{'active': (active == 'info')}">NAVIGASI</a>
         </swiper-slide>
         <swiper-slide>
-            <a :href="`/fleet/${fleet.id}/engine`" class="submenu-item" :class="{'active': (active == 'engine')}">ENGINE</a>
+            <a :href="`/fleet/${fleet.id}/engine`" class="submenu-item" :class="{'active': (active == 'engine')}">MAIN ENGINE</a>
         </swiper-slide>
         <swiper-slide>
-            <a :href="`/fleet/${fleet.id}/cargo`" class="submenu-item" :class="{'active': (active == 'cargo')}">CARGO</a>
+            <a :href="`/fleet/${fleet.id}/pumps`" class="submenu-item" :class="{'active': (active == 'pumps')}">PUMPS</a>
         </swiper-slide>
         <swiper-slide>
-            <a :href="`/fleet/${fleet.id}/bunker`" class="submenu-item" :class="{'active': (active == 'bunker')}">BUNKER</a>
+            <a :href="`/fleet/${fleet.id}/cargo`" class="submenu-item" :class="{'active': (active == 'cargo')}">CARGO TANK</a>
         </swiper-slide>
         <swiper-slide>
-            <a :href="`/fleet/${fleet.id}/balast`" class="submenu-item" :class="{'active': (active == 'balast')}">BALAST</a>
+            <a :href="`/fleet/${fleet.id}/bunker`" class="submenu-item" :class="{'active': (active == 'bunker')}">BUNKER TANK</a>
+        </swiper-slide>
+        <swiper-slide>
+            <a :href="`/fleet/${fleet.id}/balast`" class="submenu-item" :class="{'active': (active == 'balast')}">BALAST TANK</a>
         </swiper-slide>
         <!-- <swiper-slide>
             <a :href="`/fleet/${fleet.id}/diagnotics`" class="submenu-item" :class="{'active': (active == 'diagnotics')}">DIAGNOSTICS</a>
