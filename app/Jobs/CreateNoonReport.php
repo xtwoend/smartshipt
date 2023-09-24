@@ -1,41 +1,48 @@
 <?php
 
-namespace App\Console\Commands;
+namespace App\Jobs;
 
 use Carbon\Carbon;
 use App\Models\Alarm;
 use App\Models\Fleet;
 use App\Models\NavigationLog;
+use Illuminate\Bus\Queueable;
 use Barryvdh\DomPDF\Facade\Pdf;
-use Illuminate\Console\Command;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Contracts\Queue\ShouldBeUnique;
 
-class CreateNoonReportCommand extends Command
+class CreateNoonReport implements ShouldQueue
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $signature = 'report:noon {fleetId} {date?}';
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
+    protected $fleetId;
+    protected $date;
 
     /**
-     * The console command description.
+     * Create a new job instance.
      *
-     * @var string
+     * @return void
      */
-    protected $description = 'Noon report';
+    public function __construct($fleetId, $date)
+    {
+        $this->fleetId = $fleetId;
+        $this->date = $date;
+    }
 
     /**
-     * Execute the console command.
+     * Execute the job.
      *
-     * @return int
+     * @return void
      */
     public function handle()
     {
         ini_set('memory_limit', '-1');
 
-        $id = $this->argument('fleetId');
-        $to = $this->argument('date');
+        $id = $this->fleetId;
+        $to = $this->date;
 
         $to = $to ? Carbon::parse($to)->format('Y-m-d H:i:s') : Carbon::now()->format('Y-m-d 13:00:00');
 
@@ -64,7 +71,5 @@ class CreateNoonReportCommand extends Command
 
         $pdf = Pdf::loadView('emails.noon-report', compact('fleet', 'navigation', 'avgSpeed', 'status', 'from', 'alarms'));
         $pdf->save(public_path($filename));
-
-        return Command::SUCCESS;
     }
 }
