@@ -34,7 +34,7 @@ class ReportController extends Controller
 
         // return view('emails.noon-report', compact('fleet', 'navigation', 'avgSpeed', 'status', 'from', 'alarms'));
 
-        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('emails.noon-report', compact('fleet', 'navigation', 'avgSpeed', 'status'));
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('emails.noon-report', compact('fleet', 'navigation', 'avgSpeed', 'status', 'from', 'alarms'));
         return $pdf->download('noon-report-'. $fleet->name .'-'.$from.'.pdf');
     }
 }
