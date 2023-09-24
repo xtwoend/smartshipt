@@ -1,24 +1,17 @@
 <?php
 
-namespace App\Jobs;
+namespace App\Report;
 
 use Carbon\Carbon;
 use App\Models\Alarm;
 use App\Models\Fleet;
 use App\Models\NavigationLog;
-use Illuminate\Bus\Queueable;
 use Barryvdh\DomPDF\Facade\Pdf;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Foundation\Bus\Dispatchable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
 
-class CreateNoonReport implements ShouldQueue
+
+class CreateNoonReport
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-
-    protected $fleetId;
+    protected $fleet;
     protected $date;
 
     /**
@@ -26,9 +19,9 @@ class CreateNoonReport implements ShouldQueue
      *
      * @return void
      */
-    public function __construct($fleetId, $date)
+    public function __construct($fleet, $date)
     {
-        $this->fleetId = $fleetId;
+        $this->fleet = $fleet;
         $this->date = $date;
     }
 
@@ -41,13 +34,10 @@ class CreateNoonReport implements ShouldQueue
     {
         ini_set('memory_limit', '-1');
 
-        $id = $this->fleetId;
         $to = $this->date;
-
         $to = $to ? Carbon::parse($to)->format('Y-m-d H:i:s') : Carbon::now()->format('Y-m-d 13:00:00');
 
-
-        $fleet = Fleet::findOrFail($id);
+        $fleet = $this->fleet;
         $from = Carbon::parse($to)->subHours(24)->format('Y-m-d H:i:s');
 
         $date = Carbon::parse($to)->format('Y-m-d');
@@ -68,8 +58,10 @@ class CreateNoonReport implements ShouldQueue
 
         $alarms = Alarm::table($fleet->id)->whereBetween('started_at', [$from, $to])->get();
         $filename = "/report/noon-report-{$fleet->id}-{$date}.pdf";
-
+        var_dump($filename);
         $pdf = Pdf::loadView('emails.noon-report', compact('fleet', 'navigation', 'avgSpeed', 'status', 'from', 'alarms'));
         $pdf->save(public_path($filename));
+
+        return $filename;
     }
 }

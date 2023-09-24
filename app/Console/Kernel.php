@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Carbon\Carbon;
 use App\Models\Fleet;
+use App\Jobs\NoonReportFleet;
 use App\Jobs\CreateNoonReport;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -20,9 +21,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
 
-        foreach(Fleet::active()->get() as $fleet) {
-            $schedule->job(new CreateNoonReport($fleet->id, Carbon::now()->format('Y-m-d H:i:s')))->dailyAt('13:00');
-        }
+        $schedule->job(new NoonReportFleet())->everyMinute();
     }
 
     /**
