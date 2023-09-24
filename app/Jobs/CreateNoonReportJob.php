@@ -39,7 +39,7 @@ class CreateNoonReportJob implements ShouldQueue
     public function handle()
     {
         $path = (new CreateNoonReport($this->fleet, $this->date))->handle();
-        Mail::to(['aris.yulianto@pertamina.com', 'aristo.yulianto@gmail.com', 'aditans88@gmail.com'])
-            ->send(new NoonReportEmail($this->fleet, $path));
+        // Mail::to(['aris.yulianto@pertamina.com', 'aristo.yulianto@gmail.com', 'aditans88@gmail.com'])
+        //     ->send(new NoonReportEmail($this->fleet, $path));
     }
 }
