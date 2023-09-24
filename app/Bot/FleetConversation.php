@@ -133,9 +133,12 @@ class FleetConversation extends Conversation
                         break;
                     case 'report':
                         $path = (new CreateNoonReport($this->fleet))->handle();
-                        $attachment = new File($path, [
+                        $attachment = new \BotMan\BotMan\Messages\Attachments\File($path, [
                             'custom_payload' => true,
                         ]);
+                        $message = OutgoingMessage::create('Report')
+                                ->withAttachment($attachment);
+                        $this->say($message);
                         $this->fleetMenu();
                         break;
                     case 'fleet':
