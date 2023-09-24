@@ -3,24 +3,29 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Mail\Mailables\Attachment;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 class NoonReportEmail extends Mailable
 {
     use Queueable, SerializesModels;
+
+    public $fleet;
+    public $attachment;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($fleet, $attachment)
     {
-        //
+        $this->fleet = $fleet;
+        $this->attachment = $attachment;
     }
 
     /**
@@ -43,7 +48,7 @@ class NoonReportEmail extends Mailable
     public function content()
     {
         return new Content(
-            view: 'view.name',
+            view: 'emails.noon-report',
         );
     }
 
@@ -54,6 +59,8 @@ class NoonReportEmail extends Mailable
      */
     public function attachments()
     {
-        return [];
+        return [
+            Attachment::fromPath(public_path($this->attachment))
+        ];
     }
 }

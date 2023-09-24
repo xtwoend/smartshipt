@@ -3,8 +3,10 @@
 namespace App\Jobs;
 
 use Carbon\Carbon;
+use App\Mail\NoonReportEmail;
 use Illuminate\Bus\Queueable;
 use App\Report\CreateNoonReport;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -36,6 +38,8 @@ class CreateNoonReportJob implements ShouldQueue
      */
     public function handle()
     {
-        (new CreateNoonReport($this->fleet, $this->date))->handle();
+        $path = (new CreateNoonReport($this->fleet, $this->date))->handle();
+        Mail::to(['aris.yulianto@pertamina.com', 'aristo.yulianto@gmail.com', 'aditans88@gmail.com'])
+            ->send(new NoonReportEmail($this->fleet, $path));
     }
 }
