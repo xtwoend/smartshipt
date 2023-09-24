@@ -28,6 +28,7 @@
             <MapboxNavigationControl position="bottom-right" />
         </MapboxMap>
     </div>
+    <fleet-table :fleets="fleets"></fleet-table>
 </template>
 
 <script>
@@ -50,6 +51,8 @@ import yellowShip from '../icon/yellow.png';
 import purpleShip from '../icon/purple.png';
 import fleetLegend from './lagend.vue';
 
+import fleetTable from './fleet-table.vue';
+
 // import  * as interpolate from 'interpolateheatmaplayer';
 
 export default {
@@ -62,7 +65,8 @@ export default {
         'x-parameter': parameter,
         'x-legend': fleetLegend,
         MapboxMap, 
-        MapboxNavigationControl
+        MapboxNavigationControl,
+        fleetTable
     },
     data() {
         return {
