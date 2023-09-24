@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NaviController;
 use App\Http\Controllers\FleetController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\TelegramBotController;
 
 /*
@@ -18,6 +19,9 @@ use App\Http\Controllers\TelegramBotController;
 */
 
 Auth::routes(['register' => false, 'reset' => false]);
+
+Route::get('/noon-report/{id}', [ReportController::class, 'noonReport'])->name('noon-report');
+
 
 Route::group([
     'middleware' => 'auth'
