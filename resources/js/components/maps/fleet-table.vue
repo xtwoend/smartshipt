@@ -62,12 +62,13 @@ export default {
         TableLite
     },
     props: {
-        fleets: Array
+        // fleets: Array
     },
     data() {
         return {
             keyword: '',
             isLoading: false,
+            fleets: [],
             columns: [
                 {label: 'Vessel Name', field: 'name'},
                 {label: 'Vessel State', field: 'fleet_status', display: function(row){
@@ -101,11 +102,20 @@ export default {
             })
         }
     },
+    mounted() {
+        this.fetchData()
+    },
     methods: {
         doSearch(offset, limit, order, sort) {
             this.isLoading = true;
-
+            
             this.isLoading = false;
+        },
+        async fetchData() {
+            let {data} = await axios.get('/api/fleets')
+            data.forEach((row) => {
+                this.fleets.push(row)
+            })
         }
     }
 }
