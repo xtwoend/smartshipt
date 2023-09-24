@@ -1,5 +1,5 @@
 <template>
-    <div class="fleets-list" :class="{'hide': isHide}">
+    <div class="fleets-list">
         <div class="card">
             <div class="card-header search">
                 <form action="#" method="get" style="width: 300px;">
@@ -30,7 +30,7 @@
                     </a>
                 </div>
             </div>
-            <div class="card-table table-responsive">
+            <div class="card-table table-responsive" :class="{'hide': isHide}">
                 <table-lite
                     :is-static-mode="true"
                     :is-loading="isLoading"
@@ -128,8 +128,10 @@ export default {
     bottom: 0;
     left: 0;
     right: 0;
-    &.hide {
-        bottom: -320px;
+    
+    .hide {
+        // bottom: -320px;
+        display: none;
     }
     .vtl-table  {
         display: table !important;
