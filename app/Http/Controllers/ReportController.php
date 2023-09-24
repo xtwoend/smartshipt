@@ -12,6 +12,8 @@ class ReportController extends Controller
 {
     public function noonReport($id, Request $request)
     {
+        ini_set('memory_limit', '-1');
+        
         $fleet = Fleet::findOrFail($id);
         $from = $request->input('from', Carbon::now()->subHours(24)->format('Y-m-d H:i:s'));
         $to = $request->input('to', Carbon::now()->format('Y-m-d H:i:s'));
