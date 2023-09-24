@@ -30,6 +30,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::get('fleets', [FleetController::class, 'fleets'])->name('api.fleets');
+Route::get('fleets/table', [FleetController::class, 'lists'])->name('api.fleets.table');
 
 Route::get('fleet/{id}/nav/histories', [NavController::class, 'history']);
 Route::get('fleet/{id}', [FleetController::class, 'show'])->name('api.fleet');

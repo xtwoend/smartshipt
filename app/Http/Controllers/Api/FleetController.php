@@ -25,4 +25,15 @@ class FleetController extends Controller
         $fleet = Fleet::with('navigation')->findOrFail($id);
         return response()->json(new FleetResource($fleet));
     }
+
+    public function lists(Request $request)
+    {
+        $fleets = Fleet::with('navigation')->active();
+        if($request->has('q')){
+            $fleets = $fleets->where('name', $request->q);
+        }
+        $fleets = $fleets->paginate($request->input('rpp', 5));
+
+        return response()->json(FleetResource::collection($fleets));
+    }
 }

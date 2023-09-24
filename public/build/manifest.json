@@ -27,7 +27,7 @@
     "src": "public/remixicon/remixicon.woff2"
   },
   "resources/js/app.css": {
-    "file": "assets/app-cdbfc88e.css",
+    "file": "assets/app-2656796d.css",
     "src": "resources/js/app.css"
   },
   "resources/js/app.js": {
@@ -40,9 +40,9 @@
       "assets/ship-c94d8078.png"
     ],
     "css": [
-      "assets/app-cdbfc88e.css"
+      "assets/app-2656796d.css"
     ],
-    "file": "assets/app-6ea6cb41.js",
+    "file": "assets/app-78a1f688.js",
     "imports": [
       "resources/tabler/src/js/tabler.esm.js",
       "_popper-528ebbd5.js"
@@ -76,9 +76,9 @@
   },
   "resources/js/index.js": {
     "css": [
-      "assets/app-fba78b4f.css"
+      "assets/app-ee0166b0.css"
     ],
-    "file": "assets/index-44e14161.js",
+    "file": "assets/index-28d52b6c.js",
     "imports": [
       "resources/js/libs/slide.js",
       "resources/js/libs/constants.js",
@@ -122,7 +122,7 @@
     "src": "resources/js/libs/slide.js"
   },
   "resources/sass/app.scss": {
-    "file": "assets/app-fba78b4f.css",
+    "file": "assets/app-ee0166b0.css",
     "isEntry": true,
     "src": "resources/sass/app.scss"
   },

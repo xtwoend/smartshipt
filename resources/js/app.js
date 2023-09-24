@@ -15,10 +15,6 @@ import '@vuepic/vue-datepicker/dist/main.css';
 
 import Donut from 'vue-css-donut-chart';
 import 'vue-css-donut-chart/dist/vcdonut.css';
-
-import Vue3EasyDataTable from 'vue3-easy-data-table';
-
-
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
  * registering components with the application instance so they are ready
@@ -30,7 +26,6 @@ const app = createApp({});
 app.use(Donut);
 app.use(VueSweetalert2);
 app.component('VueDatePicker', VueDatePicker);
-app.component('EasyDataTable', Vue3EasyDataTable);
 
 import MapDashboard from './components/maps/dashboard.vue';
 app.component('map-dashboard', MapDashboard);
