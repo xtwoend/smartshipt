@@ -132,13 +132,7 @@ class FleetConversation extends Conversation
                         $this->fleetMenu();
                         break;
                     case 'report':
-                        $path = (new CreateNoonReport($this->fleet))->handle();
-                        $attachment = new \BotMan\BotMan\Messages\Attachments\File($path, [
-                            'custom_payload' => true,
-                        ]);
-                        $message = OutgoingMessage::create('Report')
-                                ->withAttachment($attachment);
-                        $this->say($message);
+                        $this->say('Click link berikut untuk untuk mendownload laporan ' . 'https://smartship.mix.my.id/noon-report/'. $this->fleet->id);
                         $this->fleetMenu();
                         break;
                     case 'fleet':
