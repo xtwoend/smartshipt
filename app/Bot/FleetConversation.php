@@ -5,7 +5,9 @@ namespace App\Bot;
 use App\Models\Fleet;
 use App\Bot\TextTable;
 use Illuminate\Support\Str;
+use App\Report\CreateNoonReport;
 use BotMan\BotMan\Messages\Incoming\Answer;
+use BotMan\BotMan\Messages\Attachments\File;
 use BotMan\BotMan\Messages\Outgoing\Question;
 use BotMan\BotMan\Messages\Attachments\Location;
 use BotMan\BotMan\Messages\Outgoing\Actions\Button;
@@ -127,6 +129,13 @@ class FleetConversation extends Conversation
                         break;
                     case 'tank':
                         $this->say("Data tank belum tesedia");
+                        $this->fleetMenu();
+                        break;
+                    case 'report':
+                        $path = (new CreateNoonReport($this->fleet))->handle();
+                        $attachment = new File($path, [
+                            'custom_payload' => true,
+                        ]);
                         $this->fleetMenu();
                         break;
                     case 'fleet':

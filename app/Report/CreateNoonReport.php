@@ -19,7 +19,7 @@ class CreateNoonReport
      *
      * @return void
      */
-    public function __construct($fleet, $date)
+    public function __construct($fleet, $date = null)
     {
         $this->fleet = $fleet;
         $this->date = $date;
