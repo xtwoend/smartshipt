@@ -58,8 +58,8 @@ class CreateNoonReport
 
         $alarms = Alarm::table($fleet->id)->whereBetween('started_at', [$from, $to])->get();
         $filename = "/report/noon-report-{$fleet->id}-{$date}.pdf";
-        var_dump($filename);
-        $pdf = Pdf::loadView('emails.noon-report', compact('fleet', 'navigation', 'avgSpeed', 'status', 'from', 'alarms'));
+
+        $pdf = Pdf::loadView('report.noon-report', compact('fleet', 'navigation', 'avgSpeed', 'status', 'from', 'alarms'));
         $pdf->save(public_path($filename));
 
         return $filename;
