@@ -36,7 +36,7 @@ class NoonReportEmail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Noon Report Email',
+            subject: 'Alarm Monitoring Report Smart Ship System',
         );
     }
 
