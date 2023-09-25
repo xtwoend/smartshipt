@@ -49,4 +49,9 @@ class Engine extends Model
 
         return (array) $informations;
     }
+
+    public function getRpmAttribute()
+    {
+        return (int) $this->attributes['engine_speed'];
+    }
 }
