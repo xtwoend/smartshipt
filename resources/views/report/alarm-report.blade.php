@@ -129,7 +129,7 @@
         <tbody>
           <tr class="row0">
             <td class="column0 style7 s style13" rowspan="3">
-              <img src="{{ public_path('/img/smartship.png') }}" title="PIS" height="80">
+              <img src="{{ public_path('/img/smartship.png') }}" title="SMARTSHIP" height="80">
             </td>
             <td class="column1 style8 s style8" colspan="3">PT PERTAMINA INTERNATIONAL SHIPPING</td>
             <td class="column4 style9 s style15" rowspan="3">
