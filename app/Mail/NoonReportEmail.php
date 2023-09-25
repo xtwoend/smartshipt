@@ -60,7 +60,7 @@ class NoonReportEmail extends Mailable
     public function attachments()
     {
         return [
-            // Attachment::fromPath($this->attachment)
+            Attachment::fromPath($this->attachment)
         ];
     }
 }
