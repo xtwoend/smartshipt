@@ -56,7 +56,7 @@ class CreateNoonReport
             'other' => 'Other'
         ];
 
-        $alarms = Alarm::table($fleet->id)->whereBetween('started_at', [$from, $to])->get();
+        $alarms = Alarm::table($fleet->id)->whereBetween('started_at', [$from, $to])->latest()->get();
         $filename = "/report/noon-report-{$fleet->id}-{$date}.pdf";
 
         $pdf = Pdf::loadView('report.noon-report', compact('fleet', 'navigation', 'avgSpeed', 'status', 'from', 'alarms'));
