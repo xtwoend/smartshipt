@@ -48,7 +48,7 @@ class NoonReportEmail extends Mailable
     public function content()
     {
         return new Content(
-            view: 'emails.noon-report',
+            view: 'emails.alarm-report',
         );
     }
 
