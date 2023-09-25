@@ -116,6 +116,7 @@
       table.sheet0 tr.row1 { height:19pt }
       table.sheet0 tr.row2 { height:17pt }
       table > tr, td { padding: 0 5px; } 
+      table > tr.warning { color: #ab0f0f; }
     </style>
   </head>
 
@@ -304,7 +305,7 @@
             <td class="column4 style43 s">STATUS</td>
           </tr>
           @foreach($alarms as $alarm)
-          <tr class="row30">
+          <tr class="row30 {{ $alarm->status ? 'warning': '' }}">
             <td class="column0 style28 null">{{ $alarm->started_at }}</td>
             <td class="column1 style29 null style30" colspan="2">{{ $alarm->message }}</td>
             <td class="column3 style28 null">{{ $alarm->duration }}</td>
