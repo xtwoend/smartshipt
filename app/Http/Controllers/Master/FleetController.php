@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Master;
 
 use App\Models\Fleet;
+use App\Models\FleetPic;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Models\CargoInformation;
@@ -188,10 +189,25 @@ class FleetController extends Controller
     }
 
     
-    public function addPic($id, Request $request)
+    public function picAdd($id, Request $request)
     {
         $fleet = Fleet::findOrFail($id);
+        $pic = $fleet->pic()->create($request->all());
 
-        return redirect()->route('master.fleets.show', $id)->with('message', 'Success add fleet pic information');
+        return response()->json($pic);
+    }
+
+    public function picUpdate($id, Request $request)
+    {
+        $pic = FleetPic::findOrFail($request->input('id'));
+        $pic->update($request->all());
+        $pic->save();
+
+        return response()->json($pic);
+    }
+
+    public function picDelete($id, Request $reqeust)
+    {
+        return FleetPic::find($id)->delete();
     }
 }

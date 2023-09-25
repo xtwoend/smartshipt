@@ -51,11 +51,16 @@ Route::group([
     ], function() {
         Route::resource('fleets', \App\Http\Controllers\Master\FleetController::class);
         Route::group(['as' => 'fleets.', 'prefix' => 'fleets', 'controller' => \App\Http\Controllers\Master\FleetController::class], function(){
-            Route::put('fleets/{id}/pic', 'pic')->name('pic');
-            Route::get('fleets/{id}/edit-cargo-information','editCargo')->name('editCargo');
-            Route::put('fleets/{id}/update-cargo-information', 'updateCargo')->name('updateCargo');
-            Route::get('fleets/{id}/edit-bunker-information', 'editBunker')->name('editBunker');
-            Route::put('fleets/{id}/update-bunker-information', 'updateBunker')->name('updateBunker');
+            
+            Route::get('{id}/pic', 'pic')->name('pic');
+            Route::post('{id}/pic', 'picAdd')->name('pic.store');
+            Route::post('{id}/pic/update', 'picUpdate')->name('pic.update');
+            Route::delete('pic/delete/{id}', 'picDelete')->name('pic.delete');
+
+            Route::get('{id}/edit-cargo-information','editCargo')->name('editCargo');
+            Route::put('{id}/update-cargo-information', 'updateCargo')->name('updateCargo');
+            Route::get('{id}/edit-bunker-information', 'editBunker')->name('editBunker');
+            Route::put('{id}/update-bunker-information', 'updateBunker')->name('updateBunker');
         });
 
         Route::resource('ports', \App\Http\Controllers\Master\PortController::class);

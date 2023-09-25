@@ -55,9 +55,6 @@
                                     {!! Form::close() !!}
                                 </div>
                                 <div class="tab-pane" id="pic">
-                                    <div class="action-edit">
-                                        <a href="{{ route('master.fleets.show', [$data->id, 'mode' => 'edit']) }}" class="btn btn-info">Edit PIC Data</a>
-                                    </div>
                                     {!! Form::model($data, ['route' => ['master.fleets.pic', $data->id], 'method' => 'PUT']) !!}
                                     @include('master.fleets._form_pic', ['disabled' => request()->get('mode') !== 'edit' ? 'disabled': '' ])
                                     {!! Form::close() !!}

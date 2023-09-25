@@ -308,7 +308,7 @@
             <td class="column0 style28 null">{{ $alarm->started_at }}</td>
             <td class="column1 style29 null style30" colspan="2">{{ $alarm->message }}</td>
             <td class="column3 style28 null">{{ $alarm->duration }}</td>
-            <td class="column4 style31 null">{{ $alarm->status ? 'OPEN' : 'CLOSE'}}</td>
+            <td class="column4 style31 null">{{ $alarm->status ? 'ABNORMAL' : 'NORMAL'}}</td>
           </tr>
           @endforeach
         </tbody>
