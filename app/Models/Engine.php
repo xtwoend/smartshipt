@@ -52,6 +52,6 @@ class Engine extends Model
 
     public function getRpmAttribute()
     {
-        return $this->attributes['engine_speed'] ?? 0;
+        return $this->attributes['engine_speed'] ?: 0;
     }
 }
