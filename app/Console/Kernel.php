@@ -21,7 +21,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
 
-        $schedule->job(new NoonReportFleet())->everyMinute();
+        $schedule->job(new NoonReportFleet())->dailyAt('13:00');
     }
 
     /**
