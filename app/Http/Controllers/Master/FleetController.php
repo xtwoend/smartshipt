@@ -190,7 +190,8 @@ class FleetController extends Controller
 
     public function picUpdate($id, Request $request)
     {
-        $input = array_merge([$request->all(), 'fleet_id' => $id]);
+        $input = array_merge($request->all(), ['fleet_id' => $id]);
+
         if($request->has('id') && $request->id !== 0) {
             $pic = FleetPic::find($request->id)->update($input);
         }else{
