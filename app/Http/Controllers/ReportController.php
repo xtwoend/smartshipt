@@ -16,6 +16,7 @@ class ReportController extends Controller
 
         $filename = (new CreateNoonReport($fleet, $to))->handle();
 
+        // return $filename;
         return response()->download(public_path($filename));
     }
 }

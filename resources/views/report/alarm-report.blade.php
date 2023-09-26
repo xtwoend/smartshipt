@@ -306,10 +306,10 @@
           </tr>
           @foreach($alarms as $alarm)
           <tr class="row30">
-            <td class="column0 style28 null" {{ $alarm->status ? 'style="color:#ab0f0f;"': '' }}>{{ $alarm->started_at }}</td>
-            <td class="column1 style29 null style30 {{ $alarm->status ? 'style="color:#ab0f0f;"': '' }}" colspan="2">{{ $alarm->message }}</td>
-            <td class="column3 style28 null {{ $alarm->status ? 'style="color:#ab0f0f;"': '' }}">{{ $alarm->duration }}</td>
-            <td class="column4 style31 null {{ $alarm->status ? 'style="color:#ab0f0f;"': '' }}">{{ $alarm->status ? 'ABNORMAL' : 'NORMAL'}}</td>
+            <td class="column0 style28 null" style="{{ $alarm->status ? 'color:#ab0f0f;': '' }}">{{ $alarm->started_at }}</td>
+            <td class="column1 style29 null style30 style="{{ $alarm->status ? 'color:#ab0f0f;': '' }}" colspan="2">{{ $alarm->message }}</td>
+            <td class="column3 style28 null style="{{ $alarm->status ? 'color:#ab0f0f;': '' }}">{{ $alarm->duration }}</td>
+            <td class="column4 style31 null style="{{ $alarm->status ? 'color:#ab0f0f;': '' }}">{{ $alarm->status ? 'ABNORMAL' : 'NORMAL'}}</td>
           </tr>
           @endforeach
         </tbody>

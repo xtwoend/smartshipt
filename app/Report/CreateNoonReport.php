@@ -63,5 +63,6 @@ class CreateNoonReport
         $pdf->save(public_path($filename));
 
         return $filename;
+        // return view('report.alarm-report', compact('fleet', 'navigation', 'avgSpeed', 'status', 'from', 'alarms'));
     }
 }
