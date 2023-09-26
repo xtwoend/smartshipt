@@ -52,6 +52,9 @@ class Engine extends Model
 
     public function getRpmAttribute()
     {
-        return $this->attributes['engine_speed'] ?: 0;
+        $rpm_attributes = config('defines.rpm');
+        $attributeName = $rpm_attributes[$this->attributes['fleet_id']] ?: null;
+
+        return ($attributeName) ? $this->attributes[$attributeName] : null;
     }
 }
