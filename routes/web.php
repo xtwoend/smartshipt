@@ -53,7 +53,6 @@ Route::group([
         Route::group(['as' => 'fleets.', 'prefix' => 'fleets', 'controller' => \App\Http\Controllers\Master\FleetController::class], function(){
             
             Route::get('{id}/pic', 'pic')->name('pic');
-            Route::post('{id}/pic', 'picAdd')->name('pic.store');
             Route::post('{id}/pic/update', 'picUpdate')->name('pic.update');
             Route::delete('pic/delete/{id}', 'picDelete')->name('pic.delete');
 

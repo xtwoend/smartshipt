@@ -188,20 +188,14 @@ class FleetController extends Controller
         //
     }
 
-    
-    public function picAdd($id, Request $request)
-    {
-        $fleet = Fleet::findOrFail($id);
-        $pic = $fleet->pic()->create($request->all());
-
-        return response()->json($pic);
-    }
-
     public function picUpdate($id, Request $request)
     {
-        $pic = FleetPic::findOrFail($request->input('id'));
-        $pic->update($request->all());
-        $pic->save();
+        $input = array_merge([$request->all(), 'fleet_id' => $id]);
+        if($request->has('id') && $request->id !== 0) {
+            $pic = FleetPic::find($request->id)->update($input);
+        }else{
+            $pic = FleetPic::create($input);
+        }
 
         return response()->json($pic);
     }
