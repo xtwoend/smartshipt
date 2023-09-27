@@ -97,6 +97,33 @@
     </div>
     <div class="col-6">
         <div class="form-group mb-3">
+            <label>Engine Maker</label>
+            {!! Form::text('engine_maker', null, ['class' => 'form-control', ($disabled ?? '')]) !!}
+            @if ($errors->has('engine_maker'))
+                <small class="form-text text-danger">{{ $errors->first('engine_maker') }}</small>
+            @endif
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-group mb-3">
+            <label>Engine Type</label>
+            {!! Form::text('engine_type', null, ['class' => 'form-control', ($disabled ?? '')]) !!}
+            @if ($errors->has('engine_type'))
+                <small class="form-text text-danger">{{ $errors->first('engine_type') }}</small>
+            @endif
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-group mb-3">
+            <label>Cal Sign</label>
+            {!! Form::text('call_sign', null, ['class' => 'form-control', ($disabled ?? '')]) !!}
+            @if ($errors->has('call_sign'))
+                <small class="form-text text-danger">{{ $errors->first('call_sign') }}</small>
+            @endif
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-group mb-3">
             <label>Builder</label>
             {!! Form::text('builder', null, ['class' => 'form-control', ($disabled ?? '')]) !!}
             @if ($errors->has('builder'))
