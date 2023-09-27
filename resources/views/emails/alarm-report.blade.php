@@ -30,5 +30,6 @@
             <td>{{ $fleet->connected ? 'Good' : 'Lost' }}</td>
         </tr>
     </table>
+    <div>Smartship System - Fleet Management Solution</div>
 </body>
 </html>
