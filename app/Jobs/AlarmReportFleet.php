@@ -5,15 +5,14 @@ namespace App\Jobs;
 use Carbon\Carbon;
 use App\Models\Fleet;
 use Illuminate\Bus\Queueable;
-use App\Report\CreateNoonReport;
-use App\Jobs\CreateNoonReportJob;
+use App\Jobs\CreateAlarmReportJob;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 
-class NoonReportFleet implements ShouldQueue
+class AlarmReportFleet implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -36,7 +35,7 @@ class NoonReportFleet implements ShouldQueue
     {
         foreach(Fleet::active()->get() as $fleet)
         {
-            CreateNoonReportJob::dispatch($fleet, Carbon::now()->format('Y-m-d H:i:s'));
+            CreateAlarmReportJob::dispatch($fleet, Carbon::now()->format('Y-m-d H:i:s'));
         }
     }
 }

@@ -3,9 +3,9 @@
 namespace App\Jobs;
 
 use Carbon\Carbon;
-use App\Mail\NoonReportEmail;
+use App\Mail\AlarmReportEmail;
 use Illuminate\Bus\Queueable;
-use App\Report\CreateNoonReport;
+use App\Report\CreateAlarmReport;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -13,7 +13,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 
-class CreateNoonReportJob implements ShouldQueue
+class CreateAlarmReportJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -38,10 +38,10 @@ class CreateNoonReportJob implements ShouldQueue
      */
     public function handle()
     {
-        $path = (new CreateNoonReport($this->fleet, $this->date))->handle();
+        $path = (new CreateAlarmReport($this->fleet, $this->date))->handle();
         
         foreach($this->fleet->pic as $pic) {
-            Mail::to($pic->pic_email)->send(new NoonReportEmail($this->fleet, $path));
+            Mail::to($pic->pic_email)->send(new AlarmReportEmail($this->fleet, $path));
         }
     }
 }

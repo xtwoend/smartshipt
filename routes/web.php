@@ -20,7 +20,7 @@ use App\Http\Controllers\TelegramBotController;
 
 Auth::routes(['register' => false, 'reset' => false]);
 
-Route::get('/noon-report/{id}', [ReportController::class, 'noonReport'])->name('noon-report');
+Route::get('/alarm-report/{id}', [ReportController::class, 'alarmReport'])->name('alarm-report');
 
 
 Route::group([

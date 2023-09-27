@@ -5,7 +5,6 @@ namespace App\Bot;
 use App\Models\Fleet;
 use App\Bot\TextTable;
 use Illuminate\Support\Str;
-use App\Report\CreateNoonReport;
 use BotMan\BotMan\Messages\Incoming\Answer;
 use BotMan\BotMan\Messages\Attachments\File;
 use BotMan\BotMan\Messages\Outgoing\Question;
@@ -132,7 +131,7 @@ class FleetConversation extends Conversation
                         $this->fleetMenu();
                         break;
                     case 'report':
-                        $this->say('Click link berikut untuk untuk mendownload laporan ' . 'https://smartship.mix.my.id/noon-report/'. $this->fleet->id);
+                        $this->say('Click link berikut untuk untuk mendownload laporan ' . 'https://smartship.mix.my.id/alarm-report/'. $this->fleet->id);
                         $this->fleetMenu();
                         break;
                     case 'fleet':

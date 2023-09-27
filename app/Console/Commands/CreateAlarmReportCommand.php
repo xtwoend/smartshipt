@@ -5,23 +5,23 @@ namespace App\Console\Commands;
 use Carbon\Carbon;
 use App\Models\Fleet;
 use Illuminate\Console\Command;
-use App\Report\CreateNoonReport;
+use App\Report\CreateAlarmReport;
 
-class CreateNoonReportCommand extends Command
+class CreateAlarmReportCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'report:noon {fleetId} {date?}';
+    protected $signature = 'report:alarm {fleetId} {date?}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Noon report';
+    protected $description = 'Alarm report';
 
     /**
      * Execute the console command.
@@ -30,7 +30,6 @@ class CreateNoonReportCommand extends Command
      */
     public function handle()
     {
-        ini_set('memory_limit', '-1');
 
         $id = $this->argument('fleetId');
         $to = $this->argument('date');
@@ -38,7 +37,7 @@ class CreateNoonReportCommand extends Command
         $to = $to ? Carbon::parse($to)->format('Y-m-d H:i:s') : Carbon::now()->format('Y-m-d 13:00:00');
         $fleet = Fleet::findOrFail($id);
 
-        (new CreateNoonReport($fleet, $to))->handle();
+        (new CreateAlarmReport($fleet, $to))->handle();
 
         return Command::SUCCESS;
     }

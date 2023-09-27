@@ -4,8 +4,7 @@ namespace App\Console;
 
 use Carbon\Carbon;
 use App\Models\Fleet;
-use App\Jobs\NoonReportFleet;
-use App\Jobs\CreateNoonReport;
+use App\Jobs\AlarmReportFleet;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -21,7 +20,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
 
-        $schedule->job(new NoonReportFleet())->hourly();
+        $schedule->job(new AlarmReportFleet())->hourly();
     }
 
     /**

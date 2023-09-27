@@ -10,7 +10,7 @@ use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class NoonReportEmail extends Mailable
+class AlarmReportEmail extends Mailable
 {
     use Queueable, SerializesModels;
 

@@ -9,7 +9,7 @@ use App\Models\NavigationLog;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 
-class CreateNoonReport
+class CreateAlarmReport
 {
     protected $fleet;
     protected $date;
