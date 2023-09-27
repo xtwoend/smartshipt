@@ -16,6 +16,7 @@ class AlarmReportEmail extends Mailable
 
     public $fleet;
     public $attachment;
+    public $status;
 
     /**
      * Create a new message instance.
@@ -26,6 +27,13 @@ class AlarmReportEmail extends Mailable
     {
         $this->fleet = $fleet;
         $this->attachment = $attachment;
+        $this->status = [
+            'at_port' => 'At Port',
+            'underway' => 'Underway',
+            'lost_connection' => 'Lost Connection',
+            'at_anchorage' => 'At Anchorage',
+            'other' => 'Other'
+        ];
     }
 
     /**
