@@ -53,7 +53,7 @@ class Engine extends Model
     public function getRpmAttribute()
     {
         $rpm_attributes = config('defines.rpm');
-        $attributeName = $rpm_attributes[$this->attributes['fleet_id']] ?: null;
+        $attributeName = isset($rpm_attributes[$this->attributes['fleet_id']]) ? $rpm_attributes[$this->attributes['fleet_id']] : null;
 
         return ($attributeName) ? $this->attributes[$attributeName] : null;
     }
