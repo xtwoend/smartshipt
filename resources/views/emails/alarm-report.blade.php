@@ -75,6 +75,8 @@
     <br>
     <br>
     <div style="font-size: 12px; padding: 20px; 0;"><i>Note: This message has been sent by smartship system. Please do not reply</i></div>
+    <br>
+    <br>
     <div><b>By PIS Smartship System - Fleet Management Solution </b></div>
     {{-- <div>LAST UPDATE: {{ $fleet->last_connection }}</div> --}}
     <div><b>Auto Created At: {{ date('Y-m-d H:i:s') }}</b></div>
