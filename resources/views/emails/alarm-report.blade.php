@@ -4,7 +4,7 @@
     <title>Smartship</title>
 </head>
 <body>
-    <div><b>DAILY MONITORING ALARM REPORT</b></div>
+    <div style="text-align: center;"><b>DAILY MONITORING ALARM REPORT</b></div>
     <table>
         <tr>
             <td>VESSEL</td>
@@ -78,7 +78,8 @@
     <div><b>By PIS Smartship System - Fleet Management Solution </b></div>
     {{-- <div>LAST UPDATE: {{ $fleet->last_connection }}</div> --}}
     <div><b>Auto Created At: {{ date('Y-m-d H:i:s') }}</b></div>
-
+    <br>
+    <br>
     <div>Disclaimer:</div>
     <div>The information contained in this transmission, including any attachment(s), is confidential information intended for the use of the intended recipient only. Any dissemination, distribution or copying of this communication by any person other than the intended recipient is strictly prohibited and subject to applicable law. If you are not the intended recipient of this communication, please immediately advise the sender of this fact and completely destroy this transmission.</div>
     <br>
