@@ -41,7 +41,7 @@ class CreateAlarmReportJob implements ShouldQueue
         $path = (new CreateAlarmReport($this->fleet, $this->date))->handle();
         
         foreach($this->fleet->pic as $pic) {
-            Mail::to($pic->pic_email, $pic->pic_name)->send(new AlarmReportEmail($this->fleet, $path));
+            Mail::to($pic->pic_email, $pic->pic_name)->send(new AlarmReportEmail($this->fleet, $path, $this->date));
         }
     }
 }

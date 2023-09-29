@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\NavigationLog;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
@@ -17,14 +18,19 @@ class AlarmReportEmail extends Mailable
     public $fleet;
     public $attachment;
     public $status;
+    public $avgSpeed;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($fleet, $attachment)
+    public function __construct($fleet, $attachment, $date)
     {
+        $to = $date;
+        $to = $to ? Carbon::parse($to)->format('Y-m-d H:i:s'): Carbon::now()->format('Y-m-d H:i:s');
+        $from = Carbon::parse($to)->subHours(24)->format('Y-m-d H:i:s');
+        
         $this->fleet = $fleet;
         $this->attachment = $attachment;
         $this->status = [
@@ -34,6 +40,10 @@ class AlarmReportEmail extends Mailable
             'at_anchorage' => 'At Anchorage',
             'other' => 'Other'
         ];
+        $this->avgSpeed = NavigationLog::table($this->fleet->id, $from)
+        ->whereBetween('terminal_time', [$from, $to])
+        ->where('sog', '>=', 2)
+        ->avg('sog');
     }
 
     /**
