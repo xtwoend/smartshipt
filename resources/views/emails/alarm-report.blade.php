@@ -34,19 +34,19 @@
         </tr>
         <tr>
             <td>COURSE</td>
-            <td>: {{ $fleet->navigation->cog }}</td>
+            <td>: {{ $fleet->navigation->cog }} DEGREE</td>
         </tr>
         <tr>
             <td>DISTANCE TO RUN</td>
-            <td>: {{ $fleet->navigation->distance }}</td>
+            <td>: {{ $fleet->navigation->distance }} NM</td>
         </tr>
         <tr>
             <td>TOTAL DISTANCE TO RUN</td>
-            <td>: {{ $fleet->navigation->total_distance }}</td>
+            <td>: {{ $fleet->navigation->total_distance }} NM</td>
         </tr>
         <tr>
             <td>AVERAGE SPEED</td>
-            <td>: {{ $avgSpeed }}</td>
+            <td>: {{ number_format($avgSpeed, 2) }} KNOT</td>
         </tr>
         <tr>
             <td>CURENT SPEED</td>
