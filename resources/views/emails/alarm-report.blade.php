@@ -4,10 +4,11 @@
     <title>Smartship</title>
 </head>
 <body>
+    <div><b>DAILY MONITORING ALARM REPORT</b></div>
     <table>
         <tr>
             <td>VESSEL</td>
-            <td>: {{ $fleet->name }}</td>
+            <td>: <b>{{ $fleet->name }}</b></td>
         </tr>
         <tr>
             <td>SATELLITE TELEPHONE</td>
@@ -70,10 +71,18 @@
     </table>
     <br>
     <br>
-    <div>Alarm history information document from 6 am yesterday until now in the attached pdf file.</div>
+    <div><b>Alarm history information document from 6 am yesterday until now in the attached pdf file. </b></div>
+    <br>
+    <br>
     <div style="font-size: 12px; padding: 20px; 0;"><i>Note: This message has been sent by smartship system. Please do not reply</i></div>
-    <div>By PIS Smartship System - Fleet Management Solution</div>
-    <div>LAST UPDATE: {{ $fleet->last_connection }}</div>
-    <div><b>AUTO CREATED AT: {{ date('Y-m-d H:i:s') }}</b></div>
+    <div><b>By PIS Smartship System - Fleet Management Solution </b></div>
+    {{-- <div>LAST UPDATE: {{ $fleet->last_connection }}</div> --}}
+    <div><b>Auto Created At: {{ date('Y-m-d H:i:s') }}</b></div>
+
+    <div>Disclaimer:</div>
+    <div>The information contained in this transmission, including any attachment(s), is confidential information intended for the use of the intended recipient only. Any dissemination, distribution or copying of this communication by any person other than the intended recipient is strictly prohibited and subject to applicable law. If you are not the intended recipient of this communication, please immediately advise the sender of this fact and completely destroy this transmission.</div>
+    <br>
+    <br>
+    <div>Copyright@2023 Fleet Management Solutions</div>
 </body>
 </html>
