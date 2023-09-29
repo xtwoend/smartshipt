@@ -7,29 +7,71 @@
     <table>
         <tr>
             <td>VESSEL</td>
-            <td>{{ $fleet->name }}</td>
+            <td>: {{ $fleet->name }}</td>
         </tr>
         <tr>
             <td>SATELLITE TELEPHONE</td>
-            <td>{{ $fleet->telp }}</td>
+            <td>: {{ $fleet->telp }}</td>
         </tr>
         <tr>
             <td>SATELLITE EMAIL</td>
-            <td>{{ $fleet->email }}</td>
+            <td>: {{ $fleet->email }}</td>
         </tr>
         <tr>
-            <td>LAST UPDATE</td>
-            <td>{{ $fleet->last_connection }}</td>
+            <td>&nbsp;</td>
         </tr>
         <tr>
             <td>POSITION</td>
-            <td>{{ $status[$fleet->fleet_status] }}</td>
+            <td>: {{ $status[$fleet->fleet_status] }}</td>
         </tr>
         <tr>
             <td>CONNECTION</td>
-            <td>{{ $fleet->connected ? 'Good' : 'Lost' }}</td>
+            <td>: {{ $fleet->connected ? 'Good' : 'Lost' }}</td>
         </tr>
+        <tr>
+            <td>POSITION</td>
+            <td>: LATITUDE {{ $fleet->navigation?->lat }} {{ $fleet->navigation?->lat_dir }}, LONGITUDE {{ $fleet->navigation?->lng }} {{ $fleet->navigation?->lng_dir }}</td>
+        </tr>
+        <tr>
+            <td>COURSE</td>
+            <td>: {{ $fleet->navigation->cog }}</td>
+        </tr>
+        <tr>
+            <td>DISTANCE TO RUN</td>
+            <td>: {{ $fleet->navigation->distance }}</td>
+        </tr>
+        <tr>
+            <td>TOTAL DISTANCE TO RUN</td>
+            <td>: {{ $fleet->navigation->total_distance }}</td>
+        </tr>
+        <tr>
+            <td>AVERAGE SPEED</td>
+            <td>: {{ $avgSpeed }}</td>
+        </tr>
+        <tr>
+            <td>CURENT SPEED</td>
+            <td>: {{ $fleet->navigation?->sog }} KNOT</td>
+        </tr>
+        <tr>
+            <td>RPM (REV PER MINUTE)</td>
+            <td>: {{ $fleet->engine()?->rpm == 0 &&  $fleet->navigation?->sog > 0 ? 'UNAVAILABLE': $fleet->engine()?->rpm }} RPM</td>
+        </tr>
+        @if($fleet->navigation?->wind_speed <= 0 && $fleet->navigation?->sog > 0)
+        <tr>
+            <td>WEATHER CONDITION</td>
+            <td>: UNAVAILABLE</td>
+        </tr>
+        @else
+        <tr>
+            <td>WEATHER CONDITION</td>
+            <td>: Speed {{ $fleet->navigation?->wind_speed}}, Scale {{ scaleBeafort($fleet->navigation?->wind_speed) }}, direction {{ $fleet->navigation?->wind_direction }}</td>
+        </tr>
+        @endif
     </table>
-    <div>Smartship System - Fleet Management Solution</div>
+    <div>Alarm history information document from 6 am yesterday until now in the attached pdf file.</div>
+    <div style="font-size: 12px; padding: 0 15px;"><i>Note: This message has been sent by smartship system. Please do not reply</i></div>
+    <div>By PIS Smartship System - Fleet Management Solution</div>
+    <div><b>AUTO CREATED AT: {{ date('Y-m-d H:i:s') }}</b></div>
+    <div>LAST UPDARTE: {{ $fleet->last_connection }}</div>
 </body>
 </html>
