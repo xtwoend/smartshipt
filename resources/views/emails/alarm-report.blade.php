@@ -71,7 +71,7 @@
     <div>Alarm history information document from 6 am yesterday until now in the attached pdf file.</div>
     <div style="font-size: 12px; padding: 0 15px;"><i>Note: This message has been sent by smartship system. Please do not reply</i></div>
     <div>By PIS Smartship System - Fleet Management Solution</div>
+    <div>LAST UPDATE: {{ $fleet->last_connection }}</div>
     <div><b>AUTO CREATED AT: {{ date('Y-m-d H:i:s') }}</b></div>
-    <div>LAST UPDARTE: {{ $fleet->last_connection }}</div>
 </body>
 </html>
