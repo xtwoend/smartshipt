@@ -5,6 +5,8 @@
 </head>
 <body>
     <div><b>DAILY ALARM MONITORING REPORT</b></div>
+    <br>
+    <br>
     <table>
         <tr>
             <td>VESSEL</td>
@@ -31,7 +33,7 @@
         </tr>
         <tr>
             <td>POSITION</td>
-            <td>: {{ $status[$fleet->fleet_status] }}, LATITUDE {{ $fleet->navigation?->lat }} {{ $fleet->navigation?->lat_dir }}, LONGITUDE {{ $fleet->navigation?->lng }} {{ $fleet->navigation?->lng_dir }}</td>
+            <td>: {{ $status[$fleet->fleet_status] }}, Latitude {{ $fleet->navigation?->lat }} {{ $fleet->navigation?->lat_dir }}, Longitude {{ $fleet->navigation?->lng }} {{ $fleet->navigation?->lng_dir }}</td>
         </tr>
         <tr>
             <td>COURSE</td>
@@ -65,7 +67,7 @@
         @else
         <tr>
             <td>WEATHER CONDITION</td>
-            <td>: Speed {{ $fleet->navigation?->wind_speed}}, Scale {{ scaleBeafort($fleet->navigation?->wind_speed) }}, direction {{ $fleet->navigation?->wind_direction }}</td>
+            <td>: Speed {{ $fleet->navigation?->wind_speed}}, Scale {{ scaleBeafort($fleet->navigation?->wind_speed) }}, Direction {{ $fleet->navigation?->wind_direction }}</td>
         </tr>
         @endif
     </table>
@@ -81,9 +83,13 @@
     {{-- <div>LAST UPDATE: {{ $fleet->last_connection }}</div> --}}
     <div><b>Auto Created At: {{ date('Y-m-d H:i:s') }}</b></div>
     <br>
+    <div>Contact Person :</div>
+    <div>aris.yulianto@pertamina.com</div>
+    <div>+62 813 2000 2481</div>
+    <br>
     <br>
     <div>Disclaimer:</div>
-    <div>The information contained in this transmission, including any attachment(s), is confidential information intended for the use of the intended recipient only. Any dissemination, distribution or copying of this communication by any person other than the intended recipient is strictly prohibited and subject to applicable law. If you are not the intended recipient of this communication, please immediately advise the sender of this fact and completely destroy this transmission.</div>
+    <div style="text-align: justify; text-justify: inter-word;">The information contained in this transmission, including any attachment(s), is confidential information intended for the use of the intended recipient only. Any dissemination, distribution or copying of this communication by any person other than the intended recipient is strictly prohibited and subject to applicable law. If you are not the intended recipient of this communication, please immediately advise the sender of this fact and completely destroy this transmission.</div>
     <br>
     <br>
     <div>Copyright@2023 Fleet Management Solutions</div>

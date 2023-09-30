@@ -31,25 +31,25 @@ if(! function_exists('scaleBeafort')) {
         else if ($wind > 4 && $wind < 6.9)
             $text = 'Light Breeze';
         else if ($wind > 7 && $wind < 10.9)
-            $text = 'Gentle breeze';
+            $text = 'Gentle Breeze';
         else if ($wind > 11 && $wind < 16.9)
-            $text = 'Moderate breeze';
+            $text = 'Moderate Breeze';
         else if ($wind > 17 && $wind < 21.9)
-            $text = 'Fresh breeze';
+            $text = 'Fresh Breeze';
         else if ($wind > 22 && $wind < 27.9)
-            $text = 'Strong breeze';
+            $text = 'Strong Breeze';
         else if ($wind > 28 && $wind < 33.9)
-            $text = 'High $wind';
+            $text = 'High Wind';
         else if ($wind > 34 && $wind < 40.9)
             $text = 'Gale';
         else if ($wind > 41 && $wind < 47.9)
-            $text = 'Strong/severe gale';
+            $text = 'Strong/severe Gale';
         else if ($wind > 48 && $wind < 55.9)
             $text = 'Storm';
         else if ($wind > 56 && $wind < 63.9)
-            $text = 'Violent storm';
+            $text = 'Violent Storm';
         else
-            $text = 'Hurricane force';
+            $text = 'Hurricane Force';
 
         return $text;
     }
