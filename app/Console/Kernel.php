@@ -20,7 +20,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
 
-        $schedule->job(new AlarmReportFleet())->hourly();
+        $schedule->job(new AlarmReportFleet())->dailyAt('06:00');
     }
 
     /**
