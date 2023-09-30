@@ -4,7 +4,7 @@
     <title>Smartship</title>
 </head>
 <body>
-    <div style="text-align: center;"><b>DAILY MONITORING ALARM REPORT</b></div>
+    <div><b>DAILY ALARM MONITORING REPORT</b></div>
     <table>
         <tr>
             <td>VESSEL</td>
@@ -21,17 +21,17 @@
         <tr>
             <td>&nbsp;</td>
         </tr>
-        <tr>
+        {{-- <tr>
             <td>POSITION</td>
             <td>: {{ $status[$fleet->fleet_status] }}</td>
-        </tr>
+        </tr> --}}
         <tr>
             <td>CONNECTION</td>
             <td>: {{ $fleet->connected ? 'Good' : 'Lost' }}</td>
         </tr>
         <tr>
             <td>POSITION</td>
-            <td>: LATITUDE {{ $fleet->navigation?->lat }} {{ $fleet->navigation?->lat_dir }}, LONGITUDE {{ $fleet->navigation?->lng }} {{ $fleet->navigation?->lng_dir }}</td>
+            <td>: {{ $status[$fleet->fleet_status] }}, LATITUDE {{ $fleet->navigation?->lat }} {{ $fleet->navigation?->lat_dir }}, LONGITUDE {{ $fleet->navigation?->lng }} {{ $fleet->navigation?->lng_dir }}</td>
         </tr>
         <tr>
             <td>COURSE</td>
@@ -55,7 +55,7 @@
         </tr>
         <tr>
             <td>RPM (REV PER MINUTE)</td>
-            <td>: {{ $fleet->engine()?->rpm == 0 &&  $fleet->navigation?->sog > 0 ? 'UNAVAILABLE': $fleet->engine()?->rpm }} RPM</td>
+            <td>: {{ $fleet->engine()?->rpm == 0 &&  $fleet->navigation?->sog > 1 ? 'UNAVAILABLE': $fleet->engine()?->rpm }} RPM</td>
         </tr>
         @if($fleet->navigation?->wind_speed <= 0 && $fleet->navigation?->sog > 0)
         <tr>
