@@ -55,7 +55,7 @@
         </tr>
         <tr>
             <td>RPM (REV PER MINUTE)</td>
-            <td>: {{ $fleet->engine()?->rpm == 0 &&  $fleet->navigation?->sog > 1 ? 'UNAVAILABLE': $fleet->engine()?->rpm }} RPM</td>
+            <td>: {{ $fleet->engine()?->rpm == 0 &&  $fleet->navigation?->sog > 2 ? 'UNAVAILABLE': $fleet->engine()?->rpm }} RPM</td>
         </tr>
         @if($fleet->navigation?->wind_speed <= 0 && $fleet->navigation?->sog > 0)
         <tr>
