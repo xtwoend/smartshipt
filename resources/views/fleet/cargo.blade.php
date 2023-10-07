@@ -10,9 +10,8 @@
             {{-- <slider-submenu :fleet="{{ json_encode($fleet) }}" active="balast"></slider-submenu> --}}
         @endif
         
-        @if($fleet->id == 6)
-            @include('fleets.walio.cargo', ['fleet' => $fleet])
-        @else
+        <data-info url="{{ route('api.fleet.cargo.current', $fleet->id) }}" :mapping="{{ json_encode($fleet->trendOptions('cargo')) }}"></data-info>
+        
         <div class="p-3">
             @if(strtoupper($fleet->type) == 'M')
             <fleet-cargo url="{{ route('api.fleet', $fleet->id) }}"></fleet-cargo>
