@@ -13,6 +13,9 @@
             @if(strtoupper($fleet->type) == 'M')
             <fleet-ballast url="{{ route('api.fleet', $fleet->id) }}"></fleet-ballast>
             @endif
+
+            <data-info url="{{ route('api.fleet.cargo.current', $fleet->id) }}" :mapping="{{ json_encode($fleet->trendOptions('ballast')) }}"></data-info>
+
             <trend-live 
                 title="Trend Live Ballast"
                 url="{{ route('api.fleet.logger', ['id' => $fleet->id, 'group'=> 'cargo']) }}" 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\NavController;
 use App\Http\Controllers\Api\FuelController;
+use App\Http\Controllers\Api\PumpController;
 use App\Http\Controllers\Api\CargoController;
 use App\Http\Controllers\Api\DraftController;
 use App\Http\Controllers\Api\FleetController;
@@ -43,6 +44,8 @@ Route::group([
     Route::get('/{id}/nav/trend', [NavController::class, 'trend'])->name('nav.trend');
     Route::get('/{id}/engine/trend', [EngineController::class, 'trend'])->name('engine.trend');
     Route::get('/{id}/engine/current', [EngineController::class, 'currentEngine'])->name('engine.current');
+    Route::get('/{id}/pumps/trend', [PumpController::class, 'trend'])->name('pumps.trend');
+    Route::get('/{id}/pumps/current', [PumpController::class, 'currentPumps'])->name('pumps.current');
     Route::get('/{id}/cargo/trend', [CargoController::class, 'trend'])->name('cargo.trend');
     Route::get('/{id}/cargo/current', [CargoController::class, 'currentCargo'])->name('cargo.current');
     Route::get('/{id}/fuel/trend', [FuelController::class, 'trend'])->name('fuel.trend');
