@@ -11,7 +11,7 @@
         @endif
         
         <data-info url="{{ route('api.fleet.cargo.current', $fleet->id) }}" :mapping="{{ json_encode($fleet->trendOptions('cargo')) }}"></data-info>
-        
+
         <div class="p-3">
             @if(strtoupper($fleet->type) == 'M')
             <fleet-cargo url="{{ route('api.fleet', $fleet->id) }}"></fleet-cargo>
@@ -29,7 +29,6 @@
                     url="{{ route('api.fleet.cargo.trend', $fleet->id) }}"
                     :columns="{{ json_encode($fleet->trendOptions('cargo')) }}"></trend-view>
         </div>
-        @endif
     </div>
 </main>
 @endsection
