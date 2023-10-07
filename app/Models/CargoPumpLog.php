@@ -15,13 +15,12 @@ class CargoPumpLog extends Model
      */
     protected  $table = 'cargo_pump_log';
 
-    /**
-     *
-     */
-    public static function table($fleetId)
+    // create table cargo if not found table
+    public static function table($fleetId, $date = null)
     {
+        $date = is_null($date) ? date('Ym'): Carbon::parse($date)->format('Ym');
         $model = new self;
-        $tableName = $model->getTable() . "_{$fleetId}";
+        $tableName = $model->getTable() . "_{$fleetId}_{$date}";
 
         return $model->setTable($tableName);
     }

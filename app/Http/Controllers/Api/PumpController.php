@@ -34,6 +34,7 @@ class PumpController extends Controller
         for($i=0; $i <= $count; $i++) {
 
             $classModel = $fleet->cargo_pump_logs();
+           
             if(is_null($classModel)) continue;
 
             $tableName = $classModel::table($fleet->id, $fromTable)->getTable();
