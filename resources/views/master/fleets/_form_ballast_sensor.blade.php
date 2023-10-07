@@ -19,12 +19,12 @@
             isHtml: true
         },
         {
-            name: 'Normal Value (%)',
+            name: 'Low',
             field: 'normal',
             editable: true
         },
         {
-            name: 'Warning Value (%)',
+            name: 'High',
             field: 'danger',
             editable: true
         },

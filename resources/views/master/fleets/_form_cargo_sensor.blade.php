@@ -13,25 +13,18 @@
             options: {{ json_encode($sensors) }}
         },
         {
-            name: 'Sensor Group',
-            field: 'sensor_group',
-            editable: true,
-            editType: 'select',
-            options: {{ json_encode($sensors) }}
-        },
-        {
             name: 'Unit',
             field: 'unit',
             editable: true,
             isHtml: true
         },
         {
-            name: 'Normal Value (%)',
+            name: 'Low',
             field: 'normal',
             editable: true
         },
         {
-            name: 'Warning Value (%)',
+            name: 'High',
             field: 'danger',
             editable: true
         },

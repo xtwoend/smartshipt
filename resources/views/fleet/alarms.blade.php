@@ -6,7 +6,8 @@
         @if($fleet->submenu()->count() > 0)
             @include('fleet.menu', ['fleet' => $fleet])
         @else
-            <slider-submenu :fleet="{{ json_encode($fleet) }}" active="alarms"></slider-submenu>
+            @include('fleet._menu');
+            {{-- <slider-submenu :fleet="{{ json_encode($fleet) }}" active="balast"></slider-submenu> --}}
         @endif
         <div class="container">
             <div class="row mt-3">

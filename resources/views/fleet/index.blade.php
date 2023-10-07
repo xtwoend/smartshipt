@@ -6,7 +6,8 @@
     @if($fleet->submenu()->count() > 0)
         @include('fleet.menu', ['fleet' => $fleet])
     @else
-        <slider-submenu :fleet="{{ json_encode($fleet) }}" active="info"></slider-submenu>
+        @include('fleet._menu');
+        {{-- <slider-submenu :fleet="{{ json_encode($fleet) }}" active="balast"></slider-submenu> --}}
     @endif
     <map-default :fleet="{{ json_encode($fleet) }}" style="height: 450px; width:100%;"></map-default>
     <fleet-information url="{{ route('api.fleet', $fleet->id) }}"></fleet-information>
