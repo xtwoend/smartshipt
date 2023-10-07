@@ -13,6 +13,7 @@
             @if(strtoupper($fleet->type) == 'M')
             <engine-type-s url="{{ route('api.fleet', $fleet->id) }}"></engine-type-s>
             @endif
+            <data-info url="{{ route('api.fleet.engine.current', $fleet->id) }}" :mapping="{{ json_encode($fleet->trendOptions('engine')) }}"></data-info>
             <trend-live 
                 title="Trend Live Engine"
                 url="{{ route('api.fleet.logger', ['id' => $fleet->id, 'group'=> 'engine']) }}" 

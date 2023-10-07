@@ -67,4 +67,10 @@ class EngineController extends Controller
 
         return response()->json($rows);
     }
+
+    public function currentEngine($id) 
+    {
+        $fleet = Fleet::findOrFail($id);
+        return response()->json($fleet->engine(), 200);
+    }
 }
