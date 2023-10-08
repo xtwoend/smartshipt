@@ -33,6 +33,13 @@
             field: 'max',
             editable: true
         },
+        {
+            name: 'AMS Mark',
+            field: 'is_ams',
+            editable: true,
+            editType: 'select',
+            options: {{ json_encode([0 => 'False', 1 => 'True']) }}
+        },
     ]"
     :fleet="{fleetId: {{ $fleet->id }}, group: 'fuel'}"
     :data="{{ json_encode($lists) }}"
