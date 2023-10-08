@@ -11,5 +11,6 @@ return [
         7 => 'engine_speed',
         10 => 'me_rpm',
         11 => 'me_rpm',
+        20 => 'me_rev_speed_con_value'
     ]
 ];
