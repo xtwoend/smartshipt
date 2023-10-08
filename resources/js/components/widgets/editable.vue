@@ -16,11 +16,13 @@
                 <tr v-for="(item, index) in items" :key="item.id">
                     <td>{{ 1 + index }}</td>
                     <td v-for="(col, ix) in columns" :key="ix">
+                        
                         <template v-if="isFieldSlot(col.field)">
                             <slot :name="col.field"
                             :row-data="item" :row-index="index" :row-field="col"
                             ></slot>
                         </template>
+                        
                         <template v-else-if="col.editType == 'select' && item.isEdit">
                             <select v-model="items[index][col.field]" class="form-select">
                                 <option :value="sensor" v-for="(sensor, inx) in col.options" :key="inx">{{ sensor }}</option>
@@ -28,6 +30,9 @@
                         </template>
                         <template v-else-if="item.isEdit">
                             <input type="text" class="form-control" v-model="items[index][col.field]">
+                        </template>
+                        <template v-else-if="typeof col.display === 'function'">
+                            <span>{{ col.display(item) }}</span>
                         </template>
                         <template v-else>
                             <span v-if="col.isHtml" v-html="item[col.field]"></span>
