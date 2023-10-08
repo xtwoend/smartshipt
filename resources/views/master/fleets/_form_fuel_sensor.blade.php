@@ -38,7 +38,10 @@
             field: 'is_ams',
             editable: true,
             editType: 'select',
-            options: {{ json_encode([0 => 'False', 1 => 'True']) }}
+            options: {{ json_encode([0 => 'False', 1 => 'True']) }},
+            display: function(row) {
+                return row.is_ams ? 'True': 'False';
+            }
         },
     ]"
     :fleet="{fleetId: {{ $fleet->id }}, group: 'fuel'}"
