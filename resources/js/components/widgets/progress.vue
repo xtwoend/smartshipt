@@ -27,9 +27,12 @@ export default {
         color() {
             let color = 'bg-success';
             let percentage = (this.value / this.max) * 100;
-            if(percentage > this.normal && percentage < this.danger) {
+            let normal = (this.normal / this.max) * 100;
+            let danger = (this.danger / this.max) * 100;
+
+            if(percentage > normal && percentage < danger) {
                 color = 'bg-warning'
-            }else if(percentage > this.danger) {
+            }else if(percentage > danger) {
                 color = 'bg-danger'
             }
             return color;
