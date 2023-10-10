@@ -4,7 +4,7 @@
     <title>Smartship</title>
 </head>
 <body>
-    <div><b>DAILY ALARM MONITORING REPORT</b></div>
+    <div><b>DAILY ALARM MONITORING AND SENSOR CONDITION REPORT</b></div>
     <br>
     <br>
     <table>
@@ -73,7 +73,7 @@
     </table>
     <br>
     <br>
-    <div><b>Alarm history information document from 6 am yesterday until now in the attached pdf file. </b></div>
+    <div><b>Sensor condition and alarm history information document from 6 am yesterday until now in the attached pdf file. </b></div>
     <br>
     <br>
     <div style="font-size: 12px; padding: 20px; 0;"><i>Note: This message has been sent by smartship system. Please do not reply</i></div>
