@@ -13,9 +13,11 @@
             @if(strtoupper($fleet->type) == 'M')
             <fleet-bunker url="{{ route('api.fleet', $fleet->id) }}"></fleet-bunker>
             @endif
-            
+            @if($fleet->id == 12)
+            <data-info url="{{ route('api.fleet.engine.current', $fleet->id) }}" :mapping="{{ json_encode($fleet->trendOptions('fuel')) }}"></data-info>
+            @else
             <data-info url="{{ route('api.fleet.cargo.current', $fleet->id) }}" :mapping="{{ json_encode($fleet->trendOptions('fuel')) }}"></data-info>
-
+            @endif
             <trend-live 
                 title="Trend Live Bunker"
                 url="{{ route('api.fleet.logger', ['id' => $fleet->id, 'group'=> 'cargo']) }}" 
