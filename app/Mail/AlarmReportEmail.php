@@ -26,7 +26,7 @@ class AlarmReportEmail extends Mailable
      *
      * @return void
      */
-    public function __construct($fleet, $attachment, $date)
+    public function __construct($fleet, array $attachment, $date)
     {
         $to = $date;
         $to = $to ? Carbon::parse($to)->format('Y-m-d H:i:s'): Carbon::now()->format('Y-m-d H:i:s');
@@ -78,8 +78,11 @@ class AlarmReportEmail extends Mailable
      */
     public function attachments()
     {
-        return [
-            Attachment::fromPath(public_path($this->attachment))
-        ];
+        $attachments = [];
+        foreach($this->attachment as $attachment) {
+            $attachments[] = Attachment::fromPath(public_path($attachment));
+        }
+        
+        return $attachments;
     }
 }

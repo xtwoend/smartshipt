@@ -38,10 +38,11 @@ class CreateAlarmReportJob implements ShouldQueue
      */
     public function handle()
     {
-        $path = (new CreateAlarmReport($this->fleet, $this->date))->handle();
+        $attachment1 = (new CreateAlarmReport($this->fleet, $this->date))->handle();
+        $attachment2 = (new CreateSensorConditionReport($this->fleet, $this->date))->handle();
         
         foreach($this->fleet->pic as $pic) {
-            Mail::to($pic->pic_email, $pic->pic_name)->send(new AlarmReportEmail($this->fleet, $path, $this->date));
+            Mail::to($pic->pic_email, $pic->pic_name)->send(new AlarmReportEmail($this->fleet, [$attachment1, $attachment2], $this->date));
         }
     }
 }
