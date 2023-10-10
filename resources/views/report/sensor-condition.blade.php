@@ -138,7 +138,7 @@
             </td>
           </tr>
           <tr class="row1">
-            <td class="column1 style11 s style11" colspan="3">SENSOR CONDITION REPORT</td>
+            <td class="column1 style11 s style11" colspan="3">SENSOR INFORMATION REPORT</td>
           </tr>
           <tr class="row2">
             <td class="column1 style14 s style14" colspan="3">Smartship System - Fleet Management Solution</td>
@@ -286,7 +286,7 @@
             <td class="column4 style16 null"></td>
           </tr>
           <tr class="row27">
-            <td class="column0 style6 s" colspan="2">SENSOR CONDITION INFORMATION</td>
+            <td class="column0 style6 s" colspan="2">SENSOR INFORMATION</td>
             <td class="column1 style16 null"></td>
             <td class="column2 style16 null"></td>
             <td class="column3 style16 null"></td>
@@ -300,9 +300,9 @@
           </tr>
           <tr class="row29">
             <td class="column0 style40 s">NAME</td>
-            <td class="column1 style41 s style42" colspan="2">CARENT VALUE</td>
+            <td class="column1 style41 s style42" colspan="2">VALUE</td>
             <td class="column3 style43 s">UNIT</td>
-            <td class="column4 style43 s">STATUS</td>
+            <td class="column4 style43 s">SENSOR STATUS</td>
           </tr>
           @foreach($sensors as $sensor)
           <tr class="row30">
