@@ -33,7 +33,7 @@
         </tr>
         <tr>
             <td>POSITION</td>
-            <td>: {{ $status[$fleet->fleet_status] }}, Latitude {{ $fleet->navigation?->lat }} {{ $fleet->navigation?->lat_dir }}, Longitude {{ $fleet->navigation?->lng }} {{ $fleet->navigation?->lng_dir }}</td>
+            <td>: {{ $status[$fleet->fleet_status] }} @if(in_array($fleet->fleet_status, ['at_port', 'at_anchorage'])) {{ $fleet->last_port }} @endif, Latitude {{ $fleet->navigation?->lat }} {{ $fleet->navigation?->lat_dir }}, Longitude {{ $fleet->navigation?->lng }} {{ $fleet->navigation?->lng_dir }}</td>
         </tr>
         <tr>
             <td>COURSE</td>
