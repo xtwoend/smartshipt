@@ -15,9 +15,15 @@
             @endif
             @if($fleet->id == 12)
             <data-info url="{{ route('api.fleet.engine.current', $fleet->id) }}" :mapping="{{ json_encode($fleet->trendOptions('fuel')) }}"></data-info>
+            <trend-live 
+                title="Trend Live Bunker"
+                url="{{ route('api.fleet.logger', ['id' => $fleet->id, 'group'=> 'engine']) }}" 
+                :fleet="{{ json_encode($fleet) }}"
+                :socket-config="{ url: '{{ config('websocket.url') }}', event: 'engine_{{ $fleet->id }}'}"
+                :columns="{{ json_encode($fleet->trendOptions('fuel')) }}">
+            </trend-live>
             @else
             <data-info url="{{ route('api.fleet.cargo.current', $fleet->id) }}" :mapping="{{ json_encode($fleet->trendOptions('fuel')) }}"></data-info>
-            @endif
             <trend-live 
                 title="Trend Live Bunker"
                 url="{{ route('api.fleet.logger', ['id' => $fleet->id, 'group'=> 'cargo']) }}" 
@@ -25,6 +31,8 @@
                 :socket-config="{ url: '{{ config('websocket.url') }}', event: 'cargo_{{ $fleet->id }}'}"
                 :columns="{{ json_encode($fleet->trendOptions('fuel')) }}">
             </trend-live>
+            @endif
+            
             <trend-view 
                     title="Trend View Bunker"
                     url="{{ route('api.fleet.fuel.trend', $fleet->id) }}"
