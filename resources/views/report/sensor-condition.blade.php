@@ -138,7 +138,7 @@
             </td>
           </tr>
           <tr class="row1">
-            <td class="column1 style11 s style11" colspan="3">DAILY ALARM REPORT</td>
+            <td class="column1 style11 s style11" colspan="3">SENSOR CONDITION REPORT</td>
           </tr>
           <tr class="row2">
             <td class="column1 style14 s style14" colspan="3">Smartship System - Fleet Management Solution</td>
