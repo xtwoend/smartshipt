@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Fleet;
 use Illuminate\Console\Command;
 use App\Report\CreateAlarmReport;
+use App\Report\CreateSensorConditionReport;
 
 class CreateAlarmReportCommand extends Command
 {
@@ -38,6 +39,7 @@ class CreateAlarmReportCommand extends Command
         $fleet = Fleet::findOrFail($id);
 
         (new CreateAlarmReport($fleet, $to))->handle();
+        (new CreateSensorConditionReport($fleet, $to))->handle();
 
         return Command::SUCCESS;
     }

@@ -5,6 +5,7 @@ namespace App\Report;
 use Carbon\Carbon;
 use App\Models\Alarm;
 use App\Models\Fleet;
+use App\Models\Sensor;
 use App\Models\NavigationLog;
 use Barryvdh\DomPDF\Facade\Pdf;
 
@@ -56,7 +57,7 @@ class CreateSensorConditionReport
             'other' => 'Other'
         ];
 
-        $sensors = Sensor::table($fleet->id)->orderBy('name')->get();
+        $sensors = Sensor::where('fleet_id', $fleet->id)->orderBy('name')->get();
 
         $filename = "/report/sensor-report-{$fleet->id}-{$date}.pdf";
 

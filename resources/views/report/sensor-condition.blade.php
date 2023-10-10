@@ -300,16 +300,16 @@
           </tr>
           <tr class="row29">
             <td class="column0 style40 s">NAME</td>
-            <td class="column1 style41 s style42" colspan="2">-</td>
-            <td class="column3 style43 s">DURATION</td>
+            <td class="column1 style41 s style42" colspan="2">CARENT VALUE</td>
+            <td class="column3 style43 s">UNIT</td>
             <td class="column4 style43 s">STATUS</td>
           </tr>
           @foreach($sensors as $sensor)
           <tr class="row30">
             <td class="column0 style28 null" style="{{ $sensor->condition == 'ABNORMAL' ? 'color:#ab0f0f;' : '' }}">{{ $sensor->name }}</td>
-            <td class="column1 style29 null style30" colspan="2" style="{{ $sensor->condition == 'ABNORMAL' ? 'color:#ab0f0f;' : '' }}">{{ $sensor->value }}</td>
-            <td class="column3 style28 null" style="{{ $sensor->condition == 'ABNORMAL' ? 'color:#ab0f0f;' : '' }}">{{ $sensor->unit }}</td>
-            <td class="column4 style31 null" style="{{ $sensor->condition == 'ABNORMAL' ? 'color:#ab0f0f;' : '' }}">{{ $sensor->condition }}</td>
+            <td class="column1 style29 null style30" colspan="2" style="{{ $sensor->condition == 'ABNORMAL' ? 'color:#ab0f0f;' : '' }} text-align: right;">{{ $sensor->value }}</td>
+            <td class="column3 style28 null" style="{{ $sensor->condition == 'ABNORMAL' ? 'color:#ab0f0f;' : '' }} text-align: center;">{{{ $sensor->unit }}}</td>
+            <td class="column4 style31 null" style="{{ $sensor->condition == 'ABNORMAL' ? 'color:#ab0f0f;' : '' }} text-align: center;">{{ $sensor->condition }}</td>
           </tr>
           @endforeach
         </tbody>

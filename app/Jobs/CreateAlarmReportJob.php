@@ -3,12 +3,13 @@
 namespace App\Jobs;
 
 use Carbon\Carbon;
-use App\Mail\AlarmReportEmail;
 use Illuminate\Bus\Queueable;
+use App\Mail\AlarmReportEmail;
 use App\Report\CreateAlarmReport;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
+use App\Report\CreateSensorConditionReport;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
