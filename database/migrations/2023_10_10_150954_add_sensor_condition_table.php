@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('sensors', function(Blueprint $table){
             $table->string('condition')->nullable()->after('sensor_name');
-            $table->string('value')->nullable()->after('condition');
+            $table->float('value', 10, 3)->nullable()->after('condition');
         });
     }
 
