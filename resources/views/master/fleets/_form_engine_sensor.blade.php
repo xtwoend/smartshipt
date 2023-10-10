@@ -29,6 +29,11 @@
             editable: true
         },
         {
+            name: 'Min Value',
+            field: 'min',
+            editable: true
+        },
+        {
             name: 'Max Value',
             field: 'max',
             editable: true
