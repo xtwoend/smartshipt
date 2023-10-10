@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::table('sensors', function(Blueprint $table){
             $table->string('condition')->nullable()->after('sensor_name');
+            $table->string('value')->nullable()->after('condition');
         });
     }
 
@@ -26,7 +27,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('sensors', function(Blueprint $table){
-            $table->dropColumn('condition');
+            $table->dropColumn('condition', 'value');
         });
     }
 };
