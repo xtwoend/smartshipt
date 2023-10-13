@@ -23,7 +23,9 @@
                                 <li class="nav-item">
                                     <a href="#bunker" class="nav-link" data-bs-toggle="tab">Bunker</a>
                                 </li>
-                                
+                                <li class="nav-item">
+                                    <a href="#nav" class="nav-link" data-bs-toggle="tab">Navigation Sensor</a>
+                                </li>
                                 <li class="nav-item">
                                     <a href="#engine" class="nav-link" data-bs-toggle="tab">Engine Sensor</a>
                                 </li>
@@ -74,6 +76,13 @@
                                     {!! Form::model($data->bunker_information, ['route' => ['master.fleets.index'], 'method' => 'PUT']) !!}
                                     @include('master.fleets._form_bunker', ['disabled' => 'disabled'])
                                     {!! Form::close() !!}
+                                </div>
+                                <div class="tab-pane" id="navigation">
+                                    @include('master.fleets._form_navigation_sensor', [
+                                        'lists' => $data->sensors()->where('group', 'navigation')->get(), 
+                                        'sensors' => $data->navigationColumns(), 
+                                        'fleet' => $data
+                                        ])
                                 </div>
                                 <div class="tab-pane" id="engine">
                                     @include('master.fleets._form_engine_sensor', [

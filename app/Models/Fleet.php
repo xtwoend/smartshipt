@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Models\Alarm;
+use App\Models\Navigation;
+use App\Models\NavigationLog;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -57,11 +59,6 @@ class Fleet extends Model
         return $this->hasMany(FleetMenu::class, 'fleet_id');
     }
 
-    public function navigation()
-    {
-        return $this->hasOne(Navigation::class, 'fleet_id');
-    }
-
     public function sensors()
     {
         return $this->hasMany(Sensor::class, 'fleet_id');
@@ -99,6 +96,28 @@ class Fleet extends Model
 
     function group_data() : HasMany {
         return $this->hasMany(GroupData::class, 'fleet_id');
+    }
+
+
+    public function navigation()
+    {
+        return $this->hasOne(Navigation::class, 'fleet_id');
+    }
+
+    public function navigation_logs()
+    {
+        return (new NavigationLog);
+    }
+
+    public function navigationColumns() 
+    {   
+        $model = (new Navigation);
+
+        if(Schema::hasTable($model->getTable())) {
+            $columns = Schema::getColumnListing($model->getTable());
+            return array_diff($columns, ['id', 'created_at', 'updated_at', 'terminal_time', 'fleet_id']);
+        }
+        return [];
     }
 
     public function engine()
