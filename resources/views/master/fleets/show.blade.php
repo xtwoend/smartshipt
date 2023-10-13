@@ -24,7 +24,7 @@
                                     <a href="#bunker" class="nav-link" data-bs-toggle="tab">Bunker</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#nav" class="nav-link" data-bs-toggle="tab">Navigation Sensor</a>
+                                    <a href="#navigation" class="nav-link" data-bs-toggle="tab">Navigation Sensor</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="#engine" class="nav-link" data-bs-toggle="tab">Engine Sensor</a>
