@@ -84,6 +84,7 @@
     <div><b>Auto Created At: {{ date('Y-m-d H:i:s') }}</b></div>
     <br>
     <div>Contact Person :</div>
+    <div>Aris Yulianto</div>
     <div>aris.yulianto@pertamina.com</div>
     <div>+62 813 2000 2481</div>
     <br>
