@@ -47,7 +47,7 @@
             name: 'AMS Mark',
             field: 'is_ams',
             editable: true,
-            editType: 'select',
+            editType: 'selectKeyVal',
             options: {{ json_encode([0 => 'False', 1 => 'True']) }}
         },
     ]"
