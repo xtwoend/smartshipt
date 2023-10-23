@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\NavigationLog;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Envelope;
@@ -20,6 +21,7 @@ class AlarmReportEmail extends Mailable
     public $attachment;
     public $status;
     public $avgSpeed;
+    public $sensors;
 
     /**
      * Create a new message instance.
@@ -45,6 +47,8 @@ class AlarmReportEmail extends Mailable
         ->whereBetween('terminal_time', [$from, $to])
         ->where('sog', '>=', 2)
         ->avg('sog');
+
+        $this->sensors = Sensor::select(DB::raw("COUNT(IF(sensors.condition='ABNORMAL', 1, 0)) as abnormal, COUNT(*) as total"))->where('fleet_id', $this->fleet->id)->get();
     }
 
     /**

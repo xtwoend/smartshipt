@@ -72,8 +72,24 @@
         @endif
     </table>
     <br>
+    <div><b>Sensor condition: <span style="color:red;">{{ $sensors->abnormal ?? 0 }}</span> of the <span style="color:red;">{{ $sensors->total ?? 0 }}</span> sensors recorded were abnormal</b></div>
     <br>
-    <div><b>Sensor condition and alarm history information document from 6 am yesterday until now in the attached pdf file. </b></div>
+    <br>
+    <div>Abnormal Alarm that just occurred: </div>
+    <br>
+    <table>
+        <tr>
+            <th>ALARM MESSAGE</th>
+            <th>DURATION</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <br>
+    <br>
+    <div><b>Sensor condition and alarm history information document from 6 am & 12 pm yesterday until now in the attached pdf file. </b></div>
     <br>
     <br>
     <div style="font-size: 12px; padding: 20px; 0;"><i>Note: This message has been sent by smartship system. Please do not reply</i></div>
