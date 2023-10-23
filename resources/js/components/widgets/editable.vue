@@ -28,6 +28,13 @@
                                 <option :value="sensor" v-for="(sensor, inx) in col.options" :key="inx">{{ sensor }}</option>
                             </select>
                         </template>
+                        
+                        <template v-else-if="col.editType == 'selectKeyVal' && item.isEdit">
+                            <select v-model="items[index][col.field]" class="form-select">
+                                <option :value="idx" v-for="(val, idx) in col.options" :key="idx">{{ val }}</option>
+                            </select>
+                        </template>
+
                         <template v-else-if="item.isEdit">
                             <input type="text" class="form-control" v-model="items[index][col.field]">
                         </template>
