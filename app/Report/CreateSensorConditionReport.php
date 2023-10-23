@@ -57,7 +57,7 @@ class CreateSensorConditionReport
             'other' => 'Other'
         ];
 
-        $sensors = Sensor::where('fleet_id', $fleet->id)->orderBy('ordered')->get();
+        $sensors = Sensor::where('fleet_id', $fleet->id)->orderBy('ordered', 'asc')->get();
 
         $filename = "/report/sensor-report-{$fleet->id}-{$date}.pdf";
 
