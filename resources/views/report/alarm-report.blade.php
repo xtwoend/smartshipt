@@ -187,7 +187,7 @@
           </tr>
           <tr class="row9">
             <td class="column0 style37 s">POSITION</td>
-            <td class="column1 style2 s">{{ $status[$fleet->fleet_status] }}</td>
+            <td class="column1 style2 s">{{ $status[$fleet->fleet_status] }} @if(in_array($fleet->fleet_status, ['at_port', 'at_anchorage'])) {{ $fleet->last_port }} @endif </td>
             <td class="column2 style16 null"></td>
             <td class="column3 style16 null"></td>
             <td class="column4 style16 null"></td>
