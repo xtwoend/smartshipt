@@ -50,7 +50,7 @@
             }
         },
     ]"
-    :fleet="{fleetId: {{ $fleet->id }}, group: 'cargo_pump'}"
+    :fleet="{fleetId: {{ $fleet->id }}, group: 'cargo_pump', ordered: 3 }"
     :data="{{ json_encode($lists) }}"
     edit-url="{{ route('master.sensors.edit') }}"
     del-url="/master/sensors/delete"
