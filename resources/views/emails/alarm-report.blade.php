@@ -75,7 +75,8 @@
     <div><b>Sensor condition: <span style="color:red;">{{ $sensors->abnormal ?? 0 }}</span> of the <span style="color:red;">{{ $sensors->total ?? 0 }}</span> sensors recorded were abnormal</b></div>
     <br>
     <br>
-    <div>Abnormal Alarm that just occurred: </div>
+    {{-- TODO: collection  alarm terbanyak --}}
+    {{-- <div>Abnormal Alarm that just occurred: </div>
     <br>
     <table>
         <tr>
@@ -86,7 +87,7 @@
             <td></td>
             <td></td>
         </tr>
-    </table>
+    </table> --}}
     <br>
     <br>
     <div><b>Sensor condition and alarm history information document from 6 am & 12 pm yesterday until now in the attached pdf file. </b></div>
