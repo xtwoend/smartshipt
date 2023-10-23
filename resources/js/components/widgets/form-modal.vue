@@ -50,6 +50,7 @@ export default {
         if(this.fleet){
             this.data.fleet_id = this.fleet.fleetId,
             this.data.group = this.fleet.group
+            this.data.ordered = this.fleet.ordered
         }
     },
     methods: {
