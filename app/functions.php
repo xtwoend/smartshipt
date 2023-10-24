@@ -21,6 +21,12 @@ if(! function_exists('to_rad')) {
     }
 }
 
+if(! function_exists('number')) {
+    function number($number) {
+        return number_format($number, 2, ",",".");
+    }
+}
+
 if(! function_exists('scaleBeafort')) {
     function scaleBeafort($wind) {
         $text = '';

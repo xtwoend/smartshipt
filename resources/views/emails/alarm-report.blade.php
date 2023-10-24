@@ -49,7 +49,7 @@
         </tr>
         <tr>
             <td>AVERAGE SPEED</td>
-            <td>: {{ number_format($avgSpeed, 2) }} KNOT</td>
+            <td>: {{ number($avgSpeed) }} KNOT</td>
         </tr>
         <tr>
             <td>CURENT SPEED</td>

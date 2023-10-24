@@ -249,12 +249,12 @@
           </tr>
           <tr class="row20">
             <td class="column0 style38 s">AVERAGE SPEED</td>
-            <td class="column1 style22 null style24" colspan="3">{{ number_format($avgSpeed, 2) ?? 0 }}</td>
+            <td class="column1 style22 null style24" colspan="3">{{ number($avgSpeed) ?? 0 }}</td>
             <td class="column4 style5 s">KNOT</td>
           </tr>
           <tr class="row21">
             <td class="column0 style38 s">GENERAL AVERAGE SPEED</td>
-            <td class="column1 style22 null style24" colspan="3">{{  number_format($avgSpeed, 2) ?? 0 }}</td>
+            <td class="column1 style22 null style24" colspan="3">{{  number($avgSpeed) ?? 0 }}</td>
             <td class="column4 style5 s">KNOT</td>
           </tr>
           <tr class="row22">
