@@ -173,8 +173,8 @@ class FleetConversation extends Conversation
         $values = [];
         foreach($groups as $sensor) {
             $values[] = [
-                $sensor->text,
-                $data->{$sensor->data} . " " . $sensor->unit
+                $sensor['text'],
+                $data->{$sensor['data']} . " " . $sensor['unit']
             ];
         }
         $t = new TextTable($headers, $values);
