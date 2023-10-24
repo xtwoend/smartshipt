@@ -3,6 +3,7 @@
 namespace App\Mail;
 
 use Carbon\Carbon;
+use App\Models\Alarm;
 use App\Models\Sensor;
 use App\Models\NavigationLog;
 use Illuminate\Bus\Queueable;
@@ -50,6 +51,7 @@ class AlarmReportEmail extends Mailable
         ->avg('sog');
 
         $this->sensors = Sensor::select(DB::raw("SUM(IF(sensors.condition='ABNORMAL', 1, 0)) as abnormal, COUNT(*) as total"))->where('fleet_id', $this->fleet->id)->first();
+        // $this->alarm = Alarm::select(DB::raw("SUM(IF(sensors.status=1, 1, 0)) as abnormal, COUNT(*) as total"))->where('fleet_id', $this->fleet->id)->whereBetween('terminal_time', [$from, $to])->groupBy('status')->first();
     }
 
     /**
