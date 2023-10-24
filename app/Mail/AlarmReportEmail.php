@@ -3,6 +3,7 @@
 namespace App\Mail;
 
 use Carbon\Carbon;
+use App\Models\Sensor;
 use App\Models\NavigationLog;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
