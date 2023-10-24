@@ -142,8 +142,8 @@ app.config.globalProperties.$filters = {
         let text = value.toLowerCase();
         return text.capitalize()
     },
-    number(value) {
-        let num = Number.parseFloat(value).toFixed(2);
+    number(value, digit = 2) {
+        let num = Number.parseFloat(value).toFixed(digit);
         return Number.parseFloat(num).toLocaleString();
     }
 }
