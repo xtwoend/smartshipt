@@ -97,7 +97,7 @@ class FleetConversation extends Conversation
                 Button::create('INFORMATION & SLA')->value('info'),
                 Button::create('NAVIGATION & POSITION')->value('nav'),
                 Button::create('MACHINERY')->value('machine'),
-                Button::create('TANK')->value('tank'),
+                Button::create('CARGO')->value('cargo'),
                 Button::create('REPORT')->value('report'),
                 Button::create('FLEET LIST')->value('fleet'),
             ]);
@@ -123,11 +123,13 @@ class FleetConversation extends Conversation
                         $this->fleetMenu();
                         break;
                     case 'machine':
-                        $this->say("Data Machinery belum tesedia");
+                        $data = $this->fleet->engine();
+                        $text = $this->buildInfo($data, 'engine');
                         $this->fleetMenu();
                         break;
-                    case 'tank':
-                        $this->say("Data tank belum tesedia");
+                    case 'cargo':
+                        $data = $this->fleet->cargo();
+                        $text = $this->buildInfo($data, 'cargo');
                         $this->fleetMenu();
                         break;
                     case 'report':
@@ -159,6 +161,20 @@ class FleetConversation extends Conversation
             ['Travel Distance', $nav->distance],
             ['Total Travel Distance', $nav->total_distance]
         ];
+        $t = new TextTable($headers, $values);
+        return "``` \n{$t->render()}```";
+    }
+
+    function buildInfo($data, $groupData): string {
+        $groups = $this->fleet->trendOptions($groupData);
+        $headers = ['Info', 'Value'];
+        $values = [];
+        foreach($groups as $sensor) {
+            $values[] = [
+                $sensor->text,
+                $data->{$sensor->data} . " " . $sensor->unit
+            ];
+        }
         $t = new TextTable($headers, $values);
         return "``` \n{$t->render()}```";
     }
