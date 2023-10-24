@@ -306,7 +306,7 @@
           </tr>
           @foreach($sensors as $sensor)
           <tr class="row30">
-            <td class="column0 style28 null" style="{{ $sensor->condition == 'ABNORMAL' ? 'color:#ab0f0f;' : '' }}">{{ $sensor->name }}</td>
+            <td class="column0 style28 null" style="{{ $sensor->condition == 'ABNORMAL' ? 'color:#ab0f0f;' : '' }}">{{ strtoupper($sensor->name) }}</td>
             <td class="column1 style29 null style30" colspan="2" style="{{ $sensor->condition == 'ABNORMAL' ? 'color:#ab0f0f;' : '' }} text-align: right;">{{ $sensor->value }}</td>
             <td class="column3 style28 null" style="{{ $sensor->condition == 'ABNORMAL' ? 'color:#ab0f0f;' : '' }} text-align: center;">{{{ $sensor->unit }}}</td>
             <td class="column4 style31 null" style="{{ $sensor->condition == 'ABNORMAL' ? 'color:#ab0f0f;' : '' }} text-align: center;">{{ $sensor->condition ?? 'Power Off' }}</td>
