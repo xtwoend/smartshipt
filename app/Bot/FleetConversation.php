@@ -125,11 +125,13 @@ class FleetConversation extends Conversation
                     case 'machine':
                         $data = $this->fleet->engine();
                         $text = $this->buildInfo($data, 'engine');
+                        $this->say($text, ['parse_mode' => 'Markdown']);
                         $this->fleetMenu();
                         break;
                     case 'cargo':
                         $data = $this->fleet->cargo();
                         $text = $this->buildInfo($data, 'cargo');
+                        $this->say($text, ['parse_mode' => 'Markdown']);
                         $this->fleetMenu();
                         break;
                     case 'report':
