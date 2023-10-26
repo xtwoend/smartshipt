@@ -126,6 +126,15 @@ class FleetConversation extends Conversation
                         $data = $this->fleet->engine();
                         $text = $this->buildInfo($data, 'engine');
                         $this->say($text, ['parse_mode' => 'Markdown']);
+                        if($this->fleet->id <= 4) {
+                            $data = $this->fleet->cargo_pump();
+                            $text = $this->buildInfo($data, 'cargo_pump');
+                            $this->say($text, ['parse_mode' => 'Markdown']);
+                        }else{
+                            $data = $this->fleet->cargo();
+                            $text = $this->buildInfo($data, 'cargo_pump');
+                            $this->say($text, ['parse_mode' => 'Markdown']);
+                        }
                         $this->fleetMenu();
                         break;
                     case 'cargo':

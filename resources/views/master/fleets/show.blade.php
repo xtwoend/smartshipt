@@ -27,7 +27,7 @@
                                     <a href="#navigation" class="nav-link" data-bs-toggle="tab">Navigation Sensor</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#engine" class="nav-link" data-bs-toggle="tab">Engine Sensor</a>
+                                    <a href="#engine" class="nav-link" data-bs-toggle="tab">Main Engine Sensor</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="#pumps" class="nav-link" data-bs-toggle="tab">Pumps Sensor</a>
