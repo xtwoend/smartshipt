@@ -90,7 +90,7 @@
     </table> --}}
     <br>
     <br>
-    <div><b>Sensor condition and alarm history information document from 6 am & 12 pm yesterday until now in the attached pdf file. </b></div>
+    <div><b>Sensor condition and alarm history information document from 6 am yesterday until now in the attached pdf file.</b></div>
     <br>
     <br>
     <div style="font-size: 12px; padding: 20px; 0;"><i>Note: This message has been sent by smartship system. Please do not reply</i></div>
