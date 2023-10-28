@@ -62,7 +62,7 @@ class AlarmReportEmail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Daily Alarm Monitoring Report By PIS Smartship',
+            subject: $this->fleet->name . ' - Daily Alarm & Sensor Monitoring Report By PIS Smartship System',
         );
     }
 
