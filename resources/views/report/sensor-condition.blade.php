@@ -285,6 +285,10 @@
             <td class="column3 style16 null"></td>
             <td class="column4 style16 null"></td>
           </tr>
+        </tbody>
+    </table>
+    <table>
+      <tbody>
           <tr class="row27">
             <td class="column0 style6 s" colspan="2">SENSOR INFORMATION</td>
             <td class="column1 style16 null"></td>
