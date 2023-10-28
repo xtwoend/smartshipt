@@ -287,7 +287,7 @@
           </tr>
         </tbody>
     </table>
-    <table>
+    <table border="0" cellpadding="0" cellspacing="0" id="sheet0" class="sheet0 gridlines">
       <tbody>
           <tr class="row27">
             <td class="column0 style6 s" colspan="2">SENSOR INFORMATION</td>
