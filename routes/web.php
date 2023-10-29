@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Psr\Http\Message\RequestInterface;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NaviController;
 use App\Http\Controllers\FleetController;
@@ -83,6 +84,9 @@ Route::group([
 
 });
 
-Route::get('/coba', function(){
-    return view('test');
+Route::get('/coba/{id}', function($id){
+    // $fleet = \App\Models\Fleet::findOrFail($id);    
+    // $d = (new \App\Report\CreateSensorConditionReport($fleet));
+
+    // return $d->handle();
 });
