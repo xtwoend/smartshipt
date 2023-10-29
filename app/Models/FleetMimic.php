@@ -13,6 +13,10 @@ class FleetMimic extends Model
         'fleet_id', 'path', 'group', 'source', 'sample_data'
     ];
 
+    protected $casts = [
+        'sample_data' => 'array'
+    ];
+
     public function fleet()
     {
         return $this->belongsTo(Fleet::class, 'fleet_id');
