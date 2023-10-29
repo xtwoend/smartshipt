@@ -50,7 +50,7 @@ class AlarmReportEmail extends Mailable
         ->where('sog', '>=', 2)
         ->avg('sog');
 
-        $this->sensors = Sensor::select(DB::raw("SUM(IF(sensors.condition='ABNORMAL', 1, 0)) as abnormal, SUM(IF(sensors.condition = NULL, 1, 0)) as poweroff, COUNT(*) as total"))->where('fleet_id', $this->fleet->id)->first();
+        $this->sensors = Sensor::select(DB::raw("SUM(IF(sensors.condition='ABNORMAL', 1, 0)) as abnormal, SUM(IF(sensors.condition = 'NORMAL', 1, 0)) as normal, COUNT(*) as total"))->where('fleet_id', $this->fleet->id)->first();
         // $this->alarm = Alarm::select(DB::raw("SUM(IF(sensors.status=1, 1, 0)) as abnormal, COUNT(*) as total"))->where('fleet_id', $this->fleet->id)->whereBetween('terminal_time', [$from, $to])->groupBy('status')->first();
     }
 

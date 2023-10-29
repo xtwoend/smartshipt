@@ -72,8 +72,7 @@
         @endif
     </table>
     <br>
-    <div><b>Sensor condition: <span style="color:red;">{{ $sensors->total - ( $sensors->abnormal + $sensors->poweroff) }}</span> good condition, <span style="color:red;">{{ $sensors->abnormal ?? 0 }}</span> abnormal &  <span style="color:red;">{{ $sensors->poweroff ?? 0 }}</span> power off, total <span style="color:red;">{{ $sensors->total ?? 0 }}</span> sensors</b></div>
-    <br>
+    <div><b>Sensor condition: <span style="color:red;">{{ $sensors->normal ?? 0 }}</span> good condition, <span style="color:red;">{{ $sensors->abnormal ?? 0 }}</span> abnormal &  <span style="color:red;">{{ $sensors->total - ( $sensors->abnormal + $sensors->normal) }}</span> power off, total <span style="color:red;">{{ $sensors->total ?? 0 }}</span> sensors</b></div>
     <br>
     {{-- TODO: collection  alarm terbanyak --}}
     {{-- <div>Abnormal Alarm that just occurred: </div>
@@ -88,13 +87,9 @@
             <td></td>
         </tr>
     </table> --}}
-    <br>
-    <br>
     <div><b>Sensor condition and alarm history information document from 6 am yesterday until now in the attached pdf file.</b></div>
     <br>
-    <br>
     <div style="font-size: 12px; padding: 20px; 0;"><i>Note: This message has been sent by smartship system. Please do not reply</i></div>
-    <br>
     <br>
     <div><b>By PIS Smartship System - Fleet Management Solution </b></div>
     {{-- <div>LAST UPDATE: {{ $fleet->last_connection }}</div> --}}
@@ -108,7 +103,6 @@
     <br>
     <div>Disclaimer:</div>
     <div style="text-align: justify; text-justify: inter-word;">The information contained in this transmission, including any attachment(s), is confidential information intended for the use of the intended recipient only. Any dissemination, distribution or copying of this communication by any person other than the intended recipient is strictly prohibited and subject to applicable law. If you are not the intended recipient of this communication, please immediately advise the sender of this fact and completely destroy this transmission.</div>
-    <br>
     <br>
     <div>Copyright@2023 Fleet Management Solutions</div>
 </body>

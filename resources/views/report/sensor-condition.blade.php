@@ -285,38 +285,43 @@
             <td class="column3 style16 null"></td>
             <td class="column4 style16 null"></td>
           </tr>
+          <tr>
+            <td colspan="5">
+              <table border="0" cellpadding="0" cellspacing="0" class="gridlines">
+                <tbody>
+                    <tr class="row27">
+                      <td class="column0 style6 s" colspan="2">SENSOR INFORMATION</td>
+                      <td class="column1 style16 null"></td>
+                      <td class="column2 style16 null"></td>
+                      <td class="column3 style16 null"></td>
+                    </tr>
+                    <tr class="row28">
+                      <td class="column0 style16 null"></td>
+                      <td class="column1 style16 null"></td>
+                      <td class="column2 style16 null"></td>
+                      <td class="column3 style16 null"></td>
+                      <td class="column4 style16 null"></td>
+                    </tr>
+                    <tr class="row29">
+                      <td class="column0 style40 s">NAME</td>
+                      <td class="column1 style41 s style42" colspan="2">VALUE</td>
+                      <td class="column3 style43 s">UNIT</td>
+                      <td class="column4 style43 s">SENSOR STATUS</td>
+                    </tr>
+                    @foreach($sensors as $sensor)
+                    <tr class="row30">
+                      <td class="column0 style28 null" style="{{ $sensor->condition == 'ABNORMAL' ? 'color:#ab0f0f;' : '' }}">{{ strtoupper($sensor->name) }}</td>
+                      <td class="column1 style29 null style30" colspan="2" style="{{ $sensor->condition == 'ABNORMAL' ? 'color:#ab0f0f;' : '' }} text-align: right;">{{ number($sensor->value) }}</td>
+                      <td class="column3 style28 null" style="{{ $sensor->condition == 'ABNORMAL' ? 'color:#ab0f0f;' : '' }} text-align: center;">{{{ $sensor->unit }}}</td>
+                      <td class="column4 style31 null" style="{{ $sensor->condition == 'ABNORMAL' ? 'color:#ab0f0f;' : '' }} text-align: center;">{{ $sensor->condition ?? 'Power Off' }}</td>
+                    </tr>
+                    @endforeach
+                  </tbody>
+              </table>
+            </td>
+          </tr>
         </tbody>
     </table>
-    <table border="0" cellpadding="0" cellspacing="0" id="sheet0" class="sheet0 gridlines">
-      <tbody>
-          <tr class="row27">
-            <td class="column0 style6 s" colspan="2">SENSOR INFORMATION</td>
-            <td class="column1 style16 null"></td>
-            <td class="column2 style16 null"></td>
-            <td class="column3 style16 null"></td>
-          </tr>
-          <tr class="row28">
-            <td class="column0 style16 null"></td>
-            <td class="column1 style16 null"></td>
-            <td class="column2 style16 null"></td>
-            <td class="column3 style16 null"></td>
-            <td class="column4 style16 null"></td>
-          </tr>
-          <tr class="row29">
-            <td class="column0 style40 s">NAME</td>
-            <td class="column1 style41 s style42" colspan="2">VALUE</td>
-            <td class="column3 style43 s">UNIT</td>
-            <td class="column4 style43 s">SENSOR STATUS</td>
-          </tr>
-          @foreach($sensors as $sensor)
-          <tr class="row30">
-            <td class="column0 style28 null" style="{{ $sensor->condition == 'ABNORMAL' ? 'color:#ab0f0f;' : '' }}">{{ strtoupper($sensor->name) }}</td>
-            <td class="column1 style29 null style30" colspan="2" style="{{ $sensor->condition == 'ABNORMAL' ? 'color:#ab0f0f;' : '' }} text-align: right;">{{ number($sensor->value) }}</td>
-            <td class="column3 style28 null" style="{{ $sensor->condition == 'ABNORMAL' ? 'color:#ab0f0f;' : '' }} text-align: center;">{{{ $sensor->unit }}}</td>
-            <td class="column4 style31 null" style="{{ $sensor->condition == 'ABNORMAL' ? 'color:#ab0f0f;' : '' }} text-align: center;">{{ $sensor->condition ?? 'Power Off' }}</td>
-          </tr>
-          @endforeach
-        </tbody>
-    </table>
+    
   </body>
 </html>
