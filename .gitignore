@@ -2,7 +2,7 @@
 # /public/build
 /public/hot
 /public/storage
-# /public/svg
+/public/svg
 /storage/*.key
 /vendor
 .env
