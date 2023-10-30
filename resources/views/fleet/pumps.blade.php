@@ -10,11 +10,11 @@
             {{-- <slider-submenu :fleet="{{ json_encode($fleet) }}" active="balast"></slider-submenu> --}}
         @endif
         <div class="p-3">
-            @if($mimic = $fleet->mimic()->where('group', 'engine')->first())
+            @if($mimic = $fleet->mimic()->where('group', 'cargo_pump')->first())
                 @if($fleet->id <= 4)
                     <fleet-mimic svg-path="/{{ $mimic->path }}" url="{{ route('api.fleet.pumps.current', $fleet->id) }}" group="cargo_pump"></fleet-mimic>
                 @else
-                    <fleet-mimic svg-path="/{{ $mimic->path }}" url="{{ route('api.fleet.pumps.current', $fleet->id) }}" group="cargo_pump"></fleet-mimic>
+                    <fleet-mimic svg-path="/{{ $mimic->path }}" url="{{ route('api.fleet.cargo.current', $fleet->id) }}" group="cargo_pump"></fleet-mimic>
                 @endif
             @endif
 
