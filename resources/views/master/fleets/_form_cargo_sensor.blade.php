@@ -1,3 +1,17 @@
+<div class="col-12">
+    <div class="row">
+        <div class="col-6"></div>
+        <div class="col-6">
+            @php
+                $mimic = $fleet->mimic()->where('group', 'cargo')->first();
+            @endphp
+            <fleet-svg-upload path="{{ $mimic?->path }}" group="cargo" fleet-id="{{ $fleet->id }}"></fleet-svg-upload>
+        </div>
+    </div>
+</div>
+
+<br>
+
 <table-editable
     :columns="[
         {
