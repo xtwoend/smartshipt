@@ -115,6 +115,9 @@ app.component('map-pinned', MapPinned);
 import fleetmimic from './components/fleets/mimic.vue';
 app.component('fleet-mimic', fleetmimic);
 
+import svgUpload from './components/fleets/master-svg.vue';
+app.component('fleet-svg-upload', svgUpload);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
