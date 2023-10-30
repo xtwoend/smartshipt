@@ -41,7 +41,7 @@ export default {
                 let x = ['id', 'fleet_id', 'created_at', 'updated_at', 'terminal_time'];
                 Object.keys(data).forEach(key => {
                     if(! x.includes(key)) {
-                        this.data[key + '_bar'] = engine[key] * 1000;
+                        this.data[key + '_bar'] = data[key] * 1000;
                     }
                 })
             }
