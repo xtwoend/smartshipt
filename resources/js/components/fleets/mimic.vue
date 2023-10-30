@@ -17,7 +17,6 @@ export default {
     },
     data() {
         return {
-            fleet: null,
             data: {}
         }
     },
@@ -29,17 +28,15 @@ export default {
     },
     methods: {
         async fetchData() {
-            this.fleet = await axios.get(this.url).then(res => res.data);
-            let data = this.fleet[this.group];
+            let data = await axios.get(this.url).then(res => res.data);
             if(data) {
                 this.data = data
                 let x = ['id', 'fleet_id', 'created_at', 'updated_at', 'terminal_time'];
                 Object.keys(data).forEach(key => {
                     if(! x.includes(key)) {
-                        this.data[key + '_bar'] = data[key] * 1000;
+                        this.data[key + '_bar'] = engine[key] * 1000;
                     }
                 })
-                this.data.fleet_name = this.fleet.name
             }
         },
     }
