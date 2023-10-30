@@ -10,8 +10,8 @@
             {{-- <slider-submenu :fleet="{{ json_encode($fleet) }}" active="balast"></slider-submenu> --}}
         @endif
         <div class="p-3">
-            @if(strtoupper($fleet->type) == 'M')
-            <engine-type-s url="{{ route('api.fleet', $fleet->id) }}"></engine-type-s>
+            @if($mimic = $fleet->mimic()->where('group', 'engine')->first())
+                <fleet-mimic svg-path="{{ $mimic->path }}" url="{{ route('api.fleet', $fleet->id) }}"></fleet-mimic>
             @endif
             <data-info url="{{ route('api.fleet.engine.current', $fleet->id) }}" :mapping="{{ json_encode($fleet->trendOptions('engine')) }}"></data-info>
             <trend-live 

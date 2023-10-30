@@ -112,6 +112,9 @@ app.component('data-info', DataInformation);
 import MapPinned from './components/maps/pinned.vue';
 app.component('map-pinned', MapPinned);
 
+import fleetmimic from './components/fleets/mimic.vue';
+app.component('fleet-mimic', fleetmimic);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

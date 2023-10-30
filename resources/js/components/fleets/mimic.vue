@@ -10,6 +10,7 @@ export default {
     props: {
         svgPath: String,
         url: String,
+        group: String
     },
     components: {
         ChartSvg
@@ -29,13 +30,13 @@ export default {
     methods: {
         async fetchData() {
             this.fleet = await axios.get(this.url).then(res => res.data);
-            let engine = this.fleet.engine;
-            if(engine) {
-                this.data = engine
+            let data = this.fleet[this.group];
+            if(data) {
+                this.data = data
                 let x = ['id', 'fleet_id', 'created_at', 'updated_at', 'terminal_time'];
-                Object.keys(engine).forEach(key => {
+                Object.keys(data).forEach(key => {
                     if(! x.includes(key)) {
-                        this.data[key + '_bar'] = engine[key] * 1000;
+                        this.data[key + '_bar'] = data[key] * 1000;
                     }
                 })
                 this.data.fleet_name = this.fleet.name
