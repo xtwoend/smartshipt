@@ -4,7 +4,7 @@
             <img :src="location" v-if="location">
         </div>
         <div class="card-footer m-0 p-0">
-            <input id="mimic" type="file" ref="file" class="form-control" @change="upload" :value="location">
+            <input id="mimic" type="file" ref="file" class="form-control" @change="upload">
         </div>
     </div>
 </template>
@@ -21,10 +21,8 @@
                 location: null
             }
         },
-        watch: {
-            path: function(n, o) {
-                this.location = n
-            }
+        mounted(){
+            this.location = '/' + this.path;
         },
         methods: {
             upload(e) {
@@ -33,7 +31,7 @@
                 formData.append('file', file);
                 formData.append('group', this.group);
                 formData.append('fleet_id', this.fleetId);
-
+                let that = this
                 axios.post('/upload/svg',
                     formData,
                     {
@@ -42,7 +40,7 @@
                         }
                     }
                     ).then(function(e){
-                        console.log(e);
+                        that.location = '/' + e.data.path
                     }).catch(function(e){
                         console.log(e);
                     });
