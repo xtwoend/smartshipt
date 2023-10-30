@@ -15,7 +15,7 @@
                 <fleet-cargo url="{{ route('api.fleet', $fleet->id) }}"></fleet-cargo>
             @endif --}}
             @if($mimic = $fleet->mimic()->where('group', 'cargo')->first())
-                <fleet-mimic svg-path="/{{ $mimic->path }}" url="{{ route('api.fleet.cargo.current', $fleet->id) }}" group="cargo"></fleet-mimic>
+                <fleet-mimic debug svg-path="/{{ $mimic->path }}" url="{{ route('api.fleet.cargo.current', $fleet->id) }}" group="cargo"></fleet-mimic>
             @endif
             <data-info url="{{ route('api.fleet.cargo.current', $fleet->id) }}" :mapping="{{ json_encode($fleet->trendOptions('cargo')) }}"></data-info>
             <trend-live 

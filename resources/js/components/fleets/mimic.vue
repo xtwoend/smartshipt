@@ -1,6 +1,9 @@
 <template>
     <div>
         <chart-svg :path="svgPath" :svgData="data" :height="550"></chart-svg>
+        <div v-if="debug">
+            {{  data  }}
+        </div>
     </div>
 </template>
 
@@ -10,7 +13,11 @@ export default {
     props: {
         svgPath: String,
         url: String,
-        group: String
+        group: String,
+        debug: {
+            type: Boolean,
+            default: false
+        }
     },
     components: {
         ChartSvg
