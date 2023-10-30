@@ -201,8 +201,20 @@ class FleetController extends Controller
         return response()->json($pic);
     }
 
-    public function picDelete($id, Request $reqeust)
+    public function picDelete($id, Request $request)
     {
         return FleetPic::find($id)->delete();
+    }
+
+    public function uploadSvg(Request $request)
+    {
+        $fleet = Fleet::find($request->fleet_id);
+        $path = $request->file->store('svg');
+
+        return $fleet->mimic()->updateOrCreate([
+            'group' => $request->group
+        ], [
+            'path' => $path
+        ]);
     }
 }

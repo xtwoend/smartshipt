@@ -82,6 +82,7 @@ Route::group([
         Route::post('sensors/update', [\App\Http\Controllers\Master\SensorController::class, 'update'])->name('sensors.edit');
     });
 
+    Route::post('/upload/svg', [\App\Http\Controllers\Master\FleetController::class, 'uploadSvg'])->name('upload.svg');
 });
 
 Route::get('/coba/{id}', function($id){

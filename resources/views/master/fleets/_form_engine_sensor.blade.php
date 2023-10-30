@@ -6,7 +6,7 @@
             @php
                 $mimic = $fleet->mimic()->where('group', 'engine')->first();
             @endphp
-            <fleet-svg-upload path="{{ $mimic?->path }}" group="engine"></fleet-svg-upload>
+            <fleet-svg-upload path="{{ $mimic?->path }}" group="engine" fleet-id="{{ $fleet->id }}"></fleet-svg-upload>
         </div>
     </div>
 </div>
