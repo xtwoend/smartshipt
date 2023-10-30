@@ -11,7 +11,7 @@
         @endif
         <div class="p-3">
             @if($mimic = $fleet->mimic()->where('group', 'engine')->first())
-                <fleet-mimic svg-path="{{ $mimic->path }}" url="{{ route('api.fleet', $fleet->id) }}"></fleet-mimic>
+                <fleet-mimic svg-path="{{ $mimic->path }}" url="{{ route('api.fleet', $fleet->id) }}" group="engine"></fleet-mimic>
             @endif
             <data-info url="{{ route('api.fleet.engine.current', $fleet->id) }}" :mapping="{{ json_encode($fleet->trendOptions('engine')) }}"></data-info>
             <trend-live 
