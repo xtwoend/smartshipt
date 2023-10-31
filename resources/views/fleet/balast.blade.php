@@ -10,8 +10,12 @@
             {{-- <slider-submenu :fleet="{{ json_encode($fleet) }}" active="balast"></slider-submenu> --}}
         @endif
         <div class="p-3">
-            @if(strtoupper($fleet->type) == 'M')
+            {{-- @if(strtoupper($fleet->type) == 'M')
             <fleet-ballast url="{{ route('api.fleet', $fleet->id) }}"></fleet-ballast>
+            @endif --}}
+
+            @if($mimic = $fleet->mimic()->where('group', 'ballast')->first())
+                <fleet-mimic svg-path="/{{ $mimic->path }}" url="{{ route('api.fleet.cargo.current', $fleet->id) }}" group="ballast"></fleet-mimic>
             @endif
 
             <data-info url="{{ route('api.fleet.cargo.current', $fleet->id) }}" :mapping="{{ json_encode($fleet->trendOptions('ballast')) }}"></data-info>

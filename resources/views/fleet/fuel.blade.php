@@ -10,10 +10,15 @@
             {{-- <slider-submenu :fleet="{{ json_encode($fleet) }}" active="balast"></slider-submenu> --}}
         @endif
         <div class="p-3">
-            @if(strtoupper($fleet->type) == 'M')
+            {{-- @if(strtoupper($fleet->type) == 'M')
             <fleet-bunker url="{{ route('api.fleet', $fleet->id) }}"></fleet-bunker>
-            @endif
+            @endif --}}
             @if(in_array($fleet->id, [10]))
+            
+            @if($mimic = $fleet->mimic()->where('group', 'fuel')->first())
+                <fleet-mimic svg-path="/{{ $mimic->path }}" url="{{ route('api.fleet.engine.current', $fleet->id) }}" group="fuel"></fleet-mimic>
+            @endif
+
             <data-info url="{{ route('api.fleet.engine.current', $fleet->id) }}" :mapping="{{ json_encode($fleet->trendOptions('fuel')) }}"></data-info>
             <trend-live 
                 title="Trend Live Bunker"
@@ -23,6 +28,9 @@
                 :columns="{{ json_encode($fleet->trendOptions('fuel')) }}">
             </trend-live>
             @else
+            @if($mimic = $fleet->mimic()->where('group', 'fuel')->first())
+                <fleet-mimic svg-path="/{{ $mimic->path }}" url="{{ route('api.fleet.cargo.current', $fleet->id) }}" group="fuel"></fleet-mimic>
+            @endif
             <data-info url="{{ route('api.fleet.cargo.current', $fleet->id) }}" :mapping="{{ json_encode($fleet->trendOptions('fuel')) }}"></data-info>
             <trend-live 
                 title="Trend Live Bunker"
