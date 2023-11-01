@@ -73,6 +73,7 @@
                     <span class="menu-title">Help</span>
                   </a>
                 </li>
+                @if(Auth::user()->is_root)
                 <li class="menu-item">
                   <a href="#">
                     <span class="menu-icon">
@@ -98,6 +99,7 @@
                         </ul>
                     </div>
                 </li>
+                @endif
             </ul>
         </nav>
     </div>
