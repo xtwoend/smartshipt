@@ -175,6 +175,25 @@ class Fleet extends Model
         return [];
     }
 
+    public function generatorColumns() 
+    {   
+        $group = $this->group_data()->where('group', 'generator')->first();
+        if(is_null($group)) return [];
+
+        $classModel  = $group->class_handler;
+        if(! class_exists($classModel)) {
+            return null;
+        }
+        
+        $model = (new $classModel)->table($this->id);
+
+        if(Schema::hasTable($model->getTable())) {
+            $columns = Schema::getColumnListing($model->getTable());
+            return array_diff($columns, ['id', 'created_at', 'updated_at', 'terminal_time', 'fleet_id']);
+        }
+        return [];
+    }
+
     public function cargo()
     {
         $group = $this->group_data()->where('group', 'cargo')->first();

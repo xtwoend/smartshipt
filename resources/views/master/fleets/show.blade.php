@@ -30,6 +30,9 @@
                                     <a href="#engine" class="nav-link" data-bs-toggle="tab">Main Engine Sensor</a>
                                 </li>
                                 <li class="nav-item">
+                                    <a href="#generator" class="nav-link" data-bs-toggle="tab">Generator Sensor</a>
+                                </li>
+                                <li class="nav-item">
                                     <a href="#pumps" class="nav-link" data-bs-toggle="tab">Pumps Sensor</a>
                                 </li>
                                 <li class="nav-item">
@@ -88,6 +91,13 @@
                                     @include('master.fleets._form_engine_sensor', [
                                         'lists' => $data->sensors()->where('group', 'engine')->get(), 
                                         'sensors' => $data->engineColumns(), 
+                                        'fleet' => $data
+                                        ])
+                                </div>
+                                <div class="tab-pane" id="generator">
+                                    @include('master.fleets._form_generator_sensor', [
+                                        'lists' => $data->sensors()->where('group', 'generator')->get(), 
+                                        'sensors' => $data->generatorColumns(), 
                                         'fleet' => $data
                                         ])
                                 </div>
