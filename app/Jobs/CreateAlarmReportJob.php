@@ -41,9 +41,22 @@ class CreateAlarmReportJob implements ShouldQueue
     {
         $attachment1 = (new CreateAlarmReport($this->fleet, $this->date))->handle();
         $attachment2 = (new CreateSensorConditionReport($this->fleet, $this->date))->handle();
-        
-        foreach($this->fleet->pic as $pic) {
-            Mail::to($pic->pic_email, $pic->pic_name)->send(new AlarmReportEmail($this->fleet, [$attachment1, $attachment2], $this->date));
+
+        $pics = collect($this->fleet->pic);
+
+        $to = $pics->where('primary', 1)->first();
+        $mores = $pics->where('primary', 0)->get();
+        $emails = [];
+        foreach($mores as $cc) {
+            $emails[] = [
+                'email' =>  $cc->pic_email, 'name' => $to->pic_name
+            ];
         }
+
+        $mail = Mail::to(['email' => $to->pic_email, 'name' => $to->pic_name])->cc($emails)->send(new AlarmReportEmail($this->fleet, [$attachment1, $attachment2], $this->date));
+
+        // foreach($this->fleet->pic as $pic) {
+        //     Mail::to($pic->pic_email, $pic->pic_name)->send(new AlarmReportEmail($this->fleet, [$attachment1, $attachment2], $this->date));
+        // }
     }
 }
