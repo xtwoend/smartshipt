@@ -45,7 +45,7 @@ class CreateAlarmReportJob implements ShouldQueue
         $pics = collect($this->fleet->pic);
 
         $to = $pics->where('primary', 1)->first();
-        $mores = $pics->where('primary', 0)->get();
+        $mores = $pics->where('primary', 0)->all();
         $emails = [];
         foreach($mores as $cc) {
             $emails[] = [
