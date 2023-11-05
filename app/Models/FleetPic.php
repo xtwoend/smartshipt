@@ -10,7 +10,7 @@ class FleetPic extends Model
     use HasFactory;
 
     protected $fillable = [
-        'pic_level', 'pic_name', 'pic_email', 'email_forward', 'pic_phone'
+        'pic_level', 'pic_name', 'pic_email', 'primary', 'pic_phone'
     ];
 
     public function fleet()
