@@ -49,11 +49,11 @@ class CreateAlarmReportJob implements ShouldQueue
         $emails = [];
         foreach($mores as $cc) {
             $emails[] = [
-                'email' =>  $cc->pic_email, 'name' => $to->pic_name
+                $cc->pic_email, $to->pic_name
             ];
         }
 
-        $mail = Mail::to(['email' => $to->pic_email, 'name' => $to->pic_name])->cc($emails)->send(new AlarmReportEmail($this->fleet, [$attachment1, $attachment2], $this->date));
+        $mail = Mail::to([$to->pic_email, $to->pic_name])->cc($emails)->send(new AlarmReportEmail($this->fleet, [$attachment1, $attachment2], $this->date));
 
         // foreach($this->fleet->pic as $pic) {
         //     Mail::to($pic->pic_email, $pic->pic_name)->send(new AlarmReportEmail($this->fleet, [$attachment1, $attachment2], $this->date));
