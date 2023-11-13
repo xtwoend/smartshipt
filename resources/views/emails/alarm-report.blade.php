@@ -72,7 +72,7 @@
         @endif
     </table>
     <br>
-    <div><b>Sensor condition: <span style="color:red;">{{ $sensors->normal ?? 0 }}</span> good condition, <span style="color:red;">{{ $sensors->abnormal ?? 0 }}</span> abnormal &  <span style="color:red;">{{ $sensors->total - ( $sensors->abnormal + $sensors->normal) }}</span> power off, total <span style="color:red;">{{ $sensors->total ?? 0 }}</span> sensors</b></div>
+    <div><b>Sensor condition: <span style="color:red;">{{ $sensors->normal ?? 0 }}</span> good condition, <span style="color:red;">{{ $sensors->abnormal ?? 0 }}</span> abnormal &  <span style="color:red;">{{ $sensors->total - ( $sensors->abnormal + $sensors->normal) }}</span> N/A, total <span style="color:red;">{{ $sensors->total ?? 0 }}</span> sensors</b></div>
     <br>
     {{-- TODO: collection  alarm terbanyak --}}
     {{-- <div>Abnormal Alarm that just occurred: </div>
