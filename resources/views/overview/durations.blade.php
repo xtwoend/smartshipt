@@ -13,7 +13,7 @@
             <nav aria-label="breadcrumb" class="mb-3">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">Overview</li>
-                    <li class="breadcrumb-item active" aria-current="page">Mileage</li>
+                    <li class="breadcrumb-item active" aria-current="page">Durations</li>
                 </ol>
             </nav>
             <div class="nav-button">

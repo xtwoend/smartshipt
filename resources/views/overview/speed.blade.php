@@ -26,7 +26,7 @@
                         <th  class="align-middle text-center">No.</th>
                         <th>Fleet Name</th>
                         <th>IMO</th>
-                        <th class="align-middle text-end">Mileage Distance (NM)</th>
+                        <th class="align-middle text-end">Average Speed (knot)</th>
                     </tr>
                     @php
                         $no = 1;
