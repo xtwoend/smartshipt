@@ -4,7 +4,7 @@
 <main class="content full fixed">
     <div class="d-flex content-scrolled">
         <div class="sidebar" id="sidebar-secondary">
-            @include('overview.side', ['active' => 'mileage'])
+            @include('overview.side', ['active' => 'speed'])
         </div>
         <button onclick="document.getElementById('sidebar-secondary').classList.toggle('collapsed')" class="btn-sidebar">
             <img src="{{asset('img/icons/chevron-prev.png')}}" alt="" width="12" />
@@ -31,7 +31,7 @@
                     @php
                         $no = 1;
                     @endphp
-                    @foreach($fleets->sortBy([['mileage', 'desc']])->values()->all() as $f)
+                    @foreach($fleets as $f)
                     <tr>
                         <td class="align-middle text-center">{{ $no++ }}</td>
                         <td class="align-middle">{{ $f->name }}</td>

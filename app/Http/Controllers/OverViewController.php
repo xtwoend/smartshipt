@@ -7,6 +7,7 @@ use App\Models\Fleet;
 use Illuminate\Http\Request;
 use App\Models\FleetDailyReport;
 use Illuminate\Support\Facades\DB;
+use App\Models\FleetStatusDuration;
 use Illuminate\Support\Facades\Schema;
 
 class OverViewController extends Controller
@@ -38,5 +39,44 @@ class OverViewController extends Controller
         });
 
         return view('overview.mileage', compact('fleets'));
+    }
+
+    /**
+     * speed overview
+     */
+    public function speed(Request $request) 
+    {
+        // $fleets = Fleet::whereIn('id', $fleetIds)->get();
+
+        // $fleets->map(function($item) use ($rows) {
+        //     if($row) {
+        //         $item['speed'] = $row->avg;
+        //     }
+        // });
+        $fleets = [];
+
+        return view('overview.speed', compact('fleets'));
+    }
+
+    /**
+     * speed overview
+     */
+    public function fleetStatus(Request $request) 
+    {
+        $status = $request->input('status', 'at_port');
+        $type = $request->input('type', 'last-week');
+        $from = ($type == 'last-month') ? Carbon::now()->subMonth()->format('Y-m-d') : Carbon::now()->subDays(7)->format('Y-m-d');
+        $to = Carbon::now()->format('Y-m-d');
+
+        $fleets = FleetStatusDuration::with('fleet')->select(DB::raw('fleet_id, SUM(TIMESTAMPDIFF(SECOND, started_at, finished_at)) as seconds', 'fleet_id'))
+            ->whereNotNull('finished_at')
+            ->where('fleet_status', $status)
+            ->groupBy('fleet_id')
+            ->orderBy('seconds', 'desc')
+            ->whereDate('started_at', '>=', $from)
+            ->whereDate('started_at', '<=', $to)
+            ->get();
+
+        return view('overview.durations', compact('fleets', 'status'));
     }
 }

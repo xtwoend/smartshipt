@@ -48,6 +48,8 @@ Route::group([
     Route::get('/fleet/{id}/charter', [FleetController::class, 'charter'])->name('fleet.charter');
 
     Route::get('/overview/mileage', [OverViewController::class, 'index'])->name('overview.index');
+    Route::get('/overview/speed', [OverViewController::class, 'speed'])->name('overview.speed');
+    Route::get('/overview/duration', [OverViewController::class, 'fleetStatus'])->name('overview.duration');
 
     Route::group([
         'as' => 'master.',
