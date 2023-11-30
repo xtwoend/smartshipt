@@ -18,6 +18,14 @@
                     <span class="menu-title">Home</span>
                   </a>
                 </li>
+                <li class="menu-item">
+                  <a href="{{route('overview.index')}}">
+                    <span class="menu-icon">
+                        <img src="{{asset('img/icons/report-barchart-svgrepo-com.png')}}" alt="" />
+                    </span>
+                    <span class="menu-title">Overview</span>
+                  </a>
+                </li>
                 <li class="menu-item sub-menu">
                   <a href="#">
                     <span class="menu-icon">

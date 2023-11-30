@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NaviController;
 use App\Http\Controllers\FleetController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\OverViewController;
 use App\Http\Controllers\TelegramBotController;
 
 /*
@@ -45,6 +46,8 @@ Route::group([
     Route::get('/fleet/{id}/alarms', [FleetController::class, 'alarms'])->name('fleet.alarms');
     Route::get('/fleet/{id}/emision', [FleetController::class, 'emision'])->name('fleet.emision');
     Route::get('/fleet/{id}/charter', [FleetController::class, 'charter'])->name('fleet.charter');
+
+    Route::get('/overview/mileage', [OverViewController::class, 'index'])->name('overview.index');
 
     Route::group([
         'as' => 'master.',
