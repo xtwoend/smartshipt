@@ -60,3 +60,11 @@ if(! function_exists('scaleBeafort')) {
         return $text;
     }
 }
+
+if( ! function_exists('secondsToTime')) {
+    function secondsToTime($seconds) {
+        $dtF = new \DateTime('@0');
+        $dtT = new \DateTime("@$seconds");
+        return $dtF->diff($dtT)->format('%a d, %h h, %i m, %s s');
+    }
+}
