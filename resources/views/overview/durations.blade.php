@@ -26,6 +26,7 @@
                         <th  class="align-middle text-center">No.</th>
                         <th>Fleet Name</th>
                         <th>IMO</th>
+                        <th>Seconds</th>
                         <th class="align-middle text-end">Duration</th>
                     </tr>
                     @php
@@ -36,6 +37,7 @@
                         <td class="align-middle text-center">{{ $no++ }}</td>
                         <td class="align-middle">{{ $f->fleet->name }}</td>
                         <td class="align-middle">{{ $f->fleet->imo_number }}</td>
+                        <td>{{ $f->seconds }}</td>
                         <td class="align-middle text-end">{{ gmdate("H:i:s", $f->seconds) }}</td>
                     </tr>
                     @endforeach
