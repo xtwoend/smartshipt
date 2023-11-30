@@ -71,10 +71,10 @@ class OverViewController extends Controller
         $fleets = FleetStatusDuration::with('fleet')->select(DB::raw('fleet_id, SUM(TIMESTAMPDIFF(SECOND, started_at, finished_at)) as seconds', 'fleet_id'))
             ->whereNotNull('finished_at')
             ->where('fleet_status', $status)
-            ->groupBy('fleet_id')
-            ->orderBy('seconds', 'desc')
             ->whereDate('started_at', '>=', $from)
             ->whereDate('started_at', '<=', $to)
+            ->groupBy('fleet_id')
+            ->orderBy('seconds', 'desc')
             ->get();
 
         return view('overview.durations', compact('fleets', 'status'));
