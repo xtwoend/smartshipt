@@ -25,7 +25,7 @@
         </a>
     </li>
     <li class="list-group-item">
-        <a href="{{ route('overview.duration', ['status' => 'anchorage']) }}">
+        <a href="{{ route('overview.duration', ['status' => 'at_anchorage']) }}">
             Duration Anchorage Overview
         </a>
     </li>
