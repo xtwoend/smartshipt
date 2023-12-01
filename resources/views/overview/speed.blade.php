@@ -17,8 +17,8 @@
                 </ol>
             </nav>
             <div class="nav-button">
-                <a href="{{ route('overview.index', ['type' => 'last-week']) }}" class="btn btn-default">Last week</a>
-                <a href="{{ route('overview.index', ['type' => 'last-month']) }}" class="btn btn-default">Last Month</a>
+                <a href="{{ route('overview.speed', ['type' => 'last-week']) }}" class="btn btn-default">Last week</a>
+                <a href="{{ route('overview.speed', ['type' => 'last-month']) }}" class="btn btn-default">Last Month</a>
             </div>
             <table class="table table-sm table-dark">
                 <tbody>
@@ -31,7 +31,7 @@
                     @php
                         $no = 1;
                     @endphp
-                    @foreach($fleets as $f)
+                    @foreach($fleets->sortBy([['speed', 'desc']])->values()->all() as $f)
                     <tr>
                         <td class="align-middle text-center">{{ $no++ }}</td>
                         <td class="align-middle">{{ $f->name }}</td>
