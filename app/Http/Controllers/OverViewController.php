@@ -46,16 +46,63 @@ class OverViewController extends Controller
      */
     public function speed(Request $request) 
     {
-        // $fleets = Fleet::whereIn('id', $fleetIds)->get();
+        $type = $request->input('type', 'last-week');
 
-        // $fleets->map(function($item) use ($rows) {
-        //     if($row) {
-        //         $item['speed'] = $row->avg;
-        //     }
-        // });
-        $fleets = [];
+        $from = ($type == 'last-month') ? Carbon::now()->subMonth()->format('Y-m-d') : Carbon::now()->subDays(7)->format('Y-m-d');
+        $to = Carbon::now()->format('Y-m-d');
+
+        $mileage = [];
+        $query = [];
+        foreach(Fleet::active()->get() as $fleet) {
+            $tableName = FleetDailyReport::table($fleet->id)->getTable();
+            if(! Schema::hasTable($tableName)) continue;
+            $query [] = "(SELECT fleet_id, AVG(after) as speed FROM {$tableName} WHERE {$tableName}.`date` BETWEEN '{$from}' AND '{$to}' AND {$tableName}.`sensor` = 'speed' GROUP BY  {$tableName}.`fleet_id`)";
+        }
+        $query = implode(' UNION ', $query);
+        $rows = collect(DB::select($query));
+        $fleetIds = $rows->pluck('fleet_id')->toArray();
+        $fleets = Fleet::whereIn('id', $fleetIds)->get();
+
+        $fleets->map(function($item) use ($rows) {
+            $row = $rows->where('fleet_id', $item->id)->first();
+            if($row) {
+                $item['speed'] = $row->speed;
+            }
+        });
 
         return view('overview.speed', compact('fleets'));
+    }
+
+    /**
+     * cargo percentage overview
+     */
+    public function cargo(Request $request) 
+    {
+        $type = $request->input('type', 'last-week');
+
+        $from = ($type == 'last-month') ? Carbon::now()->subMonth()->format('Y-m-d') : Carbon::now()->subDays(7)->format('Y-m-d');
+        $to = Carbon::now()->format('Y-m-d');
+
+        $mileage = [];
+        $query = [];
+        foreach(Fleet::active()->get() as $fleet) {
+            $tableName = FleetDailyReport::table($fleet->id)->getTable();
+            if(! Schema::hasTable($tableName)) continue;
+            $query [] = "(SELECT fleet_id, AVG(after) as capacity FROM {$tableName} WHERE {$tableName}.`date` BETWEEN '{$from}' AND '{$to}' AND {$tableName}.`sensor` = 'cargo_percentage' GROUP BY  {$tableName}.`fleet_id`)";
+        }
+        $query = implode(' UNION ', $query);
+        $rows = collect(DB::select($query));
+        $fleetIds = $rows->pluck('fleet_id')->toArray();
+        $fleets = Fleet::whereIn('id', $fleetIds)->get();
+
+        $fleets->map(function($item) use ($rows) {
+            $row = $rows->where('fleet_id', $item->id)->first();
+            if($row) {
+                $item['capacity'] = $row->capacity;
+            }
+        });
+
+        return view('overview.cargo', compact('fleets'));
     }
 
     /**

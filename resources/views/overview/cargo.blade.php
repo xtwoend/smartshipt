@@ -26,7 +26,7 @@
                         <th  class="align-middle text-center">No.</th>
                         <th>Fleet Name</th>
                         <th>IMO</th>
-                        <th class="align-middle text-end">Average Speed (knot)</th>
+                        <th class="align-middle text-end">Cargo Capacity (%)</th>
                     </tr>
                     @php
                         $no = 1;
@@ -36,7 +36,7 @@
                         <td class="align-middle text-center">{{ $no++ }}</td>
                         <td class="align-middle">{{ $f->name }}</td>
                         <td class="align-middle">{{ $f->imo_number }}</td>
-                        <td class="align-middle text-end">{{ number($f->speed) }} KNOT</td>
+                        <td class="align-middle text-end">{{ $f->capacity * 100 }} %</td>
                     </tr>
                     @endforeach
                 </tbody>

@@ -10,7 +10,7 @@
         </a>
     </li>
     <li class="list-group-item">
-        <a href="#">
+        <a href="{{ route('overview.cargo') }}">
             Percentage Cargo Overview
         </a>
     </li>

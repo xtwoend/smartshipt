@@ -49,6 +49,7 @@ Route::group([
 
     Route::get('/overview/mileage', [OverViewController::class, 'index'])->name('overview.index');
     Route::get('/overview/speed', [OverViewController::class, 'speed'])->name('overview.speed');
+    Route::get('/overview/cargo', [OverViewController::class, 'cargo'])->name('overview.cargo');
     Route::get('/overview/duration', [OverViewController::class, 'fleetStatus'])->name('overview.duration');
 
     Route::group([
