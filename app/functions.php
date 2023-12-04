@@ -64,10 +64,10 @@ if(! function_exists('scaleBeafort')) {
 
 if( ! function_exists('secondsToTime')) {
     function secondsToTime($seconds) {
-        if(is_string($seconds)) {
+        if($seconds == 0) {
             return $seconds;
         }
-        
+
         $dtF = new \DateTime('@0');
         $dtT = new \DateTime("@$seconds");
         return $dtF->diff($dtT)->format('%a days, %h hours, %i minutes and %s seconds');
