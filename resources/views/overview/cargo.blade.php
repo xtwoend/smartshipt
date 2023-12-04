@@ -36,7 +36,7 @@
                         <td class="align-middle text-center">{{ $no++ }}</td>
                         <td class="align-middle">{{ $f->name }}</td>
                         <td class="align-middle">{{ $f->imo_number }}</td>
-                        <td class="align-middle text-end">{{ number($f->capacity * 100) }} %</td>
+                        <td class="align-middle text-end">{{ is_string($f->capacity) ? $f->capacity : number($f->capacity * 100) }} %</td>
                     </tr>
                     @endforeach
                 </tbody>

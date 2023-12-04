@@ -135,7 +135,7 @@ class OverViewController extends Controller
         $fleets->map(function($item) use ($durations) {
             $row = $durations->where('fleet_id', $item->id)->first();
             if($row) {
-                $item['seconds'] = $row->seconds;
+                $item['seconds'] = (int) $row->seconds;
             }else{
                 $item['seconds'] = 'N/A';
             }

@@ -23,6 +23,7 @@ if(! function_exists('to_rad')) {
 
 if(! function_exists('number')) {
     function number($number) {
+        if(is_string($number)) return $number;
         return number_format($number, 2, ",",".");
     }
 }
@@ -63,6 +64,10 @@ if(! function_exists('scaleBeafort')) {
 
 if( ! function_exists('secondsToTime')) {
     function secondsToTime($seconds) {
+        if(is_string($seconds)) {
+            return $seconds;
+        }
+        
         $dtF = new \DateTime('@0');
         $dtT = new \DateTime("@$seconds");
         return $dtF->diff($dtT)->format('%a days, %h hours, %i minutes and %s seconds');
