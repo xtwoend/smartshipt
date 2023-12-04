@@ -137,7 +137,7 @@ class OverViewController extends Controller
             if($row) {
                 $item['seconds'] = (int) $row->seconds;
             }else{
-                $item['seconds'] = 'N/A';
+                $item['seconds'] = 0;
             }
         });
 
