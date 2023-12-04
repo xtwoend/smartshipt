@@ -29,12 +29,14 @@ class OverViewController extends Controller
         $query = implode(' UNION ', $query);
         $rows = collect(DB::select($query));
         $fleetIds = $rows->pluck('fleet_id')->toArray();
-        $fleets = Fleet::whereIn('id', $fleetIds)->get();
+        $fleets = Fleet::active()->get();
 
         $fleets->map(function($item) use ($rows) {
             $row = $rows->where('fleet_id', $item->id)->first();
             if($row) {
                 $item['mileage'] = $row->mileage;
+            }else{
+                $item['mileage'] = 'N/A';
             }
         });
 
@@ -61,12 +63,14 @@ class OverViewController extends Controller
         $query = implode(' UNION ', $query);
         $rows = collect(DB::select($query));
         $fleetIds = $rows->pluck('fleet_id')->toArray();
-        $fleets = Fleet::whereIn('id', $fleetIds)->get();
+        $fleets = Fleet::active()->get();
 
         $fleets->map(function($item) use ($rows) {
             $row = $rows->where('fleet_id', $item->id)->first();
             if($row) {
                 $item['speed'] = $row->speed;
+            }else{
+                $item['speed'] = 'N/A';
             }
         });
 
@@ -92,13 +96,15 @@ class OverViewController extends Controller
         }
         $query = implode(' UNION ', $query);
         $rows = collect(DB::select($query));
-        $fleetIds = $rows->pluck('fleet_id')->toArray();
-        $fleets = Fleet::whereIn('id', $fleetIds)->get();
+        // $fleetIds = $rows->pluck('fleet_id')->toArray();
+        $fleets = Fleet::active()->get();
 
         $fleets->map(function($item) use ($rows) {
             $row = $rows->where('fleet_id', $item->id)->first();
             if($row) {
                 $item['capacity'] = $row->capacity;
+            }else{
+                $item['capacity'] = 'N/A';
             }
         });
 
@@ -115,7 +121,7 @@ class OverViewController extends Controller
         $from = ($type == 'last-month') ? Carbon::now()->subMonth()->format('Y-m-d') : Carbon::now()->subDays(7)->format('Y-m-d');
         $to = Carbon::now()->format('Y-m-d');
 
-        $fleets = FleetStatusDuration::with('fleet')->select(DB::raw('fleet_id, SUM(TIMESTAMPDIFF(SECOND, started_at, finished_at)) as seconds', 'fleet_id'))
+        $durations = FleetStatusDuration::with('fleet')->select(DB::raw('fleet_id, SUM(TIMESTAMPDIFF(SECOND, started_at, finished_at)) as seconds'))
             ->whereNotNull('finished_at')
             ->where('fleet_status', $status)
             ->whereDate('started_at', '>=', $from)
@@ -123,6 +129,17 @@ class OverViewController extends Controller
             ->groupBy('fleet_id')
             ->orderBy('seconds', 'desc')
             ->get();
+
+        $fleets = Fleet::active()->get();
+
+        $fleets->map(function($item) use ($durations) {
+            $row = $durations->where('fleet_id', $item->id)->first();
+            if($row) {
+                $item['seconds'] = $row->seconds;
+            }else{
+                $item['seconds'] = 'N/A';
+            }
+        });
 
         return view('overview.durations', compact('fleets', 'status'));
     }

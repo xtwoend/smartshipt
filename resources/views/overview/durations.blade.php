@@ -32,11 +32,11 @@
                     @php
                         $no = 1;
                     @endphp
-                    @foreach($fleets as $f)
+                    @foreach($fleets->sortBy([['seconds', 'desc']])->values()->all() as $f)
                     <tr>
                         <td class="align-middle text-center">{{ $no++ }}</td>
-                        <td class="align-middle">{{ $f->fleet->name }}</td>
-                        <td class="align-middle">{{ $f->fleet->imo_number }}</td>
+                        <td class="align-middle">{{ $f->name }}</td>
+                        <td class="align-middle">{{ $f->imo_number }}</td>
                         {{-- <td>{{ $f->seconds }}</td> --}}
                         <td class="align-middle text-end">{{ secondsToTime($f->seconds) }}</td>
                     </tr>
