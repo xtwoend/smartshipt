@@ -13,13 +13,14 @@ class CreateAlarmReport
 {
     protected $fleet;
     protected $date;
+    protected $path;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($fleet, $date = null)
+    public function __construct($fleet, $date = null, $path = '/report')
     {
         $this->fleet = $fleet;
         $this->date = $date;
@@ -57,7 +58,7 @@ class CreateAlarmReport
         ];
 
         $alarms = Alarm::table($fleet->id)->whereBetween('started_at', [$from, $to])->latest()->get();
-        $filename = "/report/alarm-report-{$fleet->id}-{$date}.pdf";
+        $filename = $this->path . "/alarm-report-{$fleet->id}-{$date}.pdf";
 
         $pdf = Pdf::loadView('report.alarm-report', compact('fleet', 'navigation', 'avgSpeed', 'status', 'from', 'alarms'));
         $pdf->save(public_path($filename));

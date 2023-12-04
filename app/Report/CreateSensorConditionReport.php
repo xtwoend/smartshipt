@@ -14,13 +14,14 @@ class CreateSensorConditionReport
 {
     protected $fleet;
     protected $date;
+    protected $path;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($fleet, $date = null)
+    public function __construct($fleet, $date = null, $path = '/report')
     {
         $this->fleet = $fleet;
         $this->date = $date;
@@ -59,7 +60,7 @@ class CreateSensorConditionReport
 
         $sensors = Sensor::where('fleet_id', $fleet->id)->where('is_ams', 1)->orderBy('ordered', 'asc')->orderBy('id', 'asc')->get();
 
-        $filename = "/report/sensor-report-{$fleet->id}-{$date}.pdf";
+        $filename = $this->path . "/sensor-report-{$fleet->id}-{$date}.pdf";
 
         $pdf = Pdf::loadView('report.sensor-condition', compact('fleet', 'navigation', 'avgSpeed', 'status', 'from', 'sensors'));
         $pdf->save(public_path($filename));

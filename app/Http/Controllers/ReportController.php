@@ -15,7 +15,7 @@ class ReportController extends Controller
         $fleet = Fleet::findOrFail($id);
         $to = $request->input('to', Carbon::now()->format('Y-m-d H:i:s'));
 
-        $filename = (new CreateAlarmReport($fleet, $to))->handle();
+        $filename = (new CreateAlarmReport($fleet, $to, '/telegram'))->handle();
 
         // return $filename;
         return response()->download(public_path($filename));
