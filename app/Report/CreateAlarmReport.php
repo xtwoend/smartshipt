@@ -24,6 +24,7 @@ class CreateAlarmReport
     {
         $this->fleet = $fleet;
         $this->date = $date;
+        $this->path = $path;
     }
 
     /**
