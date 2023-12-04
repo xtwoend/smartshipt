@@ -36,7 +36,7 @@ class OverViewController extends Controller
             if($row) {
                 $item['mileage'] = $row->mileage;
             }else{
-                $item['mileage'] = 'N/A';
+                $item['mileage'] = -1;
             }
         });
 
@@ -70,7 +70,7 @@ class OverViewController extends Controller
             if($row) {
                 $item['speed'] = $row->speed;
             }else{
-                $item['speed'] = 'N/A';
+                $item['speed'] = -1;
             }
         });
 
@@ -104,7 +104,7 @@ class OverViewController extends Controller
             if($row) {
                 $item['capacity'] = $row->capacity;
             }else{
-                $item['capacity'] = 'N/A';
+                $item['capacity'] = -1;
             }
         });
 
@@ -137,7 +137,7 @@ class OverViewController extends Controller
             if($row) {
                 $item['seconds'] = (int) $row->seconds;
             }else{
-                $item['seconds'] = 0;
+                $item['seconds'] = -1;
             }
         });
 

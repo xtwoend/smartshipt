@@ -23,7 +23,7 @@ if(! function_exists('to_rad')) {
 
 if(! function_exists('number')) {
     function number($number) {
-        if(is_string($number)) return $number;
+        if($number < 0) return 'N/A';
         return number_format($number, 2, ",",".");
     }
 }
@@ -64,8 +64,8 @@ if(! function_exists('scaleBeafort')) {
 
 if( ! function_exists('secondsToTime')) {
     function secondsToTime($seconds) {
-        if($seconds == 0) {
-            return $seconds;
+        if($seconds < 0) {
+            return 0;
         }
 
         $dtF = new \DateTime('@0');
