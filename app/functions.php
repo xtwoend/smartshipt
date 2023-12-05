@@ -73,3 +73,13 @@ if( ! function_exists('secondsToTime')) {
         return $dtF->diff($dtT)->format('%a days, %h hours, %i minutes and %s seconds');
     }
 }
+
+if( ! function_exists('secondsToHours')) {
+    function secondsToHours($seconds) {
+        if($seconds < 0) {
+            return 0;
+        }
+
+        return number($seconds / 360);
+    }
+}

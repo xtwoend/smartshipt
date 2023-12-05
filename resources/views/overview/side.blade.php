@@ -30,6 +30,11 @@
         </a>
     </li>
     <li class="list-group-item">
+        <a href="{{ route('overview.duration', ['status' => 'other']) }}">
+            Duration Other Status Overview
+        </a>
+    </li>
+    <li class="list-group-item">
         <a href="{{ route('overview.duration', ['status' => 'lost_connection']) }}">
             Duration Lost Connection Overview
         </a>

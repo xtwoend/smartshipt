@@ -13,7 +13,7 @@
             <nav aria-label="breadcrumb" class="mb-3">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">Overview</li>
-                    <li class="breadcrumb-item active" aria-current="page">Durations</li>
+                    <li class="breadcrumb-item active" aria-current="page">Durations (Hours)</li>
                 </ol>
             </nav>
             <div class="nav-button">
@@ -38,7 +38,7 @@
                         <td class="align-middle">{{ $f->name }}</td>
                         <td class="align-middle">{{ $f->imo_number }}</td>
                         {{-- <td>{{ $f->seconds }}</td> --}}
-                        <td class="align-middle text-end">{{ secondsToTime($f->seconds) }}</td>
+                        <td class="align-middle text-end">{{ secondsToHours($f->seconds) }} Hours</td>
                     </tr>
                     @endforeach
                 </tbody>
