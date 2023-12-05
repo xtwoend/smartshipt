@@ -116,10 +116,18 @@ class OverViewController extends Controller
      */
     public function fleetStatus(Request $request) 
     {
+        
         $status = $request->input('status', 'at_port');
         $type = $request->input('type', 'last-week');
         $from = ($type == 'last-month') ? Carbon::now()->subMonth()->format('Y-m-d') : Carbon::now()->subDays(7)->format('Y-m-d');
         $to = Carbon::now()->format('Y-m-d');
+        $statusText = [
+            'at_port' => 'At Port',
+            'at_anchorage' => 'Anchorage',
+            'underway' => 'Underway',
+            'lost_connection' => 'Lost Connection',
+            'other' => 'Other'
+        ];
 
         $durations = FleetStatusDuration::with('fleet')->select(DB::raw('fleet_id, SUM(TIMESTAMPDIFF(SECOND, started_at, finished_at)) as seconds'))
             ->whereNotNull('finished_at')
@@ -140,6 +148,7 @@ class OverViewController extends Controller
                 $item['seconds'] = -1;
             }
         });
+
 
         return view('overview.durations', compact('fleets', 'status'));
     }
