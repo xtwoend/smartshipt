@@ -10,7 +10,7 @@
         
         return dl ?
             XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }):
-            XLSX.writeFile(wb, fn || ('duration.' + (type || 'xlsx')));
+            XLSX.writeFile(wb, fn || ('duration-{{ $statusText }}. '  + (type || 'xlsx')));
     }
 </script>
 @endsection
@@ -29,7 +29,7 @@
             <nav aria-label="breadcrumb" class="mb-3">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">Overview</li>
-                    <li class="breadcrumb-item active" aria-current="page">Durations (Hours)</li>
+                    <li class="breadcrumb-item active" aria-current="page">Durations {{ $statusText }} (Hours)</li>
                 </ol>
             </nav>
             <div class="nav-button">
