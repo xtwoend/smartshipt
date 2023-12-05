@@ -37,7 +37,7 @@
                 <a href="{{ route('overview.speed', ['type' => 'last-week']) }}" class="btn btn-default">Last week</a>
                 <a href="{{ route('overview.speed', ['type' => 'last-month']) }}" class="btn btn-default">Last Month</a>
 
-                <button onclick="ExportToExcel('xlsx')" class="btn btn-primary right">Download</button>
+                <button onclick="ExportToExcel('xlsx')" class="btn btn-primary float-end">Download</button>
             </div>
             <table class="table table-sm table-dark" id="report-xls">
                 <tbody>
