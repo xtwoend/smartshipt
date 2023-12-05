@@ -1,5 +1,20 @@
 @extends('layouts.dash')
 
+@section('js')
+<!-- use version 0.20.0 -->
+<script lang="javascript" src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js"></script>
+<script>
+    function ExportToExcel(type, fn, dl) {
+        var elt = document.getElementById('report-xls');
+        var wb = XLSX.utils.table_to_book(elt, { sheet: "overview" });
+        
+        return dl ?
+            XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }):
+            XLSX.writeFile(wb, fn || ('MySheetName.' + (type || 'xlsx')));
+    }
+</script>
+@endsection
+
 @section('content')
 <main class="content full fixed">
     <div class="d-flex content-scrolled">
@@ -19,8 +34,10 @@
             <div class="nav-button">
                 <a href="{{ route('overview.cargo', ['type' => 'last-week']) }}" class="btn btn-default">Last week</a>
                 <a href="{{ route('overview.cargo', ['type' => 'last-month']) }}" class="btn btn-default">Last Month</a>
+
+                <button onclick="ExportToExcel('xlsx')" class="btn btn-primary right">Download</button>
             </div>
-            <table class="table table-sm table-dark">
+            <table class="table table-sm table-dark" id="report-xls">
                 <tbody>
                     <tr>
                         <th  class="align-middle text-center">No.</th>

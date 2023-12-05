@@ -44,5 +44,6 @@
         @include('layouts.partials.footer')
     </div>
 </div>
+@yield('js')
 </body>
 </html>
