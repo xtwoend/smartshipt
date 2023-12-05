@@ -11,7 +11,7 @@
         
         return dl ?
             XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }):
-            XLSX.writeFile(wb, fn || ('MySheetName.' + (type || 'xlsx')));
+            XLSX.writeFile(wb, fn || ('mileage-overview.' + (type || 'xlsx')));
     }
 </script>
 @endsection

@@ -10,7 +10,7 @@
         
         return dl ?
             XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }):
-            XLSX.writeFile(wb, fn || ('MySheetName.' + (type || 'xlsx')));
+            XLSX.writeFile(wb, fn || ('duration.' + (type || 'xlsx')));
     }
 </script>
 @endsection
