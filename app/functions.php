@@ -80,6 +80,6 @@ if( ! function_exists('secondsToHours')) {
             return 0;
         }
 
-        return number($seconds / 360);
+        return number($seconds / 3600);
     }
 }
