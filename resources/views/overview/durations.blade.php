@@ -32,11 +32,15 @@
                     <li class="breadcrumb-item active" aria-current="page">Durations {{ $statusText }} (Hours)</li>
                 </ol>
             </nav>
-            <div class="nav-button">
-                <a href="{{ route('overview.duration', ['status' => $status, 'type' => 'last-week']) }}" class="btn btn-default">Last week</a>
-                <a href="{{ route('overview.duration', ['status' => $status, 'type' => 'last-month']) }}" class="btn btn-default">Last Month</a>
-
-                <button onclick="ExportToExcel('xlsx')" class="btn btn-primary float-end">Download</button>
+            <div class="nav-button d-flex justify-content-between py-2">
+                <form method="GET" class="d-flex justify-content-start">
+                    <a href="{{ route('overview.duration', ['status' => $status, 'type' => 'last-week']) }}" class="btn btn-default me-2">Last week</a>
+                    <a href="{{ route('overview.duration', ['status' => $status, 'type' => 'last-month']) }}" class="btn btn-default me-2">Last Month</a>
+                    <date-range from="{{ request()->input('from', null) }}" to="{{ request()->input('to', null) }}"></date-range>
+                    <input type="hidden" name="status" value="{{ $status }}">
+                    <button class="ms-2 btn btn-primary" type="submit"><i class="fa fa-filter me-2"></i> Filters</button>
+                </form>
+                <button onclick="ExportToExcel('xlsx')" class="btn btn-primary float-end"><i class="fa fa-cloud-download me-2" aria-hidden="true"></i> Download</button>
             </div>
             <table class="table table-sm table-dark" id="report-xls">
                 <tbody>

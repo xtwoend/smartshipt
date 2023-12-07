@@ -15,9 +15,16 @@ class OverViewController extends Controller
     public function index(Request $request) 
     {
         $type = $request->input('type', 'last-week');
-
+        
         $from = ($type == 'last-month') ? Carbon::now()->subMonth()->format('Y-m-d') : Carbon::now()->subDays(7)->format('Y-m-d');
         $to = Carbon::now()->format('Y-m-d');
+
+        if($request->has('from')) {
+            $from = $request->input('from');
+        }
+        if($request->has('to')) {
+            $to = $request->input('to');
+        }
 
         $mileage = [];
         $query = [];
@@ -53,6 +60,13 @@ class OverViewController extends Controller
         $from = ($type == 'last-month') ? Carbon::now()->subMonth()->format('Y-m-d') : Carbon::now()->subDays(7)->format('Y-m-d');
         $to = Carbon::now()->format('Y-m-d');
 
+        if($request->has('from')) {
+            $from = $request->input('from');
+        }
+        if($request->has('to')) {
+            $to = $request->input('to');
+        }
+
         $mileage = [];
         $query = [];
         foreach(Fleet::active()->get() as $fleet) {
@@ -86,6 +100,13 @@ class OverViewController extends Controller
 
         $from = ($type == 'last-month') ? Carbon::now()->subMonth()->format('Y-m-d') : Carbon::now()->subDays(7)->format('Y-m-d');
         $to = Carbon::now()->format('Y-m-d');
+
+        if($request->has('from')) {
+            $from = $request->input('from');
+        }
+        if($request->has('to')) {
+            $to = $request->input('to');
+        }
 
         $mileage = [];
         $query = [];
@@ -121,6 +142,14 @@ class OverViewController extends Controller
         $type = $request->input('type', 'last-week');
         $from = ($type == 'last-month') ? Carbon::now()->subMonth()->format('Y-m-d') : Carbon::now()->subDays(7)->format('Y-m-d');
         $to = Carbon::now()->format('Y-m-d');
+
+        if($request->has('from')) {
+            $from = $request->input('from');
+        }
+        if($request->has('to')) {
+            $to = $request->input('to');
+        }
+        
         $arrayStatusText = [
             'at_port' => 'At Port',
             'at_anchorage' => 'Anchorage',

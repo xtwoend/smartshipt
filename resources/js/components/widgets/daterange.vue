@@ -2,31 +2,38 @@
     <date-range-picker
             ref="picker"
             v-model="dateRange"
+            auto-apply
+            @update:modelValue="updatePicker"
             :dateRange="dateRange"
             :locale-data="locale"
-            timePicker
-            timePicker24Hour
-            @update="updatePicker"
-            @select="updatePicker"
+            format="DD/MM/YYYY"
     >
-        <template v-slot:input="picker" style="min-width: 350px;">
-            {{ $filters.dateformat(picker.startDate) }} - {{ $filters.dateformat(picker.endDate) }}
-        </template>
+        <!-- <template v-slot:input="picker" style="min-width: 350px;">
+            {{ $filters.dateformat(picker.startDate, 'DD/MM/YYYY') }} - {{ $filters.dateformat(picker.endDate, 'DD/MM/YYYY') }}
+        </template> -->
     </date-range-picker>
+    <input type="hidden" name="from" v-model="localFrom">
+    <input type="hidden" name="to" v-model="localTo">
 </template>
 
 <script>
 import moment from 'moment';
 import DateRangePicker from 'vue3-daterange-picker'
-var d = new Date()
+
 export default {
     name: 'DateRange',
     components: { DateRangePicker },
+    props: {
+        from: String,
+        to: String,
+    },
     data() {
         return {
+            localFrom:  this.from ? moment(Date.parse(this.from)).format('YYYY-MM-DD') : moment(new Date()).format('YYYY-MM-DD'),
+            localTo: this.to ? moment(Date.parse(this.to)).format('YYYY-MM-DD') : moment(new Date()).format('YYYY-MM-DD'),
             dateRange: {
-                startDate: new Date(),
-                endDate: new Date(),
+                startDate: this.from ? Date.parse(this.from) : new Date(),
+                endDate: this.to ? Date.parse(this.to) : new Date(),
             },
             locale: {
                 direction: 'ltr', //direction of text
@@ -43,7 +50,8 @@ export default {
     },
     methods: {
         updatePicker(e) {
-            this.$emit('selected', e)
+            this.localFrom = moment(e.startDate).format('YYYY-MM-DD');
+            this.localTo = moment(e.endDate).format('YYYY-MM-DD');
         }
     }
 }

@@ -27,7 +27,7 @@
     "src": "public/remixicon/remixicon.woff2"
   },
   "resources/js/app.css": {
-    "file": "assets/app-2069b28f.css",
+    "file": "assets/app-cc5e4c2b.css",
     "src": "resources/js/app.css"
   },
   "resources/js/app.js": {
@@ -40,9 +40,9 @@
       "assets/ship-c94d8078.png"
     ],
     "css": [
-      "assets/app-2069b28f.css"
+      "assets/app-cc5e4c2b.css"
     ],
-    "file": "assets/app-84295b72.js",
+    "file": "assets/app-37fbfd81.js",
     "imports": [
       "resources/tabler/src/js/tabler.esm.js",
       "_popper-528ebbd5.js"

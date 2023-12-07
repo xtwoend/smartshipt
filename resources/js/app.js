@@ -10,11 +10,10 @@ import moment from 'moment';
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
-import VueDatePicker from '@vuepic/vue-datepicker';
-import '@vuepic/vue-datepicker/dist/main.css';
-
 import Donut from 'vue-css-donut-chart';
 import 'vue-css-donut-chart/dist/vcdonut.css';
+
+
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
  * registering components with the application instance so they are ready
@@ -25,7 +24,6 @@ const app = createApp({});
 
 app.use(Donut);
 app.use(VueSweetalert2);
-app.component('VueDatePicker', VueDatePicker);
 
 import MapDashboard from './components/maps/dashboard.vue';
 app.component('map-dashboard', MapDashboard);
@@ -56,6 +54,9 @@ app.component('charts-graph', ChartGraph);
 
 import ChartSpline from './components/charts/spline.vue';
 app.component('charts-spline', ChartSpline);
+
+import DateRange from './components/widgets/daterange.vue';
+app.component('date-range', DateRange);
 
 // import Speedometer from './components/charts/speedo.vue';
 // app.component('speedometer', Speedometer);
