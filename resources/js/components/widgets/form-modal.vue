@@ -14,6 +14,12 @@
                                 <option :value="option" v-for="(option, inx) in field.options" :key="inx">{{ option }}</option>
                             </select>
                         </div>
+                        <template v-else-if="field.editType == 'selectKeyVal'">
+                            <label class="form-label">{{ field.name }}</label>
+                            <select v-model="data[field.field]" class="form-select">
+                                <option :value="idx" v-for="(val, idx) in field.options" :key="idx">{{ val }}</option>
+                            </select>
+                        </template>
                         <div v-else class="mb-2">
                             <label class="form-label">{{ field.name }}</label>
                             <input type="text" class="form-control" v-model="data[field.field]"/>

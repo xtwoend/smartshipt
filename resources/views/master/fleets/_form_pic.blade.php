@@ -23,7 +23,7 @@
             // options: {{ json_encode(['cc', 'bcc']) }}
         },
         {
-            name: 'Primary Email',
+            name: 'Is Primary Email',
             field: 'primary',
             editable: true,
             editType: 'selectKeyVal',
