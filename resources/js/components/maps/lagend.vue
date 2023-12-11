@@ -12,7 +12,7 @@
                     </vc-donut>
                 </div>
                 <div class="col-7">
-                    <div v-for="f in fleetsGroup" :key="f.label"><img :src="f.img"> {{ f.name }} ({{ f.value  }}) </div>
+                    <div class="pointer" v-for="f in fleetsGroup" :key="f.label" @click="doFilter(f)"><img :src="f.img"> {{ f.name }} ({{ f.value  }}) </div>
                 </div>
             </div>
         </div>
@@ -66,7 +66,9 @@ export default {
         }
     },
     methods: {
-        
+        doFilter(e) {
+            this.$emit('filters', e)
+        }
     }
 }
 </script>

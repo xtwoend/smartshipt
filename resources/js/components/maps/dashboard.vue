@@ -14,7 +14,7 @@
         <!-- <x-notification></x-notification> -->
         <!-- <x-parameter></x-parameter> -->
         <div class="pointer-info" ref="pointerInfo"></div>
-        <x-legend :fleets="fleets"></x-legend>
+        <x-legend :fleets="fleets" @filters="doFilter"></x-legend>
         <MapboxMap
             @mb-created="(mapboxInstance) => map = mapboxInstance"
             @mb-load="loaded"
@@ -50,8 +50,7 @@ import redShip from '../icon/red.png';
 import yellowShip from '../icon/yellow.png';
 import purpleShip from '../icon/purple.png';
 import fleetLegend from './lagend.vue';
-
-import fleetTable from './fleet-table.vue';
+import fleetTable from './fleet_table.vue';
 
 // import  * as interpolate from 'interpolateheatmaplayer';
 
@@ -288,7 +287,10 @@ export default {
         },
         buildTrack(e) {
             console.log(e)
-        }   
+        },
+        doFilter(e) {
+            console.log(e)
+        }  
     }
 }
 </script>
