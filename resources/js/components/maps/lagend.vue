@@ -5,7 +5,7 @@
                 <div class="title">Fleets Information</div>
             </div>
             <div class="card-body row">
-                <div class="col-5">
+                <div class="col-5 pointer" @click="doFilter({label: 'all'})">
                     <vc-donut v-if="fleets" :size="100" :sections="fleetsGroup" unit="%" :total="fleets.length" :auto-adjust-text-size="true">
                         <div class="fleet-count">{{ fleets.length }}</div>
                         Vessels

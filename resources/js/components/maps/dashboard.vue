@@ -91,7 +91,8 @@ export default {
                 type: 'FeatureCollection',
                 features: []
             },
-            fleetsGroup: []
+            fleetsGroup: [],
+            filters: {}
         }
     },
     mounted(){
@@ -117,7 +118,7 @@ export default {
     // },
     methods: {
         async fetchData() {
-            let {data} = await axios.get('/api/fleets')
+            let {data} = await axios.get('/api/fleets', { params: this.filters })
             
             this.fleets = data;
             this.fleets_point.features = [];
@@ -289,7 +290,8 @@ export default {
             console.log(e)
         },
         doFilter(e) {
-            console.log(e)
+            this.filters.fleet_status = e.label;
+            this.refreshData()
         }  
     }
 }

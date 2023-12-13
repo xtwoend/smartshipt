@@ -15,6 +15,9 @@ class FleetController extends Controller
         if($request->has('q')){
             $fleets = $fleets->where('name', $request->q);
         }
+        if($request->has('fleet_status') && $request->fleet_status !== 'all') {
+            $fleets = $fleets->where('fleet_status', $request->fleet_status);
+        }
         $fleets = $fleets->get();
 
         return response()->json(FleetResource::collection($fleets));
