@@ -10,8 +10,9 @@
                 </div>
                 <div class="col-6">
                     <div class="d-flex align-items-center justify-content-end gap-1">
-                        <VueDatePicker v-model="params.from"></VueDatePicker>
-                        <VueDatePicker v-model="params.to"></VueDatePicker>
+                        <!-- <VueDatePicker v-model="params.from"></VueDatePicker>
+                        <VueDatePicker v-model="params.to"></VueDatePicker> -->
+                        <date-range :from="params.from" :to="params.to" @change="updateDate"></date-range>
                         <select class="form-control w-5 bordered" v-model="params.interval">
                             <option value="5">5m</option>
                             <option value="30">30m</option>
@@ -125,6 +126,10 @@ export default {
         selected(e) {
             this.items = e
             this.showChart()
+        },
+        updateDate(e) {
+            this.params.from = e.from
+            this.params.to = e.to
         },
         async showChart() {
             

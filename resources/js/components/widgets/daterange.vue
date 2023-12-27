@@ -52,6 +52,7 @@ export default {
         updatePicker(e) {
             this.localFrom = moment(e.startDate).format('YYYY-MM-DD');
             this.localTo = moment(e.endDate).format('YYYY-MM-DD');
+            this.$emit('change', {from: this.localFrom, to: this.localTo})
         }
     }
 }
