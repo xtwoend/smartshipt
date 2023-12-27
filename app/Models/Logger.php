@@ -24,11 +24,11 @@ class Logger extends Model
         return $this->belongsTo(Fleet::class, 'fleet_id');
     }
     
-    public static function table($fleetId, $date = null)
+    public static function table($fleetId)
     {
-        $date = is_null($date) ? date('Ym'): Carbon::parse($date)->format('Ym');
+        // $date = is_null($date) ? date('Ym'): Carbon::parse($date)->format('Ym');
         $model = new self;
-        $tableName = $model->getTable() . "_{$fleetId}_{$date}";
+        $tableName = $model->getTable() . "_{$fleetId}";
         
         if(! Schema::hasTable($tableName)) {
             Schema::create($tableName, function (Blueprint $table) {
