@@ -106,13 +106,15 @@ export default {
         }
     },
     async mounted() {
-        this.socket = io(this.socketConfig.url, {transports: ["websocket"] });
-        this.socket.on('connect', () => this.connected = true);
-        this.socket.on('disconnect', () => this.connected = false);
-        this.socket.emit('subscribe', `fleet-${this.fleet.id}`);
-        this.socket.on(this.socketConfig.event, this.onMessage);
+        // this.socket = io(this.socketConfig.url, {transports: ["websocket"] });
+        // this.socket.on('connect', () => this.connected = true);
+        // this.socket.on('disconnect', () => this.connected = false);
+        // this.socket.emit('subscribe', `fleet-${this.fleet.id}`);
+        // this.socket.on(this.socketConfig.event, this.onMessage);
 
         this.defColumns = await _.sampleSize(this.columns, 3)
+
+        setInterval(() => this.fetchData(), 5 * 1000)
 
         await this.showChart()
     },
@@ -133,6 +135,20 @@ export default {
                 this.options.series[index].data.push([time, dt]);
             })
             
+        },
+        async fetchData() {
+            let row = await axios.get(this.url).then(res => res.data);
+            let time = parseInt((new Date(row.terminal_time).getTime()).toFixed(0)); //row.unix_time;
+            // add el
+            this.options.series.forEach((s, index) => {
+                // remove first el
+                if(this.options.series[index].data.length > 100) {
+                    this.options.series[index].data.shift();
+                }
+                
+                let dt = row[s.row];
+                this.options.series[index].data.push([time, dt]);
+            })
         },
         async showChart() {
             
@@ -187,15 +203,20 @@ export default {
             this.options.yAxis = label;
             this.params.select = select;
 
-            let res = await axios.get(this.url).then(res => res.data);
-            
-            res.forEach(row => {
-                let time = parseInt((new Date(row.terminal_time).getTime()).toFixed(0)); //row.unix_time;
+            let row = await axios.get(this.url).then(res => res.data);
+            let time = parseInt((new Date(row.terminal_time).getTime()).toFixed(0)); //row.unix_time;
                 this.options.series.forEach((s, index) => {
-                    let dt = parseFloat(row.data[s.row]);
+                    let dt = parseFloat(row[s.row]);
                     this.options.series[index].data.push([time, dt]);
-                })
             })
+
+            // res.forEach(row => {
+            //     let time = parseInt((new Date(row.terminal_time).getTime()).toFixed(0)); //row.unix_time;
+            //     this.options.series.forEach((s, index) => {
+            //         let dt = parseFloat(row.data[s.row]);
+            //         this.options.series[index].data.push([time, dt]);
+            //     })
+            // })
 
             this.$refs.chart.chart.hideLoading();
         }
