@@ -22,7 +22,8 @@
             <data-info url="{{ route('api.fleet.engine.current', $fleet->id) }}" :mapping="{{ json_encode($fleet->trendOptions('fuel')) }}"></data-info>
             <trend-live 
                 title="Trend Live Bunker"
-                url="{{ route('api.fleet.logger', ['id' => $fleet->id, 'group'=> 'engine']) }}" 
+                url="{{ route('api.fleet.engine.current', $fleet->id) }}"
+                {{-- url="{{ route('api.fleet.logger', ['id' => $fleet->id, 'group'=> 'engine']) }}"  --}}
                 :fleet="{{ json_encode($fleet) }}"
                 :socket-config="{ url: '{{ config('websocket.url') }}', event: 'engine_{{ $fleet->id }}'}"
                 :columns="{{ json_encode($fleet->trendOptions('fuel')) }}">
@@ -34,7 +35,8 @@
             <data-info url="{{ route('api.fleet.cargo.current', $fleet->id) }}" :mapping="{{ json_encode($fleet->trendOptions('fuel')) }}"></data-info>
             <trend-live 
                 title="Trend Live Bunker"
-                url="{{ route('api.fleet.logger', ['id' => $fleet->id, 'group'=> 'cargo']) }}" 
+                url="{{ route('api.fleet.cargo.current', $fleet->id) }}"
+                {{-- url="{{ route('api.fleet.logger', ['id' => $fleet->id, 'group'=> 'cargo']) }}"  --}}
                 :fleet="{{ json_encode($fleet) }}"
                 :socket-config="{ url: '{{ config('websocket.url') }}', event: 'cargo_{{ $fleet->id }}'}"
                 :columns="{{ json_encode($fleet->trendOptions('fuel')) }}">

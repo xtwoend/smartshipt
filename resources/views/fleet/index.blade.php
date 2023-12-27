@@ -16,7 +16,8 @@
             <div class="col">
                 <trend-live 
                     title="Trend Live"
-                    url="{{ route('api.fleet.logger', ['id' => $fleet->id, 'group'=> 'navigation']) }}" 
+                    url="{{ route('api.fleet', $fleet->id) }}"
+                    {{-- url="{{ route('api.fleet.logger', ['id' => $fleet->id, 'group'=> 'navigation']) }}"  --}}
                     :fleet="{{ json_encode($fleet) }}"
                     :socket-config="{ url: '{{ config('websocket.url') }}', event: 'navigation_{{ $fleet->id }}'}"
                     :columns="{{ json_encode([

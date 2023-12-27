@@ -42,6 +42,7 @@ Route::group([
 ], function (){
 
     Route::get('/{id}/nav/trend', [NavController::class, 'trend'])->name('nav.trend');
+    Route::get('/{id}/nav/current', [NavController::class, 'currentNav'])->name('nav.current');
     Route::get('/{id}/engine/trend', [EngineController::class, 'trend'])->name('engine.trend');
     Route::get('/{id}/engine/current', [EngineController::class, 'currentEngine'])->name('engine.current');
     Route::get('/{id}/pumps/trend', [PumpController::class, 'trend'])->name('pumps.trend');

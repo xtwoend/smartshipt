@@ -103,4 +103,10 @@ class NavController extends Controller
 
         return response()->json($rows);
     }
+
+    public function currentNav($id) 
+    {
+        $fleet = Fleet::findOrFail($id);
+        return response()->json($fleet->navigation, 200);
+    }
 }

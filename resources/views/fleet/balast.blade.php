@@ -22,7 +22,8 @@
 
             <trend-live 
                 title="Trend Live Ballast"
-                url="{{ route('api.fleet.logger', ['id' => $fleet->id, 'group'=> 'cargo']) }}" 
+                url="{{ route('api.fleet.cargo.current', $fleet->id) }}"
+                {{-- url="{{ route('api.fleet.logger', ['id' => $fleet->id, 'group'=> 'cargo']) }}"  --}}
                 :fleet="{{ json_encode($fleet) }}"
                 :socket-config="{ url: '{{ config('websocket.url') }}', event: 'cargo_{{ $fleet->id }}'}"
                 :columns="{{ json_encode($fleet->trendOptions('ballast')) }}">
