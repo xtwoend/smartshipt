@@ -55,6 +55,8 @@ class Engine extends Model
         $rpm_attributes = config('defines.rpm');
         $attributeName = isset($rpm_attributes[$this->attributes['fleet_id']]) ? $rpm_attributes[$this->attributes['fleet_id']] : null;
 
-        return ($attributeName) ? $this->attributes[$attributeName] : 'NOT AVAILABLE';
+        return ($attributeName) ? 
+                    $this->attributes[$attributeName] ?: 'NOT AVAILABLE' 
+                    : 'NOT AVAILABLE';
     }
 }
