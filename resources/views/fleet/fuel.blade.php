@@ -13,22 +13,7 @@
             {{-- @if(strtoupper($fleet->type) == 'M')
             <fleet-bunker url="{{ route('api.fleet', $fleet->id) }}"></fleet-bunker>
             @endif --}}
-            @if(in_array($fleet->id, [10]))
             
-            @if($mimic = $fleet->mimic()->where('group', 'fuel')->first())
-                <fleet-mimic svg-path="/{{ $mimic->path }}" url="{{ route('api.fleet.engine.current', $fleet->id) }}" group="fuel"></fleet-mimic>
-            @endif
-
-            <data-info url="{{ route('api.fleet.engine.current', $fleet->id) }}" :mapping="{{ json_encode($fleet->trendOptions('fuel')) }}"></data-info>
-            <trend-live 
-                title="Trend Live Bunker"
-                url="{{ route('api.fleet.engine.current', $fleet->id) }}"
-                {{-- url="{{ route('api.fleet.logger', ['id' => $fleet->id, 'group'=> 'engine']) }}"  --}}
-                :fleet="{{ json_encode($fleet) }}"
-                :socket-config="{ url: '{{ config('websocket.url') }}', event: 'engine_{{ $fleet->id }}'}"
-                :columns="{{ json_encode($fleet->trendOptions('fuel')) }}">
-            </trend-live>
-            @else
             @if($mimic = $fleet->mimic()->where('group', 'fuel')->first())
                 <fleet-mimic svg-path="/{{ $mimic->path }}" url="{{ route('api.fleet.cargo.current', $fleet->id) }}" group="fuel"></fleet-mimic>
             @endif
@@ -41,7 +26,6 @@
                 :socket-config="{ url: '{{ config('websocket.url') }}', event: 'cargo_{{ $fleet->id }}'}"
                 :columns="{{ json_encode($fleet->trendOptions('fuel')) }}">
             </trend-live>
-            @endif
             
             <trend-view 
                     title="Trend View Bunker"
