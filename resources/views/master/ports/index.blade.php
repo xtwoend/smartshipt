@@ -8,9 +8,11 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
                         <span>Port List</span>
+                        @can('Port Manage')
                         <div class="float-end">
                             <a href="{{ route('master.ports.create') }}" class="btn btn-info">Add New Port</a>
                         </div>
+                        @endcan
                     </div>
 
                     <div class="card-body">
@@ -21,7 +23,9 @@
                                 <th>Location</th>
                                 <th>Latitude</th>
                                 <th>Longitude</th>
+                                @can('Port Manage')
                                 <th>Action</th>
+                                @endcan
                             </tr>
                             </thead>
                             <tbody>
@@ -31,6 +35,7 @@
                                 <td>{{$data->location}}</td>
                                 <td>{{$data->lat}}</td>
                                 <td>{{$data->lng}}</td>
+                                @can('Port Manage')
                                 <td>
                                     <div class="d-flex flex-row">
                                         <a href="{{ route('master.ports.edit', $data->id) }}" class="btn btn-success btn-sm">Edit Data</a>
@@ -41,6 +46,7 @@
                                         </form>
                                     </div>
                                 </td>
+                                @endcan
                             </tr>
                             @endforeach
                             </tbody>

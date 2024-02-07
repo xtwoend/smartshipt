@@ -59,9 +59,11 @@ Route::group([
         Route::resource('fleets', \App\Http\Controllers\Master\FleetController::class);
         Route::group(['as' => 'fleets.', 'prefix' => 'fleets', 'controller' => \App\Http\Controllers\Master\FleetController::class], function(){
             
-            Route::get('{id}/pic', 'pic')->name('pic');
-            Route::post('{id}/pic/update', 'picUpdate')->name('pic.update');
-            Route::delete('pic/delete/{id}', 'picDelete')->name('pic.delete');
+            Route::group(['middleware' => ['can:publish articles']], function(){
+                Route::get('{id}/pic', 'pic')->name('pic')->middleware();
+                Route::post('{id}/pic/update', 'picUpdate')->name('pic.update');
+                Route::delete('pic/delete/{id}', 'picDelete')->name('pic.delete');
+            });
 
             Route::get('{id}/edit-cargo-information','editCargo')->name('editCargo');
             Route::put('{id}/update-cargo-information', 'updateCargo')->name('updateCargo');
@@ -80,6 +82,8 @@ Route::group([
             Route::post('{id}/update-permission', 'updateUserPermission')->name('permission.update');
         });
 
+        Route::get('roles/json', [\App\Http\Controllers\Master\RoleController::class, 'json'])->name('roles.json');
+        Route::resource('roles', \App\Http\Controllers\Master\RoleController::class);
         Route::get('permission/json', [\App\Http\Controllers\Master\PermissionController::class, 'json'])->name('permission.json');
         Route::resource('permission', \App\Http\Controllers\Master\PermissionController::class);
         Route::resource('users', \App\Http\Controllers\Master\UserController::class);

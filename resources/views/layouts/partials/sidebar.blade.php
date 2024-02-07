@@ -105,6 +105,13 @@
                                     <span class="menu-title">List User</span>
                                 </a>
                             </li>
+                            {{-- <li class="menu-item">
+                              <a href="{{ route('master.roles.index') }}">
+                                  <span class="menu-icon">
+                                  </span>
+                                  <span class="menu-title">List Roles</span>
+                              </a>
+                            </li> --}}
                             <li class="menu-item">
                                 <a href="{{ route('master.permission.index') }}">
                                     <span class="menu-icon">

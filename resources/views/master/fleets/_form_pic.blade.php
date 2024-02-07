@@ -37,4 +37,7 @@
     :data="{{ json_encode($data->pic) }}"
     edit-url="{{ route('master.fleets.pic.update', $data->id) }}"
     del-url="/master/fleets/pic/delete"
+    @can('Fleet PIC Manage')
+    editable
+    @endcan
 ></table-editable>

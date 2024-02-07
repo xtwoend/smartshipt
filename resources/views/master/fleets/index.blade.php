@@ -8,9 +8,11 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
                         <span>Fleet List</span>
+                        @can('Fleet Manage')
                         <div class="float-end">
                             <a href="{{ route('master.fleets.create') }}" class="btn btn-info">Create New Fleet</a>
                         </div>
+                        @endcan
                     </div>
 
                     <div class="card-body">

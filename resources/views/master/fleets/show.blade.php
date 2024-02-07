@@ -23,6 +23,7 @@
                                 <li class="nav-item">
                                     <a href="#bunker" class="nav-link" data-bs-toggle="tab">Bunker</a>
                                 </li>
+                                @can('Fleet Threshold Sensor Setting')
                                 <li class="nav-item">
                                     <a href="#navigation" class="nav-link" data-bs-toggle="tab">Navigation Sensor</a>
                                 </li>
@@ -47,14 +48,17 @@
                                 <li class="nav-item">
                                     <a href="#draft" class="nav-link" data-bs-toggle="tab">Draft Sensor</a>
                                 </li>
+                                @endcan
                             </ul>
                         </div>
                         <div class="card-body">
                             <div class="tab-content">
                                 <div class="tab-pane active show" id="info">
+                                    @can('Fleet Manage')
                                     <div class="action-edit">
                                         <a href="{{ route('master.fleets.edit', $data->id) }}" class="btn btn-info">Edit Master Data</a>
                                     </div>
+                                    @endcan
                                     {!! Form::model($data, ['route' => ['master.fleets.index'], 'method' => 'PUT']) !!}
                                     @include('master.fleets._form', ['disabled' => 'disabled'])
                                     {!! Form::close() !!}
@@ -65,17 +69,21 @@
                                     {!! Form::close() !!}
                                 </div>
                                 <div class="tab-pane" id="cargo">
+                                    @can('Fleet Manage')
                                     <div class="action-edit">
                                         <a href="{{ route('master.fleets.editCargo', $data->id) }}" class="btn btn-info">Edit Cargo Data</a>
                                     </div>
+                                    @endcan
                                     {!! Form::model($data->cargo_information, ['route' => ['master.fleets.index'], 'method' => 'PUT']) !!}
                                     @include('master.fleets._form_cargo', ['disabled' => 'disabled'])
                                     {!! Form::close() !!}
                                 </div>
                                 <div class="tab-pane" id="bunker">
+                                    @can('Fleet Manage')
                                     <div class="action-edit">
                                         <a href="{{ route('master.fleets.editBunker', $data->id) }}" class="btn btn-info">Edit Bunker Data</a>
                                     </div>
+                                    @endcan
                                     {!! Form::model($data->bunker_information, ['route' => ['master.fleets.index'], 'method' => 'PUT']) !!}
                                     @include('master.fleets._form_bunker', ['disabled' => 'disabled'])
                                     {!! Form::close() !!}

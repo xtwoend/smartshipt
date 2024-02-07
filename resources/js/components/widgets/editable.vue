@@ -1,6 +1,6 @@
 <template>
     <form-modal :fields="columns" title="Add Data" :url="editUrl" :show="formShow" :fleet="fleet" @saved="saved"></form-modal>
-    <div class="action-edit">
+    <div class="action-edit" v-if="editable">
         <button type="button" class="btn btn-info" @click="formShow = true">Add Data</button>
     </div>
     <div class="table-responsive">
@@ -9,7 +9,7 @@
                 <tr>
                     <th>No</th>
                     <th v-for="(header, i) in columns" :key="i">{{ header.name }}</th>
-                    <th></th>
+                    <th v-if="editable"></th>
                 </tr>
             </thead>
             <tbody>
@@ -46,7 +46,7 @@
                             <span v-else>{{ item[col.field] }}</span>
                         </template>
                     </td>
-                    <td>
+                    <td v-if="editable">
                         <a href="#" @click="editRowHandler(item, index)" v-if="!item.isEdit">Edit</a>
                         <a href="#" @click="saveRowHandler(item, index)" v-if="item.isEdit">Done</a>
                         | <a href="#" @click="del(item, index)">Delete</a>
@@ -67,6 +67,7 @@ export default {
         editUrl: String,
         delUrl: String,
         fleet: Object,
+        editable: Boolean
     },
     data () {
         return {

@@ -67,4 +67,7 @@
     :data="{{ json_encode($lists) }}"
     edit-url="{{ route('master.sensors.edit') }}"
     del-url="/master/sensors/delete"
+    @can('Fleet Threshold Sensor Setting')
+    editable
+    @endcan
 ></table-editable>

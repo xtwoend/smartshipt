@@ -2,22 +2,16 @@
 
 namespace App\Http\Controllers\Master;
 
-use App\Http\Controllers\Controller;
-use App\Models\BunkerInformation;
-use App\Models\CargoInformation;
-use App\Models\Fleet;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\View\View;
-use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
+use App\Http\Controllers\Controller;
 
-class PermissionController extends Controller
+class RoleController extends Controller
 {
-    protected $permissions;
-    public function __construct(Permission $permissions)
+    protected $roles;
+    public function __construct(Role $roles)
     {
-        $this->permissions = $permissions;
+        $this->roles = $roles;
     }
 
     /**
@@ -27,8 +21,8 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        $list = $this->permissions->paginate(25);
-        return view('master.permission.index', compact('list'));
+        $list = $this->roles->paginate(25);
+        return view('master.roles.index', compact('list'));
     }
 
     /**
@@ -38,7 +32,7 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        return view('master.permission.create');
+        return view('master.roles.create');
     }
 
     /**
@@ -53,9 +47,9 @@ class PermissionController extends Controller
             'name' => 'required'
         ]);
 
-        $this->permissions->create($request->all());
+        $this->roles->create($request->all());
 
-        return redirect()->route('master.permission.index')->with('message', 'Permission hash been added');
+        return redirect()->route('master.roles.index')->with('message', 'Permission hash been added');
     }
 
     /**
@@ -77,8 +71,8 @@ class PermissionController extends Controller
      */
     public function edit($id)
     {
-        $row = $this->permissions->findOrFail($id);
-        return view('master.permission.edit', compact( 'row'));
+        $row = $this->roles->findOrFail($id);
+        return view('master.roles.edit', compact( 'row'));
     }
 
     /**
@@ -94,11 +88,11 @@ class PermissionController extends Controller
             'name' => 'required'
         ]);
 
-        $row = $this->permissions->findOrFail($id);
+        $row = $this->roles->findOrFail($id);
         $row->fill($request->all());
         $row->save();
 
-        return redirect()->route('master.permission.index')->with('message', 'Permission hash been updated');
+        return redirect()->route('master.roles.index')->with('message', 'Permission hash been updated');
     }
 
     /**
@@ -109,21 +103,15 @@ class PermissionController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        $id = is_array($id)? $id: [$id];
-        $this->permissions->whereIn('id', $id)->delete();
+        $this->roles->whereIn('id', $id)->delete();
 
-        if($request->ajax()) {
-            return response()->json('success');
-        }
-
-        return redirect()->route('master.permission.index')->with('message', 'Permission hash been delete');
     }
 
     public function json()
     {
         return response()->json([
             'success' => true,
-            'data' => $this->permissions->all()
+            'data' => $this->roles->all()
         ], 200);
     }
 }
