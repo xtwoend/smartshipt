@@ -83,6 +83,14 @@
                 </li>
                 @if(Auth::user()->is_root)
                 <li class="menu-item">
+                  <a href="{{ route('master.settings.index') }}">
+                    <span class="menu-icon">
+                    <img src="{{asset('img/icons/setting.svg')}}" alt="" height="28" />
+                    </span>
+                    <span class="menu-title">Settings</span>
+                  </a>
+                </li>
+                <li class="menu-item">
                   <a href="#">
                     <span class="menu-icon">
                     <img src="{{asset('img/icons/account.png')}}" alt="" />

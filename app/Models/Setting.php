@@ -12,4 +12,19 @@ class Setting extends Model
     protected $primaryKey = 'key';
     public $incrementing = false;
     protected $keyType = 'string';
+
+
+    public function getByGroup($group)
+    {
+        $settings = $this->where('group', $group)->get()->pluck('value', 'key');
+        
+        return $settings->toArray();
+    }
+
+    public function get($key)
+    {
+        $value = $this->where('key', $key)->first();
+
+        return $value->value ?? null;
+    }
 }

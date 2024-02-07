@@ -86,6 +86,8 @@ Route::group([
 
         Route::delete('sensors/delete/{id}', [\App\Http\Controllers\Master\SensorController::class, 'destroy'])->name('sensors.destroy');
         Route::post('sensors/update', [\App\Http\Controllers\Master\SensorController::class, 'update'])->name('sensors.edit');
+
+        Route::resource('settings', \App\Http\Controllers\Master\SettingController::class);
     });
 
     Route::post('/upload/svg', [\App\Http\Controllers\Master\FleetController::class, 'uploadSvg'])->name('upload.svg');
