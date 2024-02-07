@@ -40,7 +40,9 @@
                     <input type="hidden" name="status" value="{{ $status }}">
                     <button class="ms-2 btn btn-primary" type="submit"><i class="fa fa-filter me-2"></i> Filters</button>
                 </form>
+                @can('Download Report')
                 <button onclick="ExportToExcel('xlsx')" class="btn btn-primary float-end"><i class="fa fa-cloud-download me-2" aria-hidden="true"></i> Download</button>
+                @endcan
             </div>
             <table class="table table-sm table-dark" id="report-xls">
                 <tbody>
