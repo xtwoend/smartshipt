@@ -13,9 +13,11 @@ class FleetOilLube extends Model
 
     public $timestamps = false;
     protected $guarded = ['id'];
-    /**
-     *
-     */
+
+    protected $casts = [
+        'sample_date' => 'date'
+    ];
+    
     public static function table($fleetId)
     {
         $model = new self;
