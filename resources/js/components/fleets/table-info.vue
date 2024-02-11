@@ -15,7 +15,8 @@
                     <tr v-for="a in mapping" :key="a.data">
                         <th scope="row">•</th>
                         <td>{{ a.text }}</td>
-                        <td class="text-end">{{ $filters.number(data[a.data]) }} <span v-html="a.unit"></span></td>
+                        <td v-if="isString(a.data)">{{ data[a.data] }}</td>
+                        <td v-else class="text-end">{{ $filters.number(data[a.data]) }} <span v-html="a.unit"></span></td>
                     </tr>
                 </tbody>
             </table>
@@ -43,6 +44,9 @@ export default {
     methods: {
         async fetchData() {
             this.data = await axios.get(this.url).then(res => res.data);
+        },
+        isString(text) {
+            return typeof text === 'string';
         }
     }
 }

@@ -37,6 +37,7 @@ Route::group([
     Route::get('/fleet/{id}/cargo', [FleetController::class, 'cargo'])->name('fleet.cargo');
     Route::get('/fleet/{id}/bunker', [FleetController::class, 'bunker'])->name('fleet.bunker');
     Route::get('/fleet/{id}/balast', [FleetController::class, 'balast'])->name('fleet.balast');
+    Route::get('/fleet/{id}/oils', [FleetController::class, 'oils'])->name('fleet.oils');
 
     Route::get('/fleet/{id}/trend', [FleetController::class, 'trend'])->name('fleet.trend');
     Route::get('/fleet/{id}/notes', [FleetController::class, 'notes'])->name('fleet.notes');
