@@ -13,7 +13,7 @@
                 <li class="menu-item">
                   <a href="/">
                     <span class="menu-icon">
-                        <img src="{{asset('img/icons/home.png')}}" alt="" />
+                        <img src="{{asset('img/icons/home.svg')}}" height="26" alt="" />
                     </span>
                     <span class="menu-title">Home</span>
                   </a>
@@ -21,7 +21,7 @@
                 <li class="menu-item">
                   <a href="{{route('overview.index')}}">
                     <span class="menu-icon">
-                        <img src="{{asset('img/icons/report-barchart-svgrepo-com.png')}}" alt="" />
+                        <img src="{{asset('img/icons/overview-backup-svgrepo-com.svg')}}" height="26" alt="" />
                     </span>
                     <span class="menu-title">Overview</span>
                   </a>
@@ -29,7 +29,7 @@
                 <li class="menu-item sub-menu">
                   <a href="#">
                     <span class="menu-icon">
-                        <img src="{{asset('img/icons/ship.png')}}" alt="" />
+                        <img src="{{asset('img/icons/ship-tanker.svg')}}" height="26" alt="" />
                     </span>
                     <span class="menu-title">My Fleets</span>
                   </a>
@@ -51,7 +51,7 @@
                 <li class="menu-item">
                   <a href="{{ route('master.fleets.index') }}">
                     <span class="menu-icon">
-                    <img src="{{asset('img/icons/vessel.png')}}" alt="" />
+                    <img src="{{asset('img/icons/fleets.svg')}}" height="26" alt="" />
                     </span>
                     <span class="menu-title">Fleet Master Data</span>
                   </a>
@@ -67,16 +67,23 @@
                 <li class="menu-item">
                   <a href="{{ route('master.ports.index') }}">
                     <span class="menu-icon">
-                    <img src="{{asset('img/icons/dock.png')}}" alt="" />
+                      <img src="{{asset('img/icons/dock.svg')}}" height="26" alt="" />
                     </span>
                     <span class="menu-title">Master Ports </span>
                   </a>
                 </li>
-
+                <li class="menu-item">
+                  <a href="{{ route('master.oils.index') }}">
+                    <span class="menu-icon">
+                      <img src="{{ asset('img/icons/chemical-chemistry-svgrepo-com.svg') }}"  height="26" alt="">
+                    </span>
+                    <span class="menu-title">Upload Oil Analytic</span>
+                  </a>
+                </li>
                 <li class="menu-item">
                   <a href="#">
                     <span class="menu-icon">
-                    <img src="{{asset('img/icons/help.png')}}" alt="" />
+                    <img src="{{asset('img/icons/helps.svg')}}" height="26" alt="" />
                     </span>
                     <span class="menu-title">Help</span>
                   </a>
@@ -85,7 +92,7 @@
                 <li class="menu-item">
                   <a href="{{ route('master.settings.index') }}">
                     <span class="menu-icon">
-                    <img src="{{asset('img/icons/setting.svg')}}" alt="" height="28" />
+                    <img src="{{asset('img/icons/setting.svg')}}" alt="" height="26" />
                     </span>
                     <span class="menu-title">Settings</span>
                   </a>
@@ -93,7 +100,7 @@
                 <li class="menu-item">
                   <a href="#">
                     <span class="menu-icon">
-                    <img src="{{asset('img/icons/account.png')}}" alt="" />
+                    <img src="{{asset('img/icons/users.svg')}}" height="26" alt="" />
                     </span>
                     <span class="menu-title">Account</span>
                   </a>

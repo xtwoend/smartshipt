@@ -119,6 +119,9 @@ app.component('fleet-mimic', fleetmimic);
 import svgUpload from './components/fleets/master-svg.vue';
 app.component('fleet-svg-upload', svgUpload);
 
+import fileUpload from './components/widgets/file-upload.vue';
+app.component('file-upload', fileUpload);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

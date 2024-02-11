@@ -42,7 +42,7 @@
     "css": [
       "assets/app-e9ef22d3.css"
     ],
-    "file": "assets/app-da5dfa1e.js",
+    "file": "assets/app-b928ee6f.js",
     "imports": [
       "resources/tabler/src/js/tabler.esm.js",
       "_popper-528ebbd5.js"
@@ -76,9 +76,9 @@
   },
   "resources/js/index.js": {
     "css": [
-      "assets/app-27345d64.css"
+      "assets/app-52529de6.css"
     ],
-    "file": "assets/index-70f660ed.js",
+    "file": "assets/index-071c9c47.js",
     "imports": [
       "resources/js/libs/slide.js",
       "resources/js/libs/constants.js",
@@ -122,7 +122,7 @@
     "src": "resources/js/libs/slide.js"
   },
   "resources/sass/app.scss": {
-    "file": "assets/app-27345d64.css",
+    "file": "assets/app-52529de6.css",
     "isEntry": true,
     "src": "resources/sass/app.scss"
   },

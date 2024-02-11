@@ -71,6 +71,10 @@ Route::group([
             Route::put('{id}/update-bunker-information', 'updateBunker')->name('updateBunker');
         });
 
+        Route::resource('oils', \App\Http\Controllers\Master\OilAnalyticController::class);
+        Route::get('oils/process', [\App\Http\Controllers\Master\OilAnalyticController::class, 'process'])->name('oils.process');
+        Route::post('oils/file-upload', [\App\Http\Controllers\Master\OilAnalyticController::class, 'upload'])->name('oils.file-upload');
+
         Route::resource('ports', \App\Http\Controllers\Master\PortController::class);
 
         Route::resource('user', \App\Http\Controllers\Master\UserController::class);
@@ -81,6 +85,7 @@ Route::group([
             Route::get('{id}/get-permission', 'getUserPermission')->name('permission.get');
             Route::post('{id}/update-permission', 'updateUserPermission')->name('permission.update');
         });
+        
 
         Route::get('roles/json', [\App\Http\Controllers\Master\RoleController::class, 'json'])->name('roles.json');
         Route::resource('roles', \App\Http\Controllers\Master\RoleController::class);
