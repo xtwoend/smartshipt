@@ -15,11 +15,11 @@
                 <table class="table table-strip">
                     <thead>
                         <tr>
-                            <tr>Date</tr>
-                            <tr>Type</tr>
-                            <tr>Oil Information</tr>
-                            <tr>Status</tr>
-                            <tr>Recomendation</tr>
+                            <th>Date</th>
+                            <th>Type</th>
+                            <th>Oil Information</th>
+                            <th>Status</th>
+                            <th>Recomendation</th>
                         </tr>
                     </thead>
                     <tbody>
