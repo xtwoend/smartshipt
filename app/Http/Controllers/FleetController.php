@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Alarm;
 use App\Models\Fleet;
+use App\Models\FleetOilLube;
 use Illuminate\Http\Request;
 
 class FleetController extends Controller
@@ -116,6 +117,8 @@ class FleetController extends Controller
     public function oils($id, Request $request)
     {
         $fleet = Fleet::findOrFail($id);
-        return view('fleet.oils', compact('fleet'));
+        $oils = FleetOilLube::table($id)->orderBy('sample_date', 'desc')->paginate(25);
+
+        return view('fleet.oils', compact('fleet', 'oils'));
     }
 }
