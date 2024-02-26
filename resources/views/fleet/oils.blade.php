@@ -17,6 +17,7 @@
                         <tr>
                             <th>Date</th>
                             <th>Type</th>
+                            <th>Application</th>
                             <th>Oil Information</th>
                             <th>Status</th>
                             <th>Recomendation</th>
@@ -27,6 +28,7 @@
                         <tr>
                             <td>{{ $oil->sample_date }}</td>
                             <td>{{ $oil->component }}</td>
+                            <td>{{ $oil->application }}</td>
                             <td>{{ $oil->lube }}</td>
                             <td>{{ $oil->Status }}</td>
                             <td>{{ $oil->Recomendation }}</td>
