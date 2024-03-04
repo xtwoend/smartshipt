@@ -34,6 +34,7 @@ Route::group([
     Route::get('/fleet/{id}/track', [FleetController::class, 'track'])->name('fleet.track');
     Route::get('/fleet/{id}/pumps', [FleetController::class, 'pumps'])->name('fleet.pumps');
     Route::get('/fleet/{id}/engine', [FleetController::class, 'engine'])->name('fleet.engine');
+    Route::get('/fleet/{id}/generator', [FleetController::class, 'generator'])->name('fleet.generator');
     Route::get('/fleet/{id}/cargo', [FleetController::class, 'cargo'])->name('fleet.cargo');
     Route::get('/fleet/{id}/bunker', [FleetController::class, 'bunker'])->name('fleet.bunker');
     Route::get('/fleet/{id}/balast', [FleetController::class, 'balast'])->name('fleet.balast');

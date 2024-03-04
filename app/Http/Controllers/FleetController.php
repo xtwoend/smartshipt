@@ -121,4 +121,10 @@ class FleetController extends Controller
 
         return view('fleet.oils', compact('fleet', 'oils'));
     }
+
+    public function generator($id, Request $request)
+    {
+        $fleet = Fleet::findOrFail($id);
+        return view('fleet.generator', compact('fleet'));
+    }
 }

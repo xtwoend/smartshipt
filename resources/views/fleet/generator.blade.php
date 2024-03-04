@@ -7,7 +7,6 @@
             @include('fleet.menu', ['fleet' => $fleet])
         @else
             @include('fleet._menu', ['fleet' => $fleet])
-            {{-- <slider-submenu :fleet="{{ json_encode($fleet) }}" active="balast"></slider-submenu> --}}
         @endif
         <div class="p-3">
             @if($mimic = $fleet->mimic()->where('group', 'generator')->first())

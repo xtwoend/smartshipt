@@ -11,6 +11,9 @@ $active = request()->route()->getName();
             <li class="nav-item {{ $active == 'fleet.engine' ? 'active': '' }}">
                 <a class="nav-link" href="{{ route('fleet.engine', $fleet->id) }}">MAIN ENGINE</a>
             </li>
+            <li class="nav-item {{ $active == 'fleet.generator' ? 'active': '' }}">
+                <a class="nav-link" href="{{ route('fleet.generator', $fleet->id) }}">GENERATOR</a>
+            </li>
             <li class="nav-item {{ $active == 'fleet.pumps' ? 'active': '' }}">
                 <a class="nav-link" href="{{ route('fleet.pumps', $fleet->id) }}">PUMPS</a>
             </li>
