@@ -25,4 +25,21 @@ class SensorController extends Controller
     {
         return Sensor::findOrFail($id)->delete();
     }
+
+
+    public function addDoc($id, Request $request) 
+    {
+        $input = $request->all();
+        $sensor = Sensor::find($id);
+
+        $doc = SensorDoc::updateOrCreate([
+            'fleet_id' => $sensor->fleet_id,
+            'sensor_name' => $sensor->sensor_name,
+        ], [
+            'low_desc' => $request->low_desc,
+            'high_desc' => $request->high_desc,
+            'image' => $request->image,
+            'diagram' => $request->diagram,
+        ]);
+    }
 }

@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Sensor;
+use Awobaz\Compoships\Compoships;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class SensorDoc extends Model
 {
     use HasFactory;
+    use Compoships;
 
     protected $fillable = ['fleet_id', 'sensor_name', 'low_desc', 'high_desc', 'image', 'diagram'];
 
