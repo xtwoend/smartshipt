@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Master;
 
 use App\Models\Sensor;
+use App\Models\SensorDoc;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -26,10 +27,8 @@ class SensorController extends Controller
         return Sensor::findOrFail($id)->delete();
     }
 
-
     public function addDoc($id, Request $request) 
     {
-        $input = $request->all();
         $sensor = Sensor::find($id);
 
         $doc = SensorDoc::updateOrCreate([
@@ -41,5 +40,7 @@ class SensorController extends Controller
             'image' => $request->image,
             'diagram' => $request->diagram,
         ]);
+
+        return $doc;
     }
 }

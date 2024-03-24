@@ -97,21 +97,21 @@
                                 </div>
                                 <div class="tab-pane" id="engine">
                                     @include('master.fleets._form_engine_sensor', [
-                                        'lists' => $data->sensors()->where('group', 'engine')->get(), 
+                                        'lists' => $data->sensors()->with('doc')->where('group', 'engine')->get(), 
                                         'sensors' => $data->engineColumns(), 
                                         'fleet' => $data
                                         ])
                                 </div>
                                 <div class="tab-pane" id="generator">
                                     @include('master.fleets._form_generator_sensor', [
-                                        'lists' => $data->sensors()->where('group', 'generator')->get(), 
+                                        'lists' => $data->sensors()->with('doc')->where('group', 'generator')->get(), 
                                         'sensors' => $data->generatorColumns(), 
                                         'fleet' => $data
                                         ])
                                 </div>
                                 <div class="tab-pane" id="pumps">
                                     @include('master.fleets._form_pump_sensor', [
-                                        'lists' => $data->sensors()->where('group', 'cargo_pump')->get(), 
+                                        'lists' => $data->sensors()->with('doc')->where('group', 'cargo_pump')->get(), 
                                         'sensors' => $data->cargoPumpColumns(), 
                                         'fleet' => $data
                                     ])
