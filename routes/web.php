@@ -97,7 +97,7 @@ Route::group([
 
         Route::delete('sensors/delete/{id}', [\App\Http\Controllers\Master\SensorController::class, 'destroy'])->name('sensors.destroy');
         Route::post('sensors/update', [\App\Http\Controllers\Master\SensorController::class, 'update'])->name('sensors.edit');
-        Route::post('sensors/{id}/add-doc', [\App\Http\Controllers\Master\SensorController::class, 'addDoc'])->name('sensors.add-doc');
+        Route::post('sensors/add-doc', [\App\Http\Controllers\Master\SensorController::class, 'addDoc'])->name('sensors.add-doc');
         
         Route::resource('settings', \App\Http\Controllers\Master\SettingController::class);
     });

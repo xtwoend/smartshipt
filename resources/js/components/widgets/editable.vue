@@ -1,5 +1,7 @@
 <template>
     <form-modal :fields="columns" title="Add Data" :url="editUrl" :show="formShow" :fleet="fleet" @saved="saved"></form-modal>
+    <form-modal-doc :fields="docColumns" title="Add/Edit Document Alert" :url="docUrl" :show="docShow" :sensor="item" @saved="docShow=false"></form-modal-doc>
+
     <div class="action-edit" v-if="editable">
         <button type="button" class="btn btn-info" @click="formShow = true">Add Data</button>
     </div>
@@ -50,6 +52,7 @@
                         <a href="#" @click="editRowHandler(item, index)" v-if="!item.isEdit">Edit</a>
                         <a href="#" @click="saveRowHandler(item, index)" v-if="item.isEdit">Done</a>
                         | <a href="#" @click="del(item, index)">Delete</a>
+                        | <a href="#" @click="editDoc(item, index)">Docs</a>
                     </td>
                 </tr>
             </tbody>
@@ -58,21 +61,37 @@
 </template>
 
 <script>
+import FormModalDoc from './form-modal-doc.vue';
 import FormModal from './form-modal.vue';
 export default {
-    components: {FormModal},
+    components: {FormModal, FormModalDoc},
     props: {
         columns: Array,
         data: Array,
         editUrl: String,
         delUrl: String,
+        docUrl: String,
         fleet: Object,
         editable: Boolean
     },
     data () {
         return {
             formShow: false,
-            items: []
+            docShow: false,
+            items: [],
+            docColumns: [
+                {
+                    name: 'Lower Docs Alert',
+                    field: 'low_desc',
+                    editType: 'textarea'
+                },
+                {
+                    name: 'higher Docs Alert',
+                    field: 'high_desc',
+                    editType: 'textarea'
+                }
+            ],
+            item: {}
         }
     },
     mounted() {
@@ -116,6 +135,10 @@ export default {
                     )
                 }
             }) 
+        },
+        editDoc(row, index) {
+            this.item = row
+            this.docShow = true;
         }
     }
 }

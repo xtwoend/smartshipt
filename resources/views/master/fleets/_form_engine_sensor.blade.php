@@ -10,7 +10,6 @@
         </div>
     </div>
 </div>
-
 <br>
 <table-editable
     :columns="[
@@ -67,6 +66,7 @@
     :data="{{ json_encode($lists) }}"
     edit-url="{{ route('master.sensors.edit') }}"
     del-url="/master/sensors/delete"
+    doc-url="{{ route('master.sensors.add-doc') }}"
     @can('Fleet Threshold Sensor Setting')
     editable
     @endcan
