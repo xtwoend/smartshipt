@@ -1,5 +1,4 @@
 <template>
-    
     <div class="row">
         <div class="col-12">
             <div class="table-title">
@@ -15,17 +14,29 @@
                     <tr v-for="a in mapping" :key="a.data">
                         <th scope="row">•</th>
                         <td>{{ a.text }}</td>
-                        <td v-if="isNumber(a.data)" class="text-end">{{ $filters.number(data[a.data]) }} <span v-html="a.unit"></span></td>
+                        <td v-if="isNumber(a.data)" class="text-end">
+                            <a href="#" v-if="a.condition == 'ABNORMAL'" @click="openRecomend(a)" data-bs-toggle="tooltip" data-bs-placement="top" :title="buildTooltip(a, data[a.data])">
+                                <img src="/icon/danger.svg" height="16" />
+                            </a>
+                            {{ $filters.number(data[a.data]) }} <span v-html="a.unit"></span>
+                        </td>
                         <td v-else>{{ data[a.data] }}</td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
+    <Teleport to="#content">
+        <SideInfo></SideInfo>
+    </Teleport>
 </template>
 
 <script>
+import { Tooltip } from 'bootstrap'
+import {Teleport} from 'vue'
+import SideInfo from './side-info.vue'
 export default {
+    components: {SideInfo, Teleport},
     props: {
         url: String,
         mapping: Array
@@ -40,6 +51,9 @@ export default {
     },
     mounted() {
         setInterval(() => this.fetchData(), 5 * 1000)
+        new Tooltip(document.body, {
+            selector: "[data-bs-toggle='tooltip']",
+        })
     },
     methods: {
         async fetchData() {
@@ -47,6 +61,19 @@ export default {
         },
         isNumber(val) {
             return isNaN(val);
+        },
+        openRecomend(a) {
+            console.log(a)
+        },
+        buildTooltip(a, val) {
+            if(a.normal > val) {
+                return 'IS VERY LOW';
+            }
+
+            if(a.danger < val) {
+                return 'IS VERY HIGH';
+            }
+            return 'NORMAL'
         }
     }
 }

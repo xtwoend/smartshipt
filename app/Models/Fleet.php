@@ -93,6 +93,12 @@ class Fleet extends Model
                 'data' => $row->sensor_name,
                 'text' => $row->name,
                 'unit' => $row->unit,
+                'min' => $row->min,
+                'max' => $row->max,
+                'normal' => $row->normal,
+                'danger' => $row->danger,
+                'condition' => $row->condition,
+                'is_ams' => (bool) $row->is_ams,
             ];
         }
 

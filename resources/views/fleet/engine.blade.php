@@ -1,7 +1,7 @@
 @extends('layouts.dash')
 
 @section('content')
-<main class="content">
+<main class="content" id="content">
     <div class="bg-white">
         @if($fleet->submenu()->count() > 0)
             @include('fleet.menu', ['fleet' => $fleet])
