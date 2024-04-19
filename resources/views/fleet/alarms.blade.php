@@ -41,7 +41,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                    {{ $alarms->links() }}
+                    {{ $alarms->appends(request()->query())->links() }}
                 </div>
             </div>
         </div>
