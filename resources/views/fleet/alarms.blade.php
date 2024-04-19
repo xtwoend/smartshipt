@@ -15,6 +15,12 @@
                     <div class="table-title">
                         <h6>Alarm Information</h6>
                     </div>
+                    <div class="nav-button d-flex justify-content-end py-2">
+                        <form method="GET" class="d-flex justify-content-start">
+                            <date-range from="{{ request()->input('from', null) }}" to="{{ request()->input('to', null) }}"></date-range>
+                            <button class="ms-2 btn btn-primary" type="submit"><i class="fa fa-filter me-2"></i> Filters</button>
+                        </form>
+                    </div>
                     <table class="table table-sm alarm">
                         <thead>
                             <tr>

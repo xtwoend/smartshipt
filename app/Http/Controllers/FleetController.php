@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Alarm;
 use App\Models\Fleet;
 use App\Models\FleetOilLube;
@@ -92,7 +93,16 @@ class FleetController extends Controller
     public function alarms($id, Request $request)
     {
         $fleet = Fleet::findOrFail($id);
-        $alarms = Alarm::table($fleet->id)->latest()->paginate(25);
+        $alarms = Alarm::table($fleet->id);
+        
+        if($request->has('from') || $request->has('to')) {
+            $from = $request->input('from', Carbon::now()->subMonth()->format('Y-m-d'));
+            $to = $request->input('to', Carbon::now()->format('Y-m-d'));
+            $alarms = $alarms->whereDate('started_at', '>=', $from)->whereDate('started_at', '<=', $to);
+        }
+
+        $alarms = $alarms->latest()->paginate(25);
+
         return view('fleet.alarms', compact('fleet', 'alarms'));
     }
 
