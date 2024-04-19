@@ -61,12 +61,9 @@ Route::group([
         Route::resource('fleets', \App\Http\Controllers\Master\FleetController::class);
         Route::group(['as' => 'fleets.', 'prefix' => 'fleets', 'controller' => \App\Http\Controllers\Master\FleetController::class], function(){
             
-            Route::group(['middleware' => ['can:publish articles']], function(){
-                Route::get('{id}/pic', 'pic')->name('pic')->middleware();
-                Route::post('{id}/pic/update', 'picUpdate')->name('pic.update');
-                Route::delete('pic/delete/{id}', 'picDelete')->name('pic.delete');
-            });
-
+            Route::get('{id}/pic', 'pic')->name('pic')->middleware();
+            Route::post('{id}/pic/update', 'picUpdate')->name('pic.update');
+            Route::delete('pic/delete/{id}', 'picDelete')->name('pic.delete');
             Route::get('{id}/edit-cargo-information','editCargo')->name('editCargo');
             Route::put('{id}/update-cargo-information', 'updateCargo')->name('updateCargo');
             Route::get('{id}/edit-bunker-information', 'editBunker')->name('editBunker');
