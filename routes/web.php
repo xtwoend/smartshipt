@@ -59,9 +59,11 @@ Route::group([
         'prefix' => 'master',
     ], function() {
         Route::resource('fleets', \App\Http\Controllers\Master\FleetController::class);
-        Route::group(['as' => 'fleets.', 'prefix' => 'fleets', 'controller' => \App\Http\Controllers\Master\FleetController::class], function(){
-            
-            Route::get('{id}/pic', 'pic')->name('pic')->middleware();
+        Route::group([
+            'as' => 'fleets.', 
+            'prefix' => 'fleets', 
+            'controller' => \App\Http\Controllers\Master\FleetController::class], function() {
+            Route::get('{id}/pic', 'pic')->name('pic');
             Route::post('{id}/pic/update', 'picUpdate')->name('pic.update');
             Route::delete('pic/delete/{id}', 'picDelete')->name('pic.delete');
             Route::get('{id}/edit-cargo-information','editCargo')->name('editCargo');
@@ -77,7 +79,10 @@ Route::group([
         Route::resource('ports', \App\Http\Controllers\Master\PortController::class);
 
         Route::resource('user', \App\Http\Controllers\Master\UserController::class);
-        Route::group(['as' => 'user.', 'prefix' => 'user', 'controller' => \App\Http\Controllers\Master\UserController::class], function(){
+        Route::group([
+            'as' => 'user.', 
+            'prefix' => 'user', 
+            'controller' => \App\Http\Controllers\Master\UserController::class], function() {
             Route::get('change-password', 'changePassword')->name('change-password');
             Route::post('change-password', 'changePasswordPost')->name('change-password.post');
             Route::get('{id}/permission', 'editUserPermission')->name('permission');
