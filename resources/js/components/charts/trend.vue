@@ -76,8 +76,8 @@ export default {
                     // }
                 },
                 time: {
-                    useUTC: true,
-                    // timezone: 'Asia/Jakarta'
+                    useUTC: false,
+                    timezone: 'Asia/Jakarta'
                 },
                 title: {
                     text: ''
@@ -187,7 +187,7 @@ export default {
             let res = await axios.get(this.url, { params: this.params }).then(res => res.data);
 
             res.forEach(row => {
-                let time = row.unix_time;
+                let time = parseInt((new Date(row.terminal_time).getTime()).toFixed(0));
                 this.options.series.forEach((s, index) => {
                     let dt = row[s.row];
                     this.options.series[index].data.push([time, dt]);
