@@ -62,8 +62,8 @@ export default {
                     // }
                 },
                 time: {
-                    useUTC: false,
-                    timezone: 'Asia/Jakarta'
+                    useUTC: true,
+                    // timezone: 'Asia/Jakarta'
                 },
                 title: {
                     text: ''
