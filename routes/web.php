@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NaviController;
 use App\Http\Controllers\FleetController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\OverViewController;
 use App\Http\Controllers\TelegramBotController;
 
@@ -53,6 +54,10 @@ Route::group([
     Route::get('/overview/speed', [OverViewController::class, 'speed'])->name('overview.speed');
     Route::get('/overview/cargo', [OverViewController::class, 'cargo'])->name('overview.cargo');
     Route::get('/overview/duration', [OverViewController::class, 'fleetStatus'])->name('overview.duration');
+
+    Route::get('/profile', [ProfileController::class, 'index'])->name('user.profile');
+    Route::put('/profile', [ProfileController::class, 'store'])->name('profile.store');
+    Route::post('/change-password', [ProfileController::class, 'changePassword'])->name('profile.change-password');
 
     Route::group([
         'as' => 'master.',

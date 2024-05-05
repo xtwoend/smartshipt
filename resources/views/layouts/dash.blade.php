@@ -45,6 +45,7 @@
         @include('layouts.partials.footer')
     </div>
 </div>
-@yield('js')
+@yield('modal')
+@stack('js_after')
 </body>
 </html>

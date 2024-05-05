@@ -2,9 +2,10 @@ import _ from 'lodash';
 window._ = _;
 
 import $ from 'jquery';
-window.$ = $;
+window.jQuery = window.$ = $
 
 import * as bootstrap from 'bootstrap'
+window.bootstrap = window.bs = bootstrap
 
 import '../tabler/src/js/tabler.esm.js';
 
