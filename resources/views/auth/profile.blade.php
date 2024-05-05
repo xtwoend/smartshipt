@@ -83,6 +83,7 @@
                 <div class="mb-2">
                     <div class="form-label">Password</div>
                     {{ Form::password('password', ['class' => 'form-control', 'id' => 'password']) }}
+                    <p id="password-validate" class="card-subtitle text-red"></p>
                 </div>
                 <div>
                     <div class="form-label">Password Confirmation</div>
@@ -112,7 +113,9 @@ $("#changePassword").submit(function(e){
         'password_confirmation': confirm
     })
     .then(e => formModal.hide())
-    .catch(e => console.log(e));
+    .catch(function(e){
+        $('#password-validate').text(e.response.data)
+    });
 });
 </script>
 @endpush
