@@ -18,7 +18,7 @@ class MailServiceProvider extends ServiceProvider
     {
         // config email from db
         $all = DB::table('settings')->where('group', 'email')->get();
-        if($all) {
+        if(count($all) > 0) {
             $mail = new stdClass;
             foreach($all as $m) {
                 $mail->{$m->key} = $m->value;
