@@ -25,19 +25,23 @@ class MailServiceProvider extends ServiceProvider
             }
 
             $config = array(
-                'from'       => array('address' => $mail->smtp_from_address, 'name' => $mail->smtp_from_name),
+                'from' => array('address' => $mail->smtp_from_address, 'name' => $mail->smtp_from_name),
                 'mailers' => [
                     'smtp' => [
+                        'transport' => 'smtp',
                         'host'       => $mail->smtp_host,
                         'port'       => $mail->smtp_port,
                         'encryption' => $mail->smtp_encryption ?? 'tls',
                         'username'   => $mail->smtp_username,
-                        'password'   => $mail->smtp_password
+                        'password'   => $mail->smtp_password,
+                        'timeout' => null,
+                        'local_domain' => env('MAIL_EHLO_DOMAIN'),
                     ]
                 ]
             );
 
-            Config::set('mail', $config);
+            Config::set('mail.mailers', $config['mailers']);
+            Config::set('mail.from', $config['from']);
         }
     }
 
