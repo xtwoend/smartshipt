@@ -38,7 +38,7 @@
                     </div>
                     <div class="mb-2">
                         <div class="form-label">ENCRYPTION</div>
-                        {{ Form::text('smtp_username', $setting->get('smtp_encryption', 'tls'), ['class' => 'form-control']) }}
+                        {{ Form::text('smtp_encryption', $setting->get('smtp_encryption', 'tls'), ['class' => 'form-control']) }}
                         <p id="password-validate" class="card-subtitle text-red"></p>
                     </div>
                     <h3 class="card-title mt-4">Email Setting</h3>
