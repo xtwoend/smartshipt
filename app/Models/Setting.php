@@ -2,17 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Setting extends Model
 {
-    use HasFactory;
-
     protected $primaryKey = 'key';
     public $incrementing = false;
     protected $keyType = 'string';
+    public $timestamps = false;
 
+    protected $fillable = ['group', 'key', 'value'];
 
     public function getByGroup($group)
     {
@@ -21,10 +20,10 @@ class Setting extends Model
         return $settings->toArray();
     }
 
-    public function get($key)
+    public function get($key, $default = null)
     {
         $value = $this->where('key', $key)->first();
 
-        return $value->value ?? null;
+        return $value->value ?? $default;
     }
 }

@@ -198,6 +198,8 @@ return [
         // Collective\Html\HtmlServiceProvider::class,
         Spatie\Html\HtmlServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
+
+        App\Providers\MailServiceProvider::class,
     ],
 
     /*
