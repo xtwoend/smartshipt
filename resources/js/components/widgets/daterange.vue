@@ -23,10 +23,8 @@ import DateRangePicker from 'vue3-daterange-picker'
 export default {
     name: 'DateRange',
     components: { DateRangePicker },
-    props: {
-        from: String,
-        to: String,
-    },
+    props: ['from', 'to'],
+    emits: ['change'],
     data() {
         return {
             localFrom:  this.from ? moment(Date.parse(this.from)).format('YYYY-MM-DD') : moment(new Date()).format('YYYY-MM-DD'),

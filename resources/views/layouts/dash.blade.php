@@ -34,12 +34,15 @@
 <div class="layout has-sidebar fixed-sidebar fixed-header" id="app">
     @include('layouts.partials.sidebar')
     <div id="overlay" class="overlay"></div>
+    
+    <div id="info" class="info"></div>
     <div class="layout">
         @include('layouts.partials.headerdash')
         {{-- @include('layouts.partials.content') --}}
         <a id="btn-toggle" href="#" class="sidebar-toggler break-point-lg">
             <i class="ri-menu-line ri-xl"></i>
         </a>
+        
         @yield('content')
         <div class="overlay"></div>
         @include('layouts.partials.footer')

@@ -25,10 +25,10 @@
                 </tbody>
             </table>
         </div>
+        <Teleport to="#info">
+            <SideInfo v-show="infoOpened" :info="info" @close="infoOpened=false"></SideInfo>
+        </Teleport>
     </div>
-    <Teleport to="#content">
-        <SideInfo></SideInfo>
-    </Teleport>
 </template>
 
 <script>
@@ -43,7 +43,9 @@ export default {
     },
     data () {
         return {
-            data: null
+            data: null,
+            infoOpened: false,
+            info: null
         }
     },
     created() {
@@ -63,7 +65,8 @@ export default {
             return isNaN(val);
         },
         openRecomend(a) {
-            console.log(a)
+            // this.infoOpened = true
+            this.info = a
         },
         buildTooltip(a, val) {
             if(a.normal > val) {

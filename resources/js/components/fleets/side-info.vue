@@ -8,7 +8,7 @@
                 <h5 class="fw-normal m-0">Information</h5>
             </div>
             <div class="card-body">
-                
+                {{ info }}
             </div>
         </div>
     </div>
@@ -16,9 +16,13 @@
 
 <script >
 export default {
-    data () {
-        return {
-
+    props: {
+        info: Object
+    },
+    emits: ['close'],
+    watch: {
+        info: function(n, o) {
+            console.log(n)
         }
     }
 }
