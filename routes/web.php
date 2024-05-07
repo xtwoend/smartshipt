@@ -1,14 +1,13 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use Psr\Http\Message\RequestInterface;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NaviController;
 use App\Http\Controllers\FleetController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\OverViewController;
-use App\Http\Controllers\TelegramBotController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,26 +66,30 @@ Route::group([
         Route::group([
             'as' => 'fleets.', 
             'prefix' => 'fleets', 
+            'middleware' => ['can:Fleet Manage'],
             'controller' => \App\Http\Controllers\Master\FleetController::class], function() {
             Route::get('{id}/pic', 'pic')->name('pic');
-            Route::post('{id}/pic/update', 'picUpdate')->name('pic.update');
-            Route::delete('pic/delete/{id}', 'picDelete')->name('pic.delete');
+            Route::post('{id}/pic/update', 'picUpdate')->name('pic.update')->middleware('can:Fleet PIC Manage');
+            Route::delete('pic/delete/{id}', 'picDelete')->name('pic.delete')->middleware('can:Fleet PIC Manage');
             Route::get('{id}/edit-cargo-information','editCargo')->name('editCargo');
             Route::put('{id}/update-cargo-information', 'updateCargo')->name('updateCargo');
             Route::get('{id}/edit-bunker-information', 'editBunker')->name('editBunker');
             Route::put('{id}/update-bunker-information', 'updateBunker')->name('updateBunker');
         });
 
+        Route::post('/upload/svg', [\App\Http\Controllers\Master\FleetController::class, 'uploadSvg'])->name('upload.svg');
+        
         Route::resource('oils', \App\Http\Controllers\Master\OilAnalyticController::class);
         Route::get('oils/process', [\App\Http\Controllers\Master\OilAnalyticController::class, 'process'])->name('oils.process');
         Route::post('oils/file-upload', [\App\Http\Controllers\Master\OilAnalyticController::class, 'upload'])->name('oils.file-upload');
 
-        Route::resource('ports', \App\Http\Controllers\Master\PortController::class);
+        Route::resource('ports', \App\Http\Controllers\Master\PortController::class)->middleware('can:Port Manage');
 
-        Route::resource('user', \App\Http\Controllers\Master\UserController::class);
+        Route::resource('user', \App\Http\Controllers\Master\UserController::class)->middleware('is_superuser');
         Route::group([
             'as' => 'user.', 
             'prefix' => 'user', 
+            'middleware' => 'is_superuser',
             'controller' => \App\Http\Controllers\Master\UserController::class], function() {
             Route::get('change-password', 'changePassword')->name('change-password');
             Route::post('change-password', 'changePasswordPost')->name('change-password.post');
@@ -95,21 +98,25 @@ Route::group([
             Route::post('{id}/update-permission', 'updateUserPermission')->name('permission.update');
         });
         
+        Route::group([
+            'middleware' => 'is_superuser'
+        ], function() {
+            Route::get('roles/json', [\App\Http\Controllers\Master\RoleController::class, 'json'])->name('roles.json');
+            Route::resource('roles', \App\Http\Controllers\Master\RoleController::class);
+            Route::get('permission/json', [\App\Http\Controllers\Master\PermissionController::class, 'json'])->name('permission.json');
+            Route::resource('permission', \App\Http\Controllers\Master\PermissionController::class);
+        });
 
-        Route::get('roles/json', [\App\Http\Controllers\Master\RoleController::class, 'json'])->name('roles.json');
-        Route::resource('roles', \App\Http\Controllers\Master\RoleController::class);
-        Route::get('permission/json', [\App\Http\Controllers\Master\PermissionController::class, 'json'])->name('permission.json');
-        Route::resource('permission', \App\Http\Controllers\Master\PermissionController::class);
-        Route::resource('users', \App\Http\Controllers\Master\UserController::class);
-
-        Route::delete('sensors/delete/{id}', [\App\Http\Controllers\Master\SensorController::class, 'destroy'])->name('sensors.destroy');
-        Route::post('sensors/update', [\App\Http\Controllers\Master\SensorController::class, 'update'])->name('sensors.edit');
-        Route::post('sensors/add-doc', [\App\Http\Controllers\Master\SensorController::class, 'addDoc'])->name('sensors.add-doc');
+        Route::group([
+            'middleware' => 'can:Fleet Threshold Sensor Setting'
+        ], function(){
+            Route::delete('sensors/delete/{id}', [\App\Http\Controllers\Master\SensorController::class, 'destroy'])->name('sensors.destroy');
+            Route::post('sensors/update', [\App\Http\Controllers\Master\SensorController::class, 'update'])->name('sensors.edit');
+            Route::post('sensors/add-doc', [\App\Http\Controllers\Master\SensorController::class, 'addDoc'])->name('sensors.add-doc');
+        });
         
         Route::resource('settings', \App\Http\Controllers\Master\SettingController::class);
     });
-
-    Route::post('/upload/svg', [\App\Http\Controllers\Master\FleetController::class, 'uploadSvg'])->name('upload.svg');
 });
 
 Route::get('/coba/{id}', function($id){
