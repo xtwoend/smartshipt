@@ -12,48 +12,49 @@
                         <div class="card-header">
                             <ul class="nav nav-tabs card-header-tabs" data-bs-toggle="tabs">
                                 <li class="nav-item">
-                                    <a href="#info" class="nav-link active" data-bs-toggle="tab">Fleet</a>
+                                    <a href="#tab-information" class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-information">Fleet</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#pic" class="nav-link" data-bs-toggle="tab">PIC</a>
+                                    <a href="#pic" class="nav-link" data-bs-toggle="tab" data-bs-target="#pic">PIC</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#cargo" class="nav-link" data-bs-toggle="tab">Cargo</a>
+                                    <a href="#cargo" class="nav-link" data-bs-toggle="tab" data-bs-target="#cargo">Cargo</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#bunker" class="nav-link" data-bs-toggle="tab">Bunker</a>
+                                    <a href="#bunker" class="nav-link" data-bs-toggle="tab" data-bs-target="#bunker">Bunker</a>
                                 </li>
                                 @can('Fleet Threshold Sensor Setting')
                                 <li class="nav-item">
-                                    <a href="#navigation" class="nav-link" data-bs-toggle="tab">Navigation Sensor</a>
+                                    <a href="#navigation" class="nav-link" data-bs-toggle="tab" data-bs-target="#navigation">Navigation Sensor</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#engine" class="nav-link" data-bs-toggle="tab">Main Engine Sensor</a>
+                                    <a href="#engine" class="nav-link" data-bs-toggle="tab" data-bs-target="#engine">Main Engine Sensor</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#generator" class="nav-link" data-bs-toggle="tab">Generator Sensor</a>
+                                    <a href="#generator" class="nav-link" data-bs-toggle="tab" data-bs-target="#generator">Generator Sensor</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#pumps" class="nav-link" data-bs-toggle="tab">Pumps Sensor</a>
+                                    <a href="#pumps" class="nav-link" data-bs-toggle="tab" data-bs-target="#pumps">Pumps Sensor</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#cargo_sensor" class="nav-link" data-bs-toggle="tab">Cargo Sensor</a>
+                                    <a href="#cargo_sensor" class="nav-link" data-bs-toggle="tab" data-bs-target="#cargo_sensor">Cargo Sensor</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#fuel" class="nav-link" data-bs-toggle="tab">Fuel Sensor</a>
+                                    <a href="#fuel" class="nav-link" data-bs-toggle="tab" data-bs-target="#fuel">Fuel Sensor</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#ballast" class="nav-link" data-bs-toggle="tab">Ballast Sensor</a>
+                                    <a href="#ballast" class="nav-link" data-bs-toggle="tab" data-bs-target="#ballast">Ballast Sensor</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#draft" class="nav-link" data-bs-toggle="tab">Draft Sensor</a>
+                                    <a href="#draft" class="nav-link" data-bs-toggle="tab" data-bs-target="#draft">Draft Sensor</a>
                                 </li>
                                 @endcan
                             </ul>
                         </div>
                         <div class="card-body">
                             <div class="tab-content">
-                                <div class="tab-pane active show" id="info">
+                                <div class="tab-pane active show" id="tab-information">
+
                                     @can('Fleet Manage')
                                     <div class="action-edit">
                                         <a href="{{ route('master.fleets.edit', $data->id) }}" class="btn btn-info">Edit Master Data</a>
