@@ -6,6 +6,7 @@
         <div class="card-footer m-0 p-0">
             <input id="mimic" type="file" ref="file" class="form-control" @change="upload">
         </div>
+        <div class="loading" v-show="isLoading">Loading...</div>
     </div>
 </template>
 
@@ -18,7 +19,8 @@
         },
         data () {
             return {
-                location: null
+                location: null,
+                isLoading: false,
             }
         },
         mounted(){
@@ -26,6 +28,7 @@
         },
         methods: {
             upload(e) {
+                this.isLoading = true
                 let file = e.target.files[0];
                 let formData = new FormData();
                 formData.append('file', file);
@@ -41,8 +44,10 @@
                     }
                     ).then(function(e){
                         that.location = '/' + e.data.path
+                        that.isLoading = false
                     }).catch(function(e){
                         console.log(e);
+                        that.isLoading = false
                     });
             }
         }
@@ -50,5 +55,14 @@
 </script>
 
 <style lang="scss" scoped>
-
+.loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    padding-top: 2rem;
+    background: rgba(0, 0, 0, 0.2);
+}
 </style>
