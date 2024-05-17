@@ -77,8 +77,6 @@ Route::group([
             Route::put('{id}/update-bunker-information', 'updateBunker')->name('updateBunker');
         });
 
-        Route::post('/upload/svg', [\App\Http\Controllers\Master\FleetController::class, 'uploadSvg'])->name('upload.svg');
-        
         Route::resource('oils', \App\Http\Controllers\Master\OilAnalyticController::class);
         Route::get('oils/process', [\App\Http\Controllers\Master\OilAnalyticController::class, 'process'])->name('oils.process');
         Route::post('oils/file-upload', [\App\Http\Controllers\Master\OilAnalyticController::class, 'upload'])->name('oils.file-upload');
@@ -119,6 +117,8 @@ Route::group([
     });
 });
 
+Route::post('/upload/svg', [\App\Http\Controllers\Master\FleetController::class, 'uploadSvg'])->middleware('can:Fleet Threshold Sensor Setting')->name('upload.svg');
+        
 Route::get('/coba/{id}', function($id){
     // $fleet = \App\Models\Fleet::findOrFail($id);    
     // $d = (new \App\Report\CreateSensorConditionReport($fleet));
