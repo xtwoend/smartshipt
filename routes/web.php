@@ -26,7 +26,7 @@ Route::get('/alarm-report/{id}', [ReportController::class, 'alarmReport'])->name
 
 
 Route::group([
-    'middleware' => 'auth'
+    'middleware' => ['auth', 'xss_sanitizer']
 ], function(){
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/route', [NaviController::class, 'route'])->name('route');
