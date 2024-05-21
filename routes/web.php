@@ -117,7 +117,7 @@ Route::group([
     });
 });
 
-Route::post('/upload/svg', [\App\Http\Controllers\Master\FleetController::class, 'uploadSvg'])->middleware('can:Fleet Threshold Sensor Setting')->name('upload.svg');
+Route::post('/upload/svg', [\App\Http\Controllers\Master\FleetController::class, 'uploadSvg'])->middleware(['can:Fleet Threshold Sensor Setting', 'xss_sanitizer'])->name('upload.svg');
         
 Route::get('/coba/{id}', function($id){
     // $fleet = \App\Models\Fleet::findOrFail($id);    
