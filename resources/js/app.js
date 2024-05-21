@@ -14,6 +14,8 @@ import Donut from 'vue-css-donut-chart';
 import 'vue-css-donut-chart/dist/vcdonut.css';
 
 
+
+
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
  * registering components with the application instance so they are ready
@@ -121,6 +123,9 @@ app.component('fleet-svg-upload', svgUpload);
 
 import fileUpload from './components/widgets/file-upload.vue';
 app.component('file-upload', fileUpload);
+
+import datatable from './components/fleets/table-history.vue';
+app.component('datatable', datatable);
 
 /**
  * The following block of code may be used to automatically register your

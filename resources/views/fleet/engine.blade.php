@@ -27,6 +27,13 @@
                 url="{{ route('api.fleet.engine.trend', $fleet->id) }}"
                 :columns="{{ json_encode($fleet->trendOptions('engine')) }}"></trend-view>
         </div>
+        {{-- <div class="p-3">
+            <datatable
+                title="Data Log History"
+                :columns="{{ json_encode($fleet->trendOptions('engine')) }}"
+                url="{{ route('api.fleet.engine.data', $fleet->id) }}">
+            </datatable>
+        </div> --}}
     </div>
 </main>
 @endsection

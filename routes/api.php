@@ -44,18 +44,26 @@ Route::group([
 
     Route::get('/{id}/nav/trend', [NavController::class, 'trend'])->name('nav.trend');
     Route::get('/{id}/nav/current', [NavController::class, 'currentNav'])->name('nav.current');
+
     Route::get('/{id}/engine/trend', [EngineController::class, 'trend'])->name('engine.trend');
     Route::get('/{id}/engine/current', [EngineController::class, 'currentEngine'])->name('engine.current');
+    Route::get('/{id}/engine/data', [EngineController::class, 'data'])->name('engine.data');
+
     Route::get('/{id}/pumps/trend', [PumpController::class, 'trend'])->name('pumps.trend');
     Route::get('/{id}/pumps/current', [PumpController::class, 'currentPumps'])->name('pumps.current');
+    
     Route::get('/{id}/cargo/trend', [CargoController::class, 'trend'])->name('cargo.trend');
     Route::get('/{id}/cargo/current', [CargoController::class, 'currentCargo'])->name('cargo.current');
+
     Route::get('/{id}/fuel/trend', [FuelController::class, 'trend'])->name('fuel.trend');
     Route::get('/{id}/ballast/trend', [BallastController::class, 'trend'])->name('ballast.trend');
+
     Route::get('/{id}/draft/trend', [DraftController::class, 'trend'])->name('draft.trend');
-    Route::get('/{id}/logger', [LoggerController::class, 'data'])->name('logger');
+
     Route::get('/{id}/oils/trend', [OilController::class, 'trend'])->name('oils.trend');
     Route::get('/{id}/oils/current', [OilController::class, 'current'])->name('oils.current');
+
+    Route::get('/{id}/logger', [LoggerController::class, 'data'])->name('logger');
 });
 
 

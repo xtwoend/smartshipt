@@ -26,13 +26,37 @@
                             'text' => 'Speed',
                         ],
                         [
+                            'data' => 'cog',
+                            'text' => 'Course',
+                        ],
+                        [
                             'data' => 'wind_speed',
                             'text' => 'Wind Speed',
                         ],
                         [
+                            'data' => 'wind_direction',
+                            'text' => 'Wind Direction',
+                        ],
+                        [
                             'data' => 'depth',
                             'text' => 'Deep Sea',
-                        ]
+                        ],
+                        [
+                            'data' => 'heading',
+                            'text' => 'Heading',
+                        ],
+                        [
+                            'data' => 'distance',
+                            'text' => 'Travel Distance'
+                        ],
+                        [
+                            'data' => 'total_distance',
+                            'text' => 'Total Travel Distance'
+                        ],
+                        [
+                            'data' => 'rot',
+                            'text' => 'ROT'
+                        ],
                     ]) }}">
                 </trend-live>
             </div>
@@ -48,13 +72,37 @@
                             'text' => 'Speed',
                         ],
                         [
+                            'data' => 'cog',
+                            'text' => 'Course',
+                        ],
+                        [
                             'data' => 'wind_speed',
                             'text' => 'Wind Speed',
                         ],
                         [
+                            'data' => 'wind_direction',
+                            'text' => 'Wind Direction',
+                        ],
+                        [
                             'data' => 'depth',
                             'text' => 'Deep Sea',
-                        ]
+                        ],
+                        [
+                            'data' => 'heading',
+                            'text' => 'Heading',
+                        ],
+                        [
+                            'data' => 'distance',
+                            'text' => 'Travel Distance'
+                        ],
+                        [
+                            'data' => 'total_distance',
+                            'text' => 'Total Travel Distance'
+                        ],
+                        [
+                            'data' => 'rot',
+                            'text' => 'ROT'
+                        ],
                     ]) }}">
                 </trend-view>
             </div>
