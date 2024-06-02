@@ -46,7 +46,8 @@ export default {
         url: String,
         fields: Array,
         show: Boolean,
-        sensor: Object
+        sensor: Object,
+        iItem: Boolean
     },
     data () {
         return {
@@ -78,7 +79,7 @@ export default {
             if(! res.error) {
                 this.$emit('saved', res)
             }else{
-                this.$emit('saved', false);
+                this.$emit('saved', null);
             }
         }
     }

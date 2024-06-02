@@ -1,6 +1,6 @@
 <template>
     <form-modal :fields="columns" title="Add Data" :url="editUrl" :show="formShow" :fleet="fleet" @saved="saved"></form-modal>
-    <form-modal-doc :fields="docColumns" title="Add/Edit Document Alert" :url="docUrl" :show="docShow" :sensor="item" @saved="docShow=false"></form-modal-doc>
+    <form-modal-doc :fields="docColumns" title="Add/Edit Document Alert" :url="docUrl" :show="docShow" :sensor="item" @saved="docSaved"></form-modal-doc>
 
     <div class="action-edit" v-if="editable">
         <button type="button" class="btn btn-info" @click="formShow = true">Add Data</button>
@@ -91,7 +91,8 @@ export default {
                     editType: 'textarea'
                 }
             ],
-            item: {}
+            item: {},
+            indexActive: 0
         }
     },
     mounted() {
@@ -112,7 +113,7 @@ export default {
             await axios.post(this.editUrl, data);
         },
         isFieldSlot (fieldName) {
-            return !!this.$slots[fieldName]
+            return !! this.$slots[fieldName]
         },
         del(data, index) {
             let that = this
@@ -137,8 +138,12 @@ export default {
             }) 
         },
         editDoc(row, index) {
+            this.indexActive = index
             this.item = row
             this.docShow = true;
+        },
+        docSaved(res) {
+            this.items[this.indexActive].doc = res;
         }
     }
 }
