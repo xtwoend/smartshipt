@@ -20,6 +20,7 @@
                             <option value="1440">1 D</option>
                         </select>
                         <button @click="showChart" class="btn btn-primary">SHOW</button>
+                        <button @click="download" class="btn btn-primary">Download Data</button>
                     </div>
                 </div>
             </div>
@@ -55,8 +56,8 @@ export default {
     data() {
         return {
             params: {
-                from: new Date(new Date().setDate(new Date().getDate() - 1 )),
-                to: new Date(),
+                from: (new Date(new Date().setDate(new Date().getDate() - 1 ))).toISOString().split('T')[0].replace(/-/g, '-'),
+                to: (new Date()).toISOString().split('T')[0].replace(/-/g, '-'),
                 interval: 60
             },
             defColumns: [],
@@ -124,6 +125,17 @@ export default {
         this.defColumns = _.sampleSize(this.columns, 5);
     },
     methods: {
+        download() {
+            let select = [];
+            this.items.forEach((col, index) => {
+                select[index] = col.data;
+            })
+            this.params.select = select;
+
+            const queryString = new URLSearchParams(this.params).toString();
+            let url = this.url + '/export?' + queryString + '&time=' + Date.now();
+            window.open(url)
+        },
         selected(e) {
             this.items = e
             this.showChart()

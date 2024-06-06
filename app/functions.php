@@ -83,3 +83,29 @@ if( ! function_exists('secondsToHours')) {
         return number($seconds / 3600);
     }
 }
+
+if( ! function_exists('exportCsv')) {
+    function exportCsv(array $head, array $data, string $file_name) {
+        
+        $callback = function() use ($data, $head) {
+            $handle = fopen('php://output', 'w');
+            $headers = array_values($head);
+            array_unshift($headers, 'Datetime');
+            fputcsv($handle, $headers);
+
+            foreach($data as $row) {
+                $dax = [];
+                $dax['terminal_time'] = $row->terminal_time;
+                foreach($head as $key => $s) {
+                    $dax[$key] = $row->{$key};
+                }
+                $values = array_values($dax);
+                fputcsv($handle, array_values($values));
+            }
+
+            fclose($handle);
+        };
+ 
+       return response()->streamDownload($callback, $file_name, ['Content-Type' => 'text/csv']);
+    }
+}

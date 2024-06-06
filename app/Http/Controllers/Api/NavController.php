@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use Carbon\Carbon;
 use App\Models\Fleet;
+use App\Models\Sensor;
 use Illuminate\Http\Request;
 use App\Models\NavigationLog;
 use Illuminate\Support\Facades\DB;
