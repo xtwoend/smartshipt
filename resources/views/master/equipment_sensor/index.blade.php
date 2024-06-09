@@ -35,7 +35,7 @@
                                 <td>{{$data->sensor->name}}</td>
                                 <td>{{$data->sensor->normal}}</td>
                                 <td>{{$data->sensor->danger}}</td>
-                                <td>{{$data->sensor_strigger}}</td>
+                                <td>{{$data->sensor_trigger}}</td>
                                 <td>
                                     <div class="dropdown">
                                         <a href="#" class="btn dropdown-toggle" data-bs-toggle="dropdown">Action</a>
