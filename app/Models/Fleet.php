@@ -64,6 +64,11 @@ class Fleet extends Model
         return $this->hasMany(Sensor::class, 'fleet_id');
     }
 
+    public function equipments()
+    {
+        return $this->hasMany(Equipment::class, 'fleet_id');
+    }
+
     public function mimic()
     {
         return $this->hasMany(FleetMimic::class, 'fleet_id');

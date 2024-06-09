@@ -63,6 +63,22 @@ Route::group([
         'prefix' => 'master',
     ], function() {
         Route::resource('fleets', \App\Http\Controllers\Master\FleetController::class);
+
+        Route::get('equipment/{id}', [\App\Http\Controllers\Master\EquipmentController::class, 'show'])->name('equipment.show');
+        Route::get('equipment/{id}/create', [\App\Http\Controllers\Master\EquipmentController::class, 'create'])->name('equipment.add');
+        Route::get('equipment/{id}/edit', [\App\Http\Controllers\Master\EquipmentController::class, 'edit'])->name('equipment.edit');
+        Route::put('equipment/{id}/update', [\App\Http\Controllers\Master\EquipmentController::class, 'update'])->name('equipment.update');
+        Route::delete('equipment/{id}/destroy', [\App\Http\Controllers\Master\EquipmentController::class, 'destroy'])->name('equipment.destroy');
+        Route::post('equipment/{id}/store', [\App\Http\Controllers\Master\EquipmentController::class, 'store'])->name('equipment.store');
+
+        Route::get('equipment/sensor/{id}', [\App\Http\Controllers\Master\EquipmentSensorController::class, 'show'])->name('equipment.sensor.show');
+        Route::get('equipment/sensor/{id}/add', [\App\Http\Controllers\Master\EquipmentSensorController::class, 'create'])->name('equipment.sensor.add');
+        Route::post('equipment/sensor/{id}', [\App\Http\Controllers\Master\EquipmentSensorController::class, 'store'])->name('equipment.sensor.store');
+        Route::get('equipment/sensor/{id}/edit', [\App\Http\Controllers\Master\EquipmentSensorController::class, 'edit'])->name('equipment.sensor.edit');
+        Route::put('equipment/sensor/{id}', [\App\Http\Controllers\Master\EquipmentSensorController::class, 'update'])->name('equipment.sensor.update');
+        Route::delete('equipment/sensor/{id}', [\App\Http\Controllers\Master\EquipmentSensorController::class, 'destroy'])->name('equipment.sensor.destroy');
+
+
         Route::group([
             'as' => 'fleets.', 
             'prefix' => 'fleets', 

@@ -36,7 +36,13 @@
                                 <td>{{$data->email}}</td>
                                 <td>{{$data->year}}</td>
                                 <td>
-                                    <a href="{{ route('master.fleets.show', $data->id) }}">View Data</a>
+                                    <div class="dropdown">
+                                        <a href="#" class="btn dropdown-toggle" data-bs-toggle="dropdown">Action</a>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="{{ route('master.fleets.show', $data->id) }}">View Data</a>
+                                            <a class="dropdown-item" href="{{ route('master.equipment.show', $data->id) }}">Manage Equipment</a>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach
