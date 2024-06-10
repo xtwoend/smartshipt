@@ -20,7 +20,7 @@ class Equipment extends Model
     protected $fillable = [
         'fleet_id', 'name', 'group', 'last_maintenance', 'schedule_maintenance', 'next_maintenance', 'score', 'condition', 'degradation_factor', 'lifetime_hours', 'predicted_time_repair', 'difference_lifetime'
     ];
-
+    
     /**
      * The attributes that should be cast to native types.
      */
