@@ -23,8 +23,8 @@
                             <thead>
                             <tr>
                                 <th>SENSOR NAME</th>
-                                <th>MIN VALUE</th>
-                                <th>MAX VALUE</th>
+                                <th>NORMAL VALUE</th>
+                                <th>HIGH VALUE</th>
                                 <th>SENSOR TRIGGER</th>
                                 <th></th>
                             </tr>
