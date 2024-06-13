@@ -24,6 +24,7 @@
                             <tr>
                                 <th>SENSOR NAME</th>
                                 <th>NORMAL VALUE</th>
+                                <th>MAX NORMAL VALUE</th>
                                 <th>HIGH VALUE</th>
                                 <th>SENSOR TRIGGER</th>
                                 <th></th>
@@ -34,6 +35,7 @@
                             <tr class="">
                                 <td>{{$data->sensor->name}}</td>
                                 <td>{{$data->sensor->normal}}</td>
+                                <td>{{$data->sensor->max_normal}}</td>
                                 <td>{{$data->sensor->danger}}</td>
                                 <td>{{$data->sensor_trigger}}</td>
                                 <td>
