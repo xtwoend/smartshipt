@@ -25,6 +25,11 @@
             editable: true
         },
         {
+            name: 'Max Normal',
+            field: 'max_normal',
+            editable: true
+        },
+        {
             name: 'High',
             field: 'danger',
             editable: true
