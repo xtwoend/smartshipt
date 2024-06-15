@@ -22,7 +22,7 @@ return new class extends Migration
             $table->date('schedule_maintenance')->nullable();
             $table->date('next_maintenance')->nullable();
             $table->tinyInteger('score')->default(0);
-            $table->string('condition')->nullable();
+            $table->string('status')->nullable();
             $table->float('degradation_factor', 6, 4)->default(0);
             $table->integer('lifetime_hours')->nullable();
             $table->integer('predicted_time_repair')->nullable();
