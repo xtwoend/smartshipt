@@ -137,4 +137,12 @@ class FleetController extends Controller
         $fleet = Fleet::findOrFail($id);
         return view('fleet.generator', compact('fleet'));
     }
+
+    public function equipment($id, Request $request)
+    {
+        $fleet = Fleet::findOrFail($id);
+        $equipments = $fleet->equipments;
+        
+        return view('fleet.equipment', compact('fleet', 'equipments'));
+    }
 }
