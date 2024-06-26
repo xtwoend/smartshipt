@@ -13,7 +13,7 @@ class EquipmentController extends Controller
     {
         $fleet = Fleet::findOrFail($id);
         $list = $fleet->equipments()->paginate(20);
-        $groups = ['engine' => 'Main Engine', 'cargo_pump' => 'Cargo Pump'];
+        $groups = ['engine' => 'Main Engine', 'cargo_pump' => 'Pumps'];
 
         return view('master.equipment.index', compact('list', 'fleet', 'groups'));
     }
