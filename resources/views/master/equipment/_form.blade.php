@@ -9,7 +9,7 @@
         </div>
         <div class="form-group mb-3">
             <label>Group</label>
-            {!! Form::select('group', ['engine' => 'Main Engine', 'cargo_pump' => 'Cargo Pump'], null, ['class' => 'form-control', ($disabled ?? '')]) !!}
+            {!! Form::select('group', ['engine' => 'Main Engine', 'cargo_pump' => 'Pumps'], null, ['class' => 'form-control', ($disabled ?? '')]) !!}
             @if ($errors->has('name'))
                 <small class="form-text text-danger">{{ $errors->first('name') }}</small>
             @endif
