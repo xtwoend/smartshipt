@@ -198,14 +198,21 @@ class OilAnalyticController extends Controller
         }
         $reader->close();
 
-        return redirect()->route('master.oils.process');
+        return redirect()->route('master.oils.index');
     }
 
     public function process(Request $request)
     {
         $fleets = OilLube::select('Area')->groupBy('Area')->get()->pluck('Area')->toArray();
 
-        dd($fleets);
+        
+    }
+
+    public function clearData(Request $request)
+    {
+        OilLube::truncate();
+
+        return redirect()->route('master.oils.index');
     }
     
 }

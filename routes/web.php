@@ -97,6 +97,7 @@ Route::group([
         Route::resource('oils', \App\Http\Controllers\Master\OilAnalyticController::class);
         Route::get('oils/process', [\App\Http\Controllers\Master\OilAnalyticController::class, 'process'])->name('oils.process');
         Route::post('oils/file-upload', [\App\Http\Controllers\Master\OilAnalyticController::class, 'upload'])->name('oils.file-upload');
+        Route::post('oils/clear-data', [\App\Http\Controllers\Master\OilAnalyticController::class, 'clearData'])->name('oils.clear-data');
 
         Route::resource('ports', \App\Http\Controllers\Master\PortController::class)->middleware('can:Port Manage');
 

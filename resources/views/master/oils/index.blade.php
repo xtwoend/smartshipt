@@ -8,19 +8,29 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
                         <span class="text-bold">Oil analysis tools</span>
+                        
                         <form action="{{ route('master.oils.file-upload') }}" method="POST" enctype="multipart/form-data">
-                        {{ csrf_field() }}
-                        <div class="row g-2">
-                            <div class="col">
-                                <input name="file" type="file" class="form-control">
+                            {{ csrf_field() }}
+                            <div class="row g-2">
+                                
+                                    <div class="col">
+                                        <input name="file" type="file" class="form-control">
+                                    </div>
+                                    <div class="col-auto">
+                                        <button class="btn btn-icon">
+                                            <img src="/img/icons/skipped.svg" height="20">
+                                        </button>
+                                    </div>
                             </div>
-                            <div class="col-auto">
-                                <button class="btn btn-icon">
-                                    <img src="/img/icons/skipped.svg" height="20">
-                                </button>
-                            </div>
-                        </div>
                         </form>
+
+                            <form action="{{ route('master.oils.clear-data') }}" method="POST">
+                                {{ csrf_field() }}
+                                <div class="col-auto">
+                                    <button class="btn btn-danger">Clear Processing Data</button>
+                                </div>
+                            </form>
+                    
                     </div>
                     <form action="{{ route('master.oils.store') }}" method="POST">
                         {{ csrf_field() }} 
