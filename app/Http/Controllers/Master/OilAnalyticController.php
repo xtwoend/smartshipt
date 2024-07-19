@@ -52,6 +52,8 @@ class OilAnalyticController extends Controller
         $fleets = $request->fleets;
         foreach($fleets as $key => $val) 
         {
+            if($val == '' || empty($val)) continue;
+
             OilLube::where('Area', $key)->update([
                 'fleet_id' => $val
             ]);
