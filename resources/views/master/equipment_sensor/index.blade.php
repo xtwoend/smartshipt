@@ -33,10 +33,10 @@
                             <tbody>
                             @foreach($list as $data)
                             <tr class="">
-                                <td>{{$data->sensor->name}}</td>
-                                <td>{{$data->sensor->normal}}</td>
-                                <td>{{$data->sensor->max_normal}}</td>
-                                <td>{{$data->sensor->danger}}</td>
+                                <td>{{$data->sensor?->name}}</td>
+                                <td>{{$data->sensor?->normal}}</td>
+                                <td>{{$data->sensor?->max_normal}}</td>
+                                <td>{{$data->sensor?->danger}}</td>
                                 <td>{{$data->sensor_trigger}}</td>
                                 <td>
                                     <div class="dropdown">
