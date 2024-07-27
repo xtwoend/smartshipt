@@ -1,7 +1,7 @@
 <template>
     <div v-if="fleet">
         <fleet-speedometer :fleet="fleet"></fleet-speedometer>
-        <div class="p-3">
+        <div class="p-3" v-if="data">
             <div class="row">
                 <div class="col-12">
                     <div class="table-title">
@@ -12,8 +12,14 @@
                             <tr>
                                 <th scope="row">•</th>
                                 <td>Updated at</td>
-                                <td class="text-end">{{ fleet.last_connection }}</td>
+                                <td class="text-end">{{ data.terminal_time }}</td>
                             </tr>
+                            <tr v-for="a in mapping" :key="a.data">
+                                <th scope="row">•</th>
+                                <td>{{ a.text }}</td>
+                                <td class="text-end">{{ data[a.data] }} <span v-html="a.unit"></span></td>
+                            </tr>
+                            <!-- 
                             <tr>
                                 <th scope="row">•</th>
                                 <td>Coordinate</td>
@@ -27,7 +33,7 @@
                             </tr>
                             <tr>
                                 <th scope="row">•</th>
-                                <td>Course / COG</td>
+                                <td>Course of Ground</td>
                                 <td class="text-end">{{ fleet.navigation.cog }} °</td>
                             </tr>
                             <tr>
@@ -60,6 +66,7 @@
                                 <td>Total Travel Distance</td>
                                 <td class="text-end">{{ fleet.navigation.total_distance }} NM</td>
                             </tr>
+                            -->
                         </tbody>
                     </table>
                 </div>
@@ -73,11 +80,14 @@ import FleetSpeedometer from './speedometer.vue'
 export default {
     components: { FleetSpeedometer},
     props: {
-        url: String
+        url: String,
+        mapping: Array,
+        navUrl: String
     },
     data() {
         return {
-            fleet: null
+            fleet: null,
+            data: null
         }
     },
     created() {
@@ -89,6 +99,7 @@ export default {
     methods: {
         async fetchData() {
             this.fleet = await axios.get(this.url).then(res => res.data);
+            this.data = await axios.get(this.navUrl).then(res => res.data);
         }
     }
 }

@@ -10,8 +10,8 @@
         {{-- <slider-submenu :fleet="{{ json_encode($fleet) }}" active="balast"></slider-submenu> --}}
     @endif
     <map-default :fleet="{{ json_encode($fleet) }}" style="height: 450px; width:100%;"></map-default>
-    {{-- <fleet-information url="{{ route('api.fleet', $fleet->id) }}"></fleet-information> --}}
-    <data-info url="{{ route('api.fleet.nav.current', $fleet->id) }}" :mapping="{{ json_encode($fleet->trendOptions('navigation')) }}"></data-info>
+    <fleet-information url="{{ route('api.fleet', $fleet->id) }}" nav-url="{{ route('api.fleet.nav.current', $fleet->id) }}" :mapping="{{ json_encode($fleet->trendOptions('navigation')) }}"></fleet-information>
+    {{-- <data-info url="{{ route('api.fleet.nav.current', $fleet->id) }}" :mapping="{{ json_encode($fleet->trendOptions('navigation')) }}"></data-info> --}}
     <div class="p-3">
         <div class="row">
             <div class="col">
