@@ -17,7 +17,12 @@
                             <tr v-for="a in mapping" :key="a.data">
                                 <th scope="row">•</th>
                                 <td>{{ a.text }}</td>
-                                <td class="text-end">{{ data[a.data] }} <span v-html="a.unit"></span></td>
+                                <td class="text-end">
+                                    <a href="#" v-if="a.condition == 'ABNORMAL'" @click="openRecomend(a)" data-bs-toggle="tooltip" data-bs-placement="top" :title="buildTooltip(a, data[a.data])">
+                                        <img src="/icon/danger.svg" height="16" />
+                                    </a>
+                                    {{ data[a.data] }} <span v-html="a.unit"></span>
+                                </td>
                             </tr>
                             <!-- 
                             <tr>
@@ -100,6 +105,20 @@ export default {
         async fetchData() {
             this.fleet = await axios.get(this.url).then(res => res.data);
             this.data = await axios.get(this.navUrl).then(res => res.data);
+        },
+        openRecomend(a) {
+            // this.infoOpened = true
+            this.info = a
+        },
+        buildTooltip(a, val) {
+            if(a.normal > val) {
+                return 'IS VERY LOW';
+            }
+
+            if(a.danger < val) {
+                return 'IS VERY HIGH';
+            }
+            return 'NORMAL'
         }
     }
 }
