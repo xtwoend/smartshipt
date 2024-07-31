@@ -44,8 +44,6 @@
                                     <user-fleets url="{{ route('master.user.fleets.get', $row->id) }}"></user-fleets>
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
                 </div>
