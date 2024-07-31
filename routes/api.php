@@ -39,7 +39,7 @@ Route::get('fleet/{id}', [FleetController::class, 'show'])->name('api.fleet');
 
 Route::group([
     'as' => 'api.fleet.',
-    'prefix' => 'fleet',
+    'prefix' => 'fleet'
 ], function (){
 
     Route::get('/{id}/nav/trend', [NavController::class, 'trend'])->name('nav.trend');
