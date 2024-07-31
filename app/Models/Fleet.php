@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Fleet extends Model
 {
@@ -49,6 +50,15 @@ class Fleet extends Model
         ];
     }
 
+    /**
+     * fleets
+     */
+    public function users(): BelongsToMany 
+    {
+        return $this->belongsToMany(User::class, 'fleet_user_accesses', 'fleet_id', 'user_id')->withTimestamps();
+    }
+
+    
     public function scopeActive($query)
     {
         return $query->where('active', 1);

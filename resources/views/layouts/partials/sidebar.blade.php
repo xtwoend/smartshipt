@@ -35,16 +35,29 @@
                   </a>
                   <div class="sub-menu-list">
                     <ul class="scroller" style="heigth: 400px;">
-                      @foreach (\App\Models\Fleet::active()->get() as $item)
-                      <li class="menu-item">
-                        <a href="{{ route('fleet', $item->id) }}">
-                        <span class="menu-icon">
-                            <img src="{{asset('img/icons/mini-ship.png')}}" alt="" />
-                        </span>
-                          <span class="menu-title">{{ $item->name }}</span>
-                        </a>
-                      </li>
-                      @endforeach
+                      @if(Auth::user()->can('All Fleets'))
+                        @foreach (\App\Models\Fleet::active()->get() as $item)
+                        <li class="menu-item">
+                          <a href="{{ route('fleet', $item->id) }}">
+                          <span class="menu-icon">
+                              <img src="{{asset('img/icons/mini-ship.png')}}" alt="" />
+                          </span>
+                            <span class="menu-title">{{ $item->name }}</span>
+                          </a>
+                        </li>
+                        @endforeach
+                      @else
+                        @foreach (Auth::user()->fleets as $item)
+                        <li class="menu-item">
+                          <a href="{{ route('fleet', $item->id) }}">
+                          <span class="menu-icon">
+                              <img src="{{asset('img/icons/mini-ship.png')}}" alt="" />
+                          </span>
+                            <span class="menu-title">{{ $item->name }}</span>
+                          </a>
+                        </li>
+                        @endforeach
+                      @endif
                     </ul>
                   </div>
                 </li>

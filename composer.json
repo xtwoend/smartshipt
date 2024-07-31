@@ -17,6 +17,7 @@
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.2",
         "laravelcollective/html": "^6.4",
+        "spatie/laravel-activitylog": "^4.8",
         "spatie/laravel-html": "^3.2",
         "spatie/laravel-permission": "*",
         "symfony/http-client": "^6.0",

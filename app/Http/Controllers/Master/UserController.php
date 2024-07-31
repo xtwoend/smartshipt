@@ -172,6 +172,23 @@ class UserController extends Controller
         $row = $this->users->findOrFail($id);
         $row->syncPermissions($request->permission);
 
-        return redirect()->route('master.user.index')->with('message', 'User permission has been updated');
+        return response()->json(['success' => true]);
+    }
+
+    public function getUserFleet(Request $request, $id)
+    {
+        $row = $this->users->with('fleets')->findOrFail($id);
+        return response()->json([
+            'success' => true,
+            'data' => array_merge($row->toArray(), ['fleets' => $row->fleets()->pluck('fleet_id')->toArray()])
+        ], 200);
+    }
+
+    public function updateUserFleetAccess(Request $request, $id)
+    {
+        $row = $this->users->findOrFail($id);
+        $row->fleets()->sync($request->fleet);
+
+        return response()->json(['success' => true]);
     }
 }

@@ -93,6 +93,9 @@ app.component('engine-type-s', EngineTypeS);
 import UserPermission from './components/UserPermission.vue';
 app.component('user-permission', UserPermission);
 
+import UserFleet from './components/UserFleets.vue';
+app.component('user-fleets', UserFleet);
+
 import TableEditable from './components/widgets/editable.vue';
 app.component('table-editable', TableEditable);
 

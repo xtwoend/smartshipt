@@ -111,7 +111,9 @@ Route::group([
             Route::post('change-password', 'changePasswordPost')->name('change-password.post');
             Route::get('{id}/permission', 'editUserPermission')->name('permission');
             Route::get('{id}/get-permission', 'getUserPermission')->name('permission.get');
+            Route::get('{id}/get-fleets', 'getUserFleet')->name('fleets.get');
             Route::post('{id}/update-permission', 'updateUserPermission')->name('permission.update');
+            Route::post('{id}/update-fleet-access', 'updateUserFleetAccess')->name('fleets.update');
         });
         
         Route::group([
@@ -119,6 +121,7 @@ Route::group([
         ], function() {
             Route::get('roles/json', [\App\Http\Controllers\Master\RoleController::class, 'json'])->name('roles.json');
             Route::resource('roles', \App\Http\Controllers\Master\RoleController::class);
+            Route::get('fleets/data/json', [\App\Http\Controllers\Master\FleetController::class, 'json'])->name('fleets.json');
             Route::get('permission/json', [\App\Http\Controllers\Master\PermissionController::class, 'json'])->name('permission.json');
             Route::resource('permission', \App\Http\Controllers\Master\PermissionController::class);
         });

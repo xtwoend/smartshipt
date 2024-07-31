@@ -31,6 +31,17 @@ class FleetController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return View
+     */
+    public function json()
+    {
+        $fleets = $this->fleet->active()->select('id', 'name')->get();
+        return response()->json($fleets);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
