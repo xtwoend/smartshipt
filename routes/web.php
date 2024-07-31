@@ -30,6 +30,8 @@ Route::group([
 ], function(){
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/route', [NaviController::class, 'route'])->name('route');
+
+    
     Route::get('/fleet/{id}', [FleetController::class, 'index'])->name('fleet');
     Route::get('/fleet/{id}/track', [FleetController::class, 'track'])->name('fleet.track');
     Route::get('/fleet/{id}/pumps', [FleetController::class, 'pumps'])->name('fleet.pumps');
