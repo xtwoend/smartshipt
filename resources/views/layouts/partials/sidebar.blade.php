@@ -141,6 +141,14 @@
                                     <span class="menu-title">List Permission</span>
                                 </a>
                             </li>
+
+                            <li class="menu-item">
+                              <a href="#">
+                                  <span class="menu-icon">
+                                  </span>
+                                  <span class="menu-title">Access Logger</span>
+                              </a>
+                          </li>
                         </ul>
                     </div>
                 </li>
