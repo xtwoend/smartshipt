@@ -16,7 +16,7 @@ class FleetController extends Controller
         if($user->can('All Fleets') || $user->is_root) {
             $fleets = Fleet::with('navigation')->active();
         }else{
-            $fleets = $user->fleets();
+            $fleets = $user->fleets()->with('navigation');
         }
 
         if($request->has('q')){
