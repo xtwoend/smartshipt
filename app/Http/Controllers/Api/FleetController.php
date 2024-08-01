@@ -18,13 +18,15 @@ class FleetController extends Controller
         }else{
             $fleets = $user->fleets();
         }
-        
+
         if($request->has('q')){
-            $fleets = $fleets->where('name', $request->q);
+            $fleets = $fleets->where('name', 'LIKE', '%'.$request->q.'%');
         }
+
         if($request->has('fleet_status') && $request->fleet_status !== 'all') {
             $fleets = $fleets->where('fleet_status', $request->fleet_status);
         }
+
         $fleets = $fleets->get();
 
         return response()->json(FleetResource::collection($fleets));
