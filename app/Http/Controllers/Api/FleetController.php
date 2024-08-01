@@ -11,7 +11,14 @@ class FleetController extends Controller
 {
     public function fleets(Request $request)
     {
-        $fleets = Fleet::with('navigation')->active();
+        $user = $request->user();
+    
+        if($user->can('All Fleets') || $user->is_root) {
+            $fleets = Fleet::with('navigation')->active();
+        }else{
+            $fleets = $user->fleets();
+        }
+        
         if($request->has('q')){
             $fleets = $fleets->where('name', $request->q);
         }
