@@ -24,19 +24,17 @@
                             </tr>
                             </thead>
                             <tbody>
-                            {{-- @foreach($list as $data) --}}
+                            @foreach($lists as $data)
                             <tr class="">
+                                <td>{{ $data->created_at }}</td>
+                                <td>{{ $data->causer?->name}}</td>
+                                <td>{{ $data->description }}</td>
                                 <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-
-                                </td>
                             </tr>
-                            {{-- @endforeach --}}
+                            @endforeach
                             </tbody>
                         </table>
-                        {{-- {{ $list->links() }} --}}
+                        {{ $lists->links() }}
                     </div>
                 </div>
             </div>

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NaviController;
 use App\Http\Controllers\FleetController;
+use App\Http\Controllers\Master\LogController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\OverViewController;
@@ -126,6 +127,8 @@ Route::group([
             Route::get('fleets/data/json', [\App\Http\Controllers\Master\FleetController::class, 'json'])->name('fleets.json');
             Route::get('permission/json', [\App\Http\Controllers\Master\PermissionController::class, 'json'])->name('permission.json');
             Route::resource('permission', \App\Http\Controllers\Master\PermissionController::class);
+
+            Route::get('activity/logs', [\App\Http\Controllers\Master\LogController::class, 'index'])->name('activity.logs');
         });
 
         Route::group([

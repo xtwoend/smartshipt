@@ -42,7 +42,8 @@ class ActivityLogMiddleware
             'master.oils.index' => 'OIL Analytic',
             'master.ports.index' => 'master port',
             'master.settings.index' => 'setting SMTP Email',
-            'master.user.index' => 'master users'
+            'master.user.index' => 'master users',
+            'master.activity.logs' => 'activity logs'
         ];
 
         $route = $request->route()->getName();

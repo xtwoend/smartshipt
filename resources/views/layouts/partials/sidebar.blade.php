@@ -143,7 +143,7 @@
                             </li>
 
                             <li class="menu-item">
-                              <a href="#">
+                              <a href="{{ route('master.activity.logs') }}">
                                   <span class="menu-icon">
                                   </span>
                                   <span class="menu-title">Access Logger</span>
