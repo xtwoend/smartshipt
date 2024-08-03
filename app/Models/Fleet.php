@@ -5,8 +5,10 @@ namespace App\Models;
 use App\Models\Alarm;
 use App\Models\Navigation;
 use App\Models\NavigationLog;
+use Spatie\Activitylog\LogOptions;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -14,6 +16,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Fleet extends Model
 {
     use HasFactory;
+    use LogsActivity;
 
     protected $table = 'fleets';
 
@@ -48,6 +51,15 @@ class Fleet extends Model
             'draft' => 'required',
             'swl' => 'required',
         ];
+    }
+
+    /**
+     * log record
+     */
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly(['active', 'image', 'name', 'imo_number', 'owner', 'ship_manager', 'cargo', 'type', 'email', 'telp', 'call_sign', 'engine_maker', 'engine_type', 'builder', 'year', 'flag', 'home_port', 'class', 'mmsi', 'length', 'breadth', 'death', 'dwt', 'grt', 'nrt', 'lwt', 'draft', 'swl']);
     }
 
     /**
