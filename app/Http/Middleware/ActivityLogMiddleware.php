@@ -35,7 +35,7 @@ class ActivityLogMiddleware
             'home' => 'beranda',
             'route' => 'rute kapal',
             'fleet' => 'detail kapal',
-            'overview' => 'overview report',
+            'overview.index' => 'overview report',
             'profile.change-password' => 'ubah password',
             'master.fleets.index' => 'master kapal',
             'master.fleets.pic' => 'PIC master kapal',
@@ -47,6 +47,6 @@ class ActivityLogMiddleware
 
         $route = $request->route()->getName();
 
-        return $pages[$route] ?: 'Beranda';
+        return $pages[$route] ?? 'Beranda';
     }
 }
