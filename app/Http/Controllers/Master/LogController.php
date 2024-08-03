@@ -18,10 +18,10 @@ class LogController extends Controller
         $userId = $request->input('user_id', null);
 
         if(is_null($userId)) {
-            $lists = Activity::latest()->paginate(50);
+            $lists = Activity::latest()->paginate(15);
         }else {
             $user = User::find($userId);
-            $lists = Activity::causedBy($user)->latest()->paginate(50);
+            $lists = Activity::causedBy($user)->latest()->paginate(15);
         }
 
         return view('master.logs.index', compact('lists'));

@@ -35,6 +35,7 @@
                                         <ul class="dropdown-menu" aria-labelledby="">
                                             <a class="dropdown-item" href="{{route('master.user.edit', $data->id)}}"><i class="fa fa-pencil"></i> Edit</a>
                                             <a class="dropdown-item" href="{{route('master.user.permission', $data->id)}}" data-action="permission-toggle" data-target="#permission"><i class="fa fa-unlock-alt"></i> Permissions</a>
+                                            <a class="dropdown-item" href="{{route('master.activity.logs', ['user_id' => $data->id])}}"><i class="fa fa-eye"></i> Activity Log</a>
                                             <form class="" action="{{route('master.user.destroy', $data->id)}}" method="post" onsubmit="return confirm('Are you sure?')">
                                                 @csrf
                                                 <input type="hidden" name="_method" value="delete" />

@@ -29,7 +29,7 @@
                                 <td>{{ $data->created_at }}</td>
                                 <td>{{ $data->causer?->name}}</td>
                                 <td>{{ $data->description }}</td>
-                                <td></td>
+                                <td>{{ $data->changes }}</td>
                             </tr>
                             @endforeach
                             </tbody>
