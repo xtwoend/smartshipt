@@ -16,7 +16,7 @@ class FleetController extends Controller
         if($user->can('All Fleets') || $user->is_root) {
             $fleets = Fleet::select('id', 'name', 'image', 'imo_number', 'last_connection', 'connected', 'fleet_status', 'last_port')->with('navigation')->active();
         }else{
-            $fleets = $user->fleets()->select('id', 'name', 'image', 'imo_number', 'last_connection', 'connected', 'fleet_status', 'last_port')->with('navigation');
+            $fleets = $user->fleets()->select('fleets.id', 'fleets.name', 'fleets.image', 'fleets.imo_number', 'fleets.last_connection', 'fleets.connected', 'fleets.fleet_status', 'fleets.last_port')->with('navigation');
         }
 
         if($request->has('q')){
