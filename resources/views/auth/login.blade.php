@@ -53,9 +53,9 @@
                                 </span> --}}
                             </label>
                             <div class="input-group input-group-flat">
-                                <input name="password" type="password" class="form-control"  placeholder="Your password"  autocomplete="off">
+                                <input name="password" id="password" type="password" class="form-control"  placeholder="Your password"  autocomplete="off">
                                 <span class="input-group-text">
-                                    <a id="see" href="#" class="link-secondary" title="Show password" data-bs-toggle="tooltip">
+                                    <a id="see" onclick="return seePassword();" href="#" class="link-secondary" >
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="2" /><path d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7" /></svg>
                                     </a>
                                 </span>
@@ -81,4 +81,16 @@
         </div>
     </div>
 </body>
+<script>
+// $(document).ready(function(){
+    function seePassword() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+// })
+</script>
 </html>
