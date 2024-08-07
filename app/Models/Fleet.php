@@ -127,6 +127,7 @@ class Fleet extends Model
                 'danger' => $row->danger,
                 'condition' => $row->condition,
                 'is_ams' => (bool) $row->is_ams,
+                'reverse' => (bool) $row->reverse,
             ];
         }
 

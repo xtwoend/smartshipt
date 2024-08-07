@@ -99,7 +99,7 @@ export default {
                     properties: {
                         cog: row.cog,
                         sog: row.sog,
-                        time: row.terminal_time,
+                        time: this.$filters.dateformat(row.terminal_time, 'DD/MM/YYYY HH:mm'),
                         lat: row.lat,
                         lng: row.lng,
                         heading: row.heading
@@ -163,7 +163,7 @@ export default {
             this.map.on('mouseenter', 'points', (e) => {
                 that.map.getCanvas().style.cursor = 'pointer';
                 const coordinates = e.features[0].geometry.coordinates.slice();
-                const text = `<b>Lat : ${e.features[0].properties.lat} | Lng: ${e.features[0].properties.lng}</b> at ${e.features[0].properties.sog} <b>kn</b> / ${e.features[0].properties.cog}&deg;<br>time: <b>${e.features[0].properties.time}</b>`;
+                const text = `<b>Lat : ${e.features[0].properties.lat} | Lng: ${e.features[0].properties.lng}</b> at ${e.features[0].properties.sog} <b>kn</b> / ${e.features[0].properties.cog}&deg;<br>Time: <b>${e.features[0].properties.time}</b>`;
                 while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
                     coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
                 }
@@ -230,7 +230,8 @@ export default {
                                 "image": row.image,
                                 "sog": row.navigation.sog,
                                 "cog": row.navigation.cog,
-                                "last_update": timeago.format(row.navigation.terminal_time)
+                                "last_update": timeago.format(row.navigation.terminal_time),
+                                "time": this.$filters.dateformat(row.navigation.terminal_time, 'DD/MM/YYYY HH:mm')
                             }
                         }
                     ]
@@ -260,7 +261,7 @@ export default {
 
             // Create a popup, but don't add it to the map yet.
             this.popup.remove();
-            const text = `<b>${row.name} [ID]</b> at ${row.navigation.sog} <b>kn</b> / ${row.navigation.cog}&deg;<br>last update: <b>${timeago.format(row.navigation.updated_at)}</b>`;
+            const text = `<b>${row.name} [ID]</b> at ${row.navigation.sog} <b>kn</b> / ${row.navigation.cog}&deg;<br>Last update: <b>${timeago.format(row.navigation.updated_at)}</b><br>Time: <b>${this.$filters.dateformat(row.navigation.updated_at, 'DD/MM/YYYY HH:mm')}</b>`;
             this.popup.setLngLat([row.navigation.lng, row.navigation.lat]).setHTML(text).addTo(this.map);
         },
     }

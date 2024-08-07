@@ -41,9 +41,9 @@
                         </thead>
                         <tbody>
                             <tr @click="selected(row)" v-for="row in histories" :key="row.id">
-                                <td scope="row">{{ $filters.dateformat(row.terminal_time, 'DD/MM/YY HH:mm')  }}</td>
-                                <td>{{ row.lng.toFixed(2) }}°</td>
-                                <td>{{ row.lat.toFixed(2) }}°</td>
+                                <td scope="row">{{ $filters.dateformat(row.terminal_time, 'DD/MM/YYYY HH:mm')  }}</td>
+                                <td>{{ row.lng.toFixed(4) }}°</td>
+                                <td>{{ row.lat.toFixed(4) }}°</td>
                                 <td>{{ row.sog  }}</td>
                             </tr>
                         </tbody>

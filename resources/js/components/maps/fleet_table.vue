@@ -74,9 +74,11 @@ export default {
                 {label: 'Vessel State', field: 'fleet_status', display: function(row){
                     return states[row.fleet_status] ? states[row.fleet_status].name : 'Other';
                 }},
+                
                 {label: 'Connection', field: 'connected', display: function(row){
                     return row.connected ? `<div class="badge bg-success"></div> Good` : '<div class="badge bg-danger"></div> No Connection';
                 }},
+                {label: 'Last Connection At', field: 'last_connection'},
                 {label: 'Location', field: 'navigation.location', display: function(row){
                     if(row.navigation) {
                         return `${row.navigation.lat.toFixed(4)} ${row.navigation.lat_dir}, ${row.navigation.lng.toFixed(4)} ${row.navigation.lng_dir}`;

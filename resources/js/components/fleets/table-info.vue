@@ -15,7 +15,7 @@
                         <th scope="row">•</th>
                         <td>{{ a.text }}</td>
                         <td v-if="isNumber(a.data)" class="text-end">
-                            <a href="#" v-if="a.condition == 'ABNORMAL'" @click="openRecomend(a)" data-bs-toggle="tooltip" data-bs-placement="top" :title="buildTooltip(a, data[a.data])">
+                            <a href="#" v-if="a.condition == 'ABNORMAL' && a.is_ams" @click="openRecomend(a)" data-bs-toggle="tooltip" data-bs-placement="top" :title="buildTooltip(a, data[a.data])">
                                 <img src="/icon/danger.svg" height="16" />
                             </a>
                             {{ $filters.number(data[a.data]) }} <span v-html="a.unit"></span>
@@ -69,12 +69,23 @@ export default {
             this.info = a
         },
         buildTooltip(a, val) {
-            if(a.normal > val) {
-                return 'IS VERY LOW';
-            }
+            
+            if(a.reverse) {
+                if(a.normal < val) {
+                    return 'IS VERY LOW';
+                }
 
-            if(a.danger < val) {
-                return 'IS VERY HIGH';
+                if(a.danger > val) {
+                    return 'IS VERY HIGH';
+                }
+            }else{
+                if(a.normal > val) {
+                    return 'IS VERY LOW';
+                }
+
+                if(a.danger < val) {
+                    return 'IS VERY HIGH';
+                }
             }
             return 'NORMAL'
         }

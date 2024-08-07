@@ -143,7 +143,8 @@ export default {
                             sog: row.navigation.sog,
                             cog: row.navigation.cog,
                             imo: row.imo_number,
-                            last_update: timeago.format(row.last_connection)
+                            last_update: timeago.format(row.last_connection),
+                            time: this.$filters.dateformat(row.last_connection, 'DD/MM/YYYY HH:mm'),
                         }
                     })
                 }
@@ -204,7 +205,7 @@ export default {
             this.map.on('mouseenter', 'ship-position', (e) => {
                 that.map.getCanvas().style.cursor = 'pointer';
                 const coordinates = e.features[0].geometry.coordinates.slice();
-                const text = `<b>${e.features[0].properties.name} [ID]</b> at ${e.features[0].properties.sog} <b>kn</b> / ${e.features[0].properties.cog}&deg;<br>last update: <b>${e.features[0].properties.last_update}</b>`;
+                const text = `<b>${e.features[0].properties.name} [ID]</b> at ${e.features[0].properties.sog} <b>kn</b> / ${e.features[0].properties.cog}&deg;<br>Last Update: <b>${e.features[0].properties.last_update}</b><br>Time: <b>${e.features[0].properties.time}</b>`;
                 while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
                     coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
                 }
@@ -266,7 +267,7 @@ export default {
             if(! row.navigation) return;
             let fleetId = row.id
             this.popup.remove();
-            const text = `<a class="no-style" href="/fleet/${fleetId}"><b>${row.name} [ID]</b> at ${row.navigation.sog} <b>kn</b> / ${row.navigation.cog}&deg;<br>last update: <b>${timeago.format(row.navigation.updated_at )}</b></a>`;
+            const text = `<a class="no-style" href="/fleet/${fleetId}"><b>${row.name} [ID]</b> at ${row.navigation.sog} <b>kn</b> / ${row.navigation.cog}&deg;<br>Last Update: <b>${timeago.format(row.navigation.updated_at )}</b><br>Time: ${row.navigation.updated_at}</a>`;
             this.popup.setLngLat([row.navigation.lng, row.navigation.lat]).setHTML(text).addTo(this.map);
             this.center = [row.navigation.lng, row.navigation.lat]
             this.zoom = 5

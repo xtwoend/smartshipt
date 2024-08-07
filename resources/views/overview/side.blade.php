@@ -9,11 +9,11 @@
             Speed Overview
         </a>
     </li>
-    <li class="list-group-item">
+    {{-- <li class="list-group-item">
         <a href="{{ route('overview.cargo') }}">
             Percentage Cargo Overview
         </a>
-    </li>
+    </li> --}}
     <li class="list-group-item">
         <a href="{{ route('overview.duration', ['status' => 'at_port']) }}">
             Duration At Port Overview
