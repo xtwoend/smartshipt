@@ -12,7 +12,12 @@ class SensorController extends Controller
     public function update(Request $request)
     {
         $input = $request->all();
+
+        unset($input['value']);
+        unset($input['condition']);
+
         $input['is_ams'] = ($request->is_ams) ? 1 : 0;
+        $input['reverse'] = ($request->reverse) ? 1 : 0;
         
         if($request->has('id') && $request->id !== 0) {
             $sensor = Sensor::find($request->id)->update($input);
