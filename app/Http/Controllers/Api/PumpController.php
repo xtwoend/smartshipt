@@ -50,7 +50,7 @@ class PumpController extends Controller
             
             $query[] = "
             (select 
-                UNIX_TIMESTAMP(ct.terminal_time) * 1000 as unix_time, {$select_column}
+                UNIX_TIMESTAMP(ct.terminal_time) * 1000 as unix_time, ct.terminal_time, {$select_column}
                 from {$tableName} as `ct` 
                     inner join 
                     (
