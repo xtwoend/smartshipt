@@ -6,17 +6,22 @@ use App\Models\Fleet;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\FleetResource;
+use App\Models\ApiKey;
 
 class FleetController extends Controller
 {
     public function fleets(Request $request)
     {
         $user = $request->user();
-
-        if($user && $user->can('All Fleets') || $user->is_root) {
+        
+        if($request->has('key') && ApiKey::where('key', $request->key)->where('active', 1)->count() > 0) {
             $fleets = Fleet::select('id', 'name', 'image', 'imo_number', 'last_connection', 'connected', 'fleet_status', 'last_port')->with('navigation')->active();
         }else{
-            $fleets = $user->fleets()->select('fleets.id', 'fleets.name', 'fleets.image', 'fleets.imo_number', 'fleets.last_connection', 'fleets.connected', 'fleets.fleet_status', 'fleets.last_port')->with('navigation');
+            if($user->can('All Fleets') || $user->is_root) {
+                $fleets = Fleet::select('id', 'name', 'image', 'imo_number', 'last_connection', 'connected', 'fleet_status', 'last_port')->with('navigation')->active();
+            }else{
+                $fleets = $user->fleets()->select('fleets.id', 'fleets.name', 'fleets.image', 'fleets.imo_number', 'fleets.last_connection', 'fleets.connected', 'fleets.fleet_status', 'fleets.last_port')->with('navigation');
+            }
         }
 
         if($request->has('q')){
