@@ -14,7 +14,7 @@ class FleetController extends Controller
     {
         $user = $request->user();
         
-        if($request->has('key') && ApiKey::where('key', $request->key)->where('active', 1)->count() > 0) {
+        if($request->header('key') && ApiKey::where('key', $request->header('key'))->where('active', 1)->count() > 0) {
             $fleets = Fleet::select('id', 'name', 'image', 'imo_number', 'last_connection', 'connected', 'fleet_status', 'last_port')->with('navigation')->active();
         }else{
             if($user->can('All Fleets') || $user->is_root) {
