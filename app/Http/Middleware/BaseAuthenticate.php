@@ -40,6 +40,10 @@ class BaseAuthenticate implements AuthenticatesRequests
      */
     public function handle($request, Closure $next, ...$guards)
     {
+        if($this->checkApiKey($request)) {
+            return $next($request);
+        }
+
         $this->authenticate($request, $guards);
 
         return $next($request);
@@ -61,7 +65,7 @@ class BaseAuthenticate implements AuthenticatesRequests
         }
 
         foreach ($guards as $guard) {
-            if ($this->auth->guard($guard)->check() || $this->checkApiKey($request)) {
+            if ($this->auth->guard($guard)->check()) {
                 return $this->auth->shouldUse($guard);
             }
         }
@@ -71,7 +75,7 @@ class BaseAuthenticate implements AuthenticatesRequests
 
     protected function checkApiKey($request) {
         $key = $request->header('key');
-        $exists = ApiKey::where('key', trim($key))->count();
+        $exists = ApiKey::where('key', trim($key))->where('active', 1)->count();
         if($request->expectsJson() && !is_null($key) && $exists > 0) {
             return true;
         }
