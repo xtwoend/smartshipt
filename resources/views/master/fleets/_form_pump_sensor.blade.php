@@ -58,6 +58,16 @@
             editable: true
         },
         {
+            name: 'Inverse Condition',
+            field: 'reverse',
+            editable: true,
+            editType: 'selectKeyVal',
+            options: {{ json_encode([0 => 'False', 1 => 'True']) }},
+            display: function(row) {
+                return row.reverse ? 'True': 'False';
+            }
+        },
+        {
             name: 'AMS Mark',
             field: 'is_ams',
             editable: true,
