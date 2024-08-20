@@ -22,5 +22,12 @@
                 <small class="form-text text-danger">{{ $errors->first('sensor_trigger') }}</small>
             @endif
         </div>
+        <div class="form-group mb-3">
+            <label>Trigger Value</label>
+            {!! Form::text('sensor_trigger_value',  null, ['class' => 'form-control', ($disabled ?? '')]) !!}
+            @if ($errors->has('sensor_trigger_value'))
+                <small class="form-text text-danger">{{ $errors->first('sensor_trigger_value') }}</small>
+            @endif
+        </div>
     </div>
 </div>
