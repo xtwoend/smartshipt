@@ -27,6 +27,7 @@
                                 <th>MAX NORMAL VALUE</th>
                                 <th>HIGH VALUE</th>
                                 <th>SENSOR TRIGGER</th>
+                                <th>TRIGGER VALUE</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -38,6 +39,7 @@
                                 <td>{{$data->sensor?->max_normal}}</td>
                                 <td>{{$data->sensor?->danger}}</td>
                                 <td>{{$data->sensor_trigger}}</td>
+                                <td>{{$data->sensor_trigger_value}}</td>
                                 <td>
                                     <div class="dropdown">
                                         <a href="#" class="btn dropdown-toggle" data-bs-toggle="dropdown">Action</a>

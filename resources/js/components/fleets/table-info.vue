@@ -64,9 +64,15 @@ export default {
         isNumber(val) {
             return isNaN(val);
         },
-        openRecomend(a) {
+        async openRecomend(a) {
             // this.infoOpened = true
-            this.info = a
+            let fleetId = a.fleet_id;
+            let sensorName = a.data;
+
+            let res = await axios.get('api/docs', {params: {fleet_id: fleetId, sensor_name: sensorName}}).then(res => res.data)
+
+            console.log(res);
+            
         },
         buildTooltip(a, val) {
             

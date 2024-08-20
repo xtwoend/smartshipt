@@ -118,6 +118,8 @@ class Fleet extends Model
 
         foreach($rows as $row) {
             $options[] = [
+                'id' => $row->id,
+                'fleet_id' => $row->fleet_id,
                 'data' => $row->sensor_name,
                 'text' => $row->name,
                 'unit' => $row->unit,

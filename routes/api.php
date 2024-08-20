@@ -15,6 +15,7 @@ use App\Http\Controllers\Api\EngineController;
 use App\Http\Controllers\Api\LoggerController;
 use App\Http\Controllers\Api\BallastController;
 use App\Http\Controllers\TelegramBotController;
+use App\Http\Controllers\Api\SensorDocController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -39,6 +40,8 @@ Route::group([
 
     Route::get('fleet/{id}/nav/histories', [NavController::class, 'history']);
     Route::get('fleet/{id}', [FleetController::class, 'show'])->name('api.fleet');
+
+    Route::get('docs', [SensorDocController::class, 'doc'])->name('api.docs');
 
     Route::group([
         'as' => 'api.fleet.',
