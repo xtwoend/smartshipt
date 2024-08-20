@@ -50,7 +50,7 @@
                         <th  class="align-middle text-center">No.</th>
                         <th>Fleet Name</th>
                         <th>IMO</th>
-                        {{-- <th>Seconds</th> --}}
+                        <th>Last Position</th>
                         <th class="align-middle text-end">Duration</th>
                     </tr>
                     @php
@@ -61,7 +61,7 @@
                         <td class="align-middle text-center">{{ $no++ }}</td>
                         <td class="align-middle">{{ $f->name }}</td>
                         <td class="align-middle">{{ $f->imo_number }}</td>
-                        {{-- <td>{{ $f->seconds }}</td> --}}
+                        <td>{{ in_array($f->fleet_status, ['at_port', 'at_anchorage']) ? $f->last_port :  $f->fleet_status; }}</td>
                         <td class="align-middle text-end">{{ secondsToHours($f->seconds) }} Hours</td>
                     </tr>
                     @endforeach
