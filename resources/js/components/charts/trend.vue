@@ -151,6 +151,29 @@ export default {
             let series = [];
             let label = [];
             let select = [];
+
+            console.log(this.items.length)
+
+            if(this.items.length == 1) {
+                let ix = this.items[0]
+                console.log(ix);
+                this.items.push({
+                    "id": 3203,
+                    "fleet_id": 1,
+                    "data": "no_ops",
+                    "text": "Threshold",
+                    "unit": ix.unit,
+                    "min": -1,
+                    "max": 362,
+                    "normal": -1,
+                    "max_normal": 0,
+                    "danger": 361,
+                    "condition": "NORMAL",
+                    "is_ams": true,
+                    "reverse": false
+                });
+            }
+
             this.items.forEach((col, index) => {
                 let randColor = colors[index];
                 label[index] = {
@@ -181,6 +204,7 @@ export default {
                 series[index] = {
                     id: col.data,
                     row: col.data,
+                    threshold: col.max_normal,
                     yAxis: index,
                     type: col.type ? col.type : 'spline',
                     name: col.text,
@@ -188,6 +212,11 @@ export default {
                     lineWidth: 1,
                     data: []
                 };
+
+                if(col.data == 'no_ops') {
+                    series[index].dashStyle = 'longdash'; 
+                    series[index].color = '#90ed7d';
+                }
 
                 select[index] = col.data;
             })
@@ -202,7 +231,11 @@ export default {
                 let time = parseInt((new Date(row.terminal_time).getTime()).toFixed(0));
                 this.options.series.forEach((s, index) => {
                     let dt = row[s.row];
-                    this.options.series[index].data.push([time, dt]);
+                    if(s.row == 'no_ops') {
+                        this.options.series[index].data.push([time, s.threshold])
+                    }else{
+                        this.options.series[index].data.push([time, dt]);
+                    }
                 })
             })
 

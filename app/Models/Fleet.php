@@ -126,6 +126,7 @@ class Fleet extends Model
                 'min' => $row->min,
                 'max' => $row->max,
                 'normal' => $row->normal,
+                'max_normal' => $row->max_normal,
                 'danger' => $row->danger,
                 'condition' => $row->condition,
                 'is_ams' => (bool) $row->is_ams,
