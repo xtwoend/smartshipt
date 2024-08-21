@@ -152,12 +152,10 @@ export default {
             let label = [];
             let select = [];
 
-            console.log(this.items.length)
-
             if(this.items.length == 1) {
                 let ix = this.items[0]
-                console.log(ix);
-                this.items.push({
+                
+                this.items[1] = {
                     "id": 999999999,
                     "fleet_id": 1,
                     "data": "no_ops",
@@ -171,7 +169,7 @@ export default {
                     "condition": "NORMAL",
                     "is_ams": true,
                     "reverse": false
-                });
+                };
             }
 
             this.items.forEach((col, index) => {
@@ -223,7 +221,7 @@ export default {
 
             let del_i = select.findIndex(res => res.id == 999999999);
             select.splice(del_i, 1);
-            
+
             this.options.series = series;
             this.options.yAxis = label;
             this.params.select = select;
