@@ -158,7 +158,7 @@ export default {
                 let ix = this.items[0]
                 console.log(ix);
                 this.items.push({
-                    "id": 3203,
+                    "id": 999999999,
                     "fleet_id": 1,
                     "data": "no_ops",
                     "text": "Threshold",
@@ -221,6 +221,9 @@ export default {
                 select[index] = col.data;
             })
 
+            let del_i = select.findIndex(res => res.id == 999999999);
+            select.splice(del_i, 1);
+            
             this.options.series = series;
             this.options.yAxis = label;
             this.params.select = select;
