@@ -198,7 +198,27 @@ export default {
             if(this.items.length == 1) {
                 let ix = this.items[0]
                 
-                series.push({
+                label[1] = {
+                    title: {
+                        text: 'Threshold',
+                        style: {
+                            color: '#90ed7d',
+                            fontSize: '10px',
+                        }
+                    },
+                    lineColor: '#90ed7d',
+                    labels: {
+                        style: {
+                            color: '#90ed7d',
+                        },
+                        align: 'left',
+                        x: 14
+                    },
+                    lineWidth: 1,
+                    opposite: true,
+                };
+
+                series[1] = {
                     id: 'no_ops',
                     row: 'no_ops',
                     threshold: ix.max_normal,
@@ -209,7 +229,7 @@ export default {
                     lineWidth: 1,
                     dashStyle: 'longdash',
                     data: []
-                });
+                };
             }
 
             this.options.series = series;
