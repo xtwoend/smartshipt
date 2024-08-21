@@ -25,18 +25,41 @@
                 </tbody>
             </table>
         </div>
-        <Teleport to="#info">
-            <SideInfo v-show="infoOpened" :info="info" @close="infoOpened=false"></SideInfo>
-        </Teleport>
     </div>
+    <!-- Modal -->
+    <Teleport to="body">
+        <div class="modal fade" id="info_modal" tabindex="-1" role="dialog" aria-labelledby="info_modal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="info_modal">Status Detail</h5>
+                        <button type="button" class="close" @click="modal.hide()" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <template v-if="info">
+                        <h4>Item Name:</h4>
+                        <p>{{ info.name  }}</p>
+                        <br>
+                        <div v-if="is_low" v-html="info.low_desc"></div>
+                        <div v-if="! is_low" v-html="info.high_desc"></div>
+                        </template>
+                        <template v-else>
+                        <h4>No Information detail</h4>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </Teleport>
 </template>
 
 <script>
-import { Tooltip } from 'bootstrap'
-import {Teleport} from 'vue'
-import SideInfo from './side-info.vue'
+import { Tooltip, Modal } from 'bootstrap'
+import { Teleport } from 'vue'
 export default {
-    components: {SideInfo, Teleport},
+    components: {Teleport},
     props: {
         url: String,
         mapping: Array
@@ -45,7 +68,9 @@ export default {
         return {
             data: null,
             infoOpened: false,
-            info: null
+            modal: null,
+            info: null,
+            is_low: false
         }
     },
     created() {
@@ -56,6 +81,7 @@ export default {
         new Tooltip(document.body, {
             selector: "[data-bs-toggle='tooltip']",
         })
+        this.modal = new Modal('#info_modal', {})
     },
     methods: {
         async fetchData() {
@@ -69,27 +95,30 @@ export default {
             let fleetId = a.fleet_id;
             let sensorName = a.data;
 
-            let res = await axios.get('api/docs', {params: {fleet_id: fleetId, sensor_name: sensorName}}).then(res => res.data)
+            this.info = await axios.get('/api/docs', {params: {fleet_id: fleetId, sensor_name: sensorName}}).then(res => res.data)
 
-            console.log(res);
-            
+            this.modal.show();
         },
         buildTooltip(a, val) {
             
             if(a.reverse) {
                 if(a.normal < val) {
+                    this.is_low = true;
                     return 'IS VERY LOW';
                 }
 
                 if(a.danger > val) {
+                    this.is_low = false;
                     return 'IS VERY HIGH';
                 }
             }else{
                 if(a.normal > val) {
+                    this.is_low = true;
                     return 'IS VERY LOW';
                 }
 
                 if(a.danger < val) {
+                    this.is_low = false;
                     return 'IS VERY HIGH';
                 }
             }

@@ -42,7 +42,7 @@
     "css": [
       "assets/app-998179d5.css"
     ],
-    "file": "assets/app-64a60cd9.js",
+    "file": "assets/app-e7845a24.js",
     "imports": [
       "resources/tabler/src/js/tabler.esm.js",
       "_popper-528ebbd5.js"
@@ -127,7 +127,7 @@
     "src": "resources/sass/app.scss"
   },
   "resources/tabler/src/js/tabler.esm.js": {
-    "file": "assets/tabler.esm-067b70b6.js",
+    "file": "assets/tabler.esm-a5c5f87a.js",
     "imports": [
       "_popper-528ebbd5.js"
     ],

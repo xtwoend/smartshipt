@@ -19,6 +19,7 @@
     "dependencies": {
         "@mapbox/mapbox-gl-geocoder": "^5.0.1",
         "@studiometa/vue-mapbox-gl": "^2.0.4",
+        "@vueup/vue-quill": "^1.2.0",
         "autosize": "^5.0.2",
         "click-outside-vue3": "^4.0.1",
         "css-pro-layout": "^1.1.0",
