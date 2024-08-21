@@ -152,25 +152,6 @@ export default {
             let label = [];
             let select = [];
 
-            if(this.items.length == 1) {
-                let ix = this.items[0]
-                
-                this.items[1] = {
-                    "id": 999999999,
-                    "fleet_id": 1,
-                    "data": "no_ops",
-                    "text": "Threshold",
-                    "unit": ix.unit,
-                    "min": -1,
-                    "max": 362,
-                    "normal": -1,
-                    "max_normal": 0,
-                    "danger": 361,
-                    "condition": "NORMAL",
-                    "is_ams": true,
-                    "reverse": false
-                };
-            }
 
             this.items.forEach((col, index) => {
                 let randColor = colors[index];
@@ -211,16 +192,25 @@ export default {
                     data: []
                 };
 
-                if(col.data == 'no_ops') {
-                    series[index].dashStyle = 'longdash'; 
-                    series[index].color = '#90ed7d';
-                }
-
                 select[index] = col.data;
             })
 
-            let del_i = select.findIndex(res => res.id == 999999999);
-            select.splice(del_i, 1);
+            if(this.items.length == 1) {
+                let ix = this.items[0]
+                
+                series.push({
+                    id: 'no_ops',
+                    row: 'no_ops',
+                    threshold: ix.max_normal,
+                    yAxis: 1,
+                    type: 'spline',
+                    name: 'Threshold',
+                    color: '#90ed7d',
+                    lineWidth: 1,
+                    dashStyle: 'longdash',
+                    data: []
+                });
+            }
 
             this.options.series = series;
             this.options.yAxis = label;
