@@ -197,39 +197,17 @@ export default {
 
             if(this.items.length == 1) {
                 let ix = this.items[0]
-                
-                label[1] = {
-                    title: {
-                        text: 'Threshold',
-                        style: {
-                            color: '#90ed7d',
-                            fontSize: '10px',
+                label[0].plotLines = [
+                    {
+                        value: ix.max_normal,
+                        color: 'green',
+                        dashStyle: 'shortdash',
+                        width: 2,
+                        label: {
+                            text: 'Treshold'
                         }
-                    },
-                    lineColor: '#90ed7d',
-                    labels: {
-                        style: {
-                            color: '#90ed7d',
-                        },
-                        align: 'left',
-                        x: 14
-                    },
-                    lineWidth: 1,
-                    opposite: true,
-                };
-
-                series[1] = {
-                    id: 'no_ops',
-                    row: 'no_ops',
-                    threshold: ix.max_normal,
-                    yAxis: 1,
-                    type: 'spline',
-                    name: 'Threshold',
-                    color: '#90ed7d',
-                    lineWidth: 1,
-                    dashStyle: 'longdash',
-                    data: []
-                };
+                    }
+                ]
             }
 
             this.options.series = series;
@@ -242,11 +220,11 @@ export default {
                 let time = parseInt((new Date(row.terminal_time).getTime()).toFixed(0));
                 this.options.series.forEach((s, index) => {
                     let dt = row[s.row];
-                    if(s.row == 'no_ops') {
-                        this.options.series[index].data.push([time, s.threshold])
-                    }else{
+                    // if(s.row == 'no_ops') {
+                    //     this.options.series[index].data.push([time, s.threshold])
+                    // }else{
                         this.options.series[index].data.push([time, dt]);
-                    }
+                    // }
                 })
             })
 
