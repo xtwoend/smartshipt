@@ -171,6 +171,17 @@ export default {
                         align: 'left',
                         x: 14
                     },
+                    plotLines:[
+                        {
+                            value: col.max_normal,
+                            color: 'green',
+                            dashStyle: 'shortdash',
+                            width: 2,
+                            label: {
+                                text: `${col.text}  Treshold ( ${col.max_normal} )`
+                            }
+                        }
+                    ],
                     lineWidth: 1,
                     opposite: true,
                 };
@@ -195,20 +206,20 @@ export default {
                 select[index] = col.data;
             })
 
-            if(this.items.length == 1) {
-                let ix = this.items[0]
-                label[0].plotLines = [
-                    {
-                        value: ix.max_normal,
-                        color: 'green',
-                        dashStyle: 'shortdash',
-                        width: 2,
-                        label: {
-                            text: 'Treshold'
-                        }
-                    }
-                ]
-            }
+            // if(this.items.length == 1) {
+            //     let ix = this.items[0]
+            //     label[0].plotLines = [
+            //         {
+            //             value: ix.max_normal,
+            //             color: 'green',
+            //             dashStyle: 'shortdash',
+            //             width: 2,
+            //             label: {
+            //                 text: 'Treshold'
+            //             }
+            //         }
+            //     ]
+            // }
 
             this.options.series = series;
             this.options.yAxis = label;
