@@ -56,6 +56,7 @@ class UserController extends Controller
 
         $row = $this->users;
         $row->fill($request->all());
+        $row->is_root = $request->input('is_root', 0);
         $row->password = Hash::make($request->password);
         $row->save();
 
@@ -103,6 +104,7 @@ class UserController extends Controller
 
         $row = $this->users->findOrFail($id);
         $row->fill($request->all());
+        $row->is_root = $request->input('is_root', 0);
         if($request->has('password')){
             $row->password = Hash::make($request->password);
         }

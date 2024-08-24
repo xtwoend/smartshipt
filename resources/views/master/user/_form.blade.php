@@ -28,8 +28,7 @@
 
         <div class="col-6">
             <div class="form-group mb-3">
-                <label>Is Superuser</label>
-                {!! Form::checkbox('is_root', null, ['class' => 'form-control']) !!}
+                <label>{!! Form::checkbox('is_root', 1, ($row && $row->is_root) ? true : false) !!} Is Superuser</label>
                 @if ($errors->has('is_root'))
                     <small class="form-text text-danger">{{ $errors->first('is_root') }}</small>
                 @endif
