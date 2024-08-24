@@ -25,5 +25,15 @@
             <label>Confirm Password</label>
             {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
         </div>
+
+        <div class="col-6">
+            <div class="form-group mb-3">
+                <label>Is Superuser</label>
+                {!! Form::checkbox('is_root', null, ['class' => 'form-control']) !!}
+                @if ($errors->has('is_root'))
+                    <small class="form-text text-danger">{{ $errors->first('is_root') }}</small>
+                @endif
+            </div>
+        </div>
     </div>
 </div>
