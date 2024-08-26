@@ -34,7 +34,7 @@
                             @endforeach
                             </tbody>
                         </table>
-                        {{ $lists->appends(request()->all())->links() }}
+                        {{ $lists->appends(request()->query())->links() }}
                     </div>
                 </div>
             </div>
