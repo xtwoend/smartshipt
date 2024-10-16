@@ -25,7 +25,7 @@
 
     {{-- scadavis --}}
     <script src="{{ asset('scadavis/synopticapi.js') }}"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    <script src="{{ asset('js/socket.io.js') }}"></script>
     
     @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/js/index.js'])
 </head>

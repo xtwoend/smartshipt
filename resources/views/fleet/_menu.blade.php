@@ -6,7 +6,10 @@ $active = request()->route()->getName();
     <div class="collapse navbar-collapse">
         <ul class="navbar-nav">
             <li class="nav-item {{ $active == 'fleet' ? 'active': '' }}">
-                <a class="nav-link" href="{{ route('fleet', $fleet->id) }}">NAVIGASI</a>
+                <a class="nav-link" href="{{ route('fleet', $fleet->id) }}">SHIP INFO</a>
+            </li>
+            <li class="nav-item {{ $active == 'fleet.nav' ? 'active': '' }}">
+                <a class="nav-link" href="{{ route('fleet.nav', $fleet->id) }}">NAVIGASI</a>
             </li>
             <li class="nav-item {{ $active == 'fleet.engine' ? 'active': '' }}">
                 <a class="nav-link" href="{{ route('fleet.engine', $fleet->id) }}">MAIN ENGINE</a>

@@ -19,7 +19,15 @@ class FleetController extends Controller
         }
     }
 
-    public function index($id, Request $request)
+    public function info($id, Request $request)
+    {
+        $this->accessFleet($id, $request);
+
+        $fleet =  Fleet::findOrFail($id);
+        return view('fleet.info', compact('fleet'));
+    }
+
+    public function nav($id, Request $request)
     {
         $this->accessFleet($id, $request);
         
