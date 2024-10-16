@@ -60,7 +60,7 @@
                         <td class="align-middle text-center">{{ $no++ }}</td>
                         <td class="align-middle">{{ $f->name }}</td>
                         <td class="align-middle">{{ $f->imo_number }}</td>
-                        {{-- <td class="align-middle">{{ number($f->max_speed) }} KNOT</td> --}}
+                        <td class="align-middle">{{ number($f->max_speed) }} KNOT</td>
                         <td class="align-middle text-end">{{ number($f->speed) }} KNOT</td>
                     </tr>
                     @endforeach
