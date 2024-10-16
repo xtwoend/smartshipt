@@ -49,6 +49,7 @@ Route::group([
     Route::get('/fleet/{id}/trend', [FleetController::class, 'trend'])->name('fleet.trend');
     Route::get('/fleet/{id}/notes', [FleetController::class, 'notes'])->name('fleet.notes');
     Route::get('/fleet/{id}/docs', [FleetController::class, 'docs'])->name('fleet.docs');
+    Route::get('/fleet/{id}/docs/read', [FleetController::class, 'readDocs'])->name('fleet.read_docs');
     Route::get('/fleet/{id}/reports', [FleetController::class, 'reports'])->name('fleet.reports');
     Route::get('/fleet/{id}/diagnotics', [FleetController::class, 'diagnotics'])->name('fleet.diagnotics');
     Route::get('/fleet/{id}/alarms', [FleetController::class, 'alarms'])->name('fleet.alarms');

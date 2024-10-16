@@ -36,7 +36,7 @@
                 
                     <tr>
                         <td>{{ $no++ }}</td>
-                        <td>{{ $doc->name }}</td>
+                        <td><a href="{{ route('fleet.read_docs', $doc->id) }}">{{ $doc->name }}</a></td>
                         <td>{{ bytesToHuman($doc->size) }}</td>
                         <td>{{ $doc->created_at }}</td>
                         @can('Document Download')

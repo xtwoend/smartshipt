@@ -114,7 +114,7 @@ class FleetController extends Controller
         return view('fleet.docs', compact('fleet'));
     }
 
-    public function readDoc($id, Request $request)
+    public function readDocs($id, Request $request)
     {
         $this->accessFleet($id, $request);
 

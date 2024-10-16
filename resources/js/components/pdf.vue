@@ -1,6 +1,6 @@
 <template>
     <div>
-        <PDFViewer :source="url" style="height: 100vh; width: 100vw" />
+        <PDFViewer :source="url" style="height: 800px; width: 100%" />
     </div>
 </template>
 

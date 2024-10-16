@@ -10,6 +10,10 @@
         @endif
         
         <div class="p-3">
+            <div class="table-title">
+                <h6>{{ $doc->name }}</h6>
+            </div>
+            <br>
             <pdf-viewer url="/{{ $doc->path }}"></pdf-viewer>
         </div>
     </div>
