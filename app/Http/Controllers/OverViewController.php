@@ -72,7 +72,7 @@ class OverViewController extends Controller
         foreach(Fleet::active()->get() as $fleet) {
             $tableName = FleetDailyReport::table($fleet->id)->getTable();
             if(! Schema::hasTable($tableName)) continue;
-            $query [] = "(SELECT fleet_id, AVG(before) as speed, MAX(after) as max_speed FROM {$tableName} WHERE {$tableName}.`date` BETWEEN '{$from}' AND '{$to}' AND {$tableName}.`sensor` = 'speed' GROUP BY  {$tableName}.`fleet_id`)";
+            $query [] = "(SELECT fleet_id, AVG({$tableName}.`before`) as speed, MAX({$tableName}.`after`) as max_speed FROM {$tableName} WHERE {$tableName}.`date` BETWEEN '{$from}' AND '{$to}' AND {$tableName}.`sensor` = 'speed' GROUP BY  {$tableName}.`fleet_id`)";
         }
         $query = implode(' UNION ', $query);
         $rows = collect(DB::select($query));
