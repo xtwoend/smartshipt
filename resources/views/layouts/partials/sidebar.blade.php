@@ -33,7 +33,7 @@
                     </span>
                     <span class="menu-title">My Fleets</span>
                   </a>
-                  <div class="sub-menu-list">
+                  <div class="sub-menu-list scroll">
                     <ul class="scroller" style="heigth: 400px;">
                       @if(Auth::user()->can('All Fleets'))
                         @foreach (\App\Models\Fleet::active()->get() as $item)
@@ -95,13 +95,29 @@
                   </a>
                 </li>
 
-                <li class="menu-item">
+                <li class="menu-item sub-menu">
                   <a href="#">
                     <span class="menu-icon">
                     <img src="{{asset('img/icons/helps.svg')}}" height="26" alt="" />
                     </span>
                     <span class="menu-title">Help</span>
                   </a>
+                  <div class="sub-menu-list">
+                    <ul>
+                      <li class="menu-item">
+                          <a href="{{ route('help.getting_started') }}">
+                              <span class="menu-icon"></span>
+                              <span class="menu-title">Getting Started</span>
+                          </a>
+                      </li>
+                      <li class="menu-item">
+                        <a href="{{ route('help.basic_vessel') }}">
+                            <span class="menu-icon"></span>
+                            <span class="menu-title">Basic Vessel Modules</span>
+                        </a>
+                    </li>
+                    </ul>
+                  </div>
                 </li>
                 @if(Auth::user()->is_root)
                 <li class="menu-item">
@@ -112,7 +128,7 @@
                     <span class="menu-title">Settings</span>
                   </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item sub-menu">
                   <a href="#">
                     <span class="menu-icon">
                     <img src="{{asset('img/icons/users.svg')}}" height="26" alt="" />

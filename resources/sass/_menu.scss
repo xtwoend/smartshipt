@@ -174,8 +174,10 @@
               visibility: visible !important;
               position: static !important;
               transform: translate(0, 0) !important;
-              height: 400px;
-              overflow-y: auto;
+              &.scroll {
+                height: 400px;
+                overflow-y: auto;
+              }
             }
           }
         }

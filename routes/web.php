@@ -32,6 +32,13 @@ Route::group([
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/route', [NaviController::class, 'route'])->name('route');
 
+    Route::get('/help/getting-started', function(){
+        return view('helps.getting_started');
+    })->name('help.getting_started');
+
+    Route::get('/help/basic-vessel-modules', function(){
+        return view('helps.basic_vessel_module');
+    })->name('help.basic_vessel');
     
 
     Route::get('/fleet/{id}', [FleetController::class, 'info'])->name('fleet');
