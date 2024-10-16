@@ -125,7 +125,7 @@ class OilAnalyticController extends Controller
         $data = [];
         $isheader = 0;
         foreach ($reader as $row) {
-            if($isheader > 0){
+            if($isheader > 1){
                 $data = [
                     'Lube' => (string) $row[0],
                     'pertamina_international_shipping' => (string) $row[1],
@@ -136,7 +136,7 @@ class OilAnalyticController extends Controller
                     'Model' => (string) $row[6],
                     'Equipment_Description' => (string) $row[7],
                     'Equipment_Number' => (string) $row[8],
-                    'Sample_Date' => Carbon::createFromFormat('d-m-y', $row[9])->format('Y-m-d'),
+                    'Sample_Date' => Carbon::createFromFormat('d-M-y', $row[9])->format('Y-m-d'),
                     'RH_Oil' => (float) $row[10],
                     'RH_Engine' => (float) $row[11],
                     'P' => (float) $row[12],
@@ -195,7 +195,7 @@ class OilAnalyticController extends Controller
                 ];
                 OilLube::insert($data);
             }else{
-                $isheader = 1;
+                $isheader++;
             }
         }
         $reader->close();
