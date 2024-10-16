@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Master;
 
 use App\Models\Fleet;
+use App\Models\FleetDoc;
 use App\Models\FleetPic;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
@@ -227,5 +228,42 @@ class FleetController extends Controller
         ], [
             'path' => $path
         ]);
+    }
+
+    public function docs($id, Request $request) 
+    {
+        $fleet = Fleet::findOrFail($id);
+        $docs = $fleet->docs()->latest()->paginate(20)->withQueryString();
+
+        return view('master.fleets._docs', compact('fleet', 'docs'));
+    }
+
+    public function docDel($id)
+    {
+        $d = FleetDoc::find($id);
+        $d->delete();
+
+        return redirect()->route('master.fleets.docs', $d->fleet_id);
+    }
+
+    public function uploadDocs($id, Request $request)
+    {
+        $fleet = Fleet::find($id);
+        $file = $request->file('file');
+        $size = $file->getSize();
+        $name = $file->getClientOriginalName();
+        $mimeType = $file->getMimeType();
+
+        $path = $file->store("docs/{$fleet->id}");
+
+        $file = $fleet->docs()->create([
+            'fleet_id' => $fleet->id,
+            'path' => $path,
+            'size' => $size,
+            'mime_type' => $mimeType,
+            'name' => $request->name ?? $name,
+        ]);
+
+        return redirect()->route('master.fleets.docs', $fleet->id);
     }
 }

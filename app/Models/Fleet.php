@@ -492,4 +492,9 @@ class Fleet extends Model
     {
         return $this->hasOne(BunkerInformation::class, 'fleet_id');
     }
+
+    public function docs()
+    {
+        return $this->hasMany(FleetDoc::class, 'fleet_id');
+    }
 }

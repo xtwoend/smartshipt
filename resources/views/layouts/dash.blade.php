@@ -24,10 +24,15 @@
     <link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.min.css') }}">
 
     {{-- scadavis --}}
+    <script
+        src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
     <script src="{{ asset('scadavis/synopticapi.js') }}"></script>
     <script src="{{ asset('js/socket.io.js') }}"></script>
     
     @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/js/index.js'])
+    @yield('js')
 </head>
 <body>
     

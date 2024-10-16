@@ -10,7 +10,7 @@
         @endif
 
         <div class="row justify-content-center">
-            <div class="col-12">
+            <div class="col-12 p-3">
                 <div class="table-title">
                     <h6>General Information</h6>
                 </div>
@@ -69,7 +69,7 @@
                         <tr>
                             <th scope="row">•</th>
                             <td>SLA Speed</td>
-                            <td class="text-end">{{ $fleet->bunker_information->speed_service }}</td>
+                            <td class="text-end">{{ $fleet->bunker_information?->speed_service }}</td>
                         </tr>
                         <tr>
                             <th scope="row">•</th>

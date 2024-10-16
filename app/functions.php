@@ -109,3 +109,16 @@ if( ! function_exists('exportCsv')) {
        return response()->streamDownload($callback, $file_name, ['Content-Type' => 'text/csv']);
     }
 }
+
+if(! function_exists('bytesToHuman')) {
+    function bytesToHuman($bytes)
+    {
+        $units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB'];
+
+        for ($i = 0; $bytes > 1024; $i++) {
+            $bytes /= 1024;
+        }
+
+        return round($bytes, 2) . ' ' . $units[$i];
+    }
+}

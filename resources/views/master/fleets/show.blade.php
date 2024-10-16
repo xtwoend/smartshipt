@@ -23,6 +23,9 @@
                                 <li class="nav-item">
                                     <a href="#bunker" class="nav-link" data-bs-toggle="tab" data-bs-target="#bunker">Bunker</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="#docs" class="nav-link" data-bs-toggle="tab" data-bs-target="#docs">Docs</a>
+                                </li>
                                 @can('Fleet Threshold Sensor Setting')
                                 <li class="nav-item">
                                     <a href="#navigation" class="nav-link" data-bs-toggle="tab" data-bs-target="#navigation">Navigation Sensor</a>
@@ -54,7 +57,6 @@
                         <div class="card-body">
                             <div class="tab-content">
                                 <div class="tab-pane active show" id="tab-information">
-
                                     @can('Fleet Manage')
                                     <div class="action-edit">
                                         <a href="{{ route('master.fleets.edit', $data->id) }}" class="btn btn-info">Edit Master Data</a>
@@ -88,6 +90,16 @@
                                     {!! Form::model($data->bunker_information, ['route' => ['master.fleets.index'], 'method' => 'PUT']) !!}
                                     @include('master.fleets._form_bunker', ['disabled' => 'disabled'])
                                     {!! Form::close() !!}
+                                </div>
+                                <div class="tab-pane" id="docs">
+                                    @can('Fleet Manage')
+                                    <div class="action-edit">
+                                        <a href="{{ route('master.fleets.docs', $data->id) }}" class="btn btn-info">Add Documents</a>
+                                    </div>
+                                    @endcan
+
+                                    @include('master.fleets.docs', ['fleet' => $data])
+
                                 </div>
                                 <div class="tab-pane" id="navigation">
                                     @include('master.fleets._form_navigation_sensor', [

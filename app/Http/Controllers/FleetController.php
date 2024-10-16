@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Alarm;
 use App\Models\Fleet;
+use App\Models\FleetDoc;
 use App\Models\FleetOilLube;
 use Illuminate\Http\Request;
 
@@ -111,6 +112,17 @@ class FleetController extends Controller
 
         $fleet = Fleet::findOrFail($id);
         return view('fleet.docs', compact('fleet'));
+    }
+
+    public function readDoc($id, Request $request)
+    {
+        $this->accessFleet($id, $request);
+
+        $doc = FleetDoc::find($id);
+
+        $fleet = $doc->fleet;
+
+        return view('fleet.doc_read', compact('fleet', 'doc'));
     }
 
     public function reports($id, Request $request)

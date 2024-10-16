@@ -111,6 +111,8 @@ app.component('sensor-info', SensorInfo);
 import MimicSvg from './components/fleets/mimic-svg.vue';
 app.component('mimic-svg', MimicSvg);
 
+import PDFViewer from './components/pdf.vue';
+app.component('pdf-viewer', PDFViewer);
 
 import DataInformation from './components/fleets/table-info.vue';
 app.component('data-info', DataInformation);

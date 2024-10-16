@@ -97,6 +97,9 @@ Route::group([
             Route::put('{id}/update-cargo-information', 'updateCargo')->name('updateCargo');
             Route::get('{id}/edit-bunker-information', 'editBunker')->name('editBunker');
             Route::put('{id}/update-bunker-information', 'updateBunker')->name('updateBunker');
+            Route::get('{id}/docs', 'docs')->name('docs');
+            Route::post('{id}/docs', 'uploadDocs')->name('docs.upload');
+            Route::delete('{id}/docs', 'docDel')->name('docs.delete');
         });
 
         Route::resource('oils', \App\Http\Controllers\Master\OilAnalyticController::class);
