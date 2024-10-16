@@ -41,7 +41,7 @@
                         <td>{{ $doc->created_at }}</td>
                         @can('Document Download')
                         <td>
-                            <a href="/{{ $doc->path }}" class="d-flex" style="">
+                            <a href="/docs/{{ $doc->path }}" class="d-flex" style="">
                                 <img src="{{asset('icon/purple.svg')}}" width="24"/>
                             </a>
                         </td>

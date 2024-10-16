@@ -14,7 +14,7 @@
                 <h6>{{ $doc->name }}</h6>
             </div>
             <br>
-            <pdf-viewer url="/{{ $doc->path }}"></pdf-viewer>
+            <pdf-viewer url="/docs/{{ $doc->path }}"></pdf-viewer>
         </div>
     </div>
 </main>
