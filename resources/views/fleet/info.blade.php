@@ -29,7 +29,7 @@
                         <tr>
                             <th scope="row">•</th>
                             <td>Ship Manager</td>
-                            <td class="text-end">{{ $fleet->manager }}</td>
+                            <td class="text-end">{{ $fleet->ship_manager }}</td>
                         </tr>
                         <tr>
                             <th scope="row">•</th>
@@ -73,7 +73,7 @@
                         </tr>
                         <tr>
                             <th scope="row">•</th>
-                            <td>Engine Marker</td>
+                            <td>Engine Maker</td>
                             <td class="text-end">{{ $fleet->engine_maker }}</td>
                         </tr>
                         <tr>
