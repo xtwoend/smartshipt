@@ -2,6 +2,11 @@
   "_popper-528ebbd5.js": {
     "file": "assets/popper-528ebbd5.js"
   },
+  "node_modules/pdf-vue3/dist/pdf.min-f72cfa08.js": {
+    "file": "assets/pdf.min-f72cfa08-3085c204.js",
+    "isDynamicEntry": true,
+    "src": "node_modules/pdf-vue3/dist/pdf.min-f72cfa08.js"
+  },
   "public/img/icons/date-light.png": {
     "file": "assets/date-light-13b22e71.png",
     "src": "public/img/icons/date-light.png"
@@ -27,7 +32,7 @@
     "src": "public/remixicon/remixicon.woff2"
   },
   "resources/js/app.css": {
-    "file": "assets/app-998179d5.css",
+    "file": "assets/app-044b0f54.css",
     "src": "resources/js/app.css"
   },
   "resources/js/app.js": {
@@ -40,9 +45,12 @@
       "assets/ship-c94d8078.png"
     ],
     "css": [
-      "assets/app-998179d5.css"
+      "assets/app-044b0f54.css"
     ],
-    "file": "assets/app-5cd3fce5.js",
+    "dynamicImports": [
+      "node_modules/pdf-vue3/dist/pdf.min-f72cfa08.js"
+    ],
+    "file": "assets/app-51650951.js",
     "imports": [
       "resources/tabler/src/js/tabler.esm.js",
       "_popper-528ebbd5.js"
@@ -76,9 +84,9 @@
   },
   "resources/js/index.js": {
     "css": [
-      "assets/app-41b47fd0.css"
+      "assets/app-289e98ab.css"
     ],
-    "file": "assets/index-ecc4c221.js",
+    "file": "assets/index-be628716.js",
     "imports": [
       "resources/js/libs/slide.js",
       "resources/js/libs/constants.js",
@@ -122,7 +130,7 @@
     "src": "resources/js/libs/slide.js"
   },
   "resources/sass/app.scss": {
-    "file": "assets/app-41b47fd0.css",
+    "file": "assets/app-289e98ab.css",
     "isEntry": true,
     "src": "resources/sass/app.scss"
   },

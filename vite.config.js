@@ -4,6 +4,14 @@ import vue from '@vitejs/plugin-vue';
 import path from 'path';
 
 export default defineConfig({
+    optimizeDeps: {
+        include: ['pdfjs-dist'], // optionally specify dependency name
+        esbuildOptions: {
+            supported: {
+                'top-level-await': true,
+            },
+        },
+    },
     plugins: [
         laravel({
             input: [
@@ -21,7 +29,7 @@ export default defineConfig({
         vue({
             template: {
                 transformAssetUrls: {
-                    base: null,
+                    base: '',
                     includeAbsolute: false,
                 },
             },

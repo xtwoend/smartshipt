@@ -1,23 +1,19 @@
 <template>
     <div>
-        <PDFViewer :source="url" style="height: 800px; width: 100%" />
+        <PDF :src="url" />
     </div>
 </template>
 
 <script>
-import PDFViewer from 'pdf-viewer-vue'
-
-// OR THE FOLLOWING IMPORT FOR VUE 2
-// import PDFViewer from 'pdf-viewer-vue/dist/vue2-pdf-viewer'
+import PDF from "pdf-vue3";
 
 export default {
     props: {
         url: String
     },
     components: {
-        PDFViewer,
+        PDF,
     },
-
     data() {
         return {
             // 
@@ -25,6 +21,6 @@ export default {
     },
     methods: {
         // handleDownload
-    }
+    },
 }
 </script>
