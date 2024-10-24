@@ -184,7 +184,9 @@ class FleetController extends Controller
             'transport_loss' => 'required',
         ]);
 
-        $row = BunkerInformation::updateOrCreate(['fleet_id' => $id], $request->all());
+        $input = array_filter($request->all());
+
+        $row = BunkerInformation::updateOrCreate(['fleet_id' => $id], $input);
 
         return redirect()->route('master.fleets.show', $id)->with('message', 'Success update fleet bunker information');
     }
