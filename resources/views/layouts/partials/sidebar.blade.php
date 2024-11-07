@@ -95,6 +95,15 @@
                   </a>
                 </li>
 
+                <li class="menu-item">
+                  <a href="{{ route('master.sensor.index') }}">
+                    <span class="menu-icon">
+                      <img src="{{ asset('img/icons/form.svg') }}"  height="26" alt="">
+                    </span>
+                    <span class="menu-title">Upload Sensor Form</span>
+                  </a>
+                </li>
+
                 <li class="menu-item sub-menu">
                   <a href="#">
                     <span class="menu-icon">
