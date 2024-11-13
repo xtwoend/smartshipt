@@ -86,7 +86,7 @@ class MainEngineLog extends Model
                 $table->float('cr_servo_oil_pressure_sp', 10, 3)->default(0);
                 $table->float('cr_fuel_rail_pressure_act', 10, 3)->default(0);
                 $table->float('cr_vit', 10, 3)->default(0);
-                // silinder
+
                 $table->float('cyl_pressure_max_c1', 10, 3)->default(0);
                 $table->float('cyl_pressure_max_c2', 10, 3)->default(0);
                 $table->float('cyl_pressure_max_c3', 10, 3)->default(0);
@@ -94,6 +94,7 @@ class MainEngineLog extends Model
                 $table->float('cyl_pressure_max_c5', 10, 3)->default(0);
                 $table->float('cyl_pressure_max_c6', 10, 3)->default(0);
                 $table->float('cyl_pressure_max_c7', 10, 3)->default(0);
+                $table->float('cyl_pressure_max_c8', 10, 3)->default(0);
                 $table->float('cyl_fuel_pump_index_c1', 10, 3)->default(0);
                 $table->float('cyl_fuel_pump_index_c2', 10, 3)->default(0);
                 $table->float('cyl_fuel_pump_index_c3', 10, 3)->default(0);
@@ -101,7 +102,7 @@ class MainEngineLog extends Model
                 $table->float('cyl_fuel_pump_index_c5', 10, 3)->default(0);
                 $table->float('cyl_fuel_pump_index_c6', 10, 3)->default(0);
                 $table->float('cyl_fuel_pump_index_c7', 10, 3)->default(0);
-
+                $table->float('cyl_fuel_pump_index_c8', 10, 3)->default(0);
                 $table->float('cyl_temp_exh_c1', 10, 3)->default(0);
                 $table->float('cyl_temp_exh_c2', 10, 3)->default(0);
                 $table->float('cyl_temp_exh_c3', 10, 3)->default(0);
@@ -109,6 +110,7 @@ class MainEngineLog extends Model
                 $table->float('cyl_temp_exh_c5', 10, 3)->default(0);
                 $table->float('cyl_temp_exh_c6', 10, 3)->default(0);
                 $table->float('cyl_temp_exh_c7', 10, 3)->default(0);
+                $table->float('cyl_temp_exh_c8', 10, 3)->default(0);
 
                 $table->float('cyl_temp_jacket_fw_out_c1', 10, 3)->default(0);
                 $table->float('cyl_temp_jacket_fw_out_c2', 10, 3)->default(0);
@@ -117,6 +119,7 @@ class MainEngineLog extends Model
                 $table->float('cyl_temp_jacket_fw_out_c5', 10, 3)->default(0);
                 $table->float('cyl_temp_jacket_fw_out_c6', 10, 3)->default(0);
                 $table->float('cyl_temp_jacket_fw_out_c7', 10, 3)->default(0);
+                $table->float('cyl_temp_jacket_fw_out_c8', 10, 3)->default(0);
 
                 $table->float('cyl_temp_crankcase_c1', 10, 3)->default(0);
                 $table->float('cyl_temp_crankcase_c2', 10, 3)->default(0);
@@ -125,6 +128,7 @@ class MainEngineLog extends Model
                 $table->float('cyl_temp_crankcase_c5', 10, 3)->default(0);
                 $table->float('cyl_temp_crankcase_c6', 10, 3)->default(0);
                 $table->float('cyl_temp_crankcase_c7', 10, 3)->default(0);
+                $table->float('cyl_temp_crankcase_c8', 10, 3)->default(0);
 
                 $table->float('fo_comsumtion', 10, 3)->default(0);
                 $table->string('fo_grade')->nullable();
