@@ -8,6 +8,7 @@ use App\Models\MainEngine;
 use Illuminate\Http\Request;
 use Aspera\Spreadsheet\XLSX\Reader;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
 
 class FormController extends Controller
@@ -144,6 +145,11 @@ class FormController extends Controller
         }
 
         $fleetId = $request->fleet_id;
+        $myTable = MainEngine::table($fleetId)->getTable();
+        
+        if (! Schema::hasColumn($myTable, 'engine_type')) {
+            return redirect()->route('master.form.main-engine')->withError('fleet wajib dipilih');
+        }
 
         MainEngine::table($fleetId)->updateOrCreate([
             'fleet_id' => $fleetId,
