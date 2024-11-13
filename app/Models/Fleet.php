@@ -168,7 +168,7 @@ class Fleet extends Model
         $group = $this->group_data()->where('group', 'engine')->first();
         if(is_null($group)) return null;
 
-        $classModel  = $group->class_handler;
+        $classModel  = \App\Models\Engine::class;
         if(! class_exists($classModel)) {
             return null;
         }
@@ -186,7 +186,7 @@ class Fleet extends Model
         $group = $this->group_data()->where('group', 'engine_logs')->first();
         if(is_null($group)) return null;
 
-        $classModel  = $group->class_handler;
+        $classModel  = \App\Models\EngineLog::class;
         if(! class_exists($classModel)) {
             return null;
         }
@@ -199,7 +199,7 @@ class Fleet extends Model
         $group = $this->group_data()->where('group', 'engine')->first();
         if(is_null($group)) return [];
 
-        $classModel  = $group->class_handler;
+        $classModel = \App\Models\Engine::class;
         if(! class_exists($classModel)) {
             return null;
         }
