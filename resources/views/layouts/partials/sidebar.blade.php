@@ -96,7 +96,7 @@
                 </li>
 
                 <li class="menu-item">
-                  <a href="{{ route('master.sensor.index') }}">
+                  <a href="{{ route('master.form.main-engine') }}">
                     <span class="menu-icon">
                       <img src="{{ asset('img/icons/form.svg') }}"  height="26" alt="">
                     </span>

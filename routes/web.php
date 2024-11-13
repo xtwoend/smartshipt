@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NaviController;
 use App\Http\Controllers\FleetController;
 use App\Http\Controllers\Master\LogController;
+use App\Http\Controllers\Master\SensorController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\OverViewController;
@@ -114,6 +115,10 @@ Route::group([
         Route::get('oils/process', [\App\Http\Controllers\Master\OilAnalyticController::class, 'process'])->name('oils.process');
         Route::post('oils/file-upload', [\App\Http\Controllers\Master\OilAnalyticController::class, 'upload'])->name('oils.file-upload');
         Route::post('oils/clear-data', [\App\Http\Controllers\Master\OilAnalyticController::class, 'clearData'])->name('oils.clear-data');
+
+        Route::get('form/main-engine', [\App\Http\Controllers\Master\FormController::class, 'me'])->name('form.main-engine')->middleware('can:Upload Sensor');
+        Route::post('form/main-engine-upload', [\App\Http\Controllers\Master\FormController::class, 'meUpload'])->name('form.main-engine.upload')->middleware('can:Upload Sensor');
+        Route::post('form/main-engine',  [\App\Http\Controllers\Master\FormController::class, 'store'])->name('form.main-engine.process')->middleware('can:Upload Sensor');
 
         Route::resource('ports', \App\Http\Controllers\Master\PortController::class)->middleware('can:Port Manage');
 
