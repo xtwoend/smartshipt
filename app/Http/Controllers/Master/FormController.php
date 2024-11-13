@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Master;
 use Carbon\Carbon;
 use App\Models\Fleet;
 use App\Models\MainEngine;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Aspera\Spreadsheet\XLSX\Reader;
 use App\Http\Controllers\Controller;
@@ -23,19 +24,24 @@ class FormController extends Controller
         if(! $request->file('file')->isValid()) return redirect()->route('master.oils.index');
 
         $file = $request->file;
-        $file->storeAs('temp', 'form-350.xlsx');
+        $rand = Str::random(10);
+        $file->storeAs('temp', $rand.'form-350.xlsx');
 
         $reader = new Reader();
-        $reader->open(Storage::path('temp/form-350.xlsx'));
+        $reader->open(Storage::path("temp/{$rand}form-350.xlsx"));
 
         $raw = [];
         foreach($reader as $row) {
             $raw[] = $row;
         }
-
+        try {
+            $date = Carbon::createFromFormat('d/m/Y', $raw[6][2] ?: 0)->format('Y-m-d 12:00:00');
+        } catch (\Throwable $th) {
+            $date = null;
+        }
         $data = [
             'fleet_name' => $raw[5][2] ?: 0,
-            'date' => Carbon::createFromFormat('d/m/Y', $raw[6][2] ?: 0)->format('Y-m-d 12:00:00'),
+            'date' => $date,
             'engine_type'  => $raw[7][2] ?: 0,
             'voyage_number' => $raw[6][6] ?: 0,
             'from_port' => $raw[5][5] ?: 0,
@@ -168,7 +174,7 @@ class FormController extends Controller
     protected function label() {
         return (array) [
             // 'fleet_name' => 'Nama Kapal',
-            'date' => 'Tanggal',
+            'date' => 'Tanggal (format exp: 2020-01-01 08:09:00)',
             'engine_type'  => 'Engine type',
             'voyage_number' => 'Voyage No',
             'from_port' => 'Dari',
