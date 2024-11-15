@@ -229,6 +229,8 @@ export default {
 
             res.forEach(row => {
                 let time = parseInt((new Date(row.terminal_time).getTime()).toFixed(0));
+                // console.log(time);
+                // let time = row.unix_time;
                 this.options.series.forEach((s, index) => {
                     let dt = row[s.row];
                     // if(s.row == 'no_ops') {
