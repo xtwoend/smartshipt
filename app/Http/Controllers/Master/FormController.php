@@ -43,7 +43,7 @@ class FormController extends Controller
         
         $data = [
             'fleet_name' => $raw[5][2] ?: 0,
-            'date' => $date,
+            'terminal_time' => $date,
             'engine_type'  => $raw[7][2] ?: 0,
             'voyage_number' => $raw[6][6] ?: 0,
             'from_port' => $raw[5][5] ?: 0,
@@ -160,12 +160,12 @@ class FormController extends Controller
         }
 
         $fleetId = $request->fleet_id;
-        $myTable = MainEngine::table($fleetId)->getTable();
+        // $myTable = MainEngine::table($fleetId)->getTable();
         
-        if (! Schema::hasColumn($myTable, 'engine_type')) {
-            return redirect()->route('master.form.main-engine')->withError('fleet wajib dipilih');
-        }
-
+        // if (! Schema::hasColumn($myTable, 'engine_type')) {
+        //     return redirect()->route('master.form.main-engine')->withError('fleet wajib dipilih');
+        // }
+        
         MainEngine::table($fleetId)->updateOrCreate([
             'fleet_id' => $fleetId
         ], $request->all());
@@ -176,7 +176,7 @@ class FormController extends Controller
     protected function label() {
         return (array) [
             // 'fleet_name' => 'Nama Kapal',
-            'date' => 'Tanggal (format exp: 2020-01-01 08:09:00)',
+            'terminal_time' => 'Tanggal (format exp: 2020-01-01 08:09:00)',
             'engine_type'  => 'Engine type',
             'voyage_number' => 'Voyage No',
             'from_port' => 'Dari',
