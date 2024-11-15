@@ -21,9 +21,9 @@ class ActivityLogMiddleware
 
         $page = $this->getPage($request);
 
-        activity()
-            ->causedBy($user)
-            ->log('Buka halaman ' . $page);
+        // activity()
+        //     ->causedBy($user)
+        //     ->log('Buka halaman ' . $page);
 
 
         return $next($request);
