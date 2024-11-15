@@ -34,11 +34,13 @@ class FormController extends Controller
         foreach($reader as $row) {
             $raw[] = $row;
         }
+
         try {
             $date = Carbon::createFromFormat('d/m/Y', $raw[6][2] ?: 0)->format('Y-m-d 12:00:00');
         } catch (\Throwable $th) {
             $date = null;
         }
+        
         $data = [
             'fleet_name' => $raw[5][2] ?: 0,
             'date' => $date,
@@ -165,8 +167,7 @@ class FormController extends Controller
         }
 
         MainEngine::table($fleetId)->updateOrCreate([
-            'fleet_id' => $fleetId,
-            'terminal_time' => $request->date,
+            'fleet_id' => $fleetId
         ], $request->all());
 
         return redirect()->route('fleet.engine', $fleetId);
