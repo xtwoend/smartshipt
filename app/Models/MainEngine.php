@@ -238,6 +238,7 @@ class MainEngine extends Model
                 $table->float('lubricant_gearbox', 10, 3)->nullable();
                 $table->string('lubricant_gearbox_grade')->nullable();
 
+                $table->timestamps();
             });
         }
 
