@@ -242,6 +242,13 @@ class MainEngine extends Model
             });
         }
 
+        if(Schema::hasTable($tableName) && ! Schema::hasColumn($tableName, 'updated_at'))
+        {
+            Schema::table($tableName, function (Blueprint $table) {
+                $table->timestamps();
+            });
+        }
+
         if(Schema::hasTable($tableName) && ! Schema::hasColumn($tableName, 'engine_type'))
         {
             Schema::table($tableName, function (Blueprint $table) {
