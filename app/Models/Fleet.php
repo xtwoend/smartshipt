@@ -196,8 +196,8 @@ class Fleet extends Model
 
     public function engineColumns() 
     {   
-        $group = $this->group_data()->where('group', 'engine')->first();
-        if(is_null($group)) return [];
+        // $group = $this->group_data()->where('group', 'engine')->first();
+        // if(is_null($group)) return [];
 
         $classModel = \App\Models\Engine::class;
         if(! class_exists($classModel)) {
