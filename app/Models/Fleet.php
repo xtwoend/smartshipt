@@ -165,8 +165,8 @@ class Fleet extends Model
 
     public function engine()
     {
-        $group = $this->group_data()->where('group', 'engine')->first();
-        if(is_null($group)) return null;
+        // $group = $this->group_data()->where('group', 'engine')->first();
+        // if(is_null($group)) return null;
 
         $classModel  = \App\Models\Engine::class;
         if(! class_exists($classModel)) {
@@ -183,8 +183,8 @@ class Fleet extends Model
 
     public function engine_logs()
     {
-        $group = $this->group_data()->where('group', 'engine_logs')->first();
-        if(is_null($group)) return null;
+        // $group = $this->group_data()->where('group', 'engine_logs')->first();
+        // if(is_null($group)) return null;
 
         $classModel  = \App\Models\EngineLog::class;
         if(! class_exists($classModel)) {
@@ -215,8 +215,8 @@ class Fleet extends Model
 
     public function generatorColumns() 
     {   
-        $group = $this->group_data()->where('group', 'generator')->first();
-        if(is_null($group)) return [];
+        // $group = $this->group_data()->where('group', 'generator')->first();
+        // if(is_null($group)) return [];
 
         $classModel  = $group->class_handler;
         if(! class_exists($classModel)) {
