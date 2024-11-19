@@ -139,15 +139,15 @@ class MainEngine extends Model
                 $table->bigIncrements('id');
                 $table->unsignedBigInteger('fleet_id')->index();
                 $table->datetime('terminal_time')->index();
-                $table->string('engine_type')->nullable();
-                $table->string('voyage_number')->nullable();
-                $table->string('from_port')->nullable();
-                $table->string('to_port')->nullable();
-                $table->string('engine_output')->nullable();
-                $table->string('cyl_bore')->nullable();
-                $table->string('mep')->nullable();
-                $table->string('engine_rpm')->nullable();
-                $table->string('piston_stroke')->nullable();
+                $table->string('engine_type', 25)->nullable();
+                $table->string('voyage_number', 25)->nullable();
+                $table->string('from_port', 25)->nullable();
+                $table->string('to_port', 25)->nullable();
+                $table->string('engine_output', 25)->nullable();
+                $table->string('cyl_bore', 25)->nullable();
+                $table->string('mep', 25)->nullable();
+                $table->string('engine_rpm', 25)->nullable();
+                $table->string('piston_stroke', 25)->nullable();
                 $table->float('temp_engine_room', 10, 3)->default(0);
                 $table->float('speed', 10, 3)->default(0);
                 $table->float('propeller_speed', 10, 3)->default(0);
@@ -232,11 +232,11 @@ class MainEngine extends Model
                 $table->float('cyl_temp_crankcase_c8', 10, 3)->default(0);
 
                 $table->float('fo_comsumtion', 10, 3)->default(0);
-                $table->string('fo_grade')->nullable();
+                $table->string('fo_grade', 25)->nullable();
                 $table->float('lubricant_lo_system', 10, 3)->nullable();
-                $table->string('lubricant_lo_system_grade')->nullable();
+                $table->string('lubricant_lo_system_grade', 25)->nullable();
                 $table->float('lubricant_gearbox', 10, 3)->nullable();
-                $table->string('lubricant_gearbox_grade')->nullable();
+                $table->string('lubricant_gearbox_grade', 25)->nullable();
 
                 $table->timestamps();
             });
@@ -252,15 +252,15 @@ class MainEngine extends Model
         if(Schema::hasTable($tableName) && ! Schema::hasColumn($tableName, 'engine_type'))
         {
             Schema::table($tableName, function (Blueprint $table) {
-                $table->string('engine_type')->nullable();
-                $table->string('voyage_number')->nullable();
-                $table->string('from_port')->nullable();
-                $table->string('to_port')->nullable();
-                $table->string('engine_output')->nullable();
-                $table->string('cyl_bore')->nullable();
-                $table->string('mep')->nullable();
-                $table->string('engine_rpm')->nullable();
-                $table->string('piston_stroke')->nullable();
+                $table->string('engine_type', 25)->nullable();
+                $table->string('voyage_number', 25)->nullable();
+                $table->string('from_port', 25)->nullable();
+                $table->string('to_port', 25)->nullable();
+                $table->string('engine_output', 25)->nullable();
+                $table->string('cyl_bore', 25)->nullable();
+                $table->string('mep', 25)->nullable();
+                $table->string('engine_rpm', 25)->nullable();
+                $table->string('piston_stroke', 25)->nullable();
                 $table->float('temp_engine_room', 10, 3)->default(0);
                 $table->float('speed', 10, 3)->default(0);
                 $table->float('propeller_speed', 10, 3)->default(0);
@@ -345,11 +345,11 @@ class MainEngine extends Model
                 $table->float('cyl_temp_crankcase_c8', 10, 3)->default(0);
 
                 $table->float('fo_comsumtion', 10, 3)->default(0);
-                $table->string('fo_grade')->nullable();
+                $table->string('fo_grade', 25)->nullable();
                 $table->float('lubricant_lo_system', 10, 3)->nullable();
-                $table->string('lubricant_lo_system_grade')->nullable();
+                $table->string('lubricant_lo_system_grade', 25)->nullable();
                 $table->float('lubricant_gearbox', 10, 3)->nullable();
-                $table->string('lubricant_gearbox_grade')->nullable();
+                $table->string('lubricant_gearbox_grade', 25)->nullable();
             });
         }
 

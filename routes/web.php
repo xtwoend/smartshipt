@@ -120,6 +120,10 @@ Route::group([
         Route::post('form/main-engine-upload', [\App\Http\Controllers\Master\FormController::class, 'meUpload'])->name('form.main-engine.upload')->middleware('can:Upload Sensor');
         Route::post('form/main-engine',  [\App\Http\Controllers\Master\FormController::class, 'store'])->name('form.main-engine.process')->middleware('can:Upload Sensor');
 
+        Route::get('form/dg', [\App\Http\Controllers\Master\DGFromController::class, 'form'])->name('form.dg')->middleware('can:Upload Sensor');
+        Route::post('form/dg-upload', [\App\Http\Controllers\Master\DGFromController::class, 'formUpload'])->name('form.dg.upload')->middleware('can:Upload Sensor');
+        Route::post('form/dg',  [\App\Http\Controllers\Master\DGFromController::class, 'store'])->name('form.dg.process')->middleware('can:Upload Sensor');
+
         Route::resource('ports', \App\Http\Controllers\Master\PortController::class)->middleware('can:Port Manage');
 
         Route::resource('user', \App\Http\Controllers\Master\UserController::class)->middleware('is_superuser');

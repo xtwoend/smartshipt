@@ -95,13 +95,33 @@
                   </a>
                 </li>
 
-                <li class="menu-item">
-                  <a href="{{ route('master.form.main-engine') }}">
+                <li class="menu-item sub-menu">
+                  <a href="#">
                     <span class="menu-icon">
                       <img src="{{ asset('img/icons/form.svg') }}"  height="26" alt="">
                     </span>
-                    <span class="menu-title">Upload Sensor Form</span>
+                    <span class="menu-title">Upload Form</span>
                   </a>
+                  <div class="sub-menu-list">
+                    <ul>
+                      <li class="menu-item">
+                        <a href="{{ route('master.form.main-engine') }}">
+                          <span class="menu-icon">
+                            <img src="{{ asset('img/icons/form.svg') }}"  height="26" alt="">
+                          </span>
+                          <span class="menu-title">Main Engine (Form 350)</span>
+                        </a>
+                      </li>
+                      <li class="menu-item">
+                        <a href="{{ route('master.form.dg') }}">
+                          <span class="menu-icon">
+                            <img src="{{ asset('img/icons/form.svg') }}"  height="26" alt="">
+                          </span>
+                          <span class="menu-title">Diesel Generator (Form 351)</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
                 </li>
 
                 <li class="menu-item sub-menu">
