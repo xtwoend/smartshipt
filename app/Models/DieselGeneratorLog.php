@@ -2,32 +2,22 @@
 
 namespace App\Models;
 
-use App\Events\EngineUpdated;
-use App\Events\DieselGeneratorUpdated;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Schema\Blueprint;
 
-class DieselGenerator extends Model
+class DieselGeneratorLog extends Model
 {
     /**
      * The table associated with the model.
      */
-    protected $table = 'engines';
+    protected $table = 'engine_log';
 
     /**
      * all.
      */
     protected $guarded = ['id'];
-
-    /**
-     * The event map for the model.
-     *
-     * @var array<string, string>
-     */
-    protected $dispatchesEvents = [
-        'updated' => DieselGeneratorUpdated::class,
-    ];
 
     /**
      * The attributes that should be cast to native types.
@@ -37,17 +27,17 @@ class DieselGenerator extends Model
     ];
 
     // create table cargo if not found table
-    public static function table($fleetId, $count = 1)
+    public static function table($fleetId, $date = null, $count = 1)
     {
+        $date = is_null($date) ? date('Ym') : Carbon::parse($date)->format('Ym');
         $model = new self();
-        $tableName = $model->getTable() . "_{$fleetId}";
+        $tableName = $model->getTable() . "_{$fleetId}_{$date}";
 
         if (! Schema::hasTable($tableName)) {
             Schema::create($tableName, function (Blueprint $table) use ($count, $model) {
                 $table->bigIncrements('id');
                 $table->unsignedBigInteger('fleet_id')->index();
                 $table->datetime('terminal_time')->index();
-                $table->tinyInteger('dg_count')->default(3);
                 for($i=1; $i <= $count; $i++) {
                     foreach($model->fields() as $key => $val) {
                         $field = "{$key}_dg_{$i}";
@@ -67,7 +57,6 @@ class DieselGenerator extends Model
     
         if(Schema::hasTable($tableName) && ! Schema::hasColumn($tableName, 'kw_diesel_dg_1')) {
             Schema::table($tableName, function (Blueprint $table) use ($count, $model) {
-                $table->tinyInteger('dg_count')->default(3);
                 for($i=1; $i <= $count; $i++) {
                     foreach($model->fields() as $key => $val) {
                         

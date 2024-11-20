@@ -170,6 +170,7 @@ class DGFromController extends Controller
         $fdata = [
             'terminal_time' => $request->terminal_time,
             'fleet_id' => $fleetId,
+            'dg_count' => count($data)
         ];
 
         foreach($data as $no => $val) {
