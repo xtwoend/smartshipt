@@ -30,7 +30,7 @@ class DGListener
         $model = $event->model;
         $date = $model->terminal_time;
         $dg_count = $model->dg_count;
-
+        
         $last = DieselGeneratorLog::table($model->fleet_id, $date, $dg_count)->orderBy('terminal_time', 'desc')->first();
         $now = Carbon::parse($date);
 
@@ -39,7 +39,7 @@ class DGListener
             return;
         }
 
-        return DieselGeneratorLog::table($model->fleet_id, $date, $dg_count)->updateOrCreate([
+        DieselGeneratorLog::table($model->fleet_id, $date, $dg_count)->updateOrCreate([
             'fleet_id' => $model->fleet_id,
             'terminal_time' => $date,
         ], (array) $model->makeHidden(['id', 'fleet_id', 'created_at', 'updated_at'])->toArray());
