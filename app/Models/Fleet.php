@@ -215,10 +215,10 @@ class Fleet extends Model
 
     public function generatorColumns() 
     {   
-        $group = $this->group_data()->where('group', 'generator')->first();
-        if(is_null($group)) return [];
+        // $group = $this->group_data()->where('group', 'generator')->first();
+        // if(is_null($group)) return [];
 
-        $classModel  = $group->class_handler;
+        $classModel  = \App\Models\Engine::class;
         if(! class_exists($classModel)) {
             return null;
         }

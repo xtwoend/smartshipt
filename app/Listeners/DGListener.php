@@ -41,7 +41,7 @@ class DGListener
 
         DieselGeneratorLog::table($model->fleet_id, $date, $dg_count)->updateOrCreate([
             'fleet_id' => $model->fleet_id,
-            'terminal_time' => $date,
+            'terminal_time' => $now->format('Y-m-d 12:00:00'),
         ], (array) $model->makeHidden(['id', 'fleet_id', 'created_at', 'updated_at'])->toArray());
     }
 }
