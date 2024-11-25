@@ -58,6 +58,17 @@
             editable: true
         },
         {
+            name: 'Convert Percentage',
+            field: 'is_percentage',
+            editable: true,
+            editType: 'selectKeyVal',
+            options: {{ json_encode([0 => 'No', 1 => 'Yes, With Ullage', 2 => 'Yes, With Level']) }},
+            display: function(row) {
+                let selects = ['No', 'Yes, With Ullage', 'Yes, With Level'];
+                return selects[row.is_percentage] ? selects[row.is_percentage] : 'No';
+            }
+        },
+        {
             name: 'Inverse Condition',
             field: 'reverse',
             editable: true,

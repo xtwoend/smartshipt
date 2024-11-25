@@ -22,10 +22,15 @@ class CargoController extends Controller
         $select = $request->input('select', ['*']);
 
         $formattingSelect = array_map(function($val){
-            $val = strip_tags($val);
+            $explode = explode('_', $val);
+            if(end($explode) == 'percentage') {
+                $val = strip_tags(str_replace('_percentage', '', $val));
+            }else {
+                $val = strip_tags($val);
+            }
             return "ct.{$val}";
         }, $select);
-
+    
         $select_column = implode(',', $formattingSelect);
 
         $from = Carbon::parse($request->input('from'))->timezone('Asia/Jakarta');

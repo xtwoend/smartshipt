@@ -3,10 +3,13 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use App\Models\Traits\CargoPercentage;
 use Illuminate\Database\Eloquent\Model;
 
 class CargoLog extends Model
 {
+    use CargoPercentage;
+    
     /**
      * The table associated with the model.
      */

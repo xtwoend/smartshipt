@@ -117,10 +117,14 @@ class Fleet extends Model
         $options = [];
 
         foreach($rows as $row) {
+            $data = $row->sensor_name;
+            if($row->is_percentage > 0) {
+                $data = $row->sensor_name . '_percentage';
+            }
             $options[] = [
                 'id' => $row->id,
                 'fleet_id' => $row->fleet_id,
-                'data' => $row->sensor_name,
+                'data' => $data,
                 'text' => $row->name,
                 'unit' => $row->unit,
                 'min' => $row->min,

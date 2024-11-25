@@ -4,11 +4,14 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use App\Models\Fleet;
+use App\Models\Traits\CargoPercentage;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Engine extends Model
 {
+    use CargoPercentage;
+    
     /**
      * The table associated with the model.
      */
