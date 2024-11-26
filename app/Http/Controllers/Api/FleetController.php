@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Fleet;
+use App\Models\ApiKey;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\FleetResource;
-use App\Models\ApiKey;
+use App\Http\Resources\FleetDashboardResource;
 
 class FleetController extends Controller
 {
@@ -34,7 +35,7 @@ class FleetController extends Controller
 
         $fleets = $fleets->get();
 
-        return response()->json(FleetResource::collection($fleets));
+        return response()->json(FleetDashboardResource::collection($fleets));
     }
 
     public function show($id, Request $request)
