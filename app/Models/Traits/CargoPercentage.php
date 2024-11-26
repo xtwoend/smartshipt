@@ -27,7 +27,7 @@ trait CargoPercentage
         foreach($fields as $field) {
             
             if(isset($data[$field->sensor_name])) {
-                $max = $field->normal;
+                $max = $field->normal > 0 ? $field->normal : 1;
                 $current = $data[$field->sensor_name];
                 $level = $max - $current;
 
@@ -51,7 +51,7 @@ trait CargoPercentage
         foreach($fields as $field) {
             
             if(isset($data[$field->sensor_name])) {
-                $max = $field->danger;
+                $max = $field->danger > 0 ? $field->danger : 1;
                 $level = $data[$field->sensor_name];
                
                 $percentage = ($level * 100) / $max;
