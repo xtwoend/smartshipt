@@ -26,7 +26,7 @@ trait CargoPercentage
         $fields = Sensor::where('fleet_id', $data['fleet_id'])->where('is_percentage', 1)->get();
         foreach($fields as $field) {
             
-            if($data[$field->sensor_name]) {
+            if(isset($data[$field->sensor_name])) {
                 $max = $field->normal;
                 $current = $data[$field->sensor_name];
                 $level = $max - $current;
@@ -50,7 +50,7 @@ trait CargoPercentage
         $fields = Sensor::where('fleet_id', $data['fleet_id'])->where('is_percentage', 2)->get();
         foreach($fields as $field) {
             
-            if($data[$field->sensor_name]) {
+            if(isset($data[$field->sensor_name])) {
                 $max = $field->danger;
                 $level = $data[$field->sensor_name];
                
