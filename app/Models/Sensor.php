@@ -4,12 +4,18 @@ namespace App\Models;
 
 use Awobaz\Compoships\Compoships;
 use Illuminate\Database\Eloquent\Model;
+use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Sensor extends Model
 {
     use HasFactory;
     use Compoships;
+    use Cachable;
+
+    protected $cachePrefix = "cache";
+
+    protected $cacheCooldownSeconds = 300;
 
     protected $guarded = ['id'];
 
