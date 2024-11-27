@@ -36,7 +36,12 @@ class Engine extends Model
     public function information() 
     {
         $informations = [];
-        foreach(Sensor::where('fleet_id', $this->fleet_id)->whereGroup('engine')->orderBy('id')->get() as $limit) {
+        $sensors = Sensor::where('fleet_id', $this->fleet_id)
+                ->whereGroup('engine')
+                ->orderBy('id')
+                ->get();
+                
+        foreach($sensors as $limit) {
             $diff = Carbon::parse($this->updated_at)->diffInMinutes(Carbon::now());
             $value = $diff < 5 ?  $this->{$limit->sensor_name} : 0;
             $informations[$limit->id] = [
