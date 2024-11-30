@@ -192,6 +192,21 @@ export default {
         },
         loaded () {
             this.positionShip(this.fleet)
+            this.loadWeather()
+        },
+        loadWeather() {
+            console.log('asdafdf');
+            const account = new aerisweather.mapsgl.Account('wEQlTfMuZVuZGadk0GElq', 'dOlGZOeangNxL5ppi8RczOUZcIUXYqWoCVR0WLsw');
+            const controller = new aerisweather.mapsgl.MapboxMapController(this.map, { account });
+            controller.on('load', () => {
+                // Do stuff, like add weather layers
+                controller.addWeatherLayer('radar');
+                controller.addWeatherLayer('alerts-outline', {
+                    paint: {
+                        opacity: 0.5
+                    }
+                });
+            });
         },
         toPotition(row) {
             let nav = Object.assign({}, {

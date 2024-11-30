@@ -2,13 +2,56 @@
 
 @section('content')
 <main class="content full">
-    <a id="btn-toggle" href="#" class="sidebar-toggler break-point-lg">
-        <i class="ri-menu-line ri-xl"></i>
-    </a>
-    <socket-io
-        url="ws://127.0.0.1:9502"
-        :fleet="{id: 1}"
-        event="navigation_1"
-    ></socket-io>
+    <div id="map" style="height: 100%;"></div>
 </main>
 @endsection
+
+@push('js_after')
+
+<script>
+    window.addEventListener('load', () => {
+
+        // Create the Mapbox map instance
+        mapboxgl.accessToken = 'pk.eyJ1Ijoia3JvbmljayIsImEiOiJjaWxyZGZwcHQwOHRidWxrbnd0OTB0cDBzIn0.u2R3NY5PnevWH3cHRk6TWQ';
+        const map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/outdoors-v11',
+            center: [-85.5, 40],
+            zoom: 3,
+            // projection: 'mercator'
+        });
+
+        const account = new mapsgl.Account('wEQlTfMuZVuZGadk0GElq', 'dOlGZOeangNxL5ppi8RczOUZcIUXYqWoCVR0WLsw');
+        const controller = new mapsgl.MapboxMapController(map, {
+            account: account,
+            animation: {
+                repeat: true
+            },
+            units: {
+                temperature: 'C',
+                speed: 'km/h',
+                pressure: 'hPa',
+                distance: 'mi',
+                height: 'm',
+                precipitation: 'm',
+                snowfall: 'm',
+                direction: '°',
+                time: 'hr',
+                ratio: '%'
+            }
+        });
+
+        controller.on('load', () => {
+            console.log(map)
+            console.log(controller)
+            // Do stuff, like add weather layers
+            controller.addWeatherLayer('radar');
+            controller.addWeatherLayer('wind-particles', {
+                paint: {
+                    opacity: 0.5
+                }
+            });
+        });
+    });
+</script>
+@endpush

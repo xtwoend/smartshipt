@@ -9,6 +9,12 @@ window.bootstrap = window.bs = bootstrap
 
 import '../tabler/src/js/tabler.esm.js';
 
+
+import * as mapsgl from '@aerisweather/mapsgl';
+import '@aerisweather/mapsgl/dist/mapsgl.css';
+
+window.mapsgl = mapsgl
+
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the

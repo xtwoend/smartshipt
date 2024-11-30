@@ -32,7 +32,9 @@
     <script src="{{ asset('js/socket.io.js') }}"></script>
     
     @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/js/index.js'])
+
     @yield('js')
+    
 </head>
 <body>
     

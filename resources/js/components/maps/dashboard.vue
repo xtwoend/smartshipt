@@ -15,8 +15,9 @@
         <!-- <x-parameter></x-parameter> -->
         <div class="pointer-info" ref="pointerInfo"></div>
         <x-legend :fleets="fleets" @filters="doFilter"></x-legend>
+        <x-weathers @selected="weatherSelected"></x-weathers>
         <MapboxMap
-            @mb-created="(mapboxInstance) => map = mapboxInstance"
+            @mb-created="mbCreated"
             @mb-load="loaded"
             @mb-mousemove="pointerLocation"
             style="height: calc(100vh - 128px); width: 100%;"
@@ -35,7 +36,7 @@
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { MapboxMap, MapboxNavigationControl } from '@studiometa/vue-mapbox-gl';
 import mapboxgl from 'mapbox-gl';
-window.mapboxgl = mapboxgl
+window.mapboxgl = mapboxgl;
 
 import search from './search.vue';
 import notification from './notification.vue';
@@ -51,9 +52,10 @@ import yellowShip from '../icon/yellow.png';
 import purpleShip from '../icon/purple.png';
 import fleetLegend from './lagend.vue';
 import fleetTable from './fleet_table.vue';
+import weatherLayers from './weather_layers.vue';
 
-// import  * as interpolate from 'interpolateheatmaplayer';
-
+import { isProxy, toRaw } from 'vue';
+            
 export default {
     components: {
         'x-search': search,
@@ -63,6 +65,7 @@ export default {
         'x-camera': camera,
         'x-parameter': parameter,
         'x-legend': fleetLegend,
+        'x-weathers': weatherLayers,
         MapboxMap, 
         MapboxNavigationControl,
         fleetTable
@@ -92,8 +95,13 @@ export default {
                 features: []
             },
             fleetsGroup: [],
-            filters: {}
-        }
+            filters: {},
+            weatherController: null,
+            weatherLayers: [],
+        }   
+    },
+    async created() {
+        await this.fetchData()
     },
     mounted(){
         this.timer = setInterval(() => {
@@ -113,9 +121,6 @@ export default {
             closeOnClick: false
         });
     },
-    // async created() {
-    //     await this.buildWeathers()
-    // },
     methods: {
         async fetchData() {
             let {data} = await axios.get('/api/fleets', { params: this.filters })
@@ -150,9 +155,12 @@ export default {
                 }
             })
         },
-        async loaded() {
-            await this.fetchData()
+        loaded() {
             this.buildLayer()
+        },
+        mbCreated(map) {
+            this.addWeatherController(map)
+            this.map = map
         },
         async refreshData() {
             await this.fetchData()
@@ -161,8 +169,42 @@ export default {
                 data.setData(this.fleets_point)
             }
         },
+        addWeatherController(map)
+        {
+            const realMap = isProxy(map) ? toRaw(map) : map;
+            const account = new mapsgl.Account('wEQlTfMuZVuZGadk0GElq', 'dOlGZOeangNxL5ppi8RczOUZcIUXYqWoCVR0WLsw');
+            const controller = new mapsgl.MapboxMapController(realMap, {
+                account: account,
+                animation: {
+                    repeat: true
+                },
+                units: {
+                    temperature: 'C',
+                    speed: 'km/h',
+                    pressure: 'hPa',
+                    distance: 'mi',
+                    height: 'm',
+                    precipitation: 'm',
+                    snowfall: 'm',
+                    direction: '°',
+                    time: 'hr',
+                    ratio: '%'
+                }
+            })
+            controller.on('load', () => this.weatherController = controller);
+        },
+        buildWeatherLayers(){ 
+            const controller = isProxy(this.weatherController) ? toRaw(this.weatherController) : this.weatherController;
+            controller.weatherLayerIds.forEach(code => controller.removeWeatherLayer(code));
+            this.weatherLayers.forEach(code => {
+                if(! controller.hasWeatherLayer(code)) {
+                    controller.addWeatherLayer(code)
+                }
+            })
+        },
         buildLayer() {
             let that = this;
+
             // point
             this.map.addSource('ship-position', {
                 type: 'geojson',
@@ -173,6 +215,7 @@ export default {
                 id: 'ship-position',
                 type: 'symbol',
                 source: 'ship-position',
+                slot: 'top',
                 layout: {
                     "icon-image": ['get', 'icon'],
                     "icon-allow-overlap": true,
@@ -218,51 +261,6 @@ export default {
             });
 
         },
-
-        async buildWeathers() {
-            const startingLatitude = -80;
-            const startingLongitude = -180;
-            const endingLatitude = 80;
-            const endingLongitude = 180;
-            const n = 10;
-            const points = [];
-            for (let i=0; i < n; i++) {
-                for (let j=0; j < n; j++) {
-                    points.push({
-                        lat: startingLatitude + i * (endingLatitude - startingLatitude)/n,
-                        lng: startingLongitude + j * (endingLongitude - startingLongitude)/n,
-                        val: 0,
-                        wind: {},
-                        weather: {}
-                    })
-                }
-            }
-            // Create the URLs
-            const baseUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&lat=";
-            const urls = points.map(point => baseUrl + point.lat + "&lon=" + point.lng + "&appid=" + this.weatherKey);
-            // Fetch the weather data
-            const weathers = await Promise.all(urls.map(async url => {
-                const response = await fetch(url);
-                return response.text();
-            }));
-            // Set the temperature
-            points.forEach((point, index) => {
-                let parse = JSON.parse(weathers[index]);
-                point.val = parse.main.temp;
-                point.wind = parse.wind
-                point.weather = parse.weather[0]
-            })
-            
-            this.weathers = points
-            // let layer = interpolate.create({
-            //     points: points,
-            //     layerId: 'temp',
-            //     opacity: 0.2
-            // });
-            
-            // this.map.addLayer(layer);
-        },
-        
         findFleet(row) {
             if(! row.navigation) return;
             let fleetId = row.id
@@ -293,7 +291,11 @@ export default {
         doFilter(e) {
             this.filters.fleet_status = e.label;
             this.refreshData()
-        }  
+        },
+        weatherSelected(e) {
+            this.weatherLayers = e
+            this.buildWeatherLayers()
+        }
     }
 }
 </script>

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/test', function(){
-    return view('ui.test');
+    return view('test');
 });
 
 // Route::get('/fleet/{id}/charter', function($id){
