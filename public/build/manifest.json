@@ -32,7 +32,7 @@
     "src": "public/remixicon/remixicon.woff2"
   },
   "resources/js/app.css": {
-    "file": "assets/app-e40a651f.css",
+    "file": "assets/app-754c8a2b.css",
     "src": "resources/js/app.css"
   },
   "resources/js/app.js": {
@@ -45,12 +45,12 @@
       "assets/ship-c94d8078.png"
     ],
     "css": [
-      "assets/app-e40a651f.css"
+      "assets/app-754c8a2b.css"
     ],
     "dynamicImports": [
       "node_modules/pdf-vue3/dist/pdf.min-f72cfa08.js"
     ],
-    "file": "assets/app-68988345.js",
+    "file": "assets/app-5fca900f.js",
     "imports": [
       "resources/tabler/src/js/tabler.esm.js",
       "_popper-528ebbd5.js"
