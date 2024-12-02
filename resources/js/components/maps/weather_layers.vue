@@ -77,7 +77,7 @@ export default {
                 // 'wind-barbs',
                 // 'wind-chill',
                 // 'wind-chill-text',
-                // 'wind-dir',
+                'wind-dir',
                 // 'wind-gusts',
                 // 'wind-gusts-text',
                 'wind-particles',
@@ -136,7 +136,7 @@ export default {
             let el = this.$refs.searchBody
             if(this.isExpand) {
                 el.style.display = 'block';
-                this.$refs.cWeather.style.bottom = '40px';            
+                this.$refs.cWeather.style.bottom = '240px';            
             }else {
                 el.style.display = 'none';
                 this.$refs.cWeather.style.bottom = 'unset'; 

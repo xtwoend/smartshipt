@@ -17,6 +17,7 @@
         <x-legend :fleets="fleets" @filters="doFilter"></x-legend>
         <x-weathers @selected="weatherSelected"></x-weathers>
         <MapboxMap
+            id="map"
             @mb-created="mbCreated"
             @mb-load="loaded"
             @mb-mousemove="pointerLocation"
@@ -26,7 +27,7 @@
             :center="center"
             :zoom="zoom"
             >
-            <MapboxNavigationControl position="bottom-right" />
+            <MapboxNavigationControl position="bottom-left" />
         </MapboxMap>
     </div>
     <fleet-table :fleets="fleets"></fleet-table>
@@ -176,6 +177,8 @@ export default {
             const controller = new mapsgl.MapboxMapController(realMap, {
                 account: account,
                 animation: {
+                    duration: 2,
+                    endDelay: 1,
                     repeat: true
                 },
                 units: {
@@ -196,11 +199,20 @@ export default {
         buildWeatherLayers(){ 
             const controller = isProxy(this.weatherController) ? toRaw(this.weatherController) : this.weatherController;
             controller.weatherLayerIds.forEach(code => controller.removeWeatherLayer(code));
+            let lastIndex = this.weatherLayers[this.weatherLayers.length - 1];
             this.weatherLayers.forEach(code => {
                 if(! controller.hasWeatherLayer(code)) {
                     controller.addWeatherLayer(code)
                 }
             })
+            // move to top layer
+            this.map.moveLayer('ship-position', this.weatherLayers[lastIndex]);
+            // add legend
+            controller.addLegendControl('#map', { 
+                width: 360,
+            });
+            // add inspector
+            controller.addDataInspectorControl();    
         },
         buildLayer() {
             let that = this;
@@ -330,4 +342,8 @@ a.no-style {
     color: #000;
 }
 
+.awxgl-control-legend {
+    right: 21px;
+    bottom: 30px;
+}
 </style>
