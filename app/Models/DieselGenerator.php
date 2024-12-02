@@ -56,7 +56,7 @@ class DieselGenerator extends Model
                         }else if($val == 'integer') {
                             $table->{$val}($field)->default(0);
                         }else {
-                            $table->{$val}($field, 20)->nullable();
+                            $table->{$val}($field, 50)->nullable();
                         }
                     }
                 }
