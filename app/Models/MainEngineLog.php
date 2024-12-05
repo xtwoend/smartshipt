@@ -142,6 +142,12 @@ class MainEngineLog extends Model
 
         if(Schema::hasTable($tableName) && ! Schema::hasColumn($tableName, 'engine_type'))
         {
+            if(! Schema::hasColumn($tableName, 'me_rpm')){
+                Schema::table($tableName, function (Blueprint $table) {
+                    $table->float('me_rpm', 10, 3)->default(0);
+                });
+            }
+
             Schema::table($tableName, function (Blueprint $table) {
                 $table->string('engine_type')->nullable();
                 $table->string('voyage_number')->nullable();
@@ -155,7 +161,6 @@ class MainEngineLog extends Model
                 $table->float('temp_engine_room', 10, 3)->default(0);
                 $table->float('speed', 10, 3)->default(0);
                 $table->float('propeller_speed', 10, 3)->default(0);
-                $table->float('me_rpm', 10, 3)->default(0);
                 $table->float('me_running_hours', 10, 3)->default(0);
                 $table->float('me_ht_water_cooling', 10, 3)->default(0);
                 $table->float('me_lt_water_cooling', 10, 3)->default(0);
