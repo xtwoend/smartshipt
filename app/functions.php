@@ -23,6 +23,7 @@ if(! function_exists('to_rad')) {
 
 if(! function_exists('number')) {
     function number($number) {
+        if(is_null($number) || $number == '') return null;
         if($number < 0) return $number;
         return number_format($number, 2, ",",".");
     }
