@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api\V2;
 use App\Models\Fleet;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\FleetResource;
+use App\Http\Resources\FleetDashboardResource;
 
 class FleetController extends Controller
 {
@@ -17,6 +17,6 @@ class FleetController extends Controller
         }
         $fleets = $fleets->get();
 
-        return response()->json(FleetResource::collection($fleets));
+        return response()->json(FleetDashboardResource::collection($fleets));
     }
 }
