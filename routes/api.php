@@ -88,3 +88,12 @@ Route::group([
 
 // callback telegram
 Route::match(['get', 'post'], '/callback_telegram', [TelegramBotController::class, '__invoke']);
+
+
+Route::group([
+    'middleware' => 'client',
+    'prefix' => 'v2'
+], function(){
+    Route::get('/{id}/navigation', [\App\Http\Controllers\Api\V2\NavigationController::class, 'history']);
+    Route::get('/{id}/engine', [\App\Http\Controllers\Api\V2\NavigationController::class, 'history']);
+});

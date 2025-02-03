@@ -68,5 +68,6 @@ class Kernel extends HttpKernel
         'is_superuser' => \App\Http\Middleware\IsSuperuserMiddleware::class,
         'xss_sanitizer' => \App\Http\Middleware\XssSanitization::class,
         'logger' => \App\Http\Middleware\ActivityLogMiddleware::class,
+        'client' => \Laravel\Passport\Http\Middleware\CheckClientCredentials::class,
     ];
 }

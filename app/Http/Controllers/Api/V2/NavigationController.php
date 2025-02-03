@@ -1,0 +1,63 @@
+<?php
+
+namespace App\Http\Controllers\Api\V2;
+
+use Carbon\Carbon;
+use App\Models\Fleet;
+use Illuminate\Http\Request;
+use App\Models\NavigationLog;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+
+class NavigationController extends Controller
+{
+    public function history($id, Request $request)
+    {
+        
+        $fleet = Fleet::findOrFail($id);
+
+        $from  = $request->input('from', Carbon::now()->format('Y-m-d'));
+        $to = $request->input('to', Carbon::now()->format('Y-m-d'));
+        $interval = $request->input('interval', 1800);
+
+        $from = Carbon::parse($from)->timezone('Asia/Jakarta');
+        $to = Carbon::parse($to)->timezone('Asia/Jakarta');
+        $fromClone = clone $from;
+        $toClone = clone $to;
+
+        $fromDiff = $fromClone->format("Y-m-01 00:00:00");
+        $toDiff = $toClone->format("Y-m-01 00:00:00");
+        $fromTable = Carbon::parse($fromDiff);
+        
+        $count = Carbon::parse($fromDiff)->diffInMonths(Carbon::parse($toDiff));
+       
+        for($i=0; $i <= $count; $i++) {
+            $tableName = NavigationLog::table($fleet->id, $fromTable)->getTable();
+           
+            $query[] = "
+            (select 
+                UNIX_TIMESTAMP(ct.terminal_time) as unix_time, ct.*
+                from {$tableName} as `ct` 
+                    inner join 
+                    (
+                        SELECT MIN(terminal_time) as times, FLOOR(UNIX_TIMESTAMP(terminal_time)/{$interval}) AS timekey 
+                        FROM {$tableName} 
+                        WHERE DATE(terminal_time) BETWEEN '{$fromClone->format('Y-m-d')}' AND '{$toClone->format('Y-m-d')}' 
+                        GROUP BY timekey
+                    ) ctx 
+                    on `ct`.`terminal_time` = `ctx`.`times`)
+            ";
+            
+            $fromTable = $fromTable->addMonth();
+        }
+
+        $query = implode(' UNION ', $query);
+        $rows = collect(DB::select($query));
+        $rows = $rows->sortBy('unix_time')->values()->all();
+
+        return response()->json([
+            'error' => 0,
+            'data' => $rows
+        ]);
+    }
+}
