@@ -94,6 +94,7 @@ Route::group([
     'middleware' => 'client',
     'prefix' => 'v2'
 ], function(){
+    Route::get('/fleets', [\App\Http\Controllers\Api\V2\FleetController::class, 'lists']);
     Route::get('/{id}/navigation', [\App\Http\Controllers\Api\V2\NavigationController::class, 'history']);
     Route::get('/{id}/engine', [\App\Http\Controllers\Api\V2\EngineController::class, 'history']);
 });
