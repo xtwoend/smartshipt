@@ -95,5 +95,5 @@ Route::group([
     'prefix' => 'v2'
 ], function(){
     Route::get('/{id}/navigation', [\App\Http\Controllers\Api\V2\NavigationController::class, 'history']);
-    Route::get('/{id}/engine', [\App\Http\Controllers\Api\V2\NavigationController::class, 'history']);
+    Route::get('/{id}/engine', [\App\Http\Controllers\Api\V2\EngineController::class, 'history']);
 });
