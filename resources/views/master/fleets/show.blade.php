@@ -26,6 +26,9 @@
                                 <li class="nav-item">
                                     <a href="#docs" class="nav-link" data-bs-toggle="tab" data-bs-target="#docs">Docs</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="#sounding" class="nav-link" data-bs-toggle="tab" data-bs-target="#sounding">Sounding</a>
+                                </li>
                                 @can('Fleet Threshold Sensor Setting')
                                 <li class="nav-item">
                                     <a href="#navigation" class="nav-link" data-bs-toggle="tab" data-bs-target="#navigation">Navigation Sensor</a>
@@ -100,6 +103,9 @@
 
                                     @include('master.fleets.docs', ['fleet' => $data])
 
+                                </div>
+                                <div class="tab-pane" id="sounding">
+                                    @include('master.fleets.sounding', ['fleet' => $data])
                                 </div>
                                 <div class="tab-pane" id="navigation">
                                     @include('master.fleets._form_navigation_sensor', [

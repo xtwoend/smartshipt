@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('fleets', function(Blueprint $table){
-            $table->string('engine_maker')->nullable()->after('call_sign');
-            $table->string('engine_type')->nullable()->after('engine_maker');
-        });
+        // Schema::table('fleets', function(Blueprint $table){
+        //     $table->string('engine_maker')->nullable()->after('call_sign');
+        //     $table->string('engine_type')->nullable()->after('engine_maker');
+        // });
     }
 
     /**

@@ -108,6 +108,7 @@ Route::group([
             Route::put('{id}/update-bunker-information', 'updateBunker')->name('updateBunker');
             Route::get('{id}/docs', 'docs')->name('docs');
             Route::post('{id}/docs', 'uploadDocs')->name('docs.upload');
+            Route::post('{id}/sounding', 'uploadSounding')->name('sounding.upload');
             Route::delete('{id}/docs', 'docDel')->name('docs.delete');
         });
 
