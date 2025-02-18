@@ -24,7 +24,7 @@
                             <input type="file" class="form-control" id="file" name="file">
                         </div>
                         <div class="mb-3 float-end">
-                            <button type="submit" class="btn btn-primary">Upload</button>
+                            <button id="submitForm" type="submit" class="btn btn-primary">Upload</button>
                         </div>
                     </form>
                 </div>
@@ -97,13 +97,30 @@
 @push('js_after')
 <script>
 $(document).ready(function () {
+    /** Submit Form **/
+    $('#submitForm').on('click', function (e) {
+        e.preventDefault();
+        if (!(this).hasAttribute('disabled')) {
+            $(this).attr('disabled', true);
+        }
+    })
+
     /** View Table Sounding **/
     $('#view').on('click', function (e) {
         e.preventDefault();
+
+        if (!(this).hasAttribute('disabled')) {
+            $(this).attr('disabled', true);
+        }
+
         axios.post("{{ route('master.fleets.sounding.detail', ['id'=>$fleet->id]) }}", {
             _token: document.head.querySelector('meta[name=csrf-token]').content,
             tank_id: $("#search_tank_id").val()
         }).then(response => {
+            if ((this).hasAttribute('disabled')) {
+                $(this).removeAttr('disabled', true);
+            }
+            
             if (response.data.success) {
                 let data = response.data;
                 if (data.body.length == 0) {
