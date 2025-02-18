@@ -56,7 +56,7 @@ class ImportTankSoundingJob implements ShouldQueue
                     continue;
                 }
                 foreach ($headers as $key => $header) {
-                    if (ctype_digit($header)) {
+                    if (is_numeric($header)) {
                         $meterCubics[] = [
                             'fleet_id' => $this->fleetId,
                             'tank_id' => $this->tankId,

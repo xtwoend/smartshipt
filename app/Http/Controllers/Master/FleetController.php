@@ -331,15 +331,54 @@ class FleetController extends Controller
             return response()->json(['success' => false, 'message' => 'sounding not found!']);
         }
 
-        $headers = $body = array();
-        $data->map(function ($item, $key)use(&$headers, &$body) {
+        $headers = $body = $sounding = array();
+        $data->map(function ($item, $key)use(&$headers, &$sounding) {
             if (!in_array($item->trim_index, $headers)) {
                 array_push($headers, $item->trim_index);
             }
 
-            
+            if (!in_array($item->sounding_cm, $sounding)) {
+                array_push($sounding, $item->sounding_cm);
+            }
         });
 
+        sort($headers);
+        array_unshift($headers, "sounding");
+
+        if (!empty($sounding) && is_array($sounding)) {
+            $data = $data->toArray();
+            foreach ($sounding as $cm) {
+                $values = array();
+                $values[] = $cm;
+                
+                $lists = $this->searchByArray($data, 'sounding_cm', $cm);
+                foreach ($lists as $key => $item) {
+                    $values[] = number_format($item['volume'], 3, ".", ",");
+                }
+
+                $body[] = $values;
+
+            }
+        }
+        
         return response()->json(['success' => true, 'headers' => $headers, 'body' => $body]);
+    }
+
+    private function searchByArray(array $data, string $index, string $search): Array
+    {
+        $lists = $sort_col = array();
+        foreach ($data as $key => $item) {
+            if ($item[$index] == $search) {
+                $lists[] = $item;
+            }
+        }
+
+        foreach ($lists as $key => $row) {
+            $sort_col[$key] = $row['trim_index'];
+        }
+
+        array_multisort($sort_col, SORT_ASC, $lists);
+
+        return $lists;
     }
 }

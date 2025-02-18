@@ -104,7 +104,32 @@ $(document).ready(function () {
             _token: document.head.querySelector('meta[name=csrf-token]').content,
             tank_id: $("#search_tank_id").val()
         }).then(response => {
-            console.log(response)
+            if (response.data.success) {
+                let data = response.data;
+                if (data.body.length == 0) {
+                    $("#soundingTable tbody").html('');
+                    $("#soundingTable tbody").append(`<tr><td colspan="12" class="text-center text-danger"><i>No Data Found!</i></td></tr>`);
+                }else {
+                    /** Set Header **/
+                    $("#soundingTable thead tr").html('');
+                    let headers = "";
+                    for (let i = 0; i < data.headers.length; i++) {
+                        headers += `<th>${data.headers[i]}</th>`;
+                    }
+    
+                    $("#soundingTable thead tr").append(headers);
+    
+                    /** Set Body **/
+                    $("#soundingTable tbody").html('');
+                    for (let i = 0; i < data.body.length; i++) {
+                        let row = "";
+                        for (let j = 0; j < data.body[i].length; j++) {
+                            row += `<td>${data.body[i][j]}</td>`;
+                        }
+                        $("#soundingTable tbody").append(`<tr>${row}</tr>`);
+                    }
+                }
+            }
         }).catch(error => {
             console.log(error)
         });
@@ -112,7 +137,20 @@ $(document).ready(function () {
 
     /** Reset Table **/
     $('#reset').on('click', function (e) {
-        $("#search_tank_id").val("").change()
+        $("#search_tank_id").val("").change();
+
+        /** Set Header **/
+        $("#soundingTable thead tr").html('');
+        let headers = "";
+        for (let i = 0; i < ["Sounding", "-5", "-4", "-3", "-2", "-1", "0", "1", "2", "3", "4", "5"].length; i++) {
+            headers += `<th>${["Sounding", "-5", "-4", "-3", "-2", "-1", "0", "1", "2", "3", "4", "5"][i]}</th>`;
+        }
+
+        $("#soundingTable thead tr").append(headers);
+
+        /** Set Body **/
+        $("#soundingTable tbody").html('');
+        $("#soundingTable tbody").append(`<tr><td colspan="12" class="text-center text-danger"><i>Please Select Tank First!</i></td></tr>`)
     })
 
     /** Download Template **/
