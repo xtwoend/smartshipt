@@ -155,7 +155,13 @@ $(document).ready(function () {
 
     /** Download Template **/
     $('#downloadTemplate').on('click', function (e) {
-        // code download
+        var a = document.createElement("a");
+        a.href = "{{ url('/example/Sambu%20-%20NO.1.F.O.T%20(P).xlsx') }}";
+        a.download = "Sambu - NO.1.F.O.T (P).xlsx";
+        a.target = "_blank";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
     })
 })
 </script>
