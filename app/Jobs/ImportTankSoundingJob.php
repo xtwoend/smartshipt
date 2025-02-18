@@ -47,7 +47,7 @@ class ImportTankSoundingJob implements ShouldQueue
         $meterCubics = [];
         foreach ($payload as $key => $row) {
             if ($key == 1) {
-                $header = array_diff($row, [null]);
+                $headers = array_diff($row, [null]);
             }
             if ($key >= 2) {
                 // data
@@ -55,20 +55,22 @@ class ImportTankSoundingJob implements ShouldQueue
                 if (!isset($row[0])) {
                     continue;
                 }
-                foreach ($header as $khdr => $hdr) {
-                    $meterCubics[] = [
-                        'fleet_id' => $this->fleetId,
-                        'tank_id' => $this->tankId,
-                        'trim_index' => $hdr,
-                        'sounding_cm' => $row[0],
-                        'volume' => $row[$khdr],
-                        'created_at' => Carbon::now(),
-                        'updated_at' => Carbon::now(),
-                    ];
+                foreach ($headers as $key => $header) {
+                    if (ctype_digit($header)) {
+                        $meterCubics[] = [
+                            'fleet_id' => $this->fleetId,
+                            'tank_id' => $this->tankId,
+                            'trim_index' => $header,
+                            'sounding_cm' => $row[0],
+                            'volume' => is_numeric($row[$key]) ? $row[$key] : 0,
+                            'created_at' => Carbon::now(),
+                            'updated_at' => Carbon::now(),
+                        ];
+                    }
                 }
             }
         }
-        
+
         $sounding = (new CargoTankSounding())->table($this->fleetId);
         $sounding->where('fleet_id', $this->fleetId)->delete();
         $sounding->insert($meterCubics);

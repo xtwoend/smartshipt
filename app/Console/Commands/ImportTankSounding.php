@@ -28,7 +28,7 @@ class ImportTankSounding extends Command
      */
     public function handle()
     {
-        $file = storage_path('app/import/Sei Pakning.xlsx');
+        $file = storage_path('app/import/Panjang.xlsx');
         dispatch_sync(new ImportTankSoundingJob($file, $this->argument('fleetId'), $this->argument('tankId')));
 
         return Command::SUCCESS;
