@@ -13,7 +13,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-12">
-                    <form action="{{ route('master.fleets.sounding.upload', ['id'=>$fleet->id]) }}" method="POST" enctype="multipart/form-data">
+                    <form id="formUpload" action="{{ route('master.fleets.sounding.upload', ['id'=>$fleet->id]) }}" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="mb-3">
                             <label for="tank_id" class="form-label">Tank : </label>
@@ -103,6 +103,8 @@ $(document).ready(function () {
         if (!(this).hasAttribute('disabled')) {
             $(this).attr('disabled', true);
         }
+
+        $("#formUpload").submit();
     })
 
     /** View Table Sounding **/

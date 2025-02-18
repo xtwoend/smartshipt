@@ -90,9 +90,12 @@ class FleetController extends Controller
 
         /** Tanks */
         $tanks[''] = "-- Select Tank --";
-        $this->tank->all()->map(function ($item, $key)use(&$tanks) {
-            $tanks[$item->id] = $item->tank_position;
-        });
+        $this->tank->where('fleet_id', $id)
+            ->select('id', 'tank_position')
+            ->get()
+            ->map(function ($item, $key)use(&$tanks) {
+                $tanks[$item->id] = $item->tank_position;
+            });
         
         return view('master.fleets.show', compact('data', 'tanks'));
     }
@@ -343,6 +346,7 @@ class FleetController extends Controller
         });
 
         sort($headers);
+        sort($sounding);
         array_unshift($headers, "sounding");
 
         if (!empty($sounding) && is_array($sounding)) {
