@@ -109,6 +109,7 @@ Route::group([
             Route::get('{id}/docs', 'docs')->name('docs');
             Route::post('{id}/docs', 'uploadDocs')->name('docs.upload');
             Route::post('{id}/sounding', 'uploadSounding')->name('sounding.upload');
+            Route::post('{id}/info-sounding', 'getSounding')->name('sounding.detail');
             Route::delete('{id}/docs', 'docDel')->name('docs.delete');
         });
 

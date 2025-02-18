@@ -71,6 +71,6 @@ class ImportTankSoundingJob implements ShouldQueue
         
         $sounding = (new CargoTankSounding())->table($this->fleetId);
         $sounding->where('fleet_id', $this->fleetId)->delete();
-        $sounding->insert($meterCubics);
+        return $sounding->insert($meterCubics);
     }
 }

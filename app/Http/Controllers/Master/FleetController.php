@@ -13,9 +13,11 @@ use App\Models\BunkerInformation;
 use App\Http\Controllers\Controller;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
+use App\Jobs\ImportTankSoundingJob;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Carbon\Carbon;
+use App\Models\CargoTankSounding;
 
 class FleetController extends Controller
 {
@@ -285,6 +287,7 @@ class FleetController extends Controller
     public function uploadSounding(Request $request, int $id)
     {
         $request->validate([
+            'tank_id' => 'required',
             'file' => 'required|mimes:xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet|max:2048', // Adjust max size as needed
         ], [
             'file.required' => 'The file is required.',
@@ -297,84 +300,46 @@ class FleetController extends Controller
         
         $originalFileName = $file->getClientOriginalName();
         $fileName = pathinfo($originalFileName, PATHINFO_FILENAME);
-
-        $this->storeFleetFromExcel(storage_path(sprintf('app/%s', $originalFileName)), $fileName, $id);
-        return redirect()->route('master.fleets.show', $id);
-
-        // try {
-        //     dispatch_sync(new StoreFleetFromExcel(storage_path(sprintf('app/%s', $originalFileName)), $fileName));
-        //     return redirect()->route('master.fleets.show', $id);
-        // } catch (\Exception $e) {
-        //     return redirect()->route('master.fleets.show', $id);
-        // }
+        
+        try {
+            dispatch_sync(new ImportTankSoundingJob(storage_path(sprintf('app/%s', $originalFileName)), $id, $request->input('tank_id', null)));
+            return redirect()->route('master.fleets.show', $id);
+        } catch (\Exception $e) {
+            return redirect()->route('master.fleets.show', $id);
+        }
     }
 
-    private function storeFleetFromExcel(string $filePath, string $fileName, int $id)
+    public function getSounding(Request $request)
     {
-        $spreadsheet = new Spreadsheet();
-        $reader = new Xlsx();
-        $spreadsheet = $reader->load($filePath);
-
-        dd($spreadsheet);
-
-        $sheets = $spreadsheet->getSheetNames();
-
-        $tankPayloads = [];
-        foreach ($sheets as $sheetIndex => $sheet) {
-            
-            /** Split Tank Name */
-            $tank = $this->getTankInfo($sheet);
-            if (!empty($tank) && is_array($tank)) {
-                $tank = array_merge([
-                    'fleet_id' => $id,
-                    'contents' => "OIL",
-                    'capacity' => 0,
-                    'locator' => null,
-                    'current_load' => 0,
-                    'type' => "bunker"
-                ], $tank);
-            }
-
-            dd($tank);
-            
-            $worksheet = $spreadsheet->getSheet($sheetIndex);
-
-            /** Update Tank */
-            if (!$this->updateTank($tank)) {
-                continue;
-            }
-
-            /** Create Tank Logs */
-            $this->createTankLogsTable(sprintf('%s_%s', $id, $tank['tank_sensor_name']));
-            
-            $data = $worksheet->toArray();
-            // $tankConversionPayload = [];
-            // foreach ($data as $key => $row) {
-            //     if ($key == 1) {
-            //         $header = array_diff($row, [null]);
-            //     }
-            //     if ($key >= 2) {
-            //         // data
-            //         $row = array_diff($row, [null]);
-            //         if (!isset($row[0])) {
-            //             continue;
-            //         }
-            //         foreach ($header as $khdr => $hdr) {
-            //             $tankConversionPayload[] = [
-            //                 'tank_id' => $tank->id,
-            //                 'trim_index' => $hdr,
-            //                 'height' => $row[0],
-            //                 'volume_m3' => $row[$khdr],
-            //                 'created_at' => Carbon::now(),
-            //                 'updated_at' => Carbon::now(),
-            //             ];
-            //         }
-            //     }
-            // }
-            // // delete old tank_load_conversions
-            // TankLoadConversion::where('tank_id', $tank->id)->delete();
-            // // insert into tank_load_conversions
-            // TankLoadConversion::insert($tankConversionPayload);
+        if (!$request->has('tank_id') || empty($request->input('tank_id'))) {
+            return response()->json(['success' => false, 'message' => 'invalid tank id']);
         }
+
+        /** check tank */
+        $tank = Tank::find($request->input('tank_id'));
+        if (!$tank) {
+            return response()->json(['success' => false, 'message' => 'tank not found!']);
+        }
+
+        /** get sounding */
+        $sounding = (new CargoTankSounding())->table($tank->fleet_id);
+        $data = $sounding->where([
+            'fleet_id' => $tank->fleet_id,
+            'tank_id' => $tank->id
+        ])->orderBy('created_at', 'desc')->get();
+        if (empty($data)) {
+            return response()->json(['success' => false, 'message' => 'sounding not found!']);
+        }
+
+        $headers = $body = array();
+        $data->map(function ($item, $key)use(&$headers, &$body) {
+            if (!in_array($item->trim_index, $headers)) {
+                array_push($headers, $item->trim_index);
+            }
+
+            
+        });
+
+        return response()->json(['success' => true, 'headers' => $headers, 'body' => $body]);
     }
 }
