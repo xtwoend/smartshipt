@@ -17,7 +17,7 @@
                         {{ csrf_field() }}
                         <div class="mb-3">
                             <label for="tank_id" class="form-label">Tank : </label>
-                            {!! Form::select('tank_id', $tanks, null, ['id' => 'tank_id', 'class' => 'form-control'], [ null => [ "disabled" => true ]]) !!}
+                            {!! Form::select('tank_id', $cargoTanks, null, ['id' => 'tank_id', 'class' => 'form-control'], [ null => [ "disabled" => true ]]) !!}
                         </div>
                         <div class="mb-3">
                             <label for="file" class="form-label">Upload file (*.xlsx) : </label>
@@ -48,7 +48,7 @@
                             <div class="col-md-9 d-flex align-items-center justify-content-between gap-2">
                                 <span class="text-nowrap">Tank : </span>
                                 <select name="search_tank_cargo_id" id="search_tank_cargo_id" class="form-select">
-                                    @foreach($tanks as $key => $item)
+                                    @foreach($cargoTanks as $key => $item)
                                         @if ($key == "")
                                             <option value="{{$key}}" selected disabled>{{$item}}</option>
                                         @else

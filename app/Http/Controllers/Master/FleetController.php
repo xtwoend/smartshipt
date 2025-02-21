@@ -19,6 +19,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Carbon\Carbon;
 use App\Models\BunkerSounding;
+use App\Models\CargoSounding;
 
 class FleetController extends Controller
 {
@@ -89,16 +90,27 @@ class FleetController extends Controller
     {
         $data = $this->fleet->with(['cargo_information', 'bunker_information'])->findOrFail($id);
 
-        /** Tanks */
-        $tanks[''] = "-- Select Tank --";
+        /** Bunker Tanks */
+        $bunkerTanks[''] = "-- Select Tank --";
         $this->tank->where('fleet_id', $id)
+            ->where('type', Tank::TYPE_BUNKER)
             ->select('id', 'tank_position')
             ->get()
-            ->map(function ($item, $key)use(&$tanks) {
-                $tanks[$item->id] = $item->tank_position;
+            ->map(function ($item, $key)use(&$bunkerTanks) {
+                $bunkerTanks[$item->id] = $item->tank_position;
+            });
+
+        /** Cargo Tanks */
+        $cargoTanks[''] = "-- Select Tank --";
+        $this->tank->where('fleet_id', $id)
+            ->where('type', Tank::TYPE_CARGO)
+            ->select('id', 'tank_position')
+            ->get()
+            ->map(function ($item, $key)use(&$cargoTanks) {
+                $cargoTanks[$item->id] = $item->tank_position;
             });
         
-        return view('master.fleets.show', compact('data', 'tanks'));
+        return view('master.fleets.show', compact('data', 'bunkerTanks', 'cargoTanks'));
     }
 
     /**

@@ -11,6 +11,9 @@ class Tank extends Model
     const POSITION_PORT = 'PORT';
     const POSITION_STARBOARD = 'STB';
 
+    const TYPE_BUNKER = 'bunker';
+    const TYPE_CARGO = 'cargo';
+
     protected $fillable = [
         'fleet_id',
         'tank_position',
