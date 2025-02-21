@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use App\Models\CargoTankSounding;
+use App\Models\BunkerSounding;
 use Illuminate\Bus\Queueable;
 use Illuminate\Support\Carbon;
 use Illuminate\Queue\SerializesModels;
@@ -13,7 +13,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 
-class ImportTankSoundingJob implements ShouldQueue
+class ImportBunkerSoundingJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -71,7 +71,7 @@ class ImportTankSoundingJob implements ShouldQueue
             }
         }
 
-        $sounding = (new CargoTankSounding())->table($this->fleetId);
+        $sounding = (new BunkerSounding())->table($this->fleetId);
         $sounding->where('fleet_id', $this->fleetId)->delete();
         return $sounding->insert($meterCubics);
     }

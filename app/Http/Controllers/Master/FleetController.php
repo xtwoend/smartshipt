@@ -13,11 +13,12 @@ use App\Models\BunkerInformation;
 use App\Http\Controllers\Controller;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
-use App\Jobs\ImportTankSoundingJob;
+use App\Jobs\ImportBunkerSoundingJob;
+use App\Jobs\ImportCargoSoundingJob;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Carbon\Carbon;
-use App\Models\CargoTankSounding;
+use App\Models\BunkerSounding;
 
 class FleetController extends Controller
 {
@@ -287,7 +288,7 @@ class FleetController extends Controller
         return redirect()->route('master.fleets.docs', $fleet->id);
     }
 
-    public function uploadSounding(Request $request, int $id)
+    public function uploadBunkerSounding(Request $request, int $id)
     {
         $request->validate([
             'tank_id' => 'required',
@@ -305,14 +306,39 @@ class FleetController extends Controller
         $fileName = pathinfo($originalFileName, PATHINFO_FILENAME);
         
         try {
-            dispatch_sync(new ImportTankSoundingJob(storage_path(sprintf('app/%s', $originalFileName)), $id, $request->input('tank_id', null)));
+            dispatch_sync(new ImportBunkerSoundingJob(storage_path(sprintf('app/%s', $originalFileName)), $id, $request->input('tank_id', null)));
             return redirect()->route('master.fleets.show', $id);
         } catch (\Exception $e) {
             return redirect()->route('master.fleets.show', $id);
         }
     }
 
-    public function getSounding(Request $request)
+    public function uploadCargoSounding(Request $request, int $id)
+    {
+        $request->validate([
+            'tank_id' => 'required',
+            'file' => 'required|mimes:xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet|max:2048', // Adjust max size as needed
+        ], [
+            'file.required' => 'The file is required.',
+            'file.mimes' => 'The file must be an XLSX file.',
+            'file.max' => 'The file must not be greater than 2MB.', // Adjust message if you change max size
+        ]);
+        
+        $file = $request->file('file');
+        $file->storeAs('', $file->getClientOriginalName(), 'local');
+        
+        $originalFileName = $file->getClientOriginalName();
+        $fileName = pathinfo($originalFileName, PATHINFO_FILENAME);
+        
+        try {
+            dispatch_sync(new ImportCargoSoundingJob(storage_path(sprintf('app/%s', $originalFileName)), $id, $request->input('tank_id', null)));
+            return redirect()->route('master.fleets.show', $id);
+        } catch (\Exception $e) {
+            return redirect()->route('master.fleets.show', $id);
+        }
+    }
+
+    public function getBunkerSounding(Request $request)
     {
         if (!$request->has('tank_id') || empty($request->input('tank_id'))) {
             return response()->json(['success' => false, 'message' => 'invalid tank id']);
@@ -325,7 +351,7 @@ class FleetController extends Controller
         }
 
         /** get sounding */
-        $sounding = (new CargoTankSounding())->table($tank->fleet_id);
+        $sounding = (new BunkerSounding())->table($tank->fleet_id);
         $data = $sounding->where([
             'fleet_id' => $tank->fleet_id,
             'tank_id' => $tank->id
@@ -358,6 +384,61 @@ class FleetController extends Controller
                 $lists = $this->searchByArray($data, 'sounding_cm', $cm);
                 foreach ($lists as $key => $item) {
                     $values[] = number_format($item['volume'], 3, ".", ",");
+                }
+
+                $body[] = $values;
+
+            }
+        }
+        
+        return response()->json(['success' => true, 'headers' => $headers, 'body' => $body]);
+    }
+    public function getCargoSounding(Request $request)
+    {
+        if (!$request->has('tank_id') || empty($request->input('tank_id'))) {
+            return response()->json(['success' => false, 'message' => 'invalid tank id']);
+        }
+
+        /** check tank */
+        $tank = Tank::find($request->input('tank_id'));
+        if (!$tank) {
+            return response()->json(['success' => false, 'message' => 'tank not found!']);
+        }
+
+        /** get sounding */
+        $sounding = (new CargoSounding())->table($tank->fleet_id);
+        $data = $sounding->where([
+            'fleet_id' => $tank->fleet_id,
+            'tank_id' => $tank->id
+        ])->orderBy('created_at', 'desc')->get();
+        if (empty($data)) {
+            return response()->json(['success' => false, 'message' => 'sounding not found!']);
+        }
+
+        $headers = $body = $sounding = array();
+        $data->map(function ($item, $key)use(&$headers, &$sounding) {
+            if (!in_array($item->trim_index, $headers)) {
+                array_push($headers, $item->trim_index);
+            }
+
+            if (!in_array($item->ullage, $sounding)) {
+                array_push($sounding, $item->ullage);
+            }
+        });
+
+        sort($headers);
+        sort($sounding);
+        array_unshift($headers, "sounding");
+
+        if (!empty($sounding) && is_array($sounding)) {
+            $data = $data->toArray();
+            foreach ($sounding as $cm) {
+                $values = array();
+                $values[] = $cm;
+                
+                $lists = $this->searchByArray($data, 'ullage', $cm);
+                foreach ($lists as $key => $item) {
+                    $values[] = number_format($item['mt'], 3, ".", ",");
                 }
 
                 $body[] = $values;
