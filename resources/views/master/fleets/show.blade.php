@@ -26,12 +26,21 @@
                                 <li class="nav-item">
                                     <a href="#docs" class="nav-link" data-bs-toggle="tab" data-bs-target="#docs">Docs</a>
                                 </li>
+                                
+                                <!-- Cargo Sounding -->
+                                @if (is_array($cargoTanks) && count($cargoTanks) > 1)
                                 <li class="nav-item">
                                     <a href="#cargo-sounding" class="nav-link" data-bs-toggle="tab" data-bs-target="#cargo-sounding">Cargo Sounding</a>
                                 </li>
+                                @endif
+
+                                <!-- Bunker Sounding -->
+                                @if (is_array($bunkerTanks) && count($bunkerTanks) > 1)
                                 <li class="nav-item">
                                     <a href="#bunker-sounding" class="nav-link" data-bs-toggle="tab" data-bs-target="#bunker-sounding">Bunker Sounding</a>
                                 </li>
+                                @endif
+
                                 @can('Fleet Threshold Sensor Setting')
                                 <li class="nav-item">
                                     <a href="#navigation" class="nav-link" data-bs-toggle="tab" data-bs-target="#navigation">Navigation Sensor</a>
@@ -107,12 +116,20 @@
                                     @include('master.fleets.docs', ['fleet' => $data])
 
                                 </div>
+                                <!-- Cargo Sounding -->
+                                @if (is_array($cargoTanks) && count($cargoTanks) > 1)
                                 <div class="tab-pane" id="cargo-sounding">
                                     @include('master.fleets.cargo-sounding', ['fleet' => $data])
                                 </div>
+                                @endif
+
+                                <!-- Bunker Sounding -->
+                                @if (is_array($bunkerTanks) && count($bunkerTanks) > 1)
                                 <div class="tab-pane" id="bunker-sounding">
                                     @include('master.fleets.bunker-sounding', ['fleet' => $data])
                                 </div>
+                                @endif
+
                                 <div class="tab-pane" id="navigation">
                                     @include('master.fleets._form_navigation_sensor', [
                                         'lists' => $data->sensors()->where('group', 'navigation')->get(), 
