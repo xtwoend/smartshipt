@@ -19,3 +19,4 @@ yarn-error.log
 /.vscode
 storage/app/import
 storage/app/import/*
+/public/example/*
