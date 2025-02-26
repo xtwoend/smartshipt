@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Jobs\ImportTankSoundingJob;
+use App\Jobs\ImportBunkerSoundingJob;
 use Illuminate\Console\Command;
 
 class ImportTankSounding extends Command
@@ -29,7 +29,7 @@ class ImportTankSounding extends Command
     public function handle()
     {
         $file = storage_path('app/import/Panjang.xlsx');
-        dispatch_sync(new ImportTankSoundingJob($file, $this->argument('fleetId'), $this->argument('tankId')));
+        dispatch_sync(new ImportBunkerSoundingJob($file, $this->argument('fleetId'), $this->argument('tankId')));
 
         return Command::SUCCESS;
     }

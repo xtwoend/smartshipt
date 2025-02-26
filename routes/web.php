@@ -108,8 +108,10 @@ Route::group([
             Route::put('{id}/update-bunker-information', 'updateBunker')->name('updateBunker');
             Route::get('{id}/docs', 'docs')->name('docs');
             Route::post('{id}/docs', 'uploadDocs')->name('docs.upload');
-            Route::post('{id}/sounding', 'uploadSounding')->name('sounding.upload');
-            Route::post('{id}/info-sounding', 'getSounding')->name('sounding.detail');
+            Route::post('{id}/bunker-sounding', 'uploadBunkerSounding')->name('bunker-sounding.upload');
+            Route::post('{id}/cargo-sounding', 'uploadCargoSounding')->name('cargo-sounding.upload');
+            Route::post('{id}/info-bunker-sounding', 'getBunkerSounding')->name('bunker-sounding.detail');
+            Route::post('{id}/info-cargo-sounding', 'getCargoSounding')->name('cargo-sounding.detail');
             Route::delete('{id}/docs', 'docDel')->name('docs.delete');
         });
 

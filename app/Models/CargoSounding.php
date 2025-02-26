@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Eloquent\Model;
 
-class CargoTankSounding extends Model
+class CargoSounding extends Model
 {
     /**
      * disable timestamps.
@@ -15,7 +15,7 @@ class CargoTankSounding extends Model
     /**
      * The table associated with the model.
      */
-    protected $table = 'cargo_tank_sounding';
+    protected $table = 'tank_sounding_cargo';
 
     /**
      * The attributes that are mass assignable.
@@ -37,9 +37,9 @@ class CargoTankSounding extends Model
                 $table->bigIncrements('id');
                 $table->unsignedBigInteger('fleet_id');
                 $table->unsignedBigInteger('tank_id')->index();
-                $table->integer('trim_index')->index();
-                $table->unsignedInteger('sounding_cm')->index();
-                $table->float('volume', 10, 3)->nullable();
+                $table->float('trim_index', 10, 3)->index();
+                $table->unsignedInteger('ullage')->index();
+                $table->float('mt', 10, 3)->nullable();
                 $table->timestamps();
             });
         }
