@@ -1,8 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
-namespace App\Model;
+namespace App\Models;
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Eloquent\Model;
@@ -15,22 +13,22 @@ class CargoTankCorrection extends Model
     /**
      * disable timestamps.
      */
-    public bool $timestamps = false;
+    public $timestamps = false;
 
     /**
      * The table associated with the model.
      */
-    protected ?string $table = 'cargo_tank_correction';
+    protected $table = 'cargo_tank_correction';
 
     /**
      * The attributes that are mass assignable.
      */
-    protected array $guarded = ['id'];
+    protected $guarded = ['id'];
 
     /**
      * The attributes that should be cast to native types.
      */
-    protected array $casts = [];
+    protected $casts = [];
 
     public static function table($fleetId)
     {

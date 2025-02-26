@@ -1,8 +1,3 @@
-
-@php
-    $docs = $fleet->docs()->latest()->paginate(20);
-@endphp
-
 <!-- Upload Sounding Table -->
 <div class="col-md-12 mt-3 mb-4">
     <div class="card">

@@ -2,24 +2,26 @@
 
 namespace App\Http\Controllers\Master;
 
+use Carbon\Carbon;
 use App\Models\Tank;
 use App\Models\Fleet;
 use App\Models\FleetDoc;
 use App\Models\FleetPic;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+use App\Jobs\ImportTankCorrectionJob;
+use App\Models\CargoSounding;
+use App\Models\BunkerSounding;
 use App\Models\CargoInformation;
 use App\Models\BunkerInformation;
+use App\Models\CargoTankCorrection;
 use App\Http\Controllers\Controller;
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
-use App\Jobs\ImportBunkerSoundingJob;
 use App\Jobs\ImportCargoSoundingJob;
-use Illuminate\Database\Schema\Blueprint;
+use App\Jobs\ImportBunkerSoundingJob;
 use Illuminate\Support\Facades\Schema;
-use Carbon\Carbon;
-use App\Models\BunkerSounding;
-use App\Models\CargoSounding;
+use Illuminate\Database\Schema\Blueprint;
+use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 class FleetController extends Controller
 {
@@ -350,6 +352,30 @@ class FleetController extends Controller
         }
     }
 
+    public function uploadTankCorrection(Request $request, int $id)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet|max:2048', // Adjust max size as needed
+        ], [
+            'file.required' => 'The file is required.',
+            'file.mimes' => 'The file must be an XLSX file.',
+            'file.max' => 'The file must not be greater than 2MB.', // Adjust message if you change max size
+        ]);
+        
+        $file = $request->file('file');
+        $file->storeAs('', $file->getClientOriginalName(), 'local');
+        
+        $originalFileName = $file->getClientOriginalName();
+        $fileName = pathinfo($originalFileName, PATHINFO_FILENAME);
+        
+        try {
+            dispatch_sync(new ImportTankCorrectionJob(storage_path(sprintf('app/%s', $originalFileName)), $id));
+            return redirect()->route('master.fleets.show', $id);
+        } catch (\Exception $e) {
+            return redirect()->route('master.fleets.show', $id);
+        }
+    }
+
     public function getBunkerSounding(Request $request)
     {
         if (!$request->has('tank_id') || empty($request->input('tank_id'))) {
@@ -459,6 +485,19 @@ class FleetController extends Controller
         }
         
         return response()->json(['success' => true, 'headers' => $headers, 'body' => $body]);
+    }
+
+    public function getTankCorrection(Request $request, int $id)
+    {
+        $correction = (new CargoTankCorrection())->table($id);
+        $data = $correction->where([
+            'fleet_id' => $id
+        ])->orderBy('temp', 'asc')->get();
+        if (empty($data)) {
+            return response()->json(['success' => false, 'message' => 'correction data not found!']);
+        }
+        
+        return response()->json(['success' => true, 'data' => $data->toArray()]);
     }
 
     private function searchByArray(array $data, string $index, string $search): Array

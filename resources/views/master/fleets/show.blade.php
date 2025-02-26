@@ -41,6 +41,10 @@
                                 </li>
                                 @endif
 
+                                <!-- Tank Correction -->
+                                <li class="nav-item">
+                                    <a href="#tank-correction" class="nav-link" data-bs-toggle="tab" data-bs-target="#tank-correction">Tank Correction</a>
+                                </li>
                                 @can('Fleet Threshold Sensor Setting')
                                 <li class="nav-item">
                                     <a href="#navigation" class="nav-link" data-bs-toggle="tab" data-bs-target="#navigation">Navigation Sensor</a>
@@ -130,6 +134,10 @@
                                 </div>
                                 @endif
 
+                                <!-- Tank Correction -->
+                                <div class="tab-pane" id="tank-correction">
+                                    @include('master.fleets.tank-correction', ['fleet' => $data])
+                                </div>
                                 <div class="tab-pane" id="navigation">
                                     @include('master.fleets._form_navigation_sensor', [
                                         'lists' => $data->sensors()->where('group', 'navigation')->get(), 
