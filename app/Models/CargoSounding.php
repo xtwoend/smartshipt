@@ -37,9 +37,12 @@ class CargoSounding extends Model
                 $table->bigIncrements('id');
                 $table->unsignedBigInteger('fleet_id');
                 $table->unsignedBigInteger('tank_id')->index();
-                $table->float('trim_index', 10, 3)->index();
-                $table->unsignedInteger('ullage')->index();
-                $table->float('mt', 10, 3)->nullable();
+                $table->float('trim_index', 10, 3)->index()->nullable()->default(NULL);
+                $table->float('heel_index', 10, 3)->index()->nullable()->default(NULL); // (-) = port, 0 = no heel, (+) = stb
+                $table->float('level', 10, 3)->nullable();
+                $table->float('ullage', 10, 3)->nullable();
+                $table->float('volume', 10, 3)->nullable(); // satuan m3
+                $table->float('diff', 10, 3)->nullable()->default(NULL);
                 $table->timestamps();
             });
         }

@@ -67,17 +67,15 @@
                 <thead>
                     <tr>
                         <th>Ullage</th>
-                        <th>-5</th>
-                        <th>-4</th>
-                        <th>-3</th>
-                        <th>-2</th>
-                        <th>-1</th>
+                        <th>Level</th>
+                        <th>Diff</th>
+                        <th>-0.5</th>
                         <th>0</th>
+                        <th>0.5</th>
                         <th>1</th>
+                        <th>1.5</th>
                         <th>2</th>
-                        <th>3</th>
-                        <th>4</th>
-                        <th>5</th>
+                        <th>2.5</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -156,8 +154,9 @@ $(document).ready(function () {
         /** Set Header **/
         $("#soundingCargoTable thead tr").html('');
         let headers = "";
-        for (let i = 0; i < ["Ullage", "-5", "-4", "-3", "-2", "-1", "0", "1", "2", "3", "4", "5"].length; i++) {
-            headers += `<th>${["Ullage", "-5", "-4", "-3", "-2", "-1", "0", "1", "2", "3", "4", "5"][i]}</th>`;
+        
+        for (let i = 0; i < ["Ullage", "Level", "Diff", "-0.5", "0", "0.5", "1", "1.5", "2", "2.5"].length; i++) {
+            headers += `<th>${["Ullage", "Level", "Diff", "-0.5", "0", "0.5", "1", "1.5", "2", "2.5"][i]}</th>`;
         }
 
         $("#soundingCargoTable thead tr").append(headers);

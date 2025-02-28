@@ -44,27 +44,39 @@ class ImportCargoSoundingJob implements ShouldQueue
 
         $spreadsheet = $reader->load($this->filePath);
         $payload = $spreadsheet->getActiveSheet()->toArray();
+
+        /** Remove Legend */
+        if (is_array($payload)) {
+            $payload = array_slice($payload, 2);
+        }
+
         $meterCubics = [];
         foreach ($payload as $key => $row) {
-            if ($key == 1) {
+            /** Header */
+            if ($key == 0) {
                 $headers = array_diff($row, [null]);
             }
-            if ($key >= 2) {
-                // data
+
+            /** Field */
+            if ($key > 0) {
                 $row = array_diff($row, [null]);
                 if (!isset($row[0])) {
                     continue;
                 }
+
                 foreach ($headers as $key => $header) {
                     if (is_numeric($header)) {
                         $meterCubics[] = [
                             'fleet_id' => $this->fleetId,
                             'tank_id' => $this->tankId,
                             'trim_index' => $header,
-                            'ullage' => $row[0],
-                            'mt' => is_numeric($row[$key]) ? $row[$key] : 0,
+                            'heel_index' => 0,
+                            'level' => (double)$row[1]?? 0,
+                            'ullage' => (double)$row[0]?? 0,
+                            'volume' => is_numeric($row[$key]) ? (double)$row[$key] : 0,
+                            'diff' => (double)$row[2]?? 0,
                             'created_at' => Carbon::now(),
-                            'updated_at' => Carbon::now(),
+                            'updated_at' => Carbon::now()
                         ];
                     }
                 }

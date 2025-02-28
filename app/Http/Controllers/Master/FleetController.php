@@ -453,30 +453,36 @@ class FleetController extends Controller
             return response()->json(['success' => false, 'message' => 'sounding not found!']);
         }
 
-        $headers = $body = $sounding = array();
-        $data->map(function ($item, $key)use(&$headers, &$sounding) {
+        $headers = $body = $levels = array();
+        $data->map(function ($item, $key)use(&$headers, &$levels) {
             if (!in_array($item->trim_index, $headers)) {
                 array_push($headers, $item->trim_index);
             }
 
-            if (!in_array($item->ullage, $sounding)) {
-                array_push($sounding, $item->ullage);
+            if (!array_search($item->level, array_column($levels, "level"))) {
+                $levels[] = [
+                    "ullage" => $item->ullage,
+                    "level" => $item->level,
+                    "diff" => $item->diff
+                ];
             }
         });
 
         sort($headers);
-        sort($sounding);
-        array_unshift($headers, "sounding");
+        array_unshift($headers, "ullage", "level", "diff");
+        array_multisort(array_column($levels, "level"), SORT_ASC, $levels);
 
-        if (!empty($sounding) && is_array($sounding)) {
+        if (!empty($levels) && is_array($levels)) {
             $data = $data->toArray();
-            foreach ($sounding as $cm) {
+            foreach ($levels as $item) {
                 $values = array();
-                $values[] = $cm;
+                $values[] = $item['ullage'];
+                $values[] = $item['level'];
+                $values[] = $item['diff'];
                 
-                $lists = $this->searchByArray($data, 'ullage', $cm);
+                $lists = $this->searchByArray($data, 'level', $item['level']);
                 foreach ($lists as $key => $item) {
-                    $values[] = number_format($item['mt'], 3, ".", ",");
+                    $values[] = number_format($item['volume'], 3, ".", ",");
                 }
 
                 $body[] = $values;
