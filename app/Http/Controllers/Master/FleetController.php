@@ -10,6 +10,7 @@ use App\Models\FleetPic;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Jobs\ImportTankCorrectionJob;
+use App\Models\CargoDensity;
 use App\Models\CargoSounding;
 use App\Models\BunkerSounding;
 use App\Models\CargoInformation;
@@ -92,27 +93,45 @@ class FleetController extends Controller
     {
         $data = $this->fleet->with(['cargo_information', 'bunker_information'])->findOrFail($id);
 
-        /** Bunker Tanks */
-        $bunkerTanks[''] = "-- Select Tank --";
+        /** Select Bunker Tanks */
+        $bunkerTankOptions[''] = "-- Select Tank --";
         $this->tank->where('fleet_id', $id)
             ->where('type', Tank::TYPE_BUNKER)
             ->select('id', 'tank_position')
             ->get()
-            ->map(function ($item, $key)use(&$bunkerTanks) {
-                $bunkerTanks[$item->id] = $item->tank_position;
+            ->map(function ($item, $key)use(&$bunkerTankOptions) {
+                $bunkerTankOptions[$item->id] = $item->tank_position;
             });
-
-        /** Cargo Tanks */
-        $cargoTanks[''] = "-- Select Tank --";
+        
+        /** Select Cargo Tanks */
+        $cargoTankOptions[''] = "-- Select Tank --";
         $this->tank->where('fleet_id', $id)
             ->where('type', Tank::TYPE_CARGO)
             ->select('id', 'tank_position')
             ->get()
-            ->map(function ($item, $key)use(&$cargoTanks) {
-                $cargoTanks[$item->id] = $item->tank_position;
+            ->map(function ($item, $key)use(&$cargoTankOptions) {
+                $cargoTankOptions[$item->id] = $item->tank_position;
+            });
+
+        /** Detail Cargo Tank */
+        $cargoTanks = $this->tank->where('fleet_id', $id)
+            ->where('type', Tank::TYPE_CARGO)
+            ->select('id', 'tank_position', 'content_type')
+            ->get();
+
+        /** Cargo Density */
+        CargoDensity::all()
+            ->map(function ($item, $key)use(&$cargoDensities) {
+                $cargoDensities[strtolower($item->product)] = $item->product;
             });
         
-        return view('master.fleets.show', compact('data', 'bunkerTanks', 'cargoTanks'));
+        return view('master.fleets.show', [
+            'data' => $data,
+            'bunkerTankOptions' => $bunkerTankOptions,
+            'cargoTankOptions' => $cargoTankOptions,
+            'cargoDensities' => $cargoDensities,
+            'cargoTanks' => $cargoTanks
+        ]);
     }
 
     /**
@@ -522,5 +541,28 @@ class FleetController extends Controller
         array_multisort($sort_col, SORT_ASC, $lists);
 
         return $lists;
+    }
+
+    public function updateCargoTank(Request $request, int $id)
+    {
+        $request->validate([
+            'data' => 'required'
+        ]);
+        
+        $payload = $request->input('data', null);
+        if (!empty($payload) && is_array($payload)) {
+            try {
+                foreach($payload as $item) {
+                    $update = $this->tank->where('id', $item['id'])->update(['content_type' => $item['content_type']]);
+                    if (!$update) {
+                        throw new \Exception("Something wrong when update cargo tank!");
+                    }
+                }
+
+                return response()->json(['success' => true, 'message' => 'Update Cargo Tank Successfully!']);
+            }catch(\Throwable $th) {
+                return response()->json(['success' => true, 'message' => $th->getMessage()]);
+            }
+        }
     }
 }

@@ -28,14 +28,14 @@
                                 </li>
                                 
                                 <!-- Cargo Sounding -->
-                                @if (is_array($cargoTanks) && count($cargoTanks) > 1)
+                                @if (is_array($cargoTankOptions) && count($cargoTankOptions) > 1)
                                 <li class="nav-item">
                                     <a href="#cargo-sounding" class="nav-link" data-bs-toggle="tab" data-bs-target="#cargo-sounding">Cargo Sounding</a>
                                 </li>
                                 @endif
 
                                 <!-- Bunker Sounding -->
-                                @if (is_array($bunkerTanks) && count($bunkerTanks) > 1)
+                                @if (is_array($bunkerTankOptions) && count($bunkerTankOptions) > 1)
                                 <li class="nav-item">
                                     <a href="#bunker-sounding" class="nav-link" data-bs-toggle="tab" data-bs-target="#bunker-sounding">Bunker Sounding</a>
                                 </li>
@@ -99,6 +99,10 @@
                                     {!! Form::model($data->cargo_information, ['route' => ['master.fleets.index'], 'method' => 'PUT']) !!}
                                     @include('master.fleets._form_cargo', ['disabled' => 'disabled'])
                                     {!! Form::close() !!}
+
+                                    @if (is_array($cargoTankOptions) && count($cargoTankOptions) > 1)
+                                        @include('master.fleets.cargo-tanks', ['fleet' => $data])
+                                    @endif
                                 </div>
                                 <div class="tab-pane" id="bunker">
                                     @can('Fleet Manage')
@@ -121,14 +125,14 @@
 
                                 </div>
                                 <!-- Cargo Sounding -->
-                                @if (is_array($cargoTanks) && count($cargoTanks) > 1)
+                                @if (is_array($cargoTankOptions) && count($cargoTankOptions) > 1)
                                 <div class="tab-pane" id="cargo-sounding">
                                     @include('master.fleets.cargo-sounding', ['fleet' => $data])
                                 </div>
                                 @endif
 
                                 <!-- Bunker Sounding -->
-                                @if (is_array($bunkerTanks) && count($bunkerTanks) > 1)
+                                @if (is_array($bunkerTankOptions) && count($bunkerTankOptions) > 1)
                                 <div class="tab-pane" id="bunker-sounding">
                                     @include('master.fleets.bunker-sounding', ['fleet' => $data])
                                 </div>
