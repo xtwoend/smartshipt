@@ -15,7 +15,7 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
-        Permission::factory()->insert([
+        Permission::insert([
             [
                 'name' => 'Fleet Manage',
                 'guard_name' => 'web'

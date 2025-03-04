@@ -2,22 +2,36 @@
 
 namespace App\Http\Controllers\Master;
 
+use Carbon\Carbon;
+use App\Models\Tank;
 use App\Models\Fleet;
 use App\Models\FleetDoc;
 use App\Models\FleetPic;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+use App\Jobs\ImportTankCorrectionJob;
+use App\Models\CargoDensity;
+use App\Models\CargoSounding;
+use App\Models\BunkerSounding;
 use App\Models\CargoInformation;
 use App\Models\BunkerInformation;
+use App\Models\CargoTankCorrection;
 use App\Http\Controllers\Controller;
+use App\Jobs\ImportCargoSoundingJob;
+use App\Jobs\ImportBunkerSoundingJob;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 class FleetController extends Controller
 {
     protected $fleet;
-    public function __construct(Fleet $fleet)
+    protected $tank;
+    public function __construct(Fleet $fleet, Tank $tank)
     {
         $this->fleet = $fleet;
+        $this->tank = $tank;
     }
 
     /**
@@ -78,8 +92,46 @@ class FleetController extends Controller
     public function show($id)
     {
         $data = $this->fleet->with(['cargo_information', 'bunker_information'])->findOrFail($id);
+
+        /** Select Bunker Tanks */
+        $bunkerTankOptions[''] = "-- Select Tank --";
+        $this->tank->where('fleet_id', $id)
+            ->where('type', Tank::TYPE_BUNKER)
+            ->select('id', 'tank_position')
+            ->get()
+            ->map(function ($item, $key)use(&$bunkerTankOptions) {
+                $bunkerTankOptions[$item->id] = $item->tank_position;
+            });
         
-        return view('master.fleets.show', compact('data'));
+        /** Select Cargo Tanks */
+        $cargoTankOptions[''] = "-- Select Tank --";
+        $this->tank->where('fleet_id', $id)
+            ->where('type', Tank::TYPE_CARGO)
+            ->select('id', 'tank_position')
+            ->get()
+            ->map(function ($item, $key)use(&$cargoTankOptions) {
+                $cargoTankOptions[$item->id] = $item->tank_position;
+            });
+
+        /** Detail Cargo Tank */
+        $cargoTanks = $this->tank->where('fleet_id', $id)
+            ->where('type', Tank::TYPE_CARGO)
+            ->select('id', 'tank_position', 'content_type')
+            ->get();
+
+        /** Cargo Density */
+        CargoDensity::all()
+            ->map(function ($item, $key)use(&$cargoDensities) {
+                $cargoDensities[strtolower($item->product)] = $item->product;
+            });
+        
+        return view('master.fleets.show', [
+            'data' => $data,
+            'bunkerTankOptions' => $bunkerTankOptions,
+            'cargoTankOptions' => $cargoTankOptions,
+            'cargoDensities' => $cargoDensities,
+            'cargoTanks' => $cargoTanks
+        ]);
     }
 
     /**
@@ -267,5 +319,250 @@ class FleetController extends Controller
         ]);
 
         return redirect()->route('master.fleets.docs', $fleet->id);
+    }
+
+    public function uploadBunkerSounding(Request $request, int $id)
+    {
+        $request->validate([
+            'tank_id' => 'required',
+            'file' => 'required|mimes:xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet|max:2048', // Adjust max size as needed
+        ], [
+            'file.required' => 'The file is required.',
+            'file.mimes' => 'The file must be an XLSX file.',
+            'file.max' => 'The file must not be greater than 2MB.', // Adjust message if you change max size
+        ]);
+        
+        $file = $request->file('file');
+        $file->storeAs('', $file->getClientOriginalName(), 'local');
+        
+        $originalFileName = $file->getClientOriginalName();
+        $fileName = pathinfo($originalFileName, PATHINFO_FILENAME);
+        
+        try {
+            dispatch_sync(new ImportBunkerSoundingJob(storage_path(sprintf('app/%s', $originalFileName)), $id, $request->input('tank_id', null)));
+            return redirect()->route('master.fleets.show', $id);
+        } catch (\Exception $e) {
+            return redirect()->route('master.fleets.show', $id);
+        }
+    }
+
+    public function uploadCargoSounding(Request $request, int $id)
+    {
+        $request->validate([
+            'tank_id' => 'required',
+            'file' => 'required|mimes:xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet|max:2048', // Adjust max size as needed
+        ], [
+            'file.required' => 'The file is required.',
+            'file.mimes' => 'The file must be an XLSX file.',
+            'file.max' => 'The file must not be greater than 2MB.', // Adjust message if you change max size
+        ]);
+        
+        $file = $request->file('file');
+        $file->storeAs('', $file->getClientOriginalName(), 'local');
+        
+        $originalFileName = $file->getClientOriginalName();
+        $fileName = pathinfo($originalFileName, PATHINFO_FILENAME);
+        
+        try {
+            dispatch_sync(new ImportCargoSoundingJob(storage_path(sprintf('app/%s', $originalFileName)), $id, $request->input('tank_id', null)));
+            return redirect()->route('master.fleets.show', $id);
+        } catch (\Exception $e) {
+            return redirect()->route('master.fleets.show', $id);
+        }
+    }
+
+    public function uploadTankCorrection(Request $request, int $id)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet|max:2048', // Adjust max size as needed
+        ], [
+            'file.required' => 'The file is required.',
+            'file.mimes' => 'The file must be an XLSX file.',
+            'file.max' => 'The file must not be greater than 2MB.', // Adjust message if you change max size
+        ]);
+        
+        $file = $request->file('file');
+        $file->storeAs('', $file->getClientOriginalName(), 'local');
+        
+        $originalFileName = $file->getClientOriginalName();
+        $fileName = pathinfo($originalFileName, PATHINFO_FILENAME);
+        
+        try {
+            dispatch_sync(new ImportTankCorrectionJob(storage_path(sprintf('app/%s', $originalFileName)), $id));
+            return redirect()->route('master.fleets.show', $id);
+        } catch (\Exception $e) {
+            return redirect()->route('master.fleets.show', $id);
+        }
+    }
+
+    public function getBunkerSounding(Request $request)
+    {
+        if (!$request->has('tank_id') || empty($request->input('tank_id'))) {
+            return response()->json(['success' => false, 'message' => 'invalid tank id']);
+        }
+
+        /** check tank */
+        $tank = Tank::find($request->input('tank_id'));
+        if (!$tank) {
+            return response()->json(['success' => false, 'message' => 'tank not found!']);
+        }
+
+        /** get sounding */
+        $sounding = (new BunkerSounding())->table($tank->fleet_id);
+        $data = $sounding->where([
+            'fleet_id' => $tank->fleet_id,
+            'tank_id' => $tank->id
+        ])->orderBy('created_at', 'desc')->get();
+        if (empty($data)) {
+            return response()->json(['success' => false, 'message' => 'sounding not found!']);
+        }
+
+        $headers = $body = $sounding = array();
+        $data->map(function ($item, $key)use(&$headers, &$sounding) {
+            if (!in_array($item->trim_index, $headers)) {
+                array_push($headers, $item->trim_index);
+            }
+
+            if (!in_array($item->sounding_cm, $sounding)) {
+                array_push($sounding, $item->sounding_cm);
+            }
+        });
+
+        sort($headers);
+        sort($sounding);
+        array_unshift($headers, "sounding");
+
+        if (!empty($sounding) && is_array($sounding)) {
+            $data = $data->toArray();
+            foreach ($sounding as $cm) {
+                $values = array();
+                $values[] = $cm;
+                
+                $lists = $this->searchByArray($data, 'sounding_cm', $cm);
+                foreach ($lists as $key => $item) {
+                    $values[] = number_format($item['volume'], 3, ".", ",");
+                }
+
+                $body[] = $values;
+
+            }
+        }
+        
+        return response()->json(['success' => true, 'headers' => $headers, 'body' => $body]);
+    }
+    public function getCargoSounding(Request $request)
+    {
+        if (!$request->has('tank_id') || empty($request->input('tank_id'))) {
+            return response()->json(['success' => false, 'message' => 'invalid tank id']);
+        }
+
+        /** check tank */
+        $tank = Tank::find($request->input('tank_id'));
+        if (!$tank) {
+            return response()->json(['success' => false, 'message' => 'tank not found!']);
+        }
+
+        /** get sounding */
+        $sounding = (new CargoSounding())->table($tank->fleet_id);
+        $data = $sounding->where([
+            'fleet_id' => $tank->fleet_id,
+            'tank_id' => $tank->id
+        ])->orderBy('created_at', 'desc')->get();
+        if (empty($data)) {
+            return response()->json(['success' => false, 'message' => 'sounding not found!']);
+        }
+
+        $headers = $body = $levels = array();
+        $data->map(function ($item, $key)use(&$headers, &$levels) {
+            if (!in_array($item->trim_index, $headers)) {
+                array_push($headers, $item->trim_index);
+            }
+
+            if (!array_search($item->level, array_column($levels, "level"))) {
+                $levels[] = [
+                    "ullage" => $item->ullage,
+                    "level" => $item->level,
+                    "diff" => $item->diff
+                ];
+            }
+        });
+
+        sort($headers);
+        array_unshift($headers, "ullage", "level", "diff");
+        array_multisort(array_column($levels, "level"), SORT_ASC, $levels);
+
+        if (!empty($levels) && is_array($levels)) {
+            $data = $data->toArray();
+            foreach ($levels as $item) {
+                $values = array();
+                $values[] = $item['ullage'];
+                $values[] = $item['level'];
+                $values[] = $item['diff'];
+                
+                $lists = $this->searchByArray($data, 'level', $item['level']);
+                foreach ($lists as $key => $item) {
+                    $values[] = number_format($item['volume'], 3, ".", ",");
+                }
+
+                $body[] = $values;
+
+            }
+        }
+        
+        return response()->json(['success' => true, 'headers' => $headers, 'body' => $body]);
+    }
+
+    public function getTankCorrection(Request $request, int $id)
+    {
+        $correction = (new CargoTankCorrection())->table($id);
+        $data = $correction->where([
+            'fleet_id' => $id
+        ])->orderBy('temp', 'asc')->get();
+        if (empty($data)) {
+            return response()->json(['success' => false, 'message' => 'correction data not found!']);
+        }
+        
+        return response()->json(['success' => true, 'data' => $data->toArray()]);
+    }
+
+    private function searchByArray(array $data, string $index, string $search): Array
+    {
+        $lists = $sort_col = array();
+        foreach ($data as $key => $item) {
+            if ($item[$index] == $search) {
+                $lists[] = $item;
+            }
+        }
+
+        foreach ($lists as $key => $row) {
+            $sort_col[$key] = $row['trim_index'];
+        }
+
+        array_multisort($sort_col, SORT_ASC, $lists);
+
+        return $lists;
+    }
+
+    public function updateCargoTank(Request $request, int $id)
+    {
+        $request->validate([
+            'data' => 'required'
+        ]);
+        
+        $payload = $request->input('data', null);
+        if (!empty($payload) && is_array($payload)) {
+            try {
+                foreach($payload as $item) {
+                    $update = $this->tank->where('id', $item['id'])->update(['content_type' => $item['content_type']]);
+                    if (!$update) {
+                        throw new \Exception("Something wrong when update cargo tank!");
+                    }
+                }
+
+                return response()->json(['success' => true, 'message' => 'Update Cargo Tank Successfully!']);
+            }catch(\Throwable $th) {
+                return response()->json(['success' => true, 'message' => $th->getMessage()]);
+            }
+        }
     }
 }
