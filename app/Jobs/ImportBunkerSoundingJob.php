@@ -4,6 +4,7 @@ namespace App\Jobs;
 set_time_limit(0);
 
 use App\Models\BunkerSounding;
+use Exception;
 use Illuminate\Bus\Queueable;
 use Illuminate\Support\Carbon;
 use Illuminate\Queue\SerializesModels;
@@ -48,16 +49,17 @@ class ImportBunkerSoundingJob implements ShouldQueue
 
         /** Remove Legend */
         if (is_array($payload)) {
-            $payload = array_slice($payload, 2);
+            $payload = array_slice($payload, 1);
         }
-
         $meterCubics = [];
         foreach ($payload as $key => $row) {
             /** Header */
             if ($key == 0) {
+                //extract headers
                 $headers = array_diff($row, [null]);
+                // remove 'cm' from header list
+                array_shift($headers);
             }
-
             /** Field */
             if ($key > 0) {
                 $row = array_diff($row, [null]);
@@ -67,7 +69,7 @@ class ImportBunkerSoundingJob implements ShouldQueue
 
                 foreach ($headers as $key => $header) {
                     if (is_numeric($header)) {
-                        $meterCubics[] = [
+                        $meterCubics["{$this->fleetId}.{$this->tankId}.{$header}.{$row[0]}"] = [
                             'fleet_id' => $this->fleetId,
                             'tank_id' => $this->tankId,
                             'trim_index' => $header,
@@ -80,9 +82,8 @@ class ImportBunkerSoundingJob implements ShouldQueue
                 }
             }
         }
-
+        $meterCubics = array_values($meterCubics);
         $meterCubics = array_chunk($meterCubics, 1000);
-
         $sounding = (new BunkerSounding())->table($this->fleetId);
         $sounding->where('fleet_id', $this->fleetId)->where('tank_id', $this->tankId)->delete();
         foreach($meterCubics as $data) {
