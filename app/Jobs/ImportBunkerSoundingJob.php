@@ -82,7 +82,6 @@ class ImportBunkerSoundingJob implements ShouldQueue
         }
 
         $meterCubics = array_chunk($meterCubics, 1000);
-        dd($meterCubics);
 
         $sounding = (new BunkerSounding())->table($this->fleetId);
         $sounding->where('fleet_id', $this->fleetId)->where('tank_id', $this->tankId)->delete();
