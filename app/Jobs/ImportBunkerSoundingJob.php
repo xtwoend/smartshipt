@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Jobs;
+set_time_limit(0);
 
 use App\Models\BunkerSounding;
 use Illuminate\Bus\Queueable;
@@ -57,10 +58,15 @@ class ImportBunkerSoundingJob implements ShouldQueue
 
         /** convert to payload */
         $meterCubics = $this->converter($payload);
+        $meterCubics = array_chunk($meterCubics, 1000);
 
         $sounding = (new BunkerSounding())->table($this->fleetId);
-        $sounding->where('fleet_id', $this->fleetId)->delete();
-        return $sounding->insert($meterCubics);
+        $sounding->where('fleet_id', $this->fleetId)->where('tank_id', $this->tankId)->delete();
+        foreach($meterCubics as $data) {
+            $sounding->insert($data);
+        }
+
+        return true;
     }
     
 
