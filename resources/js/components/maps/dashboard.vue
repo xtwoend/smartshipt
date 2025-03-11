@@ -173,7 +173,7 @@ export default {
         addWeatherController(map)
         {
             const realMap = isProxy(map) ? toRaw(map) : map;
-            const account = new mapsgl.Account('wEQlTfMuZVuZGadk0GElq', 'dOlGZOeangNxL5ppi8RczOUZcIUXYqWoCVR0WLsw');
+            const account = new mapsgl.Account('1OptPL41nvsQuBRwEGjxm', '3Zgw6M8pyzNF6daJUolYQ7ZMbfW4eFrzJ0LM7P2t');
             const controller = new mapsgl.MapboxMapController(realMap, {
                 account: account,
                 animation: {

@@ -196,7 +196,7 @@ export default {
         },
         loadWeather() {
             console.log('asdafdf');
-            const account = new aerisweather.mapsgl.Account('wEQlTfMuZVuZGadk0GElq', 'dOlGZOeangNxL5ppi8RczOUZcIUXYqWoCVR0WLsw');
+            const account = new aerisweather.mapsgl.Account('1OptPL41nvsQuBRwEGjxm', '3Zgw6M8pyzNF6daJUolYQ7ZMbfW4eFrzJ0LM7P2t');
             const controller = new aerisweather.mapsgl.MapboxMapController(this.map, { account });
             controller.on('load', () => {
                 // Do stuff, like add weather layers
