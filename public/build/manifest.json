@@ -50,7 +50,7 @@
     "dynamicImports": [
       "node_modules/pdf-vue3/dist/pdf.min-f72cfa08.js"
     ],
-    "file": "assets/app-287b4da6.js",
+    "file": "assets/app-23fe9497.js",
     "imports": [
       "resources/tabler/src/js/tabler.esm.js",
       "_popper-528ebbd5.js"
