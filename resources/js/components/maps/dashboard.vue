@@ -15,7 +15,7 @@
         <!-- <x-parameter></x-parameter> -->
         <div class="pointer-info" ref="pointerInfo"></div>
         <x-legend :fleets="fleets" @filters="doFilter"></x-legend>
-        <x-weathers @selected="weatherSelected"></x-weathers>
+        <x-weathers class="dash" @selected="weatherSelected"></x-weathers>
         <MapboxMap
             id="map"
             @mb-created="mbCreated"
@@ -346,4 +346,11 @@ a.no-style {
     right: 21px;
     bottom: 30px;
 }
+
+.dash.weathers {
+    width: 370px;
+    top: 230px;
+    right: 20px;
+}
+
 </style>

@@ -6,6 +6,7 @@
             @selected="toPotition"
             :display="sidebar"
         ></map-voyage>
+        <x-weathers class="maps" @selected="weatherSelected" bottom="10px"></x-weathers>
         <div class="pointer-info" ref="pointerInfo"></div>
         <!-- <div class="lengend">
             <div class="title">Fleet Color Information</div>
@@ -15,7 +16,8 @@
             <div><img src="../icon/yellow.png"> At Anchorage</div>
         </div> -->
         <MapboxMap
-            @mb-created="(mapboxInstance) => map = mapboxInstance"
+            id="map"
+            @mb-created="mbCreated"
             @mb-load="loaded"
             @mb-mousemove="pointerLocation"
             :style="style"
@@ -33,13 +35,19 @@
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { MapboxMap, MapboxNavigationControl } from '@studiometa/vue-mapbox-gl';
 import mapboxgl from 'mapbox-gl';
+window.mapboxgl = mapboxgl;
+
 import shipIcon from './ship.png';
 import * as timeago from 'timeago.js';
+import weatherLayers from './weather_layers.vue';
+
+import { isProxy, toRaw } from 'vue';
 
 export default {
     components: {
         MapboxMap, 
-        MapboxNavigationControl
+        MapboxNavigationControl,
+        'x-weathers': weatherLayers,
     },
     props: {
         fleet: Object,
@@ -65,6 +73,58 @@ export default {
         })
     },
     methods: {
+        weatherSelected(e) {
+            this.weatherLayers = e
+            this.buildWeatherLayers()
+        },
+        mbCreated(map) {
+            this.addWeatherController(map)
+            this.map = map
+        },
+        addWeatherController(map)
+        {
+            const realMap = isProxy(map) ? toRaw(map) : map;
+            const account = new mapsgl.Account('1OptPL41nvsQuBRwEGjxm', '3Zgw6M8pyzNF6daJUolYQ7ZMbfW4eFrzJ0LM7P2t');
+            const controller = new mapsgl.MapboxMapController(realMap, {
+                account: account,
+                animation: {
+                    duration: 2,
+                    endDelay: 1,
+                    repeat: true
+                },
+                units: {
+                    temperature: 'C',
+                    speed: 'km/h',
+                    pressure: 'hPa',
+                    distance: 'mi',
+                    height: 'm',
+                    precipitation: 'm',
+                    snowfall: 'm',
+                    direction: '°',
+                    time: 'hr',
+                    ratio: '%'
+                }
+            })
+            controller.on('load', () => this.weatherController = controller);
+        },
+        buildWeatherLayers(){ 
+            const controller = isProxy(this.weatherController) ? toRaw(this.weatherController) : this.weatherController;
+            controller.weatherLayerIds.forEach(code => controller.removeWeatherLayer(code));
+            let lastIndex = this.weatherLayers[this.weatherLayers.length - 1];
+            this.weatherLayers.forEach(code => {
+                if(! controller.hasWeatherLayer(code)) {
+                    controller.addWeatherLayer(code)
+                }
+            })
+            // move to top layer
+            this.map.moveLayer('ship-position', this.weatherLayers[lastIndex]);
+            // add legend
+            controller.addLegendControl('#map', { 
+                width: 360,
+            });
+            // add inspector
+            controller.addDataInspectorControl();    
+        },
         setHistory(e){
             this.histories = e
             let that = this
@@ -299,4 +359,9 @@ export default {
     }
 }
 
+.maps.weathers {
+    width: 300px;
+    top: 10px;
+    left: 10px;
+}
 </style>

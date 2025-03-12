@@ -38,6 +38,12 @@
 
 <script>
 export default {
+    props: {
+        bottom: {
+            type: String,
+            default: '240px'
+        }
+    },
     data() {
         return {
             isExpand: false,
@@ -136,7 +142,7 @@ export default {
             let el = this.$refs.searchBody
             if(this.isExpand) {
                 el.style.display = 'block';
-                this.$refs.cWeather.style.bottom = '240px';            
+                this.$refs.cWeather.style.bottom = this.bottom;            
             }else {
                 el.style.display = 'none';
                 this.$refs.cWeather.style.bottom = 'unset'; 
@@ -148,9 +154,6 @@ export default {
 
 <style lang="scss" scoped>
 .weathers {
-    width: 370px;
-    top: 230px;
-    right: 20px;
     transition: 0.3s;
     z-index: 2;
     .card {
