@@ -8,17 +8,18 @@ use App\Models\Fleet;
 use App\Models\FleetDoc;
 use App\Models\FleetPic;
 use Illuminate\View\View;
-use Illuminate\Http\Request;
-use App\Jobs\ImportTankCorrectionJob;
 use App\Models\CargoDensity;
+use Illuminate\Http\Request;
 use App\Models\CargoSounding;
 use App\Models\BunkerSounding;
 use App\Models\CargoInformation;
 use App\Models\BunkerInformation;
 use App\Models\CargoTankCorrection;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use App\Jobs\ImportCargoSoundingJob;
 use App\Jobs\ImportBunkerSoundingJob;
+use App\Jobs\ImportTankCorrectionJob;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
@@ -99,17 +100,17 @@ class FleetController extends Controller
             ->where('type', Tank::TYPE_BUNKER)
             ->select('id', 'tank_position')
             ->get()
-            ->map(function ($item, $key)use(&$bunkerTankOptions) {
+            ->map(function ($item, $key) use (&$bunkerTankOptions) {
                 $bunkerTankOptions[$item->id] = $item->tank_position;
             });
-        
+
         /** Select Cargo Tanks */
         $cargoTankOptions[''] = "-- Select Tank --";
         $this->tank->where('fleet_id', $id)
             ->where('type', Tank::TYPE_CARGO)
             ->select('id', 'tank_position')
             ->get()
-            ->map(function ($item, $key)use(&$cargoTankOptions) {
+            ->map(function ($item, $key) use (&$cargoTankOptions) {
                 $cargoTankOptions[$item->id] = $item->tank_position;
             });
 
@@ -121,10 +122,10 @@ class FleetController extends Controller
 
         /** Cargo Density */
         CargoDensity::all()
-            ->map(function ($item, $key)use(&$cargoDensities) {
+            ->map(function ($item, $key) use (&$cargoDensities) {
                 $cargoDensities[strtolower($item->product)] = $item->product;
             });
-        
+
         return view('master.fleets.show', [
             'data' => $data,
             'bunkerTankOptions' => $bunkerTankOptions,
@@ -157,8 +158,8 @@ class FleetController extends Controller
     {
         $this->validate($request, $this->fleet->rules());
         $input = $request->all();
-        if($request->has('image') && $request->file('image')->isValid()) {
-            $input['image'] = $request->image->store('fleets');          
+        if ($request->has('image') && $request->file('image')->isValid()) {
+            $input['image'] = $request->image->store('fleets');
         }
         $row = $this->fleet->findOrFail($id);
         $row->fill($input);
@@ -258,9 +259,9 @@ class FleetController extends Controller
     {
         $input = array_merge($request->all(), ['fleet_id' => $id]);
         $fleet = Fleet::find($id);
-        if($request->has('id') && $request->id !== 0) {
+        if ($request->has('id') && $request->id !== 0) {
             $pic = $fleet->pic()->find($request->id)->update($input);
-        }else{
+        } else {
             $pic = $fleet->pic()->create($input);
         }
 
@@ -284,7 +285,7 @@ class FleetController extends Controller
         ]);
     }
 
-    public function docs($id, Request $request) 
+    public function docs($id, Request $request)
     {
         $fleet = Fleet::findOrFail($id);
         $docs = $fleet->docs()->latest()->paginate(20)->withQueryString();
@@ -331,17 +332,19 @@ class FleetController extends Controller
             'file.mimes' => 'The file must be an XLSX file.',
             'file.max' => 'The file must not be greater than 2MB.', // Adjust message if you change max size
         ]);
-        
+
         $file = $request->file('file');
         $file->storeAs('', $file->getClientOriginalName(), 'local');
-        
+
         $originalFileName = $file->getClientOriginalName();
         $fileName = pathinfo($originalFileName, PATHINFO_FILENAME);
-        
+
         try {
             dispatch_sync(new ImportBunkerSoundingJob(storage_path(sprintf('app/%s', $originalFileName)), $id, $request->input('tank_id', null)));
             return redirect()->route('master.fleets.show', $id);
         } catch (\Exception $e) {
+            Log::info($e->getMessage());
+            Log::info($e->getTraceAsString());
             return redirect()->route('master.fleets.show', $id);
         }
     }
@@ -356,17 +359,19 @@ class FleetController extends Controller
             'file.mimes' => 'The file must be an XLSX file.',
             'file.max' => 'The file must not be greater than 2MB.', // Adjust message if you change max size
         ]);
-        
+
         $file = $request->file('file');
         $file->storeAs('', $file->getClientOriginalName(), 'local');
-        
+
         $originalFileName = $file->getClientOriginalName();
         $fileName = pathinfo($originalFileName, PATHINFO_FILENAME);
-        
+
         try {
             dispatch_sync(new ImportCargoSoundingJob(storage_path(sprintf('app/%s', $originalFileName)), $id, $request->input('tank_id', null)));
             return redirect()->route('master.fleets.show', $id);
         } catch (\Exception $e) {
+            Log::info($e->getMessage());
+            Log::info($e->getTraceAsString());
             return redirect()->route('master.fleets.show', $id);
         }
     }
@@ -380,17 +385,19 @@ class FleetController extends Controller
             'file.mimes' => 'The file must be an XLSX file.',
             'file.max' => 'The file must not be greater than 2MB.', // Adjust message if you change max size
         ]);
-        
+
         $file = $request->file('file');
         $file->storeAs('', $file->getClientOriginalName(), 'local');
-        
+
         $originalFileName = $file->getClientOriginalName();
         $fileName = pathinfo($originalFileName, PATHINFO_FILENAME);
-        
+
         try {
             dispatch_sync(new ImportTankCorrectionJob(storage_path(sprintf('app/%s', $originalFileName)), $id));
             return redirect()->route('master.fleets.show', $id);
         } catch (\Exception $e) {
+            Log::info($e->getMessage());
+            Log::info($e->getTraceAsString());
             return redirect()->route('master.fleets.show', $id);
         }
     }
@@ -418,7 +425,7 @@ class FleetController extends Controller
         }
 
         $headers = $body = $sounding = array();
-        $data->map(function ($item, $key)use(&$headers, &$sounding) {
+        $data->map(function ($item, $key) use (&$headers, &$sounding) {
             if (!in_array($item->trim_index, $headers)) {
                 array_push($headers, $item->trim_index);
             }
@@ -437,17 +444,16 @@ class FleetController extends Controller
             foreach ($sounding as $cm) {
                 $values = array();
                 $values[] = $cm;
-                
+
                 $lists = $this->searchByArray($data, 'sounding_cm', $cm);
                 foreach ($lists as $key => $item) {
                     $values[] = number_format($item['volume'], 3, ".", ",");
                 }
 
                 $body[] = $values;
-
             }
         }
-        
+
         return response()->json(['success' => true, 'headers' => $headers, 'body' => $body]);
     }
     public function getCargoSounding(Request $request)
@@ -473,7 +479,7 @@ class FleetController extends Controller
         }
 
         $headers = $body = $levels = array();
-        $data->map(function ($item, $key)use(&$headers, &$levels) {
+        $data->map(function ($item, $key) use (&$headers, &$levels) {
             if (!in_array($item->trim_index, $headers)) {
                 array_push($headers, $item->trim_index);
             }
@@ -498,17 +504,16 @@ class FleetController extends Controller
                 $values[] = $item['ullage'];
                 $values[] = $item['level'];
                 $values[] = $item['diff'];
-                
+
                 $lists = $this->searchByArray($data, 'level', $item['level']);
                 foreach ($lists as $key => $item) {
                     $values[] = number_format($item['volume'], 3, ".", ",");
                 }
 
                 $body[] = $values;
-
             }
         }
-        
+
         return response()->json(['success' => true, 'headers' => $headers, 'body' => $body]);
     }
 
@@ -521,11 +526,11 @@ class FleetController extends Controller
         if (empty($data)) {
             return response()->json(['success' => false, 'message' => 'correction data not found!']);
         }
-        
+
         return response()->json(['success' => true, 'data' => $data->toArray()]);
     }
 
-    private function searchByArray(array $data, string $index, string $search): Array
+    private function searchByArray(array $data, string $index, string $search): array
     {
         $lists = $sort_col = array();
         foreach ($data as $key => $item) {
@@ -548,11 +553,11 @@ class FleetController extends Controller
         $request->validate([
             'data' => 'required'
         ]);
-        
+
         $payload = $request->input('data', null);
         if (!empty($payload) && is_array($payload)) {
             try {
-                foreach($payload as $item) {
+                foreach ($payload as $item) {
                     $update = $this->tank->where('id', $item['id'])->update(['content_type' => $item['content_type']]);
                     if (!$update) {
                         throw new \Exception("Something wrong when update cargo tank!");
@@ -560,7 +565,7 @@ class FleetController extends Controller
                 }
 
                 return response()->json(['success' => true, 'message' => 'Update Cargo Tank Successfully!']);
-            }catch(\Throwable $th) {
+            } catch (\Throwable $th) {
                 return response()->json(['success' => true, 'message' => $th->getMessage()]);
             }
         }

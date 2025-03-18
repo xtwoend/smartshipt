@@ -50,41 +50,62 @@ class ImportCargoSoundingJob implements ShouldQueue
             $payload = array_slice($payload, 2);
         }
 
-        $meterCubics = [];
-        foreach ($payload as $key => $row) {
-            /** Header */
-            if ($key == 0) {
+        $batches = [];
+        $currentBatch = [];
+        $rowCounter = 0; // Counter for rows in the current batch, excluding header
+        $trims = [];
+        $heel = [];
+        // Process the data
+        foreach ($payload as $rowKey => $row) {
+            // Skip the header row
+            if ($rowKey === 0) {
                 $headers = array_diff($row, [null]);
+                continue;
             }
 
-            /** Field */
-            if ($key > 0) {
-                $row = array_diff($row, [null]);
-                if (!isset($row[0])) {
-                    continue;
-                }
+            $row = array_diff($row, [null]);
+            if (!isset($row[0])) {
+                continue;
+            }
 
-                foreach ($headers as $key => $header) {
-                    if (is_numeric($header)) {
-                        $meterCubics[] = [
-                            'fleet_id' => $this->fleetId,
-                            'tank_id' => $this->tankId,
-                            'trim_index' => $header,
-                            'heel_index' => 0,
-                            'level' => (double)$row[1]?? 0,
-                            'ullage' => (double)$row[0]?? 0,
-                            'volume' => is_numeric($row[$key]) ? (double)$row[$key] : 0,
-                            'diff' => (double)$row[2]?? 0,
-                            'created_at' => Carbon::now(),
-                            'updated_at' => Carbon::now()
-                        ];
-                    }
+            foreach ($headers as $headerKey => $header) {
+                if (is_numeric($header) && isset($row[$headerKey])) {
+                    $trims[$header] = $header;
+                    $data = [
+                        'fleet_id' => $this->fleetId,
+                        'tank_id' => $this->tankId,
+                        'trim_index' => $header,
+                        'heel_index' => 0,
+                        'level' => (float)($row[1] ?? 0),
+                        'ullage' => (float)($row[0] ?? 0),
+                        'volume' => is_numeric($row[$headerKey]) ? (float)$row[$headerKey] : 0,
+                        'diff' => (float)($row[2] ?? 0),
+                        'created_at' => Carbon::now(),
+                        'updated_at' => Carbon::now()
+                    ];
+                    $currentBatch[] = $data;
+                    $rowCounter++;
                 }
             }
+
+            // Check if the current batch is full OR if it's the last row
+            if ($rowCounter >= 1000 || $rowKey === count($payload) - 1) {
+                $batches[] = $currentBatch;
+                $currentBatch = [];
+                $rowCounter = 0;
+            }
+        }
+
+        // Add the last batch if it's not empty
+        if (!empty($currentBatch)) {
+            $batches[] = $currentBatch;
         }
 
         $sounding = (new CargoSounding())->table($this->fleetId);
         $sounding->where('fleet_id', $this->fleetId)->where('tank_id', $this->tankId)->delete();
-        return $sounding->insert($meterCubics);
+        foreach ($batches as $batch) {
+            $sounding->insert($batch);
+        }
+        return true;
     }
 }

@@ -11,11 +11,11 @@ use Illuminate\Http\Request;
 
 class FleetController extends Controller
 {
-    protected function accessFleet($id, Request $request) {
+    protected function accessFleet($id, Request $request)
+    {
         $user = $request->user();
-        if($user->is_root || $user->can('All Fleets') || in_array($id, $user->fleets->pluck('id')->toArray())) {
-           
-        }else{
+        if ($user->is_root || $user->can('All Fleets') || in_array($id, $user->fleets->pluck('id')->toArray())) {
+        } else {
             return abort('403');
         }
     }
@@ -31,12 +31,12 @@ class FleetController extends Controller
     public function nav($id, Request $request)
     {
         $this->accessFleet($id, $request);
-        
+
         $fleet =  Fleet::with('navigation')->findOrFail($id);
         return view('fleet.index', compact('fleet'));
     }
 
-    public function track($id, Request $request) 
+    public function track($id, Request $request)
     {
         $this->accessFleet($id, $request);
 
@@ -50,9 +50,9 @@ class FleetController extends Controller
 
         $fleet =  Fleet::findOrFail($id);
         $routeName = $request->route()->getName();
-        if($fleet->submenu()->count() > 0) {
+        if ($fleet->submenu()->count() > 0) {
             $page = $fleet->submenu()->where('route', 'fleet.engine')->first();
-            if($page && !is_null($page->views)) {
+            if ($page && !is_null($page->views)) {
                 return view($page->views, compact('fleet'));
             }
         }
@@ -65,9 +65,9 @@ class FleetController extends Controller
 
         $fleet =  Fleet::findOrFail($id);
         $routeName = $request->route()->getName();
-        if($fleet->submenu()->count() > 0) {
+        if ($fleet->submenu()->count() > 0) {
             $page = $fleet->submenu()->where('route', 'fleet.cargo')->first();
-            if($page && !is_null($page->views)) {
+            if ($page && !is_null($page->views)) {
                 return view($page->views, compact('fleet'));
             }
         }
@@ -147,8 +147,8 @@ class FleetController extends Controller
 
         $fleet = Fleet::findOrFail($id);
         $alarms = Alarm::table($fleet->id);
-        
-        if($request->has('from') || $request->has('to')) {
+
+        if ($request->has('from') || $request->has('to')) {
             $from = $request->input('from', Carbon::now()->subMonth()->format('Y-m-d'));
             $to = $request->input('to', Carbon::now()->format('Y-m-d'));
             $alarms = $alarms->whereDate('started_at', '>=', $from)->whereDate('started_at', '<=', $to);
@@ -204,10 +204,10 @@ class FleetController extends Controller
     public function equipment($id, Request $request)
     {
         $this->accessFleet($id, $request);
-        
+
         $fleet = Fleet::findOrFail($id);
         $equipments = $fleet->equipments;
-        
+
         return view('fleet.equipment', compact('fleet', 'equipments'));
     }
 }
