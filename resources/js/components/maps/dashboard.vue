@@ -15,7 +15,7 @@
         <!-- <x-parameter></x-parameter> -->
         <div class="pointer-info" ref="pointerInfo"></div>
         <x-legend :fleets="fleets" @filters="doFilter"></x-legend>
-        <x-weathers @selected="weatherSelected"></x-weathers>
+        <x-weathers class="dash" @selected="weatherSelected"></x-weathers>
         <MapboxMap
             id="map"
             @mb-created="mbCreated"
@@ -173,7 +173,7 @@ export default {
         addWeatherController(map)
         {
             const realMap = isProxy(map) ? toRaw(map) : map;
-            const account = new mapsgl.Account('wEQlTfMuZVuZGadk0GElq', 'dOlGZOeangNxL5ppi8RczOUZcIUXYqWoCVR0WLsw');
+            const account = new mapsgl.Account('1OptPL41nvsQuBRwEGjxm', '3Zgw6M8pyzNF6daJUolYQ7ZMbfW4eFrzJ0LM7P2t');
             const controller = new mapsgl.MapboxMapController(realMap, {
                 account: account,
                 animation: {
@@ -346,4 +346,11 @@ a.no-style {
     right: 21px;
     bottom: 30px;
 }
+
+.dash.weathers {
+    width: 370px;
+    top: 230px;
+    right: 20px;
+}
+
 </style>

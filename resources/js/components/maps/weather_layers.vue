@@ -38,6 +38,12 @@
 
 <script>
 export default {
+    props: {
+        bottom: {
+            type: String,
+            default: '240px'
+        }
+    },
     data() {
         return {
             isExpand: false,
@@ -46,73 +52,73 @@ export default {
             codes: [
                 'boundaries',
                 'cloud-cover',
-                // 'dew-points',
-                // 'dew-points-text',
-                // 'feels-like',
-                // 'feels-like-text',
-                // 'heat-index',
-                // 'heat-index-text',
-                // 'precip',
-                // 'precip-accum',
-                // 'precip-accum-text',
-                // 'precip-text',
-                // 'pressure-msl',
-                // 'pressure-msl-contour',
-                // 'pressure-msl-text',
+                'dew-points',
+                'dew-points-text',
+                'feels-like',
+                'feels-like-text',
+                'heat-index',
+                'heat-index-text',
+                'precip',
+                'precip-accum',
+                'precip-accum-text',
+                'precip-text',
+                'pressure-msl',
+                'pressure-msl-contour',
+                'pressure-msl-text',
                 'radar',
-                // 'snow',
-                // 'snow-accum',
-                // 'snow-accum-text',
-                // 'snow-depth',
-                // 'snow-text',
-                // 'temperatures',
-                // 'temperatures-24hr-change',
-                // 'temperatures-24hr-change-text',
-                // 'temperatures-contour',
-                // 'temperatures-max',
-                // 'temperatures-max-text',
-                // 'temperatures-min',
-                // 'temperatures-min-text',
-                // 'temperatures-text',
-                // 'wind-barbs',
-                // 'wind-chill',
-                // 'wind-chill-text',
+                'snow',
+                'snow-accum',
+                'snow-accum-text',
+                'snow-depth',
+                'snow-text',
+                'temperatures',
+                'temperatures-24hr-change',
+                'temperatures-24hr-change-text',
+                'temperatures-contour',
+                'temperatures-max',
+                'temperatures-max-text',
+                'temperatures-min',
+                'temperatures-min-text',
+                'temperatures-text',
+                'wind-barbs',
+                'wind-chill',
+                'wind-chill-text',
                 'wind-dir',
-                // 'wind-gusts',
-                // 'wind-gusts-text',
+                'wind-gusts',
+                'wind-gusts-text',
                 'wind-particles',
-                // 'wind-particles-arrow',
+                'wind-particles-arrow',
                 'wind-speeds',
-                // 'wind-speeds-contour',
-                // 'wind-speeds-text',
-                // 'wave-dir',
-                // 'wave-heights',
+                'wind-speeds-contour',
+                'wind-speeds-text',
+                'wave-dir',
+                'wave-heights',
                 'wave-particles',
-                // 'wave-periods',
-                // 'swell-dir',
-                // 'swell-heights',
-                // 'swell-particles',
-                // 'swell-periods',
-                // 'swell2-dir',
-                // 'swell2-heights',
-                // 'swell2-particles',
-                // 'swell2-periods',
-                // 'swell3-dir',
-                // 'swell3-heights',
-                // 'swell3-particles',
-                // 'swell3-periods',
-                // 'lightning-all',
-                // 'lightning-all-icons',
-                // 'lightning-flash',
-                // 'lightning-strikes',
-                // 'lightning-strikes-icons',
-                // 'stormcells',
-                // 'stormcells-cones',
-                // 'stormcells-heat',
-                // 'stormcells-positions',
-                // 'stormcells-tracks',
-                // 'stormreports',
-                // 'stormreports-heat'
+                'wave-periods',
+                'swell-dir',
+                'swell-heights',
+                'swell-particles',
+                'swell-periods',
+                'swell2-dir',
+                'swell2-heights',
+                'swell2-particles',
+                'swell2-periods',
+                'swell3-dir',
+                'swell3-heights',
+                'swell3-particles',
+                'swell3-periods',
+                'lightning-all',
+                'lightning-all-icons',
+                'lightning-flash',
+                'lightning-strikes',
+                'lightning-strikes-icons',
+                'stormcells',
+                'stormcells-cones',
+                'stormcells-heat',
+                'stormcells-positions',
+                'stormcells-tracks',
+                'stormreports',
+                'stormreports-heat'
             ]
         }
     },
@@ -136,7 +142,7 @@ export default {
             let el = this.$refs.searchBody
             if(this.isExpand) {
                 el.style.display = 'block';
-                this.$refs.cWeather.style.bottom = '240px';            
+                this.$refs.cWeather.style.bottom = this.bottom;            
             }else {
                 el.style.display = 'none';
                 this.$refs.cWeather.style.bottom = 'unset'; 
@@ -148,9 +154,6 @@ export default {
 
 <style lang="scss" scoped>
 .weathers {
-    width: 370px;
-    top: 230px;
-    right: 20px;
     transition: 0.3s;
     z-index: 2;
     .card {
