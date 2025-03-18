@@ -54,7 +54,7 @@ class ImportTankCorrectionJob implements ShouldQueue
         }
 
         $correction = (new CargoTankCorrection())->table($this->fleetId);
-        $correction->where('fleet_id', $this->fleetId)->where('tank_id', $this->tankId)->delete();
+        $correction->where('fleet_id', $this->fleetId)->delete();
         return $correction->insert($payloads);
     }
 }
