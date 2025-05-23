@@ -11,6 +11,17 @@ use Illuminate\Support\Facades\Schema;
 
 class EngineController extends Controller
 {
+
+    public function current($id)
+    {
+        $fleet = Fleet::findOrFail($id);
+        
+        return response()->json([
+            'error' => 0,
+            'data' => $fleet->engine()
+        ]); 
+    }
+
     public function history($id, Request $request)
     {
         $fleet = Fleet::findOrFail($id);

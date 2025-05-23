@@ -11,6 +11,16 @@ use App\Http\Controllers\Controller;
 
 class NavigationController extends Controller
 {
+    public function current($id)
+    {
+        $fleet = Fleet::findOrFail($id);
+        
+        return response()->json([
+            'error' => 0,
+            'data' => $fleet->navigation
+        ]); 
+    }
+
     public function history($id, Request $request)
     {
         
