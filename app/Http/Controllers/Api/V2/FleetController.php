@@ -13,7 +13,7 @@ class FleetController extends Controller
     {
         $fleets = Fleet::where('active', 1);
         if($request->has('q')){
-            $fleets = $fleets->where('name', $request->q);
+            $fleets = $fleets->where('name', '%'.$request->q.'%');
         }
         if($request->has('imo_number')) {
             $fleets = $fleets->where('imo_number', $request->imo_number);
