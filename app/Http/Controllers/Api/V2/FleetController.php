@@ -15,6 +15,9 @@ class FleetController extends Controller
         if($request->has('q')){
             $fleets = $fleets->where('name', $request->q);
         }
+        if($request->has('imo_number')) {
+            $fleets = $fleets->where('imo_number', $request->imo_number);
+        }
         $fleets = $fleets->get();
 
         return response()->json(FleetDashboardResource::collection($fleets));
