@@ -49,6 +49,7 @@ class EngineController extends Controller
         $count = Carbon::parse($fromDiff)->diffInMonths(Carbon::parse($toDiff));
     
         $query = [];
+        $columns = [];
         for($i=0; $i <= $count; $i++) {
             
             $classModel = $fleet->engine_logs();
@@ -57,7 +58,20 @@ class EngineController extends Controller
             $tableName = $classModel::table($fleet->id, $fromTable)->getTable();
            
             if(Schema::hasTable($tableName)) {
+                $columns[$tableName] = Schema::getColumnListing($tableName);
+            }
+            $fromTable = $fromTable->addMonth();
+        }
+        dd($columns);
 
+        for($i=0; $i <= $count; $i++) {
+            
+            $classModel = $fleet->engine_logs();
+            if(is_null($classModel)) continue;
+
+            $tableName = $classModel::table($fleet->id, $fromTable)->getTable();
+           
+            if(Schema::hasTable($tableName)) {
                 $query[] = "
                 (select 
                     UNIX_TIMESTAMP(ct.terminal_time) * 1000 as unix_time, ct.terminal_time,  {$select_column}

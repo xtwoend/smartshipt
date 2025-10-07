@@ -61,6 +61,12 @@ Route::group([
     Route::get('/fleet/{id}/reports', [FleetController::class, 'reports'])->name('fleet.reports');
     Route::get('/fleet/{id}/diagnotics', [FleetController::class, 'diagnotics'])->name('fleet.diagnotics');
     Route::get('/fleet/{id}/alarms', [FleetController::class, 'alarms'])->name('fleet.alarms');
+    Route::get('/fleet/{id}/alarms/download', [FleetController::class, 'alarmDownload'])->name('fleet.alarms.download');
+    Route::get('/fleet/{id}/oils/download', [FleetController::class, 'oilsDownload'])->name('fleet.oils.download');
+    Route::get('/fleet/{id}/equipment/download', [FleetController::class, 'equipmentDownload'])->name('fleet.equipment.download');
+    Route::get('/fleet/{id}/docs/download', [FleetController::class, 'docsDownload'])->name('fleet.docs.download');
+    Route::get('/fleet/docs/file/{id}', [FleetController::class, 'downloadFile'])->name('fleet.file.download');
+    Route::get('/fleet/{id}/download', [FleetController::class, 'downloadData'])->name('fleet.data.download');
     Route::get('/fleet/{id}/emision', [FleetController::class, 'emision'])->name('fleet.emision');
     Route::get('/fleet/{id}/charter', [FleetController::class, 'charter'])->name('fleet.charter');
 
