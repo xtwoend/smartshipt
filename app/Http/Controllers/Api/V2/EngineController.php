@@ -62,7 +62,6 @@ class EngineController extends Controller
             }
             $fromTable = $fromTable->addMonth();
         }
-        dd($columns);
 
         for($i=0; $i <= $count; $i++) {
             
